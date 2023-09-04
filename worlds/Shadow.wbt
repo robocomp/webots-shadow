@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2713957117919711 -0.06880741649490878 -0.9600051599112503 3.0140578812858587
-  position 1.2867935742306846 0.07731581148745226 2.0788546133833607
+  orientation 5.429030338342608e-05 0.050891158554509576 0.9987042039730997 3.0583047897079654
+  position 4.660483681066384 -1.125218673137593 0.49678852370259075
 }
 TexturedBackground {
 }
@@ -49,29 +49,44 @@ RectangleArena {
 }
 Shadow {
   bodySlot [
-    Camera {
-      translation -0.13 -0.04 1.24
-      name "camera_360_1"
-      fieldOfView 3.14
-      width 600
-      height 600
-      projection "cylindrical"
-    }
-    Camera {
-      translation -0.13 -0.04 1.24
-      rotation 0 0 1 3.14159
-      name "camera_360_2"
-      fieldOfView 3.14
-      width 600
-      height 600
-      projection "cylindrical"
+    Group {
+      children [
+        Camera {
+          translation -0.18 0 1.24
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance DEF BlackMetalAppearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.5
+                name "BlackMetal"
+              }
+              geometry Box {
+                size 0.05 0.05 0.12
+              }
+            }
+          ]
+          name "camera_360_2"
+          fieldOfView 3.14
+          width 600
+          height 600
+          projection "cylindrical"
+        }
+        Camera {
+          translation -0.18 0 1.24
+          name "camera_360_1"
+          fieldOfView 3.14
+          width 600
+          height 600
+          projection "cylindrical"
+        }
+      ]
     }
     Lidar {
-      translation -0.13 -0.0425 1.13
+      translation -0.18 0 1.13
       children [
         Shape {
-          appearance PBRAppearance {
-          }
+          appearance USE BlackMetalAppearance
           geometry Cylinder {
             height 0.1
             radius 0.05

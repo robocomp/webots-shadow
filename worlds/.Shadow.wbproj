@@ -8,5 +8,5 @@ orthographicViewHeight: 1
 textFiles: -1
 supportPolygon: shadow
 consoles: Console:All:All
-renderingDevicePerspectives: shadow:camera_360_1;1;0.565;0;0
-renderingDevicePerspectives: shadow:camera_360_2;1;0.565;0.211468;0
+renderingDevicePerspectives: shadow:camera_360_1;1;0.601667;0.226264;0
+renderingDevicePerspectives: shadow:camera_360_2;1;0.603333;0;0
