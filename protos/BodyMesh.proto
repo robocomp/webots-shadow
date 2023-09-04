@@ -1,0 +1,22 @@
+#VRML_SIM R2023b utf8
+
+PROTO BodyMesh [
+]
+{
+Group {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.870588 0.866667 0.854902
+        roughness 1
+        metalness 0.3
+      }
+      geometry Mesh {
+        url [
+          "../protos/meshes/shadow.dae"
+        ]
+      }
+    }
+  ]
+}
+}

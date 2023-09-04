@@ -1,0 +1,87 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "BodyMesh.proto"
+EXTERNPROTO "InteriorWheel.proto"
+EXTERNPROTO "ExteriorWheel.proto"
+
+PROTO Shadow [
+  field SFVec3f           translation     0 0 0.03         # Is `Pose.translation`.
+  field SFRotation        rotation        0 0 1 0       # Is `Pose.rotation`.
+  field SFString          name            "shadow"      # Is `Solid.name`.
+  field SFString          controller      "<extern>"      # Is `Robot.controller`.
+  field MFString          controllerArgs  []            # Is `Robot.controllerArgs`.
+  field SFString          window          "<generic>"   # Is `Robot.window`.
+  field SFString          customData      ""            # Is `Robot.customData`.
+  field SFBool            supervisor      FALSE         # Is `Robot.supervisor`.
+  field SFBool            synchronization TRUE          # Is `Robot.synchronization`.
+  field MFNode            bodySlot        []            # Extends the robot with new nodes in the body slot.
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  customData IS customData
+  supervisor IS supervisor
+  synchronization IS synchronization
+  name IS name
+  model "ROBOLAB shadow"
+  children [
+    BodyMesh {
+    }
+    Group {
+      children IS bodySlot
+    }
+    DEF WHEEL1 InteriorWheel {
+      translation 0.16 -0.255 0.015
+      anchor 0.16 -0.255 0.015
+      name "wheel1"
+      sensorName "wheel1sensor"
+    }
+    DEF WHEEL2 ExteriorWheel {
+      translation 0.16 0.17 0.015
+      anchor 0.16 0.17 0.015
+      name "wheel2"
+      sensorName "wheel2sensor"
+    }
+    DEF WHEEL3 ExteriorWheel {
+      translation -0.11 -0.255 0.015
+      anchor -0.11 -0.255 0.015
+      name "wheel3"
+      sensorName "wheel3sensor"
+    }
+    DEF WHEEL4 InteriorWheel {
+      translation -0.11 0.17 0.015
+      anchor -0.11 0.17 0.015
+      name "wheel4"
+      sensorName "wheel4sensor"
+    }
+  ]
+  description "ROBOLAB shadow"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 0 0 0.02
+        children [
+          Box {
+            size 0.4 0.4 0.09
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 22
+    centerOfMass [
+      0 0 -0.045
+    ]
+    inertiaMatrix [
+      0.166204 0.418086 0.55459
+      0 0 0
+    ]
+  }
+  controller IS controller
+  controllerArgs IS controllerArgs
+  window IS window
+}
+}
