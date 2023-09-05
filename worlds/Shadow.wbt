@@ -4,6 +4,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/pedestrian/protos/Pedestrian.proto"
 
 WorldInfo {
   info [
@@ -37,8 +38,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 5.429030338342608e-05 0.050891158554509576 0.9987042039730997 3.0583047897079654
-  position 4.660483681066384 -1.125218673137593 0.49678852370259075
+  orientation -0.06295472407266603 0.03765834416954518 0.9973056461443215 3.662938390534694
+  position 7.487684582263784 4.15954536713832 1.845544695543785
 }
 TexturedBackground {
 }
@@ -47,7 +48,32 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 10 10
 }
+Pedestrian {
+  translation 2.76 0 1.27
+}
+Pedestrian {
+  translation -0.08 -1.88 1.37
+  name "pedestrian(1)"
+}
+Pedestrian {
+  translation 0.02 1.8 1.47
+  name "pedestrian(2)"
+}
+Pedestrian {
+  translation -1.94 0.08 1.47
+  name "pedestrian(3)"
+}
 Shadow {
+  hidden position_0_0 -4.866065527930306e-08
+  hidden position_0_1 -4.865534724427304e-08
+  hidden position_0_2 4.865183171498663e-08
+  hidden position_0_3 4.865716387081426e-08
+  hidden rotation_5 0 -1 0 5.16191365590357e-08
+  hidden rotation_6 0 -1 0 5.16191365590357e-08
+  hidden rotation_7 0 1 0 5.16191365590357e-08
+  hidden rotation_8 0 1 0 5.16191365590357e-08
+  translation 0.00013548545446120908 -3.412390373439958e-09 0.032525465489076706
+  rotation 2.509917020373187e-05 0.9999999996850153 -2.889695445687372e-08 0.0038774521072185214
   bodySlot [
     Group {
       children [
@@ -93,8 +119,34 @@ Shadow {
           }
         }
       ]
+      name "helios"
+      tiltAngle 0.17
+      horizontalResolution 900
       fieldOfView 6.28
-      verticalFieldOfView 0.7
+      verticalFieldOfView 1.22
+      numberOfLayers 32
+      maxRange 150
+      defaultFrequency 20
+    }
+    Lidar {
+      translation 0.1 5.30722e-08 0.65
+      rotation 1 0 0 3.14159
+      children [
+        Shape {
+          appearance USE BlackMetalAppearance
+          geometry Cylinder {
+            height 0.01
+            radius 0.05
+          }
+        }
+      ]
+      name "pearl"
+      horizontalResolution 900
+      fieldOfView 6.28
+      verticalFieldOfView 1.57
+      numberOfLayers 32
+      maxRange 100
+      defaultFrequency 20
     }
   ]
 }
