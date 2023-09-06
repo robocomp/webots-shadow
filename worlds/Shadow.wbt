@@ -36,10 +36,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.19608340245835082 0.3767013382561318 0.9053438026718886 1.4629697239913078
-  position -6.932280660113296 -32.93797817250722 12.985807007667498
+  orientation 0.17167009816472567 -0.20722310392086754 -0.9631136810353774 4.55216053988232
+  position -1.2432000488609196 -54.44894029468249 15.657441516449
 }
 TexturedBackground {
+  texture "noon_park_empty"
 }
 TexturedBackgroundLight {
 }
@@ -124,6 +125,543 @@ Shadow {
 }
 Group {
   children [
+    Solid {
+      translation -4.56 -19.86 0.001
+      rotation 0 0 1 -2.8797953071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot"
+    }
+    Solid {
+      translation -4.56 -13.08 0.001
+      rotation 0 0 1 -1.047195307179586
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot(5)"
+    }
+    Solid {
+      translation -4.56 -26.17 0.001
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot(1)"
+    }
+    Solid {
+      translation -4.56 -2.41 0.001
+      rotation 0 0 1 2.87979
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot(2)"
+    }
+    Solid {
+      translation -4.56 9.88 0.001
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot(3)"
+    }
+    Solid {
+      translation -4.56 20.3 0.001
+      rotation 0 0 1 2.61799
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/leaf.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/plant_body.jpg"
+              ]
+            }
+            roughness 0.8
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/terracota.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pot.dae"
+            ]
+            materialIndex 3
+          }
+        }
+      ]
+      name "Pot(4)"
+    }
+    Solid {
+      translation 1.51 -18.82 0
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open"
+    }
+    Solid {
+      translation 0.85 -13.6 0
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open(1)"
+    }
     Group {
       children [
         Solid {
@@ -1065,6 +1603,27 @@ Group {
           appearance PBRAppearance {
             baseColorMap ImageTexture {
               url [
+                "../protos/enviroment/meshes/GWCCorkFloorTiles_BaseColor.png"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/tiled_floor_001_rough_4k.jpg"
+              ]
+            }
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/floor_robolab.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
                 "../protos/enviroment/meshes/tiled_floor_001_diffuse_4k_modified.jpg"
               ]
             }
@@ -1078,6 +1637,9 @@ Group {
         }
       ]
       name "Floor"
+      boundingObject Plane {
+        size 50 100
+      }
     }
   ]
 }
