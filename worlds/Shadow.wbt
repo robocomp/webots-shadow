@@ -2,9 +2,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "../protos/Shadow.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/pedestrian/protos/Pedestrian.proto"
 
 WorldInfo {
   info [
@@ -38,41 +36,15 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.06295472407266603 0.03765834416954518 0.9973056461443215 3.662938390534694
-  position 7.487684582263784 4.15954536713832 1.845544695543785
+  orientation -0.19608340245835082 0.3767013382561318 0.9053438026718886 1.4629697239913078
+  position -6.932280660113296 -32.93797817250722 12.985807007667498
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
-RectangleArena {
-  floorSize 10 10
-}
-Pedestrian {
-  translation 2.76 0 1.27
-}
-Pedestrian {
-  translation -0.08 -1.88 1.37
-  name "pedestrian(1)"
-}
-Pedestrian {
-  translation 0.02 1.8 1.47
-  name "pedestrian(2)"
-}
-Pedestrian {
-  translation -1.94 0.08 1.47
-  name "pedestrian(3)"
-}
 Shadow {
-  hidden position_0_0 -4.866065527930306e-08
-  hidden position_0_1 -4.865534724427304e-08
-  hidden position_0_2 4.865183171498663e-08
-  hidden position_0_3 4.865716387081426e-08
-  hidden rotation_5 0 -1 0 5.16191365590357e-08
-  hidden rotation_6 0 -1 0 5.16191365590357e-08
-  hidden rotation_7 0 1 0 5.16191365590357e-08
-  hidden rotation_8 0 1 0 5.16191365590357e-08
-  translation 0.00013548545446120908 -3.412390373439958e-09 0.032525465489076706
+  translation -3.30983 -3.66619e-09 0.0453615
   rotation 2.509917020373187e-05 0.9999999996850153 -2.889695445687372e-08 0.0038774521072185214
   bodySlot [
     Group {
@@ -147,6 +119,965 @@ Shadow {
       numberOfLayers 32
       maxRange 100
       defaultFrequency 20
+    }
+  ]
+}
+Group {
+  children [
+    Group {
+      children [
+        Solid {
+          translation -4.3 -10.72 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco"
+        }
+        Solid {
+          translation -4.3 -17.26 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(2)"
+        }
+        Solid {
+          translation -4.3 -23.76 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(3)"
+        }
+        Solid {
+          translation -4.3 0.16 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(4)"
+        }
+        Solid {
+          translation -4.3 4.26 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(5)"
+        }
+        Solid {
+          translation -4.3 12.38 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(6)"
+        }
+        Solid {
+          translation -4.3 15.84 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(7)"
+        }
+        Solid {
+          translation -4.3 22.89 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(8)"
+        }
+        Solid {
+          translation -4.78 -12.5 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(1)"
+        }
+        Solid {
+          translation -4.78 -19.05 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(10)"
+        }
+        Solid {
+          translation -4.78 -25.54 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(11)"
+        }
+        Solid {
+          translation -4.77995 -1.63 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(12)"
+        }
+        Solid {
+          translation -4.78 2.46 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(13)"
+        }
+        Solid {
+          translation -4.78 10.6 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(14)"
+        }
+        Solid {
+          translation -4.77999 14.07 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(15)"
+        }
+        Solid {
+          translation -4.77999 21.1 0
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(16)"
+        }
+        Solid {
+          translation -4.3 -10.72 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(9)"
+        }
+      ]
+    }
+    Solid {
+      children [
+        Shape {
+          appearance DEF CristalMaterial PBRAppearance {
+            baseColor 0.168 0.168 0.168
+            transparency 0.559
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.766 0.432
+            roughness 0.823
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 0.512
+            metalness 0.447
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 1
+          }
+        }
+      ]
+      name "Pecera"
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/orange_wall_1k.jpg"
+              ]
+            }
+            roughness 1
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/walls.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/white-tile.jpg"
+              ]
+            }
+            roughness 1
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/walls.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF WhiteWallMaterial PBRAppearance {
+            roughness 1
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/walls.dae"
+            ]
+            materialIndex 3
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/marble_01_diff_1k.jpg"
+              ]
+            }
+            roughness 1
+          }
+          geometry DEF WallMesh Mesh {
+            url [
+              "../protos/enviroment/meshes/walls.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Walls"
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/enviroment/meshes/tiled_floor_001_diffuse_4k_modified.jpg"
+              ]
+            }
+            roughness 1
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/floor.dae"
+            ]
+          }
+        }
+      ]
+      name "Floor"
     }
   ]
 }
