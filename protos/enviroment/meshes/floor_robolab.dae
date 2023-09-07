@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.5.0 commit date:2023-03-29, commit time:02:56, hash:1be25cfff18b</authoring_tool>
+    </contributor>
+    <created>2023-09-06T10:58:26</created>
+    <modified>2023-09-06T10:58:26</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Floor-effect">
+      <profile_COMMON>
+        <newparam sid="tiled_floor_001_diffuse_4k_modified_jpg-surface">
+          <surface type="2D">
+            <init_from>tiled_floor_001_diffuse_4k_modified_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tiled_floor_001_diffuse_4k_modified_jpg-sampler">
+          <sampler2D>
+            <source>tiled_floor_001_diffuse_4k_modified_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="tiled_floor_001_diffuse_4k_modified_jpg-sampler" texcoord="automap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Cork_Floor_Tiles-effect">
+      <profile_COMMON>
+        <newparam sid="GWCCorkFloorTiles_BaseColor_png-surface">
+          <surface type="2D">
+            <init_from>GWCCorkFloorTiles_BaseColor_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="GWCCorkFloorTiles_BaseColor_png-sampler">
+          <sampler2D>
+            <source>GWCCorkFloorTiles_BaseColor_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="GWCCorkFloorTiles_BaseColor_png-sampler" texcoord="automap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="GWCCorkFloorTiles_BaseColor_png" name="GWCCorkFloorTiles_BaseColor_png">
+      <init_from>GWCCorkFloorTiles_BaseColor.png</init_from>
+    </image>
+    <image id="tiled_floor_001_diffuse_4k_modified_jpg" name="tiled_floor_001_diffuse_4k_modified_jpg">
+      <init_from>tiled_floor_001_diffuse_4k_modified.jpg</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="Floor-material" name="Floor">
+      <instance_effect url="#Floor-effect"/>
+    </material>
+    <material id="Cork_Floor_Tiles-material" name="Cork Floor Tiles">
+      <instance_effect url="#Cork_Floor_Tiles-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Floor-mesh" name="Floor">
+      <mesh>
+        <source id="Floor-mesh-positions">
+          <float_array id="Floor-mesh-positions-array" count="12">-15.84495 -32.91096 0 11.03622 -32.91096 0 -15.84495 32.91096 0 11.03622 32.91096 0</float_array>
+          <technique_common>
+            <accessor source="#Floor-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Floor-mesh-normals">
+          <float_array id="Floor-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Floor-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Floor-mesh-map">
+          <float_array id="Floor-mesh-map-array" count="12">-2.95191 8.228115 3.360303 -7.228114 3.360289 8.228115 -2.95191 8.228115 -2.95191 -7.228114 3.360303 -7.228114</float_array>
+          <technique_common>
+            <accessor source="#Floor-mesh-map-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Floor-mesh-vertices">
+          <input semantic="POSITION" source="#Floor-mesh-positions"/>
+        </vertices>
+        <triangles material="Floor-material" count="2">
+          <input semantic="VERTEX" source="#Floor-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Floor-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Floor-mesh-map" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Suelo_Robolab-mesh" name="Suelo_Robolab">
+      <mesh>
+        <source id="Suelo_Robolab-mesh-positions">
+          <float_array id="Suelo_Robolab-mesh-positions-array" count="24">-8.777434 -1 0 1 -1 0 -8.777434 10.17224 0 1 10.17224 0 -6.035789 -1 0 -6.035789 10.17224 0 1 11.03056 0 -6.035789 11.03056 0</float_array>
+          <technique_common>
+            <accessor source="#Suelo_Robolab-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Suelo_Robolab-mesh-normals">
+          <float_array id="Suelo_Robolab-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Suelo_Robolab-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Suelo_Robolab-mesh-map">
+          <float_array id="Suelo_Robolab-mesh-map-array" count="36">5.298368 -4.298368 -1.607392 5.298368 -1.607392 -4.298368 -1.607392 -4.298368 -4.298368 5.298368 -4.298368 -4.298368 5.298368 6.476615 -1.607392 5.298368 -1.607392 6.476615 5.298368 -4.298368 5.298368 5.298368 -1.607392 5.298368 -1.607392 -4.298368 -1.607392 5.298368 -4.298368 5.298368 5.298368 6.476615 5.298368 5.298368 -1.607392 5.298368</float_array>
+          <technique_common>
+            <accessor source="#Suelo_Robolab-mesh-map-array" count="18" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Suelo_Robolab-mesh-vertices">
+          <input semantic="POSITION" source="#Suelo_Robolab-mesh-positions"/>
+        </vertices>
+        <triangles material="Cork_Floor_Tiles-material" count="6">
+          <input semantic="VERTEX" source="#Suelo_Robolab-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Suelo_Robolab-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Suelo_Robolab-mesh-map" offset="2" set="0"/>
+          <p>1 0 0 5 0 1 4 0 2 4 0 3 2 0 4 0 0 5 3 0 6 7 0 7 5 0 8 1 0 9 3 0 10 5 0 11 4 0 12 5 0 13 2 0 14 3 0 15 6 0 16 7 0 17</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Floor" name="Floor" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Floor-mesh" name="Floor">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Floor-material" target="#Floor-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Suelo_Robolab" name="Suelo_Robolab" type="NODE">
+        <matrix sid="transform">1 0 0 7.866578 0 1 0 -23.85489 0 0 1 0.01826219 0 0 0 1</matrix>
+        <instance_geometry url="#Suelo_Robolab-mesh" name="Suelo_Robolab">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Cork_Floor_Tiles-material" target="#Cork_Floor_Tiles-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
