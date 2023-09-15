@@ -113,7 +113,7 @@ Shadow {
           }
         }
       ]
-      name "pearl"
+      name "bpearl"
       horizontalResolution 900
       fieldOfView 6.28
       verticalFieldOfView 1.57
