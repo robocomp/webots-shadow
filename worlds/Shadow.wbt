@@ -36,8 +36,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.17167009816472567 -0.20722310392086754 -0.9631136810353774 4.55216053988232
-  position -1.2432000488609196 -54.44894029468249 15.657441516449
+  orientation -0.008597546209902678 -0.04807112240865418 -0.9988069129664355 4.599829784948665
+  position -3.0192501066351736 -1.626223847480286 0.7024890154733244
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -102,7 +102,7 @@ Shadow {
       defaultFrequency 20
     }
     Lidar {
-      translation 0.1 5.30722e-08 0.65
+      translation 0.1 -2.65355e-08 0.54
       rotation 1 0 0 3.14159
       children [
         Shape {
