@@ -2,6 +2,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 
 WorldInfo {
   info [
@@ -35,17 +36,26 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.20757672882047634 -0.3245127932895221 -0.922823573953127 4.816296438822252
-  position 0.12901337787572353 -24.346371270060423 8.551385600261401
+  orientation -0.2778259508320852 0.7135541163100307 0.6431588171993438 0.6112569256227693
+  position -30.57528383586121 -21.537591065626053 19.000286246211928
 }
 TexturedBackground {
   texture "noon_park_empty"
 }
 TexturedBackgroundLight {
 }
+SolidBox {
+  hidden linearVelocity_0 -1.0582960782878753e-12 4.444590705148949e-12 1.5105182256675217e-10
+  hidden angularVelocity_0 -4.444046713471696e-12 -1.0581419731909319e-12 1.873862862996995e-18
+  translation 3.924103632043965 -4.830263256536003 0.9994113999904768
+  rotation 0.976394637619002 0.21599423980481022 -2.2895663241375783e-15 -3.1415926535895076
+  physics Physics {
+    mass 3
+  }
+}
 Robot {
-  translation 0.22019383926069058 -12.051670368544515 0.03252546548754234
-  rotation -0.0019379768836018387 0.027691220732359894 0.9996146460211307 0.1397966595068463
+  translation 0.2201938392690337 -12.0516703685434 0.03252546548907777
+  rotation -0.001937976882611774 0.027691220718254347 0.9996146460215233 0.1397966595065642
   children [
     Group {
       children [
@@ -57,7 +67,7 @@ Robot {
           }
           geometry Mesh {
             url [
-              "/home/robolab/robocomp/components/webots-shadow/protos/meshes/shadow.dae"
+              "../protos/meshes/shadow.dae"
             ]
           }
         }
@@ -142,7 +152,7 @@ Robot {
     }
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position -97.73158128304291
+        position -97.73158128288276
         axis 0 1 0
         anchor 0.1 -0.21 0.015
       }
@@ -157,7 +167,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 -0.21 0.015
-        rotation 0 1 0 2.79938363183047
+        rotation 0 1 0 2.7993836319906262
         children [
           Shape {
             appearance PBRAppearance {
@@ -337,11 +347,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 9.920487999534033e-13 -3.7912118770623074e-13 7.873598661377079e-10
+        angularVelocity -4.009275608069177e-12 2.8417901474858757e-11 -2.154595557163892e-15
       }
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 289.25022562821323
+        position 289.25022562837864
         axis 0 1 0
         anchor 0.1 0.21 0.015
       }
@@ -356,7 +368,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 0.21 0.015
-        rotation 0 1 0 0.2237014979522508
+        rotation 0 1 0 0.22370149811766574
         children [
           Shape {
             appearance PBRAppearance {
@@ -536,11 +548,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 8.541933166286847e-13 6.435877660436556e-13 7.873607189385054e-10
+        angularVelocity -3.967232791200114e-12 2.8425035222562404e-11 -2.4900973473368486e-15
       }
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 295.2120219691258
+        position 295.21202196894956
         axis 0 1 0
         anchor -0.16 -0.21 0.015
       }
@@ -555,7 +569,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 -0.21 0.015
-        rotation 0 1 0 6.185497838864792
+        rotation 0 1 0 6.185497838688577
         children [
           Shape {
             appearance PBRAppearance {
@@ -735,11 +749,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 2.014129940388173e-12 -2.1448482755409151e-13 4.919954933252724e-10
+        angularVelocity -4.04866667599088e-12 2.8516833961999998e-11 -2.151541118209039e-15
       }
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position -103.693253588356
+        position -103.69325358853305
         axis 0 1 0
         anchor -0.16 0.21 0.015
       }
@@ -754,7 +770,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 0.21 0.015
-        rotation 0 -1 0 3.162288673482617
+        rotation 0 -1 0 3.16228867365967
         children [
           Shape {
             appearance PBRAppearance {
@@ -934,6 +950,8 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 1.8758303045942777e-12 7.644000094343922e-13 4.919929352040524e-10
+        angularVelocity -4.002442077945457e-12 2.8523612102458856e-11 -2.4903151660671125e-15
       }
     }
   ]
@@ -964,10 +982,12 @@ Robot {
     ]
   }
   controller "<extern>"
+  linearVelocity -2.762425238034549e-13 -3.735682470349104e-14 -2.2570495936204088e-11
+  angularVelocity -4.006744865350981e-12 2.8472065104639284e-11 -3.1916321098121594e-15
 }
 Group {
   children [
-    Solid {
+    DEF SolidPot Solid {
       translation -4.56 -19.86 0.001
       rotation 0 0 1 -2.8797953071795863
       children [
@@ -1041,8 +1061,13 @@ Group {
         }
       ]
       name "Pot"
+      boundingObject DEF MeshPot Mesh {
+        url [
+          "../protos/enviroment/meshes/pot.dae"
+        ]
+      }
     }
-    Solid {
+    DEF SolidPot Solid {
       translation -4.56 -13.08 0.001
       rotation 0 0 1 -1.047195307179586
       children [
@@ -1116,6 +1141,7 @@ Group {
         }
       ]
       name "Pot(5)"
+      boundingObject USE MeshPot
     }
     Solid {
       translation -4.56 -26.17 0.001
@@ -1190,6 +1216,7 @@ Group {
         }
       ]
       name "Pot(1)"
+      boundingObject USE MeshPot
     }
     Solid {
       translation -4.56 -2.41 0.001
@@ -1265,6 +1292,7 @@ Group {
         }
       ]
       name "Pot(2)"
+      boundingObject USE MeshPot
     }
     Solid {
       translation -4.56 9.88 0.001
@@ -1340,6 +1368,7 @@ Group {
         }
       ]
       name "Pot(3)"
+      boundingObject USE MeshPot
     }
     Solid {
       translation -4.56 20.3 0.001
@@ -1415,6 +1444,7 @@ Group {
         }
       ]
       name "Pot(4)"
+      boundingObject USE MeshPot
     }
     Solid {
       translation 1.51 -18.82 0
@@ -1459,6 +1489,11 @@ Group {
         }
       ]
       name "Door_Simple_Open"
+      boundingObject DEF MeshSimpleDoor Mesh {
+        url [
+          "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+        ]
+      }
     }
     Solid {
       translation 0.85 -13.6 0
@@ -1503,6 +1538,7 @@ Group {
         }
       ]
       name "Door_Simple_Open(1)"
+      boundingObject USE MeshSimpleDoor
     }
     Group {
       children [
@@ -1553,6 +1589,11 @@ Group {
             }
           ]
           name "Banco"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation -4.3 -17.26 0
@@ -1601,6 +1642,7 @@ Group {
             }
           ]
           name "Banco(2)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 -23.76 0
@@ -1649,6 +1691,7 @@ Group {
             }
           ]
           name "Banco(3)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 0.16 0
@@ -1697,6 +1740,7 @@ Group {
             }
           ]
           name "Banco(4)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 4.26 0
@@ -1745,6 +1789,7 @@ Group {
             }
           ]
           name "Banco(5)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 12.38 0
@@ -1793,6 +1838,7 @@ Group {
             }
           ]
           name "Banco(6)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 15.84 0
@@ -1841,6 +1887,7 @@ Group {
             }
           ]
           name "Banco(7)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 22.89 0
@@ -1889,6 +1936,7 @@ Group {
             }
           ]
           name "Banco(8)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.78 -12.5 0
@@ -1938,6 +1986,7 @@ Group {
             }
           ]
           name "Banco(1)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.78 -19.05 0
@@ -1987,6 +2036,7 @@ Group {
             }
           ]
           name "Banco(10)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.78 -25.54 0
@@ -2036,6 +2086,7 @@ Group {
             }
           ]
           name "Banco(11)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.77995 -1.63 0
@@ -2085,6 +2136,7 @@ Group {
             }
           ]
           name "Banco(12)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.78 2.46 0
@@ -2134,6 +2186,7 @@ Group {
             }
           ]
           name "Banco(13)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.78 10.6 0
@@ -2183,6 +2236,7 @@ Group {
             }
           ]
           name "Banco(14)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.77999 14.07 0
@@ -2232,6 +2286,7 @@ Group {
             }
           ]
           name "Banco(15)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.77999 21.1 0
@@ -2281,6 +2336,7 @@ Group {
             }
           ]
           name "Banco(16)"
+          boundingObject USE MeshBanco
         }
         Solid {
           translation -4.3 -10.72 0
@@ -2329,6 +2385,7 @@ Group {
             }
           ]
           name "Banco(9)"
+          boundingObject USE MeshBanco
         }
       ]
     }
@@ -2374,6 +2431,11 @@ Group {
         }
       ]
       name "Pecera"
+      boundingObject Mesh {
+        url [
+          "../protos/enviroment/meshes/pecera.dae"
+        ]
+      }
     }
     Solid {
       children [
@@ -2438,6 +2500,7 @@ Group {
         }
       ]
       name "Walls"
+      boundingObject USE WallMesh
     }
     Solid {
       children [
