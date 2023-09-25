@@ -3,6 +3,7 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
 
 WorldInfo {
   info [
@@ -36,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.2778259508320852 0.7135541163100307 0.6431588171993438 0.6112569256227693
-  position -30.57528383586121 -21.537591065626053 19.000286246211928
+  orientation -0.5534484981419969 0.5185966335122194 0.651730229170138 1.9002648090187875
+  position -1.9009463977589818 -16.137293698905175 33.26452140862888
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -347,8 +348,6 @@ Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 9.920487999534033e-13 -3.7912118770623074e-13 7.873598661377079e-10
-        angularVelocity -4.009275608069177e-12 2.8417901474858757e-11 -2.154595557163892e-15
       }
     }
     DEF WHEEL2 HingeJoint {
@@ -548,8 +547,6 @@ Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 8.541933166286847e-13 6.435877660436556e-13 7.873607189385054e-10
-        angularVelocity -3.967232791200114e-12 2.8425035222562404e-11 -2.4900973473368486e-15
       }
     }
     DEF WHEEL3 HingeJoint {
@@ -749,8 +746,6 @@ Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 2.014129940388173e-12 -2.1448482755409151e-13 4.919954933252724e-10
-        angularVelocity -4.04866667599088e-12 2.8516833961999998e-11 -2.151541118209039e-15
       }
     }
     DEF WHEEL4 HingeJoint {
@@ -950,8 +945,6 @@ Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 1.8758303045942777e-12 7.644000094343922e-13 4.919929352040524e-10
-        angularVelocity -4.002442077945457e-12 2.8523612102458856e-11 -2.4903151660671125e-15
       }
     }
   ]
@@ -1293,6 +1286,14 @@ Group {
       ]
       name "Pot(2)"
       boundingObject USE MeshPot
+    }
+    Robot {
+      translation -3.02 -5.33 0.01
+      rotation 0 0 1 -1.047195307179586
+      children [
+        CharacterSkin {
+        }
+      ]
     }
     Solid {
       translation -4.56 9.88 0.001
@@ -2503,6 +2504,7 @@ Group {
       boundingObject USE WallMesh
     }
     Solid {
+      translation 0.58 0 0
       children [
         Shape {
           appearance PBRAppearance {
