@@ -38,11 +38,11 @@ int main(int argc, char **argv) {
             switch (c) {
                 case webots::Keyboard::UP:
                     std::cout << "Key UP pressed." << std::endl;
-                    velocity[1] = std::min(velocity[1] + INCREMENT, MAX_VEL);
+                    velocity[1] = std::max(velocity[1] - INCREMENT, -MAX_VEL);
                     break;
                 case webots::Keyboard::DOWN:
-                    std::cout << "Key DOWN pressed." << std::endl;
-                    velocity[1] = std::max(velocity[1] - INCREMENT, -MAX_VEL);
+                    std::cout << "Key DOWN pressed." << std::endl;                 
+                    velocity[1] = std::min(velocity[1] + INCREMENT, MAX_VEL);
                     break;
                 case webots::Keyboard::LEFT:
                     std::cout << "Key LEFT pressed." << std::endl;

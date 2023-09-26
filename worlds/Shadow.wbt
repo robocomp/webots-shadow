@@ -1287,13 +1287,16 @@ Group {
       name "Pot(2)"
       boundingObject USE MeshPot
     }
-    Robot {
+    DEF HUMAN Robot {
       translation -3.02 -5.33 0.01
       rotation 0 0 1 -1.047195307179586
       children [
         CharacterSkin {
         }
       ]
+      name "human"
+      controller "human_keyboard_controlled"
+      supervisor TRUE
     }
     Solid {
       translation -4.56 9.88 0.001
