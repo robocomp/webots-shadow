@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.6878817455006769 -0.6334344157881981 0.3543720433414666 6.1739294165847305
-  position -1.070887557890378 -11.146038201986492 1.3082017259686438
+  orientation -0.13347630167916968 0.9900013668909029 0.0456220390183854 1.398821422204911
+  position -0.8226266850991542 -10.941456501148641 8.110179800938736
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -46,15 +46,15 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 SolidBox {
-  translation 3.9241036320438982 -4.830263256535727 0.9994114000000006
-  rotation 0.976394637619002 0.21599423980481017 8.561469688367352e-20 3.141592653589793
+  translation 3.9241036320438982 -4.830263256535727 0.9994114000000004
+  rotation 0.976394637619002 0.21599423980481014 2.596276338671515e-19 3.141592653589793
   physics Physics {
     mass 3
   }
 }
 Robot {
-  translation -0.033942902069284374 -11.06930267751192 0.03252546548768864
-  rotation -0.0019379090329883543 0.02952990816814554 0.999562018602228 0.1311179168925987
+  translation -0.033942891871011724 -11.069302676167457 0.032525465597378414
+  rotation -0.0019379087695511642 0.029529904153736915 0.9995620187213359 0.13111791687699467
   children [
     Group {
       children [
@@ -77,8 +77,20 @@ Robot {
         Group {
           children [
             Camera {
-              translation -0.18 0 1.34
-              rotation 0 0 1 -1.047195307179586
+              translation -0.18 0 1.24
+              rotation 0 0 1 -1.5707953071795862
+              children [
+                Shape {
+                  appearance DEF BlackMetalAppearance PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.5
+                    name "BlackMetal"
+                  }
+                  geometry Box {
+                    size 0.05 0.05 0.12
+                  }
+                }
+              ]
               name "camera_360_2"
               fieldOfView 3.14
               width 600
@@ -86,8 +98,8 @@ Robot {
               projection "cylindrical"
             }
             Camera {
-              translation -0.18 0 1.34
-              rotation 0 0 1 2.0944
+              translation -0.18 0 1.24
+              rotation 0 0 -1 -1.5708053071795867
               name "camera_360_1"
               fieldOfView 3.14
               width 600
@@ -98,6 +110,15 @@ Robot {
         }
         Lidar {
           translation -0.18 0 1.13
+          children [
+            Shape {
+              appearance USE BlackMetalAppearance
+              geometry Cylinder {
+                height 0.1
+                radius 0.05
+              }
+            }
+          ]
           name "helios"
           tiltAngle 0.17
           horizontalResolution 900
@@ -112,11 +133,7 @@ Robot {
           rotation 1 0 0 3.14159
           children [
             Shape {
-              appearance DEF BlackMetalAppearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.5
-                name "BlackMetal"
-              }
+              appearance USE BlackMetalAppearance
               geometry Cylinder {
                 height 0.01
                 radius 0.05
@@ -135,7 +152,7 @@ Robot {
     }
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position -77.93522269193285
+        position -77.93522268720662
         axis 0 1 0
         anchor 0.1 -0.21 0.015
       }
@@ -150,7 +167,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 -0.21 0.015
-        rotation 0 -1 0 2.5369990057778122
+        rotation 0 -1 0 2.5369990010515804
         children [
           Shape {
             appearance PBRAppearance {
@@ -330,11 +347,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity -1.193823604250272e-09 -1.7124893708339348e-09 -1.9542585867492443e-09
+        angularVelocity -4.1020056598602677e-10 2.522082440721487e-09 3.070615646370097e-14
       }
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 269.4755950471014
+        position 269.4755950518276
         axis 0 1 0
         anchor 0.1 0.21 0.015
       }
@@ -349,7 +368,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 0.21 0.015
-        rotation 0 1 0 5.581812145558789
+        rotation 0 1 0 5.5818121502849785
         children [
           Shape {
             appearance PBRAppearance {
@@ -529,11 +548,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity -1.5968088693098776e-09 1.3446352980239432e-09 -1.9542558848572563e-09
+        angularVelocity -2.572893107839178e-10 2.542232500829772e-09 3.053671717473547e-14
       }
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 275.418348833433
+        position 275.41834882870666
         axis 0 1 0
         anchor -0.16 -0.21 0.015
       }
@@ -548,7 +569,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 -0.21 0.015
-        rotation 0 -1 0 1.0418046824687899
+        rotation 0 -1 0 1.0418046871951498
         children [
           Shape {
             appearance PBRAppearance {
@@ -728,11 +749,13 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 1.8656967832088636e-09 -1.3087067069129183e-09 -1.2367579308719764e-09
+        angularVelocity -4.5044139464405644e-10 2.827510012200594e-09 3.1218293258586506e-14
       }
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position -83.91597199097774
+        position -83.91597199570421
         axis 0 1 0
         anchor -0.16 0.21 0.015
       }
@@ -747,7 +770,7 @@ Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 0.21 0.015
-        rotation 0 1 0 4.048622309536473
+        rotation 0 1 0 4.048622304809999
         children [
           Shape {
             appearance PBRAppearance {
@@ -927,6 +950,8 @@ Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 1.4628373179418834e-09 1.7474665446769483e-09 -1.236756014576816e-09
+        angularVelocity -2.9762896470146563e-10 2.847658047354783e-09 3.048148365145962e-14
       }
     }
   ]
@@ -957,8 +982,8 @@ Robot {
     ]
   }
   controller "<extern>"
-  linearVelocity -1.9885103664695306e-16 3.284169401076363e-14 2.893846778368408e-16
-  angularVelocity 1.8726438536429607e-16 -1.7017116697513006e-15 -1.4734194607729077e-15
+  linearVelocity -2.6595217914957015e-11 -3.482604421958967e-12 -1.648207568761716e-09
+  angularVelocity -3.5390338588379375e-10 2.684869733749219e-09 3.120571783153757e-14
 }
 Group {
   children [
