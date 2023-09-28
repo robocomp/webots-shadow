@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.6832014468397621 0.34365604730611937 0.644310720216566 2.3733727611524693
-  position 0.02771083718870133 -11.407061503294106 4.963950033392169
+  orientation -0.24592005763223646 0.9246763760399352 0.29068354760428006 0.6516286672033973
+  position -5.968682266033898 -12.524795460660247 4.483087349190804
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -1305,7 +1305,7 @@ Group {
       name "Pot(2)"
       boundingObject USE MeshPot
     }
-    DEF HUMAN Robot {
+    DEF HUMAN_1 Robot {
       translation -1.13235 -10.5802 0.01
       rotation 0 0 1 -1.047195307179586
       children [
