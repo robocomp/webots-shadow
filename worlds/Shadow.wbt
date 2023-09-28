@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.10829503610374165 -0.008913717963378039 0.994078835297965 2.3218133843494098
-  position 1.7281294815477204 -12.376795925802586 1.2544728106639824
+  orientation -0.6832014468397621 0.34365604730611937 0.644310720216566 2.3733727611524693
+  position 0.02771083718870133 -11.407061503294106 4.963950033392169
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -98,6 +98,7 @@ Robot {
         }
         Lidar {
           translation -0.18 0 1.13
+          rotation 0 0 1 -0.17
           name "helios"
           tiltAngle 0.17
           horizontalResolution 900
@@ -957,6 +958,7 @@ Robot {
     ]
   }
   controller "<extern>"
+  supervisor TRUE
   linearVelocity -2.6595217914957015e-11 -3.482604421958967e-12 -1.648207568761716e-09
   angularVelocity -3.5390338588379375e-10 2.684869733749219e-09 3.120571783153757e-14
 }
