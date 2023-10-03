@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.24592005763223646 0.9246763760399352 0.29068354760428006 0.6516286672033973
-  position -5.968682266033898 -12.524795460660247 4.483087349190804
+  orientation -0.2561369287494702 -0.6178383181019151 0.7434175720386123 4.9714183710443995
+  position -4.6608300521018515 -4.955696646865332 6.312986416732361
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -1306,9 +1306,14 @@ Group {
       boundingObject USE MeshPot
     }
     DEF HUMAN_1 Robot {
-      translation -1.13235 -10.5802 0.01
+      translation -2.00235 -9.07328 0.01
       rotation 0 0 1 -1.047195307179586
       children [
+        Lidar {
+          translation 0 0 1.17
+          numberOfLayers 1
+          maxRange 10
+        }
         CharacterSkin {
         }
       ]
