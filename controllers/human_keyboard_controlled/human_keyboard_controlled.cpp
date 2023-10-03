@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
 
 void robot_init() {
     robot = new webots::Supervisor();
-    node = robot->getFromDef("HUMAN");
+    node = robot->getFromDef("HUMAN_1");
     
     std::cout << "Robot initialized." << std::endl;
 }
