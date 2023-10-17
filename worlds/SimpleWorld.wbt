@@ -64,7 +64,7 @@ TexturedBackground {
 }
 TexturedBackgroundLight {
 }
-Robot {
+DEF shadow Robot {
   translation 0.842702 0.111083 -0.00329582
   rotation 0.0020914105884229134 -0.001031160290119188 0.9999972813514079 -1.9633353071795865
   children [
