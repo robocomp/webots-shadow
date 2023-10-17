@@ -46,6 +46,12 @@ public:
                 velocity[0] = velocity[0] * movementSpeed;
                 velocity[1] = velocity[1] * movementSpeed;
 
+                // Calcular el ángulo de rotación basado en el vector dirección
+                double angle = atan2(velocity[1], velocity[0]);
+                // Establecer la rotación del agente. Aquí asumimos que la rotación es alrededor del eje Z.
+                double rotation[4] = {0, 0, 1, angle}; // {x, y, z, angle}
+
+                agentNode->getField("rotation")->setSFRotation(rotation);
                 agentNode->setVelocity(velocity);
             }
         }
