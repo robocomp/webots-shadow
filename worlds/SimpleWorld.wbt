@@ -4,6 +4,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
   info [
@@ -37,11 +38,16 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.26281833721968223 -0.18560139589409624 -0.9468255612641878 4.753403054343852
-  position -1.7069437165328278 -16.17841585541162 6.418774688986854
+  orientation 0.2932830601745637 0.1885547527802979 -0.9372471135290862 2.355499606902365
+  position 9.99002767140524 9.825225911659512 11.553222432156813
 }
 RectangleArena {
-  floorSize 20 20
+  floorSize 10 5
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+  wallThickness 0.08
+  wallHeight 1
 }
 DEF HUMAN_1 Robot {
   translation -1.61 -1.64156e-06 0
