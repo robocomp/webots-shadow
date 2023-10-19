@@ -37,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.17236980905217728 -0.9844064417244085 -0.03510849496638793 5.660266824904336
-  position -17.039211713161492 -11.91430257838345 10.752434154190045
+  orientation 0.30688701921484285 -0.2530678429674569 -0.9174840730460815 4.8011277661530745
+  position -15.993038887373782 -54.54757450632143 24.03182617265705
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -83,12 +83,18 @@ DEF CROWD_CONTROL Group {
         DEF WAYPOINT_13 Pose {
           translation -6.56 26.37 0
         }
+        DEF WAYPOINT_14 Pose {
+          translation -8.02 -10.5 0
+        }
+        DEF WAYPOINT_15 Pose {
+          translation -8.02 -30.18 0
+        }
       ]
     }
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -2.53108 -11.8449 0
+          translation -8.35108 -9.9749 0
           rotation 0 0 1 -1.5707953071795862
           children [
             Lidar {
@@ -120,7 +126,7 @@ DEF CROWD_CONTROL Group {
           supervisor TRUE
         }
         DEF HUMAN_3 Robot {
-          translation -2.33108 13.1951 0
+          translation -2.33108 -6.5049 0
           rotation 0 0 1 -1.5707953071795862
           children [
             Lidar {
@@ -136,7 +142,7 @@ DEF CROWD_CONTROL Group {
           supervisor TRUE
         }
         DEF HUMAN_4 Robot {
-          translation -2.23108 0.6251 0
+          translation -8.19108 0.6251 0
           rotation 0 0 1 -1.5707953071795862
           children [
             Lidar {
@@ -152,7 +158,7 @@ DEF CROWD_CONTROL Group {
           supervisor TRUE
         }
         DEF HUMAN_5 Robot {
-          translation -2.13108 -21.7749 0
+          translation -2.13108 -28.9049 0
           rotation 0 0 1 -1.5707953071795862
           children [
             Lidar {

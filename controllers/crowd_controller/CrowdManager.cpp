@@ -144,51 +144,38 @@ private:
         // Inicializar el grafo con los waypoints y sus conexiones.
 
         addConnection("WAYPOINT_1", "WAYPOINT_2");
-        addConnection("WAYPOINT_1", "WAYPOINT_13");
-
+        
         addConnection("WAYPOINT_2", "WAYPOINT_1");
         addConnection("WAYPOINT_2", "WAYPOINT_3");
-        addConnection("WAYPOINT_2", "WAYPOINT_12");
 
         addConnection("WAYPOINT_3", "WAYPOINT_2");
-        addConnection("WAYPOINT_3", "WAYPOINT_4");
-        addConnection("WAYPOINT_3", "WAYPOINT_11");
 
-        addConnection("WAYPOINT_4", "WAYPOINT_3");
         addConnection("WAYPOINT_4", "WAYPOINT_5");
-        addConnection("WAYPOINT_4", "WAYPOINT_9");
-        addConnection("WAYPOINT_4", "WAYPOINT_10");
 
         addConnection("WAYPOINT_5", "WAYPOINT_4");
-        addConnection("WAYPOINT_5", "WAYPOINT_6");
-        addConnection("WAYPOINT_5", "WAYPOINT_8");
 
-        addConnection("WAYPOINT_6", "WAYPOINT_5");
         addConnection("WAYPOINT_6", "WAYPOINT_7");
 
         addConnection("WAYPOINT_7", "WAYPOINT_6");
         addConnection("WAYPOINT_7", "WAYPOINT_8");
 
-        addConnection("WAYPOINT_8", "WAYPOINT_7");
         addConnection("WAYPOINT_8", "WAYPOINT_9");
-        addConnection("WAYPOINT_8", "WAYPOINT_5");
 
         addConnection("WAYPOINT_9", "WAYPOINT_8");
-        addConnection("WAYPOINT_9", "WAYPOINT_4");
 
-        addConnection("WAYPOINT_10", "WAYPOINT_4");
         addConnection("WAYPOINT_10", "WAYPOINT_11");
 
         addConnection("WAYPOINT_11", "WAYPOINT_10");
         addConnection("WAYPOINT_11", "WAYPOINT_12");
-        addConnection("WAYPOINT_11", "WAYPOINT_3");
 
         addConnection("WAYPOINT_12", "WAYPOINT_11");
         addConnection("WAYPOINT_12", "WAYPOINT_13");
-        addConnection("WAYPOINT_12", "WAYPOINT_2");
 
-        addConnection("WAYPOINT_13", "WAYPOINT_1");
         addConnection("WAYPOINT_13", "WAYPOINT_12");
+        
+        addConnection("WAYPOINT_14", "WAYPOINT_15");
+        
+        addConnection("WAYPOINT_15", "WAYPOINT_14");
     }
 
     std::string Vector3toString(const double* vec) {
