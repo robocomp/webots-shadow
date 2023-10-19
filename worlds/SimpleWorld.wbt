@@ -38,10 +38,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.14947466172158647 0.053372443137872566 0.9873240135926564 0.8447976047627493
-  position -2.288439115002703 -2.5364623437740996 0.68791668911486
+  orientation -0.4740530640869181 0.4199481887056613 0.77389741647885 1.723585664202595
+  position -2.2772318947346104 -7.7246461731038565 12.649326888659225
 }
 RectangleArena {
+  translation 0.0167301 -0.177657 -7.10539e-15
   floorSize 10 5
   floorAppearance Parquetry {
     type "light strip"
@@ -50,7 +51,7 @@ RectangleArena {
   wallHeight 1
 }
 DEF HUMAN_1 Robot {
-  translation -1.61 -1.64156e-06 0
+  translation -1.78725 2.15008 3.30402e-13
   rotation 0 0 1 -1.5707953071795862
   children [
     Lidar {
