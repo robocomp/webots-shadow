@@ -95,7 +95,7 @@ public:
 private:
     webots::Node* agentNode;
     std::string currentDestination;
-    double movementSpeed = 2.0f;
+    double movementSpeed = 0.7f;
 
 };
 
