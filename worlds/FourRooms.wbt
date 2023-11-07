@@ -36,8 +36,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.25476521559402077 -0.14775838254334955 -0.9556475005521153 4.114020838831036
-  position 10.95830738604389 -21.339525317738275 18.554832825900057
+  orientation 0.5729161365381762 0.11086645534765123 -0.8120811102179494 2.8119404226161477
+  position 8.307148941681689 5.717912786391076 26.477498198005282
 }
 DEF HUMAN_1 Robot {
   translation -1.78725 2.15008 3.30402e-13
@@ -61,8 +61,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Robot {
-  translation 0.842816 0.111098 0.0267039
-  rotation 0.0020914105884229134 -0.001031160290119188 0.9999972813514079 -1.9633353071795865
+  translation 1.1587638851854352 1.2472499235852086 0.032525471172073064
+  rotation 0.001938634342223056 -0.001926084750159912 -0.9999962659402396 -1.5772856364117063
   children [
     Group {
       children [
@@ -144,7 +144,7 @@ DEF shadow Robot {
     }
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position -77.9352226871358
+        position -121.2834647944637
         axis 0 1 0
         anchor 0.1 -0.21 0.015
       }
@@ -159,7 +159,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 -0.21 0.015
-        rotation 0 -1 0 2.5369990009807677
+        rotation 0 1 0 4.380241349128032
         children [
           Shape {
             appearance PBRAppearance {
@@ -339,11 +339,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 5.760632628041393e-07 -5.256938818808312e-07 -1.082502670316066e-07
+        angularVelocity -7.925260684363529e-07 -3.385731185508782e-08 3.335533302760107e-11
       }
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 269.47559505189395
+        position 243.36895795216455
         axis 0 1 0
         anchor 0.1 0.21 0.015
       }
@@ -358,7 +360,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 0.21 0.015
-        rotation 0 1 0 5.581812150351315
+        rotation 0 1 0 4.607916279340263
         children [
           Shape {
             appearance PBRAppearance {
@@ -538,11 +540,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity -5.692004646448591e-07 -5.331195254278161e-07 -1.0825217660360752e-07
+        angularVelocity -7.928988089459366e-07 2.3564404984723362e-08 3.446889976577591e-11
       }
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 275.4183488286606
+        position 249.47810517891733
         axis 0 1 0
         anchor -0.16 -0.21 0.015
       }
@@ -557,7 +561,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 -0.21 0.015
-        rotation 0 -1 0 1.0418046872411928
+        rotation 0 -0.9999999999999999 0 1.8493071082661272
         children [
           Shape {
             appearance PBRAppearance {
@@ -737,11 +741,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 5.674769781352174e-07 6.192650153863315e-07 1.0838514251044213e-07
+        angularVelocity -9.068373920197872e-07 -3.454027454201791e-08 3.060418356746832e-11
       }
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position -83.91597199575949
+        position -120.9685022138572
         axis 0 1 0
         anchor -0.16 0.21 0.015
       }
@@ -756,7 +762,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 0.21 0.015
-        rotation 0 1 0 4.048622304754719
+        rotation 0 1 0 4.6952039297345225
         children [
           Shape {
             appearance PBRAppearance {
@@ -936,6 +942,8 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity -5.754598826127473e-07 6.118529506719518e-07 1.0838323087190782e-07
+        angularVelocity -9.072093867402249e-07 2.2765116411085163e-08 3.1478043541846074e-11
       }
     }
   ]
@@ -967,6 +975,8 @@ DEF shadow Robot {
   }
   controller "<extern>"
   supervisor TRUE
+  linearVelocity 4.845485457397838e-11 -7.472448795946479e-09 -2.5230802231331146e-08
+  angularVelocity -8.498679113908486e-07 -5.516993316639805e-09 2.963056555265533e-11
 }
 Group {
   children [
@@ -1066,10 +1076,8 @@ Group {
         }
       ]
       name "solid(3)"
-      boundingObject Mesh {
-        url [
-          "FourRoom_meshes/floor_3.dae"
-        ]
+      boundingObject Plane {
+        size 100 100
       }
     }
     Solid {
@@ -1087,11 +1095,6 @@ Group {
         }
       ]
       name "solid(2)"
-      boundingObject Mesh {
-        url [
-          "FourRoom_meshes/floor_2.dae"
-        ]
-      }
     }
     Solid {
       children [
@@ -1108,11 +1111,6 @@ Group {
         }
       ]
       name "solid(1)"
-      boundingObject Mesh {
-        url [
-          "FourRoom_meshes/floor_1.dae"
-        ]
-      }
     }
     Solid {
       children [
@@ -1128,11 +1126,6 @@ Group {
           }
         }
       ]
-      boundingObject Mesh {
-        url [
-          "FourRoom_meshes/floor.dae"
-        ]
-      }
     }
   ]
 }
