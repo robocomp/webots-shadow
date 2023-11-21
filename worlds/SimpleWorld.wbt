@@ -59,7 +59,107 @@ DEF HUMAN_1 Robot {
       numberOfLayers 1
       maxRange 10
     }
-    CharacterSkin {
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 0
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 1
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_hair.png"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 2
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 3
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 4
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+        ]
+        materialIndex 5
+      }
     }
   ]
   name "HUMAN_1(2)"
