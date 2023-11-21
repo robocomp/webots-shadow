@@ -3,7 +3,6 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
 
 WorldInfo {
   info [
@@ -114,7 +113,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 0
               }
@@ -131,7 +130,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 1
               }
@@ -148,7 +147,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 2
               }
@@ -165,7 +164,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 3
               }
@@ -182,7 +181,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 4
               }
@@ -199,7 +198,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 5
               }
@@ -230,7 +229,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 0
               }
@@ -247,7 +246,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 1
               }
@@ -264,7 +263,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 2
               }
@@ -281,7 +280,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 3
               }
@@ -298,7 +297,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 4
               }
@@ -315,7 +314,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 5
               }
@@ -346,7 +345,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 0
               }
@@ -363,7 +362,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 1
               }
@@ -380,7 +379,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 2
               }
@@ -397,7 +396,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 3
               }
@@ -414,7 +413,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 4
               }
@@ -431,7 +430,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 5
               }
@@ -462,7 +461,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 0
               }
@@ -479,7 +478,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 1
               }
@@ -496,7 +495,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 2
               }
@@ -513,7 +512,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 3
               }
@@ -530,7 +529,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 4
               }
@@ -547,7 +546,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 5
               }
@@ -578,7 +577,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 0
               }
@@ -595,7 +594,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 1
               }
@@ -612,7 +611,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 2
               }
@@ -629,7 +628,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 3
               }
@@ -646,7 +645,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 4
               }
@@ -663,7 +662,7 @@ DEF CROWD_CONTROL Group {
               }
               geometry Mesh {
                 url [
-                  "../../../BlenderProjects/Sandra/export/Sandra.dae"
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
                 ]
                 materialIndex 5
               }
@@ -1961,7 +1960,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 0
           }
@@ -1978,7 +1977,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 1
           }
@@ -1995,7 +1994,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 2
           }
@@ -2012,7 +2011,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 3
           }
@@ -2029,7 +2028,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 4
           }
@@ -2046,7 +2045,7 @@ Group {
           }
           geometry Mesh {
             url [
-              "../../../BlenderProjects/Sandra/export/Sandra.dae"
+              "../protos/meshes/Sandra_custom/Sandra.dae"
             ]
             materialIndex 5
           }

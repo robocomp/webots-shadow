@@ -60,7 +60,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 0
       }
@@ -77,7 +77,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 1
       }
@@ -94,7 +94,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 2
       }
@@ -111,7 +111,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 3
       }
@@ -128,7 +128,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 4
       }
@@ -145,7 +145,7 @@ DEF HUMAN_1 Robot {
       }
       geometry Mesh {
         url [
-          "../../../BlenderProjects/Sandra/export/Sandra.dae"
+          "../protos/meshes/Sandra_custom/Sandra.dae"
         ]
         materialIndex 5
       }
