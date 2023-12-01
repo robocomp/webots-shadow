@@ -176,6 +176,12 @@ private:
         addConnection("WAYPOINT_14", "WAYPOINT_15");
         
         addConnection("WAYPOINT_15", "WAYPOINT_14");
+        
+        addConnection("WAYPOINT_16", "WAYPOINT_17");
+        addConnection("WAYPOINT_17", "WAYPOINT_18");
+        addConnection("WAYPOINT_18", "WAYPOINT_19");
+        addConnection("WAYPOINT_19", "WAYPOINT_20");
+        addConnection("WAYPOINT_20", "WAYPOINT_16");
     }
 
     std::string Vector3toString(const double* vec) {
