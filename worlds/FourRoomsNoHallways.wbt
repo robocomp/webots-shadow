@@ -35,124 +35,149 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.20311695563396076 -0.12633006684465353 -0.9709707598815822 4.3501777020019325
-  position -0.7501621703156398 -1.726341812862437 2.309781864686151
+  orientation 0.2833836186433803 -0.38120282373830244 -0.8799875748318995 4.341813797236879
+  position 0.5889001562846299 -11.649775777604297 17.831435480610534
 }
-DEF HUMAN_1 Robot {
-  translation -1.78725 2.30008 3.30402e-13
-  rotation 0 0 1 -1.5707953071795862
+DEF CROWD_CONTROL Group {
   children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+    DEF CROWD Group {
+      children [
+        DEF HUMAN_1 Robot {
+          translation 0.5602755984368784 4.047697946176658 3.30402e-13
+          rotation 0 0 1 -1.6170641237659422
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 10
+            }
           ]
+          name "HUMAN_1"
+          controller "crowd_controller_four_rooms"
+          supervisor TRUE
+          linearVelocity -0.032375903211184096 -0.6992508735796901 0
         }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 0
-      }
+      ]
     }
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
-          ]
+    DEF WAYPOINTS Group {
+      children [
+        DEF WAYPOINT_1 Pose {
+          translation 0.44 1.45 0
         }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 1
-      }
-    }
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_hair.png"
-          ]
+        DEF WAYPOINT_2 Pose {
+          translation -5.8 1.11 0
         }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 2
-      }
-    }
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
-          ]
+        DEF WAYPOINT_3 Pose {
+          translation -5.71 6.69 0
         }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 3
-      }
-    }
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_skin.jpg"
-          ]
+        DEF WAYPOINT_4 Pose {
+          translation 0.74 6.44 0
         }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 4
-      }
-    }
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../protos/meshes/Sandra_custom/sandra_suit.jpg"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Mesh {
-        url [
-          "../protos/meshes/Sandra_custom/Sandra.dae"
-        ]
-        materialIndex 5
-      }
-    }
-    Lidar {
-      translation 0 0 1.17
-      numberOfLayers 1
-      maxRange 10
+      ]
     }
   ]
-  name "HUMAN_1(2)"
-  controller "human_keyboard_controlled"
-  supervisor TRUE
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -160,8 +185,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Robot {
-  translation 0.831079 1.31815 0.0261353
-  rotation -0.002211039284385814 0.0019387093725267844 -0.999995676346279 1.43974
+  translation 0.8309621028352389 1.3179983752860955 0.032561063030486614
+  rotation 0.0019092081555632445 0.002177392516331929 -0.9999958069342334 1.4397398801865098
   children [
     Group {
       children [
@@ -243,7 +268,7 @@ DEF shadow Robot {
     }
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position -77.9352226871358
+        position -77.93522207589778
         axis 0 1 0
         anchor 0.1 -0.21 0.015
       }
@@ -258,7 +283,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 -0.21 0.015
-        rotation 0 -1 0 2.5369990009807677
+        rotation 0 -1 0 2.5369983897427457
         children [
           Shape {
             appearance PBRAppearance {
@@ -438,11 +463,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 7.190256575992466e-06 -5.296958908200845e-05 -0.000705118453474648
+        angularVelocity 0.0010672548385575182 0.0001406708424970725 7.738471503957378e-12
       }
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 269.47559505189395
+        position 269.47559566346007
         axis 0 1 0
         anchor 0.1 0.21 0.015
       }
@@ -457,7 +484,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 0.21 0.015
-        rotation 0 1 0 5.581812150351315
+        rotation 0 0.9999999999999999 0 5.581812761917438
         children [
           Shape {
             appearance PBRAppearance {
@@ -637,11 +664,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 6.781327561471205e-06 -5.302348830970846e-05 -0.0007051183851376313
+        angularVelocity 0.0010672521353949967 0.00014069134926267653 4.937722745618292e-12
       }
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 275.4183488286606
+        position 275.41834821711717
         axis 0 1 0
         anchor -0.16 -0.21 0.015
       }
@@ -656,7 +685,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 -0.21 0.015
-        rotation 0 -1 0 1.0418046872411928
+        rotation 0 -1 0 1.0418052987846347
         children [
           Shape {
             appearance PBRAppearance {
@@ -836,11 +865,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 7.2647523531681315e-06 -5.367315318887097e-05 -0.00042592500624255726
+        angularVelocity 0.0010672701362431853 0.00014067382471084653 3.932872629448331e-12
       }
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position -83.91597199575949
+        position -83.91597260696639
         axis 0 1 0
         anchor -0.16 0.21 0.015
       }
@@ -855,7 +886,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 0.21 0.015
-        rotation 0 1 0 4.048622304754719
+        rotation 0 1 0 4.048621693547819
         children [
           Shape {
             appearance PBRAppearance {
@@ -1035,6 +1066,8 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
+        linearVelocity 6.891691155191599e-06 -5.3722324001956326e-05 -0.0004259249379046193
+        angularVelocity 0.001067267683654483 0.00014069243074647848 8.91786681609885e-12
       }
     }
   ]
@@ -1066,6 +1099,8 @@ DEF shadow Robot {
   }
   controller "<extern>"
   supervisor TRUE
+  linearVelocity -1.4273048570602639e-06 1.0828009098309283e-05 -0.000598266165561655
+  angularVelocity 0.0010672614482003765 0.00014068214637377534 6.2611197550960155e-12
 }
 Group {
   children [
