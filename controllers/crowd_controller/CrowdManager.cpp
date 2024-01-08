@@ -12,11 +12,7 @@
 class CrowdManager {
 public:
 
-    // Método para obtener la instancia Singleton.
-    static CrowdManager& getInstance(webots::Supervisor& supervisor) {
-        static CrowdManager instance(supervisor);
-        return instance;
-    }
+    CrowdManager(){}
 
     // Retorna un nuevo destino basado en el destino actual.
     std::string getNextDestination(const std::string& currentDestination) {

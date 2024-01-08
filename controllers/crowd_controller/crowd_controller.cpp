@@ -14,7 +14,7 @@ public:
         agentNode = getFromDef(defName);
 
         // Inicializar el destino actual con su waypoint mas cercano.
-        CrowdManager& manager = CrowdManager::getInstance(*this);
+        CrowdManager manager;
         currentDestination = manager.getClosestWaypoint(agentNode->getField("translation")->getSFVec3f());
 
         std::cout << "Human: " << defName << " Closest Waypoint: " << currentDestination << std::endl;  
@@ -63,7 +63,7 @@ public:
         // Si ha llegado, entonces pides un nuevo destino al CrowdManager.
         if (hasArrivedToDestination()) {
 
-            CrowdManager& manager = CrowdManager::getInstance(*this);
+            CrowdManager manager;
             currentDestination = manager.getNextDestination(currentDestination);
 
             #if DEBUG
