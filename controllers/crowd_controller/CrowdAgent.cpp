@@ -1,9 +1,8 @@
 #include "CrowdAgent.h"
 
-CrowdAgent::CrowdAgent() {
+CrowdAgent::CrowdAgent(const std::unordered_map<std::string, std::vector<std::string>>& externalGraph) : graph(externalGraph) {
     // Obtener el nodo del agente usando el DEF name.
     initializeWaypoints();
-    initializeGraphConnections();
 
     std::string defName = getName();
     agentNode = getFromDef(defName);
@@ -24,6 +23,11 @@ void CrowdAgent::checkArrival() {
             std::cout << "[ " << getName() << "] " << "Destination arrived. New destination: " << currentDestination << std::endl;
         #endif
     }
+}
+
+void CrowdAgent::update(){
+    moveToDestination();
+    checkArrival(); 
 }
 
 void CrowdAgent::moveToDestination() {
@@ -137,50 +141,6 @@ void CrowdAgent::initializeWaypoints() {
             // Lo almacenamos como waypoint
             waypoints[nodeName] = childNode;
     }
-}
-
-void CrowdAgent::initializeGraphConnections() {
-    // Inicializar el grafo con los waypoints y sus conexiones.
-
-    addConnection("WAYPOINT_1", "WAYPOINT_2");
-    
-    addConnection("WAYPOINT_2", "WAYPOINT_1");
-    addConnection("WAYPOINT_2", "WAYPOINT_3");
-
-    addConnection("WAYPOINT_3", "WAYPOINT_2");
-
-    addConnection("WAYPOINT_4", "WAYPOINT_5");
-
-    addConnection("WAYPOINT_5", "WAYPOINT_4");
-
-    addConnection("WAYPOINT_6", "WAYPOINT_7");
-
-    addConnection("WAYPOINT_7", "WAYPOINT_6");
-    addConnection("WAYPOINT_7", "WAYPOINT_8");
-
-    addConnection("WAYPOINT_8", "WAYPOINT_9");
-
-    addConnection("WAYPOINT_9", "WAYPOINT_8");
-
-    addConnection("WAYPOINT_10", "WAYPOINT_11");
-
-    addConnection("WAYPOINT_11", "WAYPOINT_10");
-    addConnection("WAYPOINT_11", "WAYPOINT_12");
-
-    addConnection("WAYPOINT_12", "WAYPOINT_11");
-    addConnection("WAYPOINT_12", "WAYPOINT_13");
-
-    addConnection("WAYPOINT_13", "WAYPOINT_12");
-    
-    addConnection("WAYPOINT_14", "WAYPOINT_15");
-    
-    addConnection("WAYPOINT_15", "WAYPOINT_14");
-    
-    addConnection("WAYPOINT_16", "WAYPOINT_17");
-    addConnection("WAYPOINT_17", "WAYPOINT_18");
-    addConnection("WAYPOINT_18", "WAYPOINT_19");
-    addConnection("WAYPOINT_19", "WAYPOINT_20");
-    addConnection("WAYPOINT_20", "WAYPOINT_16");
 }
 
 std::string CrowdAgent::Vector3toString(const double* vec) {

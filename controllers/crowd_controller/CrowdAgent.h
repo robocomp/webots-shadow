@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <limits>
 #include <cmath>
@@ -10,20 +11,22 @@
 
 #define DEBUG 0
 
+#ifndef CROWDAGENT_H
+#define CROWDAGENT_H
+
 class CrowdAgent : public webots::Supervisor {
 public:
 
-    CrowdAgent();
-    void checkArrival();
-    void moveToDestination();
-    
+    CrowdAgent(const std::unordered_map<std::string, std::vector<std::string>>& graph);
+    void update();
+
 private:
     webots::Node* agentNode;
     std::string currentDestination;
     double movementSpeed = 0.7f;
 
     // Estructura para guardar el grafo.
-    std::map<std::string, std::vector<std::string>> graph;
+    std::unordered_map<std::string, std::vector<std::string>> graph;
     // Lista de waypoints
     std::map<std::string, webots::Node*> waypoints;
 
@@ -36,4 +39,8 @@ private:
     std::string getClosestWaypoint(const double* position);
     void printWaypointConnections(const std::string& waypointName);
     void printAllConnections();
+    void checkArrival();
+    void moveToDestination();
 };
+
+#endif // CROWDAGENT_H
