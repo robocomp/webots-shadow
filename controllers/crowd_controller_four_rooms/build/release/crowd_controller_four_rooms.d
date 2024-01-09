@@ -1,5 +1,5 @@
-build/release/crowd_controller.o: crowd_controller.cpp \
- ../../libs/crowd_agent/CrowdAgent.cpp \
+build/release/crowd_controller_four_rooms.o: \
+ crowd_controller_four_rooms.cpp ../../libs/crowd_agent/CrowdAgent.cpp \
  ../../libs/crowd_agent/CrowdAgent.h \
  /usr/local/webots/include/controller/cpp/webots/Supervisor.hpp \
  /usr/local/webots/include/controller/cpp/webots/Device.hpp \

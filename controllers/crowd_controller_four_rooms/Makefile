@@ -65,7 +65,6 @@
 ###
 ###-----------------------------------------------------------------------------
 
-
 CROWD_AGENT_PATH = ../../libs/crowd_agent
 CFLAGS = -I"$(CROWD_AGENT_PATH)"
 LIBRARIES = -L"$(CROWD_AGENT_PATH)" -lcrowd_agent
@@ -75,4 +74,3 @@ null :=
 space := $(null) $(null)
 WEBOTS_HOME_PATH?=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
 include $(WEBOTS_HOME_PATH)/resources/Makefile.include
-

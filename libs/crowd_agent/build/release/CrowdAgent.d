@@ -1,6 +1,4 @@
-build/release/crowd_controller.o: crowd_controller.cpp \
- ../../libs/crowd_agent/CrowdAgent.cpp \
- ../../libs/crowd_agent/CrowdAgent.h \
+build/release/CrowdAgent.o: CrowdAgent.cpp CrowdAgent.h \
  /usr/local/webots/include/controller/cpp/webots/Supervisor.hpp \
  /usr/local/webots/include/controller/cpp/webots/Device.hpp \
  /usr/local/webots/include/controller/cpp/webots/../../c/webots/types.h \
