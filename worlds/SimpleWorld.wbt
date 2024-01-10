@@ -2,7 +2,6 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
@@ -200,8 +199,8 @@ DEF shadow Robot {
               rotation 0 0 1 -1.5707953071795862
               name "camera_360_2"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
             Camera {
@@ -209,15 +208,15 @@ DEF shadow Robot {
               rotation 0 0 -1 -1.5708053071795867
               name "camera_360_1"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
           ]
         }
         Lidar {
           translation -0.18 0 1.13
-          rotation 0 0 1 -0.17
+          rotation 0 0 1 0.34
           name "helios"
           tiltAngle 0.17
           horizontalResolution 900
@@ -225,6 +224,7 @@ DEF shadow Robot {
           verticalFieldOfView 1.22
           numberOfLayers 32
           maxRange 150
+          noise 0.005
           defaultFrequency 20
         }
         Lidar {
@@ -249,6 +249,7 @@ DEF shadow Robot {
           verticalFieldOfView 1.57
           numberOfLayers 32
           maxRange 100
+          noise 0.005
           defaultFrequency 20
         }
       ]

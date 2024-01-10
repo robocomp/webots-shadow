@@ -509,8 +509,8 @@ DEF shadow Robot {
               rotation 0 0 1 -1.5707953071795862
               name "camera_360_2"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
             Camera {
@@ -518,15 +518,15 @@ DEF shadow Robot {
               rotation 0 0 -1 -1.5708053071795867
               name "camera_360_1"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
           ]
         }
         Lidar {
           translation -0.18 0 1.13
-          rotation 0 0 1 0.32
+          rotation 0 0 1 0.34
           name "helios"
           tiltAngle -0.34
           horizontalResolution 900
@@ -534,7 +534,7 @@ DEF shadow Robot {
           verticalFieldOfView 3.141592653589793
           numberOfLayers 82
           maxRange 8
-          noise 0.002
+          noise 0.005
           defaultFrequency 20
         }
         Lidar {
@@ -559,7 +559,7 @@ DEF shadow Robot {
           verticalFieldOfView 3.141592653589793
           numberOfLayers 64
           maxRange 10
-          noise 0.002
+          noise 0.005
           defaultFrequency 20
         }
       ]
@@ -761,8 +761,6 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity -1.1248242843199112e-14 1.0383959337116843e-13 4.2634309943842153e-16
-        angularVelocity -6.9422356999186556e-15 1.9822175478336836e-15 -1.2717770554526496e-15
       }
     }
     DEF WHEEL2 HingeJoint {
@@ -962,8 +960,6 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 1.1358988607756304e-14 1.0666832017885264e-13 1.4201421873654553e-16
-        angularVelocity -4.4974103151435835e-15 1.988445675180068e-15 -5.89977482842382e-16
       }
     }
     DEF WHEEL3 HingeJoint {
@@ -1163,8 +1159,6 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity -1.1614210415802335e-14 -1.0751525929834349e-13 -7.105538257793097e-16
-        angularVelocity 4.502535692964053e-15 -1.4788006043598378e-14 -1.867941996130431e-15
       }
     }
     DEF WHEEL4 HingeJoint {
@@ -1364,8 +1358,6 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 1.0988739452019753e-14 -1.046927018376993e-13 1.4206996285573443e-16
-        angularVelocity 4.79834096468539e-15 1.04177976627735e-14 -9.50750118609952e-16
       }
     }
   ]

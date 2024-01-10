@@ -2,7 +2,6 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
 
 WorldInfo {
   info [
@@ -36,8 +35,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.33788340702109976 -0.6328775132945789 0.6966353826973503 5.338430520207317
-  position -27.417808936199698 14.205777985265094 19.976121219611198
+  orientation 0.563941914600004 -0.16630886692000843 -0.8088948496195689 3.3187123568002352
+  position 11.19054255284089 2.758729785332422 30.061946004949537
 }
 DEF HUMAN_1 Robot {
   translation -1.78725 2.15008 3.30402e-13
@@ -162,8 +161,8 @@ TexturedBackgroundLight {
   luminosity 0.6
 }
 DEF shadow Robot {
-  translation 1.1587638849857982 1.247249954256263 0.03252546559753169
-  rotation -0.001938729493375237 0.0019261792864812312 0.9999962655736808 1.5772856367783576
+  translation 1.1587638849182391 1.2472499645593733 0.03252546559735684
+  rotation -0.0019387294963133107 0.0019261792894001166 0.9999962655736697 1.5772856367784682
   children [
     Group {
       children [
@@ -190,8 +189,8 @@ DEF shadow Robot {
               rotation 0 0 1 -1.5707953071795862
               name "camera_360_2"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
             Camera {
@@ -199,15 +198,15 @@ DEF shadow Robot {
               rotation 0 0 -1 -1.5708053071795867
               name "camera_360_1"
               fieldOfView 3.14
-              width 600
-              height 600
+              width 960
+              height 960
               projection "cylindrical"
             }
           ]
         }
         Lidar {
           translation -0.18 0 1.13
-          rotation 0 0 1 -0.17
+          rotation 0 0 1 0.34
           name "helios"
           tiltAngle 0.17
           horizontalResolution 900
@@ -215,6 +214,7 @@ DEF shadow Robot {
           verticalFieldOfView 1.22
           numberOfLayers 32
           maxRange 150
+          noise 0.005
           defaultFrequency 20
         }
         Lidar {
@@ -239,13 +239,14 @@ DEF shadow Robot {
           verticalFieldOfView 1.57
           numberOfLayers 32
           maxRange 100
+          noise 0.005
           defaultFrequency 20
         }
       ]
     }
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position -121.28346478349197
+        position -121.28346477876649
         axis 0 1 0
         anchor 0.1 -0.21 0.015
       }
@@ -260,7 +261,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 -0.21 0.015
-        rotation 0 1 0 4.380241360099765
+        rotation 0 1 0 4.380241364825243
         children [
           Shape {
             appearance PBRAppearance {
@@ -440,13 +441,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 1.5510717044967724e-09 -1.3975572539254094e-09 -1.954297380061003e-09
-        angularVelocity -2.5537892842566746e-09 -9.365855543938393e-11 6.380404568774863e-16
+        linearVelocity 1.5333699826989216e-09 -1.3813751840121404e-09 -1.9509564094807618e-09
+        angularVelocity -2.529306659163818e-09 -9.26161977064407e-11 -9.461796745481653e-17
       }
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 243.36895796313675
+        position 243.36895796786246
         axis 0 1 0
         anchor 0.1 0.21 0.015
       }
@@ -461,7 +462,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation 0.1 0.21 0.015
-        rotation 0 1 0 4.607916290312464
+        rotation 0 1 0 4.60791629503817
         children [
           Shape {
             appearance PBRAppearance {
@@ -641,13 +642,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity -1.5328253237502677e-09 -1.417550543900022e-09 -1.9542932600281774e-09
-        angularVelocity -2.554789489108405e-09 6.054269258776423e-11 -1.304962871052098e-15
+        linearVelocity -1.5153341692763968e-09 -1.4011412687133078e-09 -1.9509529980730715e-09
+        angularVelocity -2.5302953347242997e-09 5.982469266947369e-11 -6.405956785220646e-16
       }
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 249.47810516794516
+        position 249.4781051632195
         axis 0 1 0
         anchor -0.16 -0.21 0.015
       }
@@ -662,7 +663,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 -0.21 0.015
-        rotation 0 -1 0 1.8493071192382997
+        rotation 0 -0.9999999999999999 0 1.849307123963949
         children [
           Shape {
             appearance PBRAppearance {
@@ -842,13 +843,13 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity 1.5306035736664196e-09 1.6888333066806161e-09 -1.2367191362255663e-09
-        angularVelocity -2.861896036865842e-09 -9.560433859664856e-11 -3.1494535363145804e-15
+        linearVelocity 1.5131288668967166e-09 1.6697987190950421e-09 -1.2400694155428276e-09
+        angularVelocity -2.833896835553799e-09 -9.457872629980754e-11 -1.8311578485730547e-15
       }
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position -120.96850222482898
+        position -120.96850222955447
         axis 0 1 0
         anchor -0.16 0.21 0.015
       }
@@ -863,7 +864,7 @@ DEF shadow Robot {
       ]
       endPoint DEF WHEEL_SOLID Solid {
         translation -0.16 0.21 0.015
-        rotation 0 1 0 4.695203918762749
+        rotation 0 1 0 4.695203914037256
         children [
           Shape {
             appearance PBRAppearance {
@@ -1043,8 +1044,8 @@ DEF shadow Robot {
           density -1
           mass 0.4
         }
-        linearVelocity -1.5523662855143717e-09 1.6688449053263763e-09 -1.2367157978062206e-09
-        angularVelocity -2.862895582316034e-09 5.853319482551587e-11 1.5381336326184894e-15
+        linearVelocity -1.534646582510695e-09 1.6500402965689052e-09 -1.2400652224004492e-09
+        angularVelocity -2.8348850627293054e-09 5.781101969031842e-11 -5.403344706957733e-15
       }
     }
   ]
@@ -1076,6 +1077,8 @@ DEF shadow Robot {
   }
   controller "<extern>"
   supervisor TRUE
+  linearVelocity 1.713013422497558e-13 -2.656906106984472e-11 -1.6474389017169469e-09
+  angularVelocity -2.6820956315334864e-09 -1.738308800357986e-11 -5.457743453792014e-15
 }
 Group {
   children [
