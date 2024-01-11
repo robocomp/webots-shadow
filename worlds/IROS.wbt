@@ -1,0 +1,650 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Desk.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/computers/protos/Monitor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/OfficeChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/computers/protos/DesktopComputer.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/computers/protos/Keyboard.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/computers/protos/ComputerMouse.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/computers/protos/Laptop.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/fire_extinguisher/protos/FireExtinguisher.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/DoubleFluorescentLamp.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2671507121891865 -0.03813420493983809 0.9628999321790488 3.5068735048692354
+  position 16.232472155007894 5.127288178840439 15.598462323814523
+}
+DEF PROPS Group {
+  children [
+    Pose {
+      translation -3.26 -0.97 3
+      children [
+        DoubleFluorescentLamp {
+          translation 5.28179e-14 -0.06 1.92191e-07
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(1)"
+        }
+        DoubleFluorescentLamp {
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+        }
+      ]
+    }
+    Pose {
+      translation -0.72 0.9 3
+      children [
+        DoubleFluorescentLamp {
+          translation 5.28179e-14 -0.06 1.92191e-07
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(2)"
+        }
+        DoubleFluorescentLamp {
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(3)"
+        }
+      ]
+    }
+    Pose {
+      translation 1.72 -1.22 3
+      children [
+        DoubleFluorescentLamp {
+          translation 5.28179e-14 -0.06 1.92191e-07
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(4)"
+        }
+        DoubleFluorescentLamp {
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(5)"
+        }
+      ]
+    }
+    Pose {
+      translation 3.99 1.07 3
+      children [
+        DoubleFluorescentLamp {
+          translation 5.28179e-14 -0.06 1.92191e-07
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(6)"
+        }
+        DoubleFluorescentLamp {
+          rotation 0.7071067811862364 -0.7071067811862364 9.381857096790023e-07 3.14159
+          name "double fuorescent lamp(7)"
+        }
+      ]
+    }
+    Robot {
+      translation -4.98 1.16 1.58
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/television/protos/textures/television.jpg"
+              ]
+            }
+            roughness 0.4
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.049602 0.4350044 0.2449953, 0.0496003 0.4349992 -0.2450047, 0.0495972 -0.4350028 -0.2449956, 0.0495989 -0.4349976 0.2450044, 0.0395972 -0.4350027 -0.2449956, 0.0395989 -0.4349976 0.2450044, 0.0396003 0.4349993 -0.2450047, 0.039602 0.4350044 0.2449953, -0.0504022 -0.3178668 -0.1907155, -0.0504009 -0.3178628 0.1907225, -0.0503999 0.3178622 -0.1907222, -0.0503986 0.3178662 0.1907158, 0.0495989 -0.4852512 0.2875269, 0.0495968 -0.4852572 -0.2875181, 0.0496003 0.4852498 -0.2875273, 0.0496024 0.4852568 0.2875167, 0.0348526 -0.4999971 0.2852591, -0.0004012 -0.499997 0.2852593, -0.0004032 -0.500003 -0.2852487, 0.0348506 -0.5000031 -0.2852489, -0.0043048 -0.4857769 0.2914731, -0.0043069 -0.485783 -0.2914629, 0.0348506 -0.4852573 -0.299995, -0.0004032 -0.4852572 -0.2999949, -0.0003998 0.4852498 -0.3000051, 0.0348541 0.4852497 -0.3000052, -0.0043035 0.485777 -0.2914731, 0.0348562 0.485257 0.2999948, -0.0003976 0.4852572 0.2999949, -0.0004011 -0.4852508 0.3000051, 0.0348527 -0.485251 0.300005, -0.0043014 0.4857831 0.2914629, 0.0348542 0.4999969 -0.2852594, -0.0003997 0.499997 -0.2852593, -0.0003976 0.500003 0.2852487, 0.0348562 0.5000029 0.2852486
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0.0064672 0.595548, 0.0064673 0.0123985, 0.05743 0.0555203, 0.0574299 0.552426, 0.0064673 0.0123985, 0.990653 0.0123988, 0.939693 0.0555201, 0.05743 0.0555203, 0.0574299 0.552426, 0.939693 0.552427, 0.990653 0.595548, 0.0064672 0.595548, 0.939693 0.552427, 0.939693 0.0555201, 0.990653 0.0123988, 0.990653 0.595548, 0.72806 0.196122, 0.252402 0.196122, 0.252402 0.186415, 0.72806 0.186415, 0.0626006 0.279793, 0.940102 0.279793, 0.940102 0.269707, 0.0626006 0.269707, 0.940102 0.279793, 0.0626005 0.279793, 0.0626005 0.269707, 0.940102 0.269707, 0.252402 0.196122, 0.72806 0.196122, 0.72806 0.186415, 0.252402 0.186415, 0.18752 0.504849, 0.187519 0.878098, 0.809601 0.878098, 0.809601 0.504849, 0.213327 0.147586, 0.213327 0.181808, 0.767136 0.181808, 0.767136 0.147586, 0.0232091 0.976684, 0.0232091 0.406263, 0.0092943 0.412343, 0.0092942 0.970603, 0.990787 0.229362, 0.990787 0.264919, 0.0119129 0.264919, 0.0119129 0.229362, 0.0232091 0.406263, 0.973912 0.406263, 0.973396 0.397914, 0.0237239 0.397914, 0.0119128 0.229362, 0.0119128 0.264919, 0.990788 0.264919, 0.990788 0.229362, 0.973912 0.976684, 0.0232091 0.976684, 0.0237238 0.985033, 0.973397 0.985033, 0.767136 0.147586, 0.767136 0.181808, 0.213327 0.181808, 0.213327 0.147586, 0.973912 0.406263, 0.973912 0.976684, 0.987826 0.970603, 0.987826 0.412343, 0.213327 0.181808, 0.211124 0.196122, 0.769338 0.196122, 0.767136 0.181808, 0.990787 0.264919, 0.990787 0.279793, 0.0119129 0.279793, 0.0119129 0.264919, 0.990788 0.279793, 0.990788 0.264919, 0.0119128 0.264919, 0.0119128 0.279793, 0.767136 0.181808, 0.769338 0.196122, 0.211125 0.196122, 0.213327 0.181808, 0.78145 0.147586, 0.767136 0.147586, 0.767136 0.181808, 0.78145 0.181808, 0.213327 0.147586, 0.199012 0.147586, 0.199012 0.181808, 0.213327 0.181808, 0.199012 0.147586, 0.213327 0.147586, 0.213327 0.181808, 0.199012 0.181808, 0.767136 0.147586, 0.781451 0.147586, 0.781451 0.181808, 0.767136 0.181808, 0.767136 0.181808, 0.769338 0.196122, 0.78145 0.181808, 0.211124 0.196122, 0.213327 0.181808, 0.199012 0.181808, 0.211125 0.196122, 0.199012 0.181808, 0.213327 0.181808, 0.781451 0.181808, 0.769338 0.196122, 0.767136 0.181808, 0.0092942 0.970603, 0.0237238 0.985033, 0.0232091 0.976684, 0.0237239 0.397914, 0.0092943 0.412343, 0.0232091 0.406263, 0.987826 0.412343, 0.973396 0.397914, 0.973912 0.406263, 0.973397 0.985033, 0.987826 0.970603, 0.973912 0.976684, 0.0232091 0.406263, 0.0232091 0.976684, 0.187519 0.878098, 0.18752 0.504849, 0.973912 0.406263, 0.0232091 0.406263, 0.18752 0.504849, 0.809601 0.504849, 0.0232091 0.976684, 0.973912 0.976684, 0.809601 0.878098, 0.187519 0.878098, 0.973912 0.976684, 0.973912 0.406263, 0.809601 0.504849, 0.809601 0.878098
+              ]
+            }
+            coordIndex [
+              12, 13, 2, 3, -1, 13, 14, 1, 2, -1, 3, 0, 15, 12, -1, 0, 1, 14, 15, -1, 3, 2, 4, 5, -1, 2, 1, 6, 4, -1, 0, 3, 5, 7, -1, 1, 0, 7, 6, -1, 8, 9, 11, 10, -1, 18, 19, 16, 17, -1, 20, 21, 18, 17, -1, 24, 25, 22, 23, -1, 21, 26, 24, 23, -1, 29, 30, 27, 28, -1, 31, 20, 29, 28, -1, 34, 35, 32, 33, -1, 26, 31, 34, 33, -1, 19, 13, 12, 16, -1, 25, 14, 13, 22, -1, 15, 27, 30, 12, -1, 35, 15, 14, 32, -1, 29, 17, 16, 30, -1, 18, 23, 22, 19, -1, 24, 33, 32, 25, -1, 34, 28, 27, 35, -1, 16, 12, 30, -1, 13, 19, 22, -1, 14, 25, 32, -1, 27, 15, 35, -1, 17, 29, 20, -1, 23, 18, 21, -1, 33, 24, 26, -1, 28, 34, 31, -1, 21, 20, 9, 8, -1, 26, 21, 8, 10, -1, 20, 31, 11, 9, -1, 31, 26, 10, 11, -1
+            ]
+            texCoordIndex [
+              0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1, 24, 25, 26, 27, -1, 28, 29, 30, 31, -1, 32, 33, 34, 35, -1, 36, 37, 38, 39, -1, 40, 41, 42, 43, -1, 44, 45, 46, 47, -1, 48, 49, 50, 51, -1, 52, 53, 54, 55, -1, 56, 57, 58, 59, -1, 60, 61, 62, 63, -1, 64, 65, 66, 67, -1, 68, 69, 70, 71, -1, 72, 73, 74, 75, -1, 76, 77, 78, 79, -1, 80, 81, 82, 83, -1, 84, 85, 86, 87, -1, 88, 89, 90, 91, -1, 92, 93, 94, 95, -1, 96, 97, 98, 99, -1, 100, 101, 102, -1, 103, 104, 105, -1, 106, 107, 108, -1, 109, 110, 111, -1, 112, 113, 114, -1, 115, 116, 117, -1, 118, 119, 120, -1, 121, 122, 123, -1, 124, 125, 126, 127, -1, 128, 129, 130, 131, -1, 132, 133, 134, 135, -1, 136, 137, 138, 139, -1
+            ]
+            creaseAngle 1.3
+          }
+        }
+        LED {
+          rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+          children [
+            Shape {
+              appearance PBRAppearance {
+                metalness 0
+                emissiveIntensity 15
+              }
+              geometry IndexedFaceSet {
+                coord Coordinate {
+                  point [
+                    0.422871 -0.273801 0.0496973
+                    0.419075 -0.275568 0.0496058
+                    0.419707 -0.272079 0.0518343
+                    0.416221 -0.272503 0.0495521
+                    0.422363 -0.269644 0.0497001
+                    0.418253 -0.268842 0.0496104
+                  ]
+                }
+                coordIndex [
+                  1, 0, 2, -1, 2, 0, 4, -1, 2, 3
+                  1, -1, 2, 4, 5, -1, 3, 2, 5, -1
+                ]
+              }
+            }
+          ]
+          color [
+            0 1 0
+          ]
+        }
+        Display {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/textures/robex.jpg"
+                  ]
+                }
+                roughness 0.2
+                metalness 0
+                emissiveColorMap ImageTexture {
+                  url [
+                    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/television/protos/textures/television_screen.jpg"
+                  ]
+                }
+              }
+              geometry IndexedFaceSet {
+                coord Coordinate {
+                  point [
+                    0.0400024 0.4350034 0.2449953
+                    0.0400007 0.4349983 -0.2450047
+                    0.0399993 -0.4349986 0.2450044
+                    0.0399976 -0.4350037 -0.2449956
+                  ]
+                }
+                texCoord TextureCoordinate {
+                  point [
+                    1 1
+                    0 1
+                    1e-07 4e-07
+                    1 0
+                  ]
+                }
+                coordIndex [
+                  0, 2, 3, 1, -1
+                ]
+                texCoordIndex [
+                  0, 1, 2, 3, -1
+                ]
+              }
+            }
+          ]
+          width 1920
+          height 1080
+        }
+      ]
+      name "television"
+      model "television"
+      boundingObject Box {
+        size 0.1 1 0.6
+      }
+      controller "<none>"
+      window "<none>"
+    }
+    FireExtinguisher {
+      translation 0.32 2.22 0
+    }
+    FireExtinguisher {
+      translation 2.92559 -1.75503 1.26
+      name "fire extinguisher(1)"
+    }
+    Laptop {
+      translation -0.679343 -1.99161 0.7
+      rotation 0 0 1 1.5708
+    }
+    Laptop {
+      translation -1.79834 2.10672 0.7
+      rotation 0 0 -1 1.0472
+      name "laptop(1)"
+    }
+    ComputerMouse {
+      translation -0.590001 1.90006 0.7
+      rotation 0 0 -1 -1.3090053071795866
+    }
+    ComputerMouse {
+      translation 2.20965 1.91614 0.7
+      rotation 0 0 -1 -2.094405307179586
+      name "computer mouse(1)"
+    }
+    ComputerMouse {
+      translation 3.93007 1.86218 0.7
+      rotation 0 0 -1 -1.5708053071795867
+      name "computer mouse(2)"
+    }
+    ComputerMouse {
+      translation 0.99184 -1.9322 0.7
+      rotation 0 0 1 -1.8325853071795866
+      name "computer mouse(3)"
+    }
+    ComputerMouse {
+      translation -1.05096 -1.91197 0.7
+      rotation 0 0 -1 1.57079
+      name "computer mouse(4)"
+    }
+    Keyboard {
+      translation -0.899996 1.92 0.71
+      rotation 0 0 1 1.57079
+    }
+    Keyboard {
+      translation 1.93 1.92 0.71
+      rotation 0 0 1 1.57079
+      name "keyboard(1)"
+    }
+    Keyboard {
+      translation 3.63223 1.94897 0.71
+      rotation 0 0 1 1.83259
+      name "keyboard(2)"
+    }
+    Keyboard {
+      translation 1.34005 -1.90637 0.71
+      rotation 0 0 -1 1.57081
+      name "keyboard(3)"
+    }
+    DesktopComputer {
+      translation -1.25 2.12 0
+      rotation 0 0 1 1.5708
+    }
+    DesktopComputer {
+      translation 1.28 2.12 0
+      rotation 0 0 1 1.5708
+      name "desktop computer(1)"
+    }
+    DesktopComputer {
+      translation 3.28 2.12 0
+      rotation 0 0 1 1.5708
+      name "desktop computer(2)"
+    }
+    DesktopComputer {
+      translation 1.81 -2.05 0
+      rotation 0 0 1 -1.5707953071795862
+      name "desktop computer(3)"
+    }
+    DesktopComputer {
+      translation -0.30428 -2.2199 0.7
+      rotation 0 0 1 -2.6179953071795863
+      name "desktop computer(4)"
+    }
+    DesktopComputer {
+      translation -4.7204 1.78909 0.7
+      rotation 0 0 1 -2.6179953071795863
+      name "desktop computer(5)"
+    }
+    OfficeChair {
+      translation -0.607876 -1.50793 0
+      rotation 0 0 1 -1.8325953071795862
+    }
+    OfficeChair {
+      translation 1.31 -1.54 0
+      rotation 0 0 -1 1.309
+      name "office chair(1)"
+    }
+    OfficeChair {
+      translation 1.75876 1.48711 0
+      rotation 0 0 1 1.30899
+      name "office chair(2)"
+    }
+    OfficeChair {
+      translation 3.81521 1.36913 0
+      rotation 0 0 1 1.57079
+      name "office chair(3)"
+    }
+    OfficeChair {
+      translation -1.19479 1.36916 0
+      rotation 0 0 1 1.57079
+      name "office chair(4)"
+    }
+    OfficeChair {
+      translation -0.398091 1.34416 0
+      rotation 0 0 1 2.09439
+      name "office chair(5)"
+    }
+    DEF DUAL_MONITOR Pose {
+      translation 1.92 2.18 0.71
+      children [
+        Monitor {
+          translation 0.222163 -0.0595283 0
+          rotation 0 0 1 -1.8325953071795862
+          name "monitor(3)"
+        }
+        Monitor {
+          translation -0.241478 -0.0647048 0
+          rotation 0 0 -1 1.309
+          name "monitor(2)"
+        }
+      ]
+    }
+    DEF DUAL_MONITOR Pose {
+      translation 1.31 -2.18 0.71
+      rotation 0 0 1 3.14159
+      children [
+        Monitor {
+          translation 0.222163 -0.0595283 0
+          rotation 0 0 1 -1.8325953071795862
+          name "monitor(3)"
+        }
+        Monitor {
+          translation -0.241478 -0.0647048 0
+          rotation 0 0 -1 1.309
+          name "monitor(4)"
+        }
+      ]
+    }
+    DEF DUAL_MONITOR Pose {
+      translation 3.72 2.08 0.71
+      children [
+        Monitor {
+          translation 0.199263 0.0392995 1.77636e-15
+          rotation 0 0 1 -1.8325953071795862
+          name "monitor(3)"
+        }
+        Monitor {
+          translation -0.36672 0.170906 0
+          rotation 0 0 1 -1.5707953071795862
+          name "monitor(4)"
+        }
+      ]
+    }
+    Monitor {
+      translation -1.12669 2.12306 0.71
+      rotation 0 0 -1 1.309
+    }
+    Monitor {
+      translation -0.660964 2.12243 0.71
+      rotation 0 0 1 -1.8325953071795862
+      name "monitor(1)"
+    }
+  ]
+}
+DEF LIGHTNING Group {
+  children [
+    Pose {
+      translation 0 1.43 2.9
+      children [
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location 3.5 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location 1.9 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location -1 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location -3.6 0 0
+          radius 200
+          castShadows TRUE
+        }
+      ]
+    }
+    Pose {
+      translation 0 -1.49 2.9
+      children [
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location 3.5 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location 1.9 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location -1 0 0
+          radius 200
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 3
+          location -3.6 0 0
+          radius 200
+          castShadows TRUE
+        }
+      ]
+    }
+  ]
+}
+DEF ENVIROMENT Group {
+  children [
+    Solid {
+      translation 0 0 100
+      children [
+        Shape {
+          geometry Plane {
+            size 1000 1000
+          }
+        }
+      ]
+      name "shadows_plane"
+    }
+    Solid {
+      translation 0 0 3
+      rotation 1 0 0 3.14159
+      children [
+        Solid {
+          rotation 1 0 0 3.14159
+          name "shadows_plane"
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0.1
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/roughcast/roughcast_normal.jpg"
+              ]
+            }
+            normalMapFactor 0.1
+          }
+          geometry Plane {
+            size 20 10
+          }
+        }
+      ]
+      name "ceiling"
+    }
+    Desk {
+      translation -0.82001 2.13 0
+      rotation 0 0 1 1.5708
+    }
+    Desk {
+      translation -2.04001 2.13 0
+      rotation 0 0 1 1.5708
+      name "desk(1)"
+    }
+    Desk {
+      translation 1.35999 -2.12 0
+      rotation 0 0 1 1.5708
+      name "desk(2)"
+    }
+    Desk {
+      translation -0.67001 -2.12 0
+      rotation 0 0 1 1.5708
+      name "desk(3)"
+    }
+    Desk {
+      translation 3.68998 2.13 0
+      rotation 0 0 1 1.5708
+      name "desk(4)"
+    }
+    Desk {
+      translation 1.82998 2.13 0
+      rotation 0 0 1 1.5708
+      name "desk(5)"
+    }
+    Desk {
+      translation -4.61002 1.4 0
+      rotation 0 0 -1 -5.307179586466759e-06
+      name "desk(6)"
+    }
+    Wall {
+      translation -2.05 -1.53 0
+      size 0.2 2 3
+      appearance DEF WallAppearance_1 PBRAppearance {
+        baseColor 1 0.93666 0.93666
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_base_color.jpg"
+          ]
+        }
+        roughness 1
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_roughness.jpg"
+          ]
+        }
+        metalness 0.1
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_normal.jpg"
+          ]
+        }
+        normalMapFactor 0.3
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_occlusion.jpg"
+          ]
+        }
+      }
+    }
+    Wall {
+      translation 0.58 1.53 0
+      name "wall(1)"
+      size 0.2 2 3
+      appearance DEF WallAppearance_1 PBRAppearance {
+        baseColor 1 0.93666 0.93666
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_base_color.jpg"
+          ]
+        }
+        roughness 1
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_roughness.jpg"
+          ]
+        }
+        metalness 0.1
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_normal.jpg"
+          ]
+        }
+        normalMapFactor 0.3
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_occlusion.jpg"
+          ]
+        }
+      }
+    }
+    Wall {
+      translation 2.74 -1.53 0
+      name "wall(2)"
+      size 0.2 2 3
+      appearance DEF WallAppearance_1 PBRAppearance {
+        baseColor 1 0.93666 0.93666
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_base_color.jpg"
+          ]
+        }
+        roughness 1
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_roughness.jpg"
+          ]
+        }
+        metalness 0.1
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_normal.jpg"
+          ]
+        }
+        normalMapFactor 0.3
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_occlusion.jpg"
+          ]
+        }
+      }
+    }
+    RectangleArena {
+      floorSize 10 5
+      floorAppearance Parquetry {
+        type "light strip"
+      }
+      wallHeight 3
+      wallAppearance DEF WallAppearance_1 PBRAppearance {
+        baseColor 1 0.93666 0.93666
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_base_color.jpg"
+          ]
+        }
+        roughness 1
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_roughness.jpg"
+          ]
+        }
+        metalness 0.1
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_normal.jpg"
+          ]
+        }
+        normalMapFactor 0.3
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_occlusion.jpg"
+          ]
+        }
+      }
+    }
+  ]
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF shadow Shadow {
+  translation -3.8 0 0.03
+}

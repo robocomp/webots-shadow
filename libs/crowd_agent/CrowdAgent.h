@@ -19,9 +19,9 @@ public:
 
     CrowdAgent(const std::unordered_map<std::string, std::vector<std::string>>& graph);
     void update();
+    webots::Node* agentNode;
 
 private:
-    webots::Node* agentNode;
     std::string currentDestination;
     double movementSpeed = 0.7f;
 
