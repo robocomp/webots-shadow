@@ -21,8 +21,6 @@ int main(int argc, char **argv) {
   keyboard = agent->getKeyboard();
   keyboard->enable(TIME_STEP);
 
-  const double* initialPosition = agent->agentNode->getPosition();
-
   while (agent->step(TIME_STEP) != -1) {
     agent->update();
 
@@ -30,7 +28,12 @@ int main(int argc, char **argv) {
     if ((key >= 0) && key != previousKey) {
         switch (key) {
             case 'R':
-                agent->agentNode->getField("translation")->setSFVec3f(initialPosition);
+                agent->reset();
+
+                // No es lo mejor, pero funcionará para mover el Shadow
+                const double shadowInitialPosition[] = {-4.23973, 1.02165e-09, 0.0300533};
+                agent->getFromDef("shadow")->getField("translation")->setSFVec3f(shadowInitialPosition);
+
                 break;
         }
     }
