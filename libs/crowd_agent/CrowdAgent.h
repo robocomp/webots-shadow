@@ -19,10 +19,14 @@ public:
 
     CrowdAgent(const std::unordered_map<std::string, std::vector<std::string>>& graph);
     void update();
+    webots::Node* agentNode;
+    void reset();
 
 private:
-    webots::Node* agentNode;
-    std::string currentDestination;
+    const double* initialDestination;
+    const double* currentDestination;
+    std::string currentDestinationName;
+
     double movementSpeed = 0.7f;
 
     // Estructura para guardar el grafo.
@@ -30,17 +34,17 @@ private:
     // Lista de waypoints
     std::map<std::string, webots::Node*> waypoints;
 
-    std::string getNextDestination(const std::string& currentDestination);
+    const double* getNextDestination(std::string& currentDestination);
     void addConnection(const std::string& from, const std::string& to);
     bool hasArrivedToDestination();
     void initializeWaypoints();
     void initializeGraphConnections();
     std::string Vector3toString(const double* vec);
-    std::string getClosestWaypoint(const double* position);
+    const double* getClosestWaypoint(const double* position, std::string& currentDestinationName);
     void printWaypointConnections(const std::string& waypointName);
-    void printAllConnections();
     void checkArrival();
     void moveToDestination();
+    void printConnectionGraph();
 };
 
 #endif // CROWDAGENT_H
