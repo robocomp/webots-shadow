@@ -4,12 +4,7 @@
 #define TIME_STEP 32
 
 std::unordered_map<std::string, std::vector<std::string>> miGrafo = {
-    {"WAYPOINT_1", {"WAYPOINT_2"}},
-    {"WAYPOINT_2", {"WAYPOINT_3"}},
-    {"WAYPOINT_3", {"WAYPOINT_4"}},
-
-    {"WAYPOINT_5", {"WAYPOINT_6"}},
-    {"WAYPOINT_6", {"WAYPOINT_7"}}
+    {"WAYPOINT_1", {"WAYPOINT_2"}}
 };
 
 int previousKey = 0;

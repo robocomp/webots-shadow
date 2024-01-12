@@ -19,8 +19,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5843555091244038 0.05022194425747392 0.8099422172420436 3.0443266144496945
-  position 5.189195547397242 -0.27035077083125536 22.275435779119377
+  orientation 0.17038350043234074 0.9650083851297101 -0.19931954096317678 1.2918514427757477
+  position -7.66624785984221 0.3793962888410615 22.339030204458016
 }
 DEF PROPS Group {
   children [
@@ -646,5 +646,271 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  translation -3.8 0 0.03
+  translation -4.13 0 0.03
+}
+DEF CROWD_CONTROL Group {
+  children [
+    DEF CROWD Group {
+      children [
+        DEF HUMAN_1 Robot {
+          translation -3.29769 0.0818724 3.30402e-13
+          rotation 0 0 -1 0.0462678
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 10
+            }
+          ]
+          name "HUMAN_1"
+          controller "crowd_controller_iros"
+          supervisor TRUE
+        }
+        DEF HUMAN_2 Robot {
+          translation -3.14971 1.58556 0
+          rotation 0 0 -1 0.12630811706323797
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 10
+            }
+          ]
+          name "HUMAN_2"
+          controller "crowd_controller_iros"
+          supervisor TRUE
+        }
+      ]
+    }
+    DEF WAYPOINTS Group {
+      children [
+        DEF WAYPOINT_1 Pose {
+          translation -2.97 -0.01 0
+        }
+        DEF WAYPOINT_2 Pose {
+          translation -0.88 1.52001 0
+          rotation 0 0 1 4.692820414042842e-06
+        }
+        DEF WAYPOINT_3 Pose {
+          translation 0.7 -1.13 0
+        }
+        DEF WAYPOINT_4 Pose {
+          translation 4.42 0.98 0
+        }
+        DEF WAYPOINT_5 Pose {
+          translation -2.87 1.55 0
+        }
+        DEF WAYPOINT_6 Pose {
+          translation -0.35 1.23 0
+        }
+        DEF WAYPOINT_7 Pose {
+          translation -0.35 -1.49 0
+        }
+      ]
+    }
+  ]
 }

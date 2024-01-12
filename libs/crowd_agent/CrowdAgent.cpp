@@ -157,6 +157,7 @@ void CrowdAgent::initializeWaypoints() {
         if (nodeName.find("WAYPOINT_") != std::string::npos)
             // Lo almacenamos como waypoint
             waypoints[nodeName] = childNode;
+
     }
 }
 

@@ -9,7 +9,7 @@
 #include <cmath>
 #include <random>
 
-#define DEBUG 1
+#define DEBUG 0
 
 #ifndef CROWDAGENT_H
 #define CROWDAGENT_H
