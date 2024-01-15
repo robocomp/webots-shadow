@@ -39,8 +39,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.05932831916324505 -0.9964292345514202 0.060074379535165104 5.489702750749642
-  position -18.684694150583006 -0.40588705724823626 21.056542851705856
+  orientation 0.2230265709923259 0.9383192591083241 0.26422739566103093 0.7638848107951184
+  position -14.299995889159431 -7.2494759755530165 16.623417250763477
 }
 DEF PROPS Group {
   children [
@@ -116,68 +116,24 @@ DEF PROPS Group {
 DEF LIGHTNING Group {
   children [
     Pose {
-      translation 0 1.43 2.9
+      translation -2.35 0.59 2.98
       children [
-        PointLight {
+        SpotLight {
           attenuation 0 0 1
-          intensity 3
-          location 3.5 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location 1.9 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location -1 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location -3.6 0 0
-          radius 200
-          castShadows TRUE
+          beamWidth 0.5
+          cutOffAngle 1.5707963267948966
+          intensity 4
         }
       ]
     }
     Pose {
-      translation 0 -1.49 2.9
+      translation 2.55 0.59 2.95
       children [
-        PointLight {
+        SpotLight {
           attenuation 0 0 1
-          intensity 3
-          location 3.5 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location 1.9 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location -1 0 0
-          radius 200
-          castShadows TRUE
-        }
-        PointLight {
-          attenuation 0 0 1
-          intensity 3
-          location -3.6 0 0
-          radius 200
-          castShadows TRUE
+          beamWidth 0.5
+          cutOffAngle 1.5707963267948966
+          intensity 4
         }
       ]
     }
@@ -323,16 +279,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden position_0_0 4267.336796801959
-  hidden position_0_1 3891.269309677506
-  hidden position_0_2 4572.162309695451
-  hidden position_0_3 3547.208421078251
   hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
   hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  hidden rotation_5 0 -1 0 5.229212080159523
-  hidden rotation_6 0 -0.9999999999999999 0 4.305580773837572
-  hidden rotation_7 0 -0.9999999999999999 0 1.996593931288097
-  hidden rotation_8 0 1 0 3.4919078289641488
   translation -4.239735204856539 1.0235318451719106e-09 0.03012116641747829
   rotation -3.837532304374351e-06 0.9999999999926364 1.675626236620831e-08 0.0075883529251728025
 }
