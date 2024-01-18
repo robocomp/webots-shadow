@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
                 agent->reset();
 
                 // No es lo mejor, pero funcionará para mover el Shadow
-                const double shadowInitialPosition[] = {-2.28325, 0.0676471, 0.0300533};
+                const double shadowInitialPosition[] = {-1.94371, 0.0721107, 0.0300533};
                 const double shadowInitialRotation[] = {0.0, 0.0, 0.999872};
                 agent->getFromDef("shadow")->getField("translation")->setSFVec3f(shadowInitialPosition);
                 agent->getFromDef("shadow")->getField("rotation")->setSFRotation(shadowInitialRotation);

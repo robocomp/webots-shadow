@@ -217,16 +217,24 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  translation -2.28325 0.0676471 0.0301212
-  rotation 3.847119999959405e-06 -0.999999999989448 2.510729999973507e-06 -0.007585307179586387
+  hidden position_0_0 4267.337642395388
+  hidden position_0_1 3891.2703840727195
+  hidden position_0_2 4572.162309575788
+  hidden position_0_3 3547.2084209561244
+  hidden rotation_5 0 -1 0 5.228366486731029
+  hidden rotation_6 0 -0.9999999999999999 0 4.3045063786241355
+  hidden rotation_7 0 -1 0 1.9965940509512243
+  hidden rotation_8 0 1 0 3.491907706837655
+  translation -1.9435467272027442 0.07211070132028331 0.03200042967916904
+  rotation -8.066421360461744e-06 0.9999999999674665 8.965157284250992e-09 0.004751680455712749
 }
 DEF CROWD_CONTROL Group {
   children [
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -1.63458 0.0814186 3.30402e-13
-          rotation 0 0 -1 0.0462678
+          translation -1.21925 0.0200931 0
+          rotation 0 0 1 0.04542872271919856
           children [
             Shape {
               appearance PBRAppearance {
@@ -345,7 +353,7 @@ DEF CROWD_CONTROL Group {
     DEF WAYPOINTS Group {
       children [
         DEF WAYPOINT_1 Pose {
-          translation -1.75 -0.01 0
+          translation -1.17 -0.01 0
         }
         DEF WAYPOINT_2 Pose {
           translation 2.65 0.190024 0
