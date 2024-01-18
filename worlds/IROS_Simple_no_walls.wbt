@@ -217,24 +217,24 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden position_0_0 4267.337642395388
-  hidden position_0_1 3891.2703840727195
-  hidden position_0_2 4572.162309575788
-  hidden position_0_3 3547.2084209561244
-  hidden rotation_5 0 -1 0 5.228366486731029
-  hidden rotation_6 0 -0.9999999999999999 0 4.3045063786241355
-  hidden rotation_7 0 -1 0 1.9965940509512243
-  hidden rotation_8 0 1 0 3.491907706837655
-  translation -1.9435467272027442 0.07211070132028331 0.03200042967916904
-  rotation -8.066421360461744e-06 0.9999999999674665 8.965157284250992e-09 0.004751680455712749
+  hidden translation_5 0.1 -0.21 0.015
+  hidden rotation_5 0 -1 0 5.22836431295138
+  hidden translation_6 0.1 0.21 0.015
+  hidden rotation_6 0 -1 0 4.304504212109985
+  hidden translation_7 -0.16 -0.21 0.015
+  hidden rotation_7 0 -1 0 1.9965917379152038
+  hidden translation_8 -0.16 0.21 0.015
+  hidden rotation_8 0 0.9999999999999999 0 3.491910018706339
+  translation -1.7304300207994996 0.09537309994218482 0.03252546548774688
+  rotation -8.023075337517707e-06 0.9999999995303196 -2.958024654855655e-05 0.003877452109592075
 }
 DEF CROWD_CONTROL Group {
   children [
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -1.21925 0.0200931 0
-          rotation 0 0 1 0.04542872271919856
+          translation -0.965126 0.0937068 0
+          rotation 0 0 1 0.05231452639405202
           children [
             Shape {
               appearance PBRAppearance {
