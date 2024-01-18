@@ -1,2 +1,16 @@
+# webots generated files
 *.wbproj
 *.jpg
+
+# Debug purpose directories
+aux*
+
+# CMake generated files
+*.cmake
+**/CMakeFiles/**
+build/*
+*.internal
+*.make
+*.marks
+libs/**/Makefile
+libs/Makefile

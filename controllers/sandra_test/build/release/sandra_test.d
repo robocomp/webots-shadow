@@ -1,4 +1,6 @@
 build/release/sandra_test.o: sandra_test.cpp \
  /usr/local/webots/include/controller/cpp/webots/Robot.hpp \
- ../../libs/bvh_util/bvh_util.h ../../libs/bvh_util/quaternion.h \
- ../../libs/bvh_util/vector3.h
+ /usr/local/webots/include/controller/cpp/webots/Device.hpp \
+ /usr/local/webots/include/controller/cpp/webots/../../c/webots/types.h \
+ ../../libs/animation_skin/animation_skin.hpp \
+ /usr/local/webots/include/controller/cpp/webots/Skin.hpp

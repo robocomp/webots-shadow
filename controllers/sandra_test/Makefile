@@ -65,11 +65,8 @@
 ###
 ###-----------------------------------------------------------------------------
 
-CROWD_AGENT_PATH = ../../libs/crowd_agent
-BVH_UTIL_PATH = ../../libs/bvh_util
-
-CFLAGS = -I"$(CROWD_AGENT_PATH)" -I"$(BVH_UTIL_PATH)"
-LIBRARIES = -L"$(CROWD_AGENT_PATH)" -lcrowd_agent -L"$(BVH_UTIL_PATH)" -lbvh_util
+INCLUDE = -I"../../libs/animation_skin"
+LIBRARIES = -L"/usr/local/lib" -lanimation_skin
 
 ### Do not modify: this includes Webots global Makefile.include
 null :=

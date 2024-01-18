@@ -66,8 +66,8 @@
 ###-----------------------------------------------------------------------------
 
 CROWD_AGENT_PATH = ../../libs/crowd_agent
-CFLAGS = -I"$(CROWD_AGENT_PATH)"
-LIBRARIES = -L"$(CROWD_AGENT_PATH)" -lcrowd_agent
+INCLUDE = -I"$(CROWD_AGENT_PATH)"
+LIBRARIES = -L"/usr/local/lib" -lcrowd_agent
 
 ### Do not modify: this includes Webots global Makefile.include
 null :=

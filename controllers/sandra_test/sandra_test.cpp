@@ -1,16 +1,26 @@
 #include <webots/Robot.hpp>
 #include <webots/Device.hpp>
-#include <webots/Skin.hpp>
 #include <stdio.h>
 
-#include <bvh_util.h>
+#include <animation_skin.hpp>
 
 using namespace webots;
 
 Robot* robot;
 Skin* skin = NULL;
 
-//WbuBvhMotion bvh_motion = NULL;
+int main(int argc, char **argv) {
+
+  robot = new Robot();
+
+  AnimationSkin anim = AnimationSkin("skin");
+  anim.test();
+
+  return 0;
+}
+
+/*
+WbuBvhMotion bvh_motion = NULL;
 int skin_bone_count = 0;
 bool loop = true;
 int i, j;
@@ -27,9 +37,9 @@ void load_motion_data()
   int c;
   char cadena[20];
   skin_device_name = (char *) malloc(50 * sizeof(char));
-  //strcpy(skin_device_name, "skin");
-  //strcat(skin_device_name, cadena);
-  motion_file_path = "../../motions/Walk.bvh";
+  strcpy(skin_device_name, "skin");
+  strcat(skin_device_name, cadena);
+  motion_file_path = "../../motions/Walk. ";
   scale = 20;
 
   std::cout << "FLAG!" << std::endl;
@@ -42,9 +52,6 @@ void load_motion_data()
   
   skin = robot->getSkin("skin");
 
-  printCoso();
-
-  /*
   // Open a BVH animation file.
   bvh_motion = wbu_bvh_read_file(motion_file_path);
   if (bvh_motion == NULL) {
@@ -135,6 +142,8 @@ void load_motion_data()
     end_frame_index = bvh_frame_count;
     printf("Motion\n", i, index_skin_to_bvh[i]);
 }
+
+
 void motion_step()
 {
     const int current_frame_index = wbu_bvh_get_frame_index(bvh_motion);
@@ -169,13 +178,13 @@ void motion_step()
       }
     }
 
-  */
+  
 }
 
 // TODO: Pasar gestión de memoria a la libreria
 void cleanup()
 {
-  /*
+  
 
   // Cleanup
   delete joint_name_list;
@@ -183,13 +192,13 @@ void cleanup()
   wbu_bvh_cleanup(bvh_motion);
   delete robot;
 
-  */
+  
 }
 
 void set_frame_pose(int frame)
 {
 
-  /*
+  
   wbu_bvh_goto_frame(bvh_motion, frame);
     const int current_frame_index = wbu_bvh_get_frame_index(bvh_motion);
     printf("%d\n", current_frame_index);
@@ -202,16 +211,10 @@ void set_frame_pose(int frame)
       const double *orientation = wbu_bvh_get_joint_rotation(bvh_motion, index_skin_to_bvh[i]);
       skin->setBoneOrientation(i, orientation, false);
     }
-  */
+  
 }
 
+*/
 
-int main(int argc, char **argv) {
 
-  robot = new Robot();
 
-  load_motion_data();
-
-  cleanup();
-  return 0;
-}

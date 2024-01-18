@@ -327,8 +327,6 @@ DEF shadow Shadow {
   hidden position_0_1 3891.269309677506
   hidden position_0_2 4572.162309695451
   hidden position_0_3 3547.208421078251
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
   hidden rotation_5 0 -1 0 5.229212080159523
   hidden rotation_6 0 -0.9999999999999999 0 4.305580773837572
   hidden rotation_7 0 -0.9999999999999999 0 1.996593931288097
@@ -453,7 +451,7 @@ DEF CROWD_CONTROL Group {
             }
           ]
           name "HUMAN_1"
-          controller "crowd_controller_iros"
+          controller "sandra_test"
           supervisor TRUE
         }
       ]
