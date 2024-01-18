@@ -1,0 +1,357 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "IROS shadow simple"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.2513678584803628 0.9674266236797501 -0.029998791952271602 1.5380886972158363
+  position -1.3682986580661387 -1.4625818570373803 17.849851502734754
+}
+DEF PROPS Group {
+  children [
+    DEF STOP_SIGN Transform {
+      translation 3.05 1.25999 1.78
+      rotation 0 0 1 3.14159
+      scale 1 2 2
+      children [
+        DEF DISPLAY_PLANE Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/textures/signs/stop.jpg"
+              ]
+            }
+            roughness 0.4
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.0556675 -0.3291331 0.1314477
+                0.0556675 -0.1433647 0.3172193
+                0.0556698 0.1193543 0.3172215
+                0.055673 0.3051259 0.1314531
+                0.0556753 0.3051281 -0.1312669
+                0.0556753 0.1193597 -0.3170285
+                0.055673 -0.1433593 -0.3170307
+                0.0556698 -0.3291309 -0.1312623
+                0.0556714 -0.012002 0
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0.4987 0.4958
+                0.3027 0.9688
+                0.0256 0.6917
+                0.4987 0.4958
+                0.0256 0.2998
+                0.3027 0.0227
+                0.4987 0.4958
+                0.3027 0.0227
+                0.6946 0.0227
+                0.4987 0.4958
+                0.6946 0.0227
+                0.9717 0.2998
+                0.4987 0.4958
+                0.9717 0.2998
+                0.9717 0.6917
+                0.4987 0.4958
+                0.9717 0.6917
+                0.6946 0.9688
+                0.4987 0.4958
+                0.6946 0.9688
+                0.3027 0.9688
+                0.4987 0.4958
+                0.0256 0.6917
+                0.0256 0.2998
+              ]
+            }
+            coordIndex [
+              8, 1, 0, -1, 8, 7, 6, -1, 8, 6, 5, -1, 8, 5, 4, -1, 8, 4, 3, -1, 8, 3, 2, -1, 8, 2, 1, -1, 8, 0, 7, -1
+            ]
+            texCoordIndex [
+              0, 1, 2, -1, 3, 4, 5, -1, 6, 7, 8, -1, 9, 10, 11, -1, 12, 13, 14, -1, 15, 16, 17, -1, 18, 19, 20, -1, 21, 22, 23, -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+DEF LIGHTNING Group {
+  children [
+    Pose {
+      translation -2.35 0.59 2.98
+      children [
+        SpotLight {
+          attenuation 0 0 1
+          beamWidth 0.5
+          cutOffAngle 1.5707963267948966
+          intensity 4
+        }
+      ]
+    }
+    Pose {
+      translation 2.55 0.59 2.95
+      children [
+        SpotLight {
+          attenuation 0 0 1
+          beamWidth 0.5
+          cutOffAngle 1.5707963267948966
+          intensity 4
+        }
+      ]
+    }
+  ]
+}
+DEF ENVIROMENT Group {
+  children [
+    Solid {
+      translation 0 0 100
+      children [
+        Shape {
+          geometry Plane {
+            size 1000 1000
+          }
+        }
+      ]
+      name "shadows_plane"
+    }
+    Solid {
+      translation 0 0 3
+      rotation 1 0 0 3.14159
+      children [
+        Solid {
+          rotation 1 0 0 3.14159
+          name "shadows_plane"
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0.1
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/roughcast/roughcast_normal.jpg"
+              ]
+            }
+            normalMapFactor 0.1
+          }
+          geometry Plane {
+            size 20 10
+          }
+        }
+      ]
+      name "ceiling"
+    }
+    RectangleArena {
+      floorSize 6 6
+      floorAppearance Parquetry {
+        type "light strip"
+      }
+      wallHeight 3
+      wallAppearance DEF WallAppearance_1 PBRAppearance {
+        baseColor 1 0.93666 0.93666
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_base_color.jpg"
+          ]
+        }
+        roughness 1
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_roughness.jpg"
+          ]
+        }
+        metalness 0.1
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_normal.jpg"
+          ]
+        }
+        normalMapFactor 0.3
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/plaster/plaster_occlusion.jpg"
+          ]
+        }
+      }
+    }
+  ]
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF shadow Shadow {
+  translation -2.28325 0.0676471 0.0301212
+  rotation 3.847119999959405e-06 -0.999999999989448 2.510729999973507e-06 -0.007585307179586387
+}
+DEF CROWD_CONTROL Group {
+  children [
+    DEF CROWD Group {
+      children [
+        DEF HUMAN_1 Robot {
+          translation -1.63458 0.0814186 3.30402e-13
+          rotation 0 0 -1 0.0462678
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 10
+            }
+          ]
+          name "HUMAN_1"
+          controller "crowd_controller_iros_no_walls"
+          supervisor TRUE
+        }
+      ]
+    }
+    DEF WAYPOINTS Group {
+      children [
+        DEF WAYPOINT_1 Pose {
+          translation -1.75 -0.01 0
+        }
+        DEF WAYPOINT_2 Pose {
+          translation 2.65 0.190024 0
+          rotation 0 0 1 4.692820414042842e-06
+        }
+      ]
+    }
+  ]
+}
