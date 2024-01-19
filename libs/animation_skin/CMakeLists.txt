@@ -1,6 +1,6 @@
 # Lista de archivos de código fuente
 set(SOURCES
-    animation_skin.cpp
+    AnimationSkin.cpp
 )
 
 # Genera la librería compartida

@@ -1,7 +1,6 @@
 # Lista de módulos de librería
 set(LIB_DIRS
     animation_skin
-    bvh_util
     crowd_agent
 )
 

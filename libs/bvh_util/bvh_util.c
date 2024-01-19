@@ -16,173 +16,13 @@
 
 #include "bvh_util.h"
 
-#define MAX_LINE 4096
+
 #define D2R (((double)M_PI) / 180.0)
-const char DELIM[] = " :,\t\r\n";
 
-typedef enum BvhChannelType {
-  X_POSITION = 0,
-  Y_POSITION = 1,
-  Z_POSITION = 2,
-  X_ROTATION = 3,
-  Y_ROTATION = 4,
-  Z_ROTATION = 5
-} BvhChannelType_t;
 
-typedef struct BvhMotionJointPrivate {
-  char *name;  // name of the joint
 
-  struct BvhMotionJointPrivate *parent;     // pointer to parent joint. NULL for root joint.
-  int n_children;                           // number of children
-  struct BvhMotionJointPrivate **children;  // list of pointers to children joints. NULL if there are no children
 
-  int
-    n_channels;  // number of channels. Typically 6 (3 rotation and 3 translation) for root joints and 3 (3 rotation) otherwise
-  int n_position_channels;        // number of translation channels. Typically 3 for root joints and 0 otherwise
-  BvhChannelType_t *channels;     // list of channels in order. We need to know in what order to apply rotations
-  WbuQuaternion *frame_rotation;  // list of rotations per frame. List size is [motion->n_frames]
-  double **frame_position;        // list of translations per frame. List size is [motion->n_frames]x[3]
 
-  double offset[3];       // offset from the parent bone
-  double bone_vector[3];  // vector relative to parent representing the "bone head" -> "bone tail" vector. In many conventions
-                          // (including Webots) this vector matches the bone Y-axis
-
-  WbuQuaternion bvh_t_pose;         // joint orientation relative to parent to set the BVH skeleton in T pose
-  WbuQuaternion wbt_global_t_pose;  // joint absolute orientation to set the Webots skeleton in T pose
-  WbuQuaternion wbt_local_t_pose;   // joint orientation relative to parent to set the Webots skeleton in T pose
-} BvhMotionJointPrivate_t;
-
-typedef struct WbuBvhMotionPrivate {
-  double frame_time;  // approximate time per frame
-  int n_frames;       // number of frames in the BVH motion file
-  int current_frame;  // index of the current frame during animation
-  int n_joints;       // number of joints
-  double
-    scale_factor;  // scale factor for translation. Typically set according to bone lengths of BVH skeleton vs. target skeleton.
-  BvhMotionJointPrivate_t **joint_list;  // list of joints
-} WbuBvhMotionPrivate_t;
-
-//***********************************
-//        Utility functions          
-//***********************************
-
-static BvhMotionJointPrivate_t *add_new_joint(FILE *file, WbuBvhMotion motion, char *this_name, BvhMotionJointPrivate_t *parent,
-                                              int *channels_count) {
-  // create and init new joint
-  BvhMotionJointPrivate_t *new_joint = malloc(sizeof(BvhMotionJointPrivate_t));
-  new_joint->name = (char *)malloc(strlen(this_name) + 1);
-  strcpy(new_joint->name, this_name);
-  new_joint->parent = parent;
-  new_joint->bvh_t_pose = wbu_quaternion_zero();
-  new_joint->wbt_global_t_pose = wbu_quaternion_zero();
-  new_joint->wbt_local_t_pose = wbu_quaternion_zero();
-  new_joint->n_channels = 0;
-  new_joint->n_position_channels = 0;
-  new_joint->frame_position = NULL;
-  new_joint->frame_rotation = NULL;
-
-  // update the motion structure
-  motion->n_joints = motion->n_joints + 1;
-  motion->joint_list =
-    (BvhMotionJointPrivate_t **)realloc(motion->joint_list, (motion->n_joints) * sizeof(BvhMotionJointPrivate_t *));
-  motion->joint_list[motion->n_joints - 1] = new_joint;
-
-  // initialize the children list
-  new_joint->n_children = 0;
-  new_joint->children = NULL;
-
-  char line[MAX_LINE];
-  while (fgets(line, MAX_LINE, file)) {
-    char *token = strtok(line, DELIM);
-
-    // opening bracket of joint
-    if (strcmp(token, "{") == 0)
-      continue;
-
-    // offset: note that offsets are relative to the parent bone,
-    //         and are not in the absolute reference frame
-    if (strcmp(token, "OFFSET") == 0) {
-      token = strtok(NULL, DELIM);
-      new_joint->offset[0] = atof(token);
-      token = strtok(NULL, DELIM);
-      new_joint->offset[1] = atof(token);
-      token = strtok(NULL, DELIM);
-      new_joint->offset[2] = atof(token);
-    }
-
-    // channels
-    if (strcmp(token, "CHANNELS") == 0) {
-      token = strtok(NULL, DELIM);
-      int n_channels = atoi(token);
-      new_joint->n_channels = n_channels;
-      new_joint->channels = (BvhChannelType_t *)malloc(n_channels * sizeof(BvhChannelType_t));
-      int i = 0;
-      for (i = 0; i < n_channels; ++i) {
-        token = strtok(NULL, DELIM);
-        if (strcmp(token, "Xrotation") == 0)
-          new_joint->channels[i] = X_ROTATION;
-        else if (strcmp(token, "Yrotation") == 0)
-          new_joint->channels[i] = Y_ROTATION;
-        else if (strcmp(token, "Zrotation") == 0)
-          new_joint->channels[i] = Z_ROTATION;
-        else if (strcmp(token, "Xposition") == 0) {
-          new_joint->channels[i] = X_POSITION;
-          ++new_joint->n_position_channels;
-        } else if (strcmp(token, "Yposition") == 0) {
-          new_joint->channels[i] = Y_POSITION;
-          ++new_joint->n_position_channels;
-        } else if (strcmp(token, "Zposition") == 0) {
-          new_joint->channels[i] = Z_POSITION;
-          ++new_joint->n_position_channels;
-        }
-      }
-    }
-
-    // child joints
-    if (strcmp(token, "JOINT") == 0) {
-      token = strtok(NULL, DELIM);
-      new_joint->n_children = new_joint->n_children + 1;
-      new_joint->children =
-        (BvhMotionJointPrivate_t **)realloc(new_joint->children, (new_joint->n_children) * sizeof(BvhMotionJointPrivate_t *));
-
-      char child_name[50];
-      strcpy(child_name, token);
-      new_joint->children[new_joint->n_children - 1] = add_new_joint(file, motion, child_name, new_joint, channels_count);
-    }
-
-    // EndPoint
-    if (strcmp(token, "End") == 0) {
-      token = strtok(NULL, DELIM);
-      if (strcmp(token, "Site") == 0) {
-        if (fgets(line, MAX_LINE, file) == NULL)
-          break;
-        if (fgets(line, MAX_LINE, file) == NULL)
-          break;
-        // end site offset
-        token = strtok(line, DELIM);
-        if (strcmp(token, "OFFSET") == 0) {
-          token = strtok(NULL, DELIM);
-          new_joint->bone_vector[0] = atof(token);
-          token = strtok(NULL, DELIM);
-          new_joint->bone_vector[1] = atof(token);
-          token = strtok(NULL, DELIM);
-          new_joint->bone_vector[2] = atof(token);
-        }
-        if (fgets(line, MAX_LINE, file) == NULL)
-          break;
-      }
-    }
-
-    // closing bracket of the joint
-    if (strcmp(token, "}") == 0) {
-      *channels_count += new_joint->n_channels;
-      return new_joint;
-    }
-  }
-
-  fprintf(stderr, "Error: wbu_bvh_read_file() Error reading skeleton information. Check syntax of file.\n");
-  return NULL;
-}
 
 static void read_motion(FILE *file, WbuBvhMotion motion, int frame_channels_count) {
   int n_frames = motion->n_frames;
@@ -268,29 +108,6 @@ static void read_motion(FILE *file, WbuBvhMotion motion, int frame_channels_coun
   }
 }
 
-static void compute_bone_vectors(WbuBvhMotion motion) {
-  int i;
-  for (i = 0; i < motion->n_joints; ++i) {
-    BvhMotionJointPrivate_t *joint = motion->joint_list[i];
-    int n_children = joint->n_children;
-    if (n_children == 1) {
-      joint->bone_vector[0] = joint->children[0]->offset[0];
-      joint->bone_vector[1] = joint->children[0]->offset[1];
-      joint->bone_vector[2] = joint->children[0]->offset[2];
-    } else if (n_children > 1) {
-      int j;
-      for (j = 0; j < n_children; ++j) {
-        joint->bone_vector[0] += joint->children[j]->offset[0];
-        joint->bone_vector[1] += joint->children[j]->offset[1];
-        joint->bone_vector[2] += joint->children[j]->offset[2];
-      }
-      joint->bone_vector[0] = joint->bone_vector[0] / n_children;
-      joint->bone_vector[1] = joint->bone_vector[1] / n_children;
-      joint->bone_vector[2] = joint->bone_vector[2] / n_children;
-
-    }  // else already set when parsing End Site
-  }
-}
 
 //***********************************
 //          API functions            
