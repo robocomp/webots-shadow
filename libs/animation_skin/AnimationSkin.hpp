@@ -13,6 +13,7 @@
 #define ANIMATIONSKIN_H
 
 #define MAX_LINE 4096
+#define D2R (((double)M_PI) / 180.0)
 const char DELIM[] = " :,\t\r\n";
 
 class AnimationSkin : public webots::Skin {
@@ -67,7 +68,7 @@ private:
 
     std::string skin_device_name;
     std::string motion_file_path;
-    BvhMotion bvh_motion;
+    BvhMotion* bvh_motion;
 
     std::vector<int> index_skin_to_bvh;    
 
@@ -80,27 +81,34 @@ private:
 
     // Funciones de lectura y manipulación BVH
     
-    void cleanup(BvhMotion motion);
-    int get_joint_count(BvhMotion motion);
-    const std::string get_joint_name(const BvhMotion motion, int joint_id);
-    int get_frame_count(const BvhMotion motion);
-    int get_frame_index(const BvhMotion motion);
-    bool step(BvhMotion motion);
-    bool goto_frame(BvhMotion motion, int frame_number);
-    bool reset(BvhMotion motion);
-    void set_model_t_pose(const BvhMotion motion, const double* axisAngle, int joint_id, bool global);
-    void set_scale(BvhMotion motion, double scale);
-    const double* get_root_translation(const BvhMotion motion);
-    const double* get_joint_rotation(const BvhMotion motion, int joint_id);
 
-    static BvhMotionJoint* add_new_joint(std::ifstream &file, BvhMotion* motion, std::string this_name, BvhMotionJoint *parent, int *channels_count);
+    BvhMotionJoint* add_new_joint(std::ifstream &file, BvhMotion* motion, std::string this_name, BvhMotionJoint *parent, int *channels_count);
     BvhMotion* read_motion_file(const std::string filename);   
+
+    bool step(BvhMotion* motion);
+    bool goto_frame(BvhMotion* motion, int frame_number);
+    bool reset(BvhMotion* motion);
     
     void load_motion_data();
     void motion_step();
     void set_frame_pose(int frame);
     void compute_bone_vectors(BvhMotion* motion);
-    void read_motion(std::ifstream &file, BvhMotion* motion, int frame_channels_count)
+    void read_motion(std::ifstream &file, BvhMotion* motion, int frame_channels_count);
+
+    int get_joint_count(BvhMotion* motion);
+    const std::string get_joint_name(const BvhMotion* motion, int joint_id);
+    int get_frame_count(const BvhMotion* motion);
+    void set_model_t_pose(const BvhMotion* motion, const double *axisAngle, int joint_id, bool global);
+    void set_scale(BvhMotion* motion, double scale);
+    const double *get_root_translation(const BvhMotion* motion);
+    const double* get_joint_rotation(const BvhMotion* motion, int joint_id);
+    void eigen_quaternion_to_axis_angle(const Eigen::Quaterniond& q, double* axis_angle);
+    Eigen::Quaterniond eigen_quaternion_from_axis_angle(double x, double y, double z, double angle);
+
+    void printFrameInfo(int frame, int boneFilter);
+
+    void cleanupBvhMotion(BvhMotion* motion);
+    void cleanupBvhMotionJoint(BvhMotionJoint* joint);
 };
 
 #endif // ANIMATIONSKIN_H

@@ -1,12 +1,15 @@
 #VRML_SIM R2023b utf8
+
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
+
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5773 0.5773 0.5773 2.0944
-  position 0 0 10
+  orientation -0.3992246573631079 0.25330706131227415 0.8811669567355831 2.121996545663134
+  position 2.705390346878003 -5.93103753632639 7.678686121863934
 }
 TexturedBackground {
 }
@@ -15,120 +18,16 @@ TexturedBackgroundLight {
 RectangleArena {
 }
 DEF HUMAN_1 Robot {
-          translation 0 0 0
-          rotation 0 0 0 0
-          children [
-            Lidar {
-              translation 0 0 1.17
-              numberOfLayers 1
-              maxRange 10
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_hair.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 2
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 3
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 4
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 5
-              }
-            }
-          ]
-          name "HUMAN_2"
-          controller "crowd_controller"
-          supervisor TRUE
-          linearVelocity 1.158093107483171e-16 -0.699999988079071 0
-          angularVelocity 6.92680822171895e-310 0 0
-        }
+  children [
+    CharacterSkin {
+    }
+    Lidar {
+      translation 0 0 1.17
+      numberOfLayers 1
+      maxRange 10
+    }
+  ]
+  name "HUMAN_2"
+  controller "sandra_test"
+  supervisor TRUE
+}

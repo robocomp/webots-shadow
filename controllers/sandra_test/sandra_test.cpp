@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 
   robot = new Robot();
 
-  AnimationSkin anim = AnimationSkin("skin", "../../motions/Walk.bvh");
+  AnimationSkin anim = AnimationSkin("skin", "../../motions/walk.bvh");
 
     while(robot->step(TIME_STEP) != -1){
       
