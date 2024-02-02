@@ -1,11 +1,11 @@
 /*
- * Copyright 1996-2022 Cyberbotics Ltd.
+ * Copyright 1996-2023 Cyberbotics Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-#include <math.h>
 #include "quaternion.h"
+
+#include <stdio.h>
+#include <stdlib.h>
 
 WbuQuaternion wbu_quaternion_zero() {
   WbuQuaternion q;
@@ -121,68 +123,4 @@ void wbu_quaternion_to_axis_angle(WbuQuaternion q, double *axis_angle) {
 
 void wbu_quaternion_print(WbuQuaternion q) {
   printf("quaternion %f %f %f %f\n", q.w, q.x, q.y, q.z);
-}
-
-void quaternion_testing()
-{
-  typedef struct {
-    double x;
-    double y;
-    double z;
-    double w;
-} Axis;
-    Axis cuaterniones[] = {
-        {1.0, 0.0, 0.0, 0.5236},
-        {0.0, 1.0, 0.0, 0.7854},
-        {0.0, 0.0, 1.0, 1.0472},
-        {1.0, 1.0, 1.0, 0.8727},
-        {-1.0, 0.0, 0.0, 1.5708},
-        {0.0, -1.0, 0.0, 2.0944},
-        {0.0, 0.0, -1.0, 2.6179},
-        {1.0, 1.0, -1.0, 1.2217},
-        {-1.0, -1.0, -1.0, 1.0472},
-        {1.0, 0.0, 1.0, 0.5236},
-        {-1.0, 0.0, -1.0, 0.7854},
-        {0.0, 1.0, 1.0, 1.0472},
-        {1.0, 1.0, 0.0, 1.5708},
-        {-1.0, -1.0, 0.0, 2.0944},
-        {0.0, -1.0, -1.0, 2.6179},
-        {1.0, -1.0, -1.0, 1.2217},
-        {-1.0, 1.0, 1.0, 1.0472},
-        {1.0, 0.0, -1.0, 0.5236},
-        {-1.0, 0.0, 1.0, 0.7854},
-        {0.0, 1.0, -1.0, 1.0472}
-    };
-
-//   WbuQuaternion cuaterniones[] = {
-//     {1.0, 0.0, 0.0, 0.0},          // Cuaternión 1: Identidad
-//     {0.0, 1.0, 0.0, 0.0},          // Cuaternión 2: Rotación en el eje x
-//     {0.0, 0.0, 1.0, 0.0},          // Cuaternión 3: Rotación en el eje y
-//     {0.0, 0.0, 0.0, 1.0},          // Cuaternión 4: Rotación en el eje z
-//     {0.5, 0.5, 0.5, 0.5},          // Cuaternión 5: Rotación diagonal
-//     {0.707, 0.0, 0.0, 0.707},      // Cuaternión 6: Rotación de 45 grados en el eje y
-//     {0.866, 0.5, 0.0, 0.0},        // Cuaternión 7: Rotación de 60 grados en el plano xy
-//     {0.0, 0.707, 0.707, 0.0},      // Cuaternión 8: Rotación de 90 grados en el plano yz
-//     {0.5, 0.0, 0.5, 0.707},        // Cuaternión 9: Rotación de 120 grados en el plano zx
-//     {0.258, 0.965, 0.0, 0.0},      // Cuaternión 10: Rotación de 150 grados en el eje x
-//     {0.0, 0.0, 0.258, 0.965},      // Cuaternión 11: Rotación de 150 grados en el eje y
-//     {0.707, 0.0, 0.707, 0.0},      // Cuaternión 12: Rotación de 90 grados en el plano xy
-//     {0.0, 0.866, 0.0, 0.5},        // Cuaternión 13: Rotación de 60 grados en el plano yz
-//     {0.5, 0.5, 0.5, -0.5},         // Cuaternión 14: Rotación diagonal negativa
-//     {0.866, -0.5, 0.0, 0.0},       // Cuaternión 15: Rotación de -60 grados en el plano xy
-//     {0.0, 0.707, -0.707, 0.0},     // Cuaternión 16: Rotación de -90 grados en el plano yz
-//     {0.5, 0.0, 0.5, -0.707},       // Cuaternión 17: Rotación de -120 grados en el plano zx
-//     {0.258, -0.965, 0.0, 0.0},     // Cuaternión 18: Rotación de -150 grados en el eje x
-//     {0.0, 0.0, -0.258, -0.965},    // Cuaternión 19: Rotación de -150 grados en el eje y
-//     {-0.5, -0.5, -0.5, -0.5}       // Cuaternión 20: Rotación en el eje opuesto a la identidad
-// };
-
-
-
-  for(int i = 0; i<20; i++)
-  {
-    printf("%d\n", i);
-    WbuQuaternion frame_rotation = wbu_quaternion_from_axis_angle(cuaterniones[i].x, cuaterniones[i].y, cuaterniones[i].z, cuaterniones[i].w);
-    wbu_quaternion_print(frame_rotation);
-  }
 }

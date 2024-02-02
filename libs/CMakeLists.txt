@@ -2,6 +2,7 @@
 set(LIB_DIRS
     animation_skin
     crowd_agent
+    bvh_util
 )
 
 # Definir el destino de instalación para las librerías compartidas

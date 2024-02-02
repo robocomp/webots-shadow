@@ -1,0 +1,3 @@
+/usr/local/lib/libanimation_skin.so
+/usr/local/lib/libcrowd_agent.so
+/usr/local/lib/libbvh_util.so

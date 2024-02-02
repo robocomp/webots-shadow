@@ -1,11 +1,11 @@
 /*
- * Copyright 1996-2022 Cyberbotics Ltd.
+ * Copyright 1996-2023 Cyberbotics Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,13 +16,127 @@
 
 #include "bvh_util.h"
 
+//***********************************//
+//        Utility functions          //
+//***********************************//
 
-#define D2R (((double)M_PI) / 180.0)
+static BvhMotionJointPrivate_t *add_new_joint(FILE *file, WbuBvhMotion motion, char *this_name, BvhMotionJointPrivate_t *parent,
+                                              int *channels_count) {
+  // create and init new joint
+  BvhMotionJointPrivate_t *new_joint = malloc(sizeof(BvhMotionJointPrivate_t));
+  new_joint->name = (char *)malloc(strlen(this_name) + 1);
+  strcpy(new_joint->name, this_name);
+  new_joint->parent = parent;
+  new_joint->bvh_t_pose = wbu_quaternion_zero();
+  new_joint->wbt_global_t_pose = wbu_quaternion_zero();
+  new_joint->wbt_local_t_pose = wbu_quaternion_zero();
+  new_joint->n_channels = 0;
+  new_joint->n_position_channels = 0;
+  new_joint->frame_position = NULL;
+  new_joint->frame_rotation = NULL;
 
+  // update the motion structure
+  motion->n_joints = motion->n_joints + 1;
+  motion->joint_list =
+    (BvhMotionJointPrivate_t **)realloc(motion->joint_list, (motion->n_joints) * sizeof(BvhMotionJointPrivate_t *));
+  motion->joint_list[motion->n_joints - 1] = new_joint;
 
+  // initialize the children list
+  new_joint->n_children = 0;
+  new_joint->children = NULL;
 
+  char line[MAX_LINE];
+  while (fgets(line, MAX_LINE, file)) {
+    char *token = strtok(line, DELIM);
 
+    // opening bracket of joint
+    if (strcmp(token, "{") == 0)
+      continue;
 
+    // offset: note that offsets are relative to the parent bone,
+    //         and are not in the absolute reference frame
+    if (strcmp(token, "OFFSET") == 0) {
+      token = strtok(NULL, DELIM);
+      new_joint->offset[0] = atof(token);
+      token = strtok(NULL, DELIM);
+      new_joint->offset[1] = atof(token);
+      token = strtok(NULL, DELIM);
+      new_joint->offset[2] = atof(token);
+    }
+
+    // channels
+    if (strcmp(token, "CHANNELS") == 0) {
+      token = strtok(NULL, DELIM);
+      int n_channels = atoi(token);
+      new_joint->n_channels = n_channels;
+      new_joint->channels = (BvhChannelType_t *)malloc(n_channels * sizeof(BvhChannelType_t));
+      int i = 0;
+      for (i = 0; i < n_channels; ++i) {
+        token = strtok(NULL, DELIM);
+        if (strcmp(token, "Xrotation") == 0)
+          new_joint->channels[i] = X_ROTATION;
+        else if (strcmp(token, "Yrotation") == 0)
+          new_joint->channels[i] = Y_ROTATION;
+        else if (strcmp(token, "Zrotation") == 0)
+          new_joint->channels[i] = Z_ROTATION;
+        else if (strcmp(token, "Xposition") == 0) {
+          new_joint->channels[i] = X_POSITION;
+          ++new_joint->n_position_channels;
+        } else if (strcmp(token, "Yposition") == 0) {
+          new_joint->channels[i] = Y_POSITION;
+          ++new_joint->n_position_channels;
+        } else if (strcmp(token, "Zposition") == 0) {
+          new_joint->channels[i] = Z_POSITION;
+          ++new_joint->n_position_channels;
+        }
+      }
+    }
+
+    // child joints
+    if (strcmp(token, "JOINT") == 0) {
+      token = strtok(NULL, DELIM);
+      new_joint->n_children = new_joint->n_children + 1;
+      new_joint->children =
+        (BvhMotionJointPrivate_t **)realloc(new_joint->children, (new_joint->n_children) * sizeof(BvhMotionJointPrivate_t *));
+
+      char child_name[50];
+      strcpy(child_name, token);
+      new_joint->children[new_joint->n_children - 1] = add_new_joint(file, motion, child_name, new_joint, channels_count);
+    }
+
+    // EndPoint
+    if (strcmp(token, "End") == 0) {
+      token = strtok(NULL, DELIM);
+      if (strcmp(token, "Site") == 0) {
+        if (fgets(line, MAX_LINE, file) == NULL)
+          break;
+        if (fgets(line, MAX_LINE, file) == NULL)
+          break;
+        // end site offset
+        token = strtok(line, DELIM);
+        if (strcmp(token, "OFFSET") == 0) {
+          token = strtok(NULL, DELIM);
+          new_joint->bone_vector[0] = atof(token);
+          token = strtok(NULL, DELIM);
+          new_joint->bone_vector[1] = atof(token);
+          token = strtok(NULL, DELIM);
+          new_joint->bone_vector[2] = atof(token);
+        }
+        if (fgets(line, MAX_LINE, file) == NULL)
+          break;
+      }
+    }
+
+    // closing bracket of the joint
+    if (strcmp(token, "}") == 0) {
+      *channels_count += new_joint->n_channels;
+      return new_joint;
+    }
+  }
+
+  fprintf(stderr, "Error: wbu_bvh_read_file() Error reading skeleton information. Check syntax of file.\n");
+  return NULL;
+}
 
 static void read_motion(FILE *file, WbuBvhMotion motion, int frame_channels_count) {
   int n_frames = motion->n_frames;
@@ -64,14 +178,6 @@ static void read_motion(FILE *file, WbuBvhMotion motion, int frame_channels_coun
       axes[1] = wbu_vector3(Y_AXIS);
       axes[2] = wbu_vector3(Z_AXIS);
 
-      // if(joint_index == 1 && frame_index == 4)
-      // {
-      //   printf("X: %f Y: %f Z: %f", axes[0], axes[1], axes[2]);
-      //   exit(0);
-      // }
-      
-      
-
       int channel_index = 0;
       for (channel_index = 0; channel_index < joint->n_channels; ++channel_index) {
         if (motion_index == 0 && channel_index == 0)
@@ -108,12 +214,38 @@ static void read_motion(FILE *file, WbuBvhMotion motion, int frame_channels_coun
   }
 }
 
+static void compute_bone_vectors(WbuBvhMotion motion) {
+  int i;
+  for (i = 0; i < motion->n_joints; ++i) {
+    BvhMotionJointPrivate_t *joint = motion->joint_list[i];
+    int n_children = joint->n_children;
+    if (n_children == 1) {
+      joint->bone_vector[0] = joint->children[0]->offset[0];
+      joint->bone_vector[1] = joint->children[0]->offset[1];
+      joint->bone_vector[2] = joint->children[0]->offset[2];
+    } else if (n_children > 1) {
+      int j;
+      for (j = 0; j < n_children; ++j) {
+        joint->bone_vector[0] += joint->children[j]->offset[0];
+        joint->bone_vector[1] += joint->children[j]->offset[1];
+        joint->bone_vector[2] += joint->children[j]->offset[2];
+      }
+      joint->bone_vector[0] = joint->bone_vector[0] / n_children;
+      joint->bone_vector[1] = joint->bone_vector[1] / n_children;
+      joint->bone_vector[2] = joint->bone_vector[2] / n_children;
+    }  // else already set when parsing End Site
+  }
+}
 
-//***********************************
-//          API functions            
-//***********************************
+//***********************************//
+//          API functions            //
+//***********************************//
 
 WbuBvhMotion wbu_bvh_read_file(const char *filename) {
+
+  printf("AAAAAAAAAAAAAAAAAAAAAAAA \n");
+
+
   // initialize the motion structure
   WbuBvhMotion motion = malloc(sizeof(WbuBvhMotionPrivate_t));
   motion->n_joints = 0;
@@ -174,6 +306,13 @@ WbuBvhMotion wbu_bvh_read_file(const char *filename) {
 
   if (ferror(file))
     fprintf(stderr, "Error: wbu_bvh_read_file(): file '%s' is possibly empty.\n", filename);
+    
+  printf("frame_rotation: X: %f Y: %f Z: %f, W: %f \n", 
+                                        motion->joint_list[0]->frame_rotation[0].x, 
+                                        motion->joint_list[0]->frame_rotation[0].y, 
+                                        motion->joint_list[0]->frame_rotation[0].z, 
+                                        motion->joint_list[0]->frame_rotation[0].w
+                                        );
 
   fclose(file);
   return motion;
@@ -304,6 +443,7 @@ const double *wbu_bvh_get_root_translation(const WbuBvhMotion motion) {
 
 const double *wbu_bvh_get_joint_rotation(const WbuBvhMotion motion, int joint_id) {
   static double result[4];
+  /*
   if (joint_id >= motion->n_joints) {
     fprintf(stderr,
             "Error: wbu_bvh_get_joint_rotation(): 'joint_id' argument (%d) is greater than the number of joints (%d).\n",
@@ -314,26 +454,23 @@ const double *wbu_bvh_get_joint_rotation(const WbuBvhMotion motion, int joint_id
     result[3] = 0;
     return result;
   }
-  BvhMotionJointPrivate_t *joint = motion->joint_list[joint_id];
+  */
 
-  WbuQuaternion frame_rotation = joint->frame_rotation[motion->current_frame];
+  //BvhMotionJointPrivate_t *joint = motion->joint_list[joint_id];
+  BvhMotionJointPrivate_t *joint = motion->joint_list[2];
 
-    // if(motion->current_frame == 4 && joint_id == 1)
-    // {
-    //     printf("%f\n ", frame_rotation.w);
-    //     printf("%f\n ", frame_rotation.x);
-    //     printf("%f\n ", frame_rotation.y);
-    //     printf("%f\n ", frame_rotation.z);
-    // }
-
+  //WbuQuaternion frame_rotation = joint->frame_rotation[motion->current_frame];
+  WbuQuaternion frame_rotation = joint->frame_rotation[2];
+  
+  result[0] = frame_rotation.x;
+  result[1] = frame_rotation.y;
+  result[2] = frame_rotation.z;
+  result[3] = frame_rotation.w;
+  
+  return result;    
+  /*
   frame_rotation = wbu_quaternion_normalize(frame_rotation);
-    // if(motion->current_frame == 4 && joint_id == 1)
-    // {
-    //     printf("%f\n ", frame_rotation.w);
-    //     printf("%f\n ", frame_rotation.x);
-    //     printf("%f\n ", frame_rotation.y);
-    //     printf("%f\n ", frame_rotation.z);
-    // }
+
   // retrieve BVH model T pose from first frame
   if (motion->current_frame == 0) {
     joint->bvh_t_pose = frame_rotation;
@@ -358,4 +495,5 @@ const double *wbu_bvh_get_joint_rotation(const WbuBvhMotion motion, int joint_id
   frame_rotation = wbu_quaternion_multiply(joint->wbt_local_t_pose, frame_rotation);
   wbu_quaternion_to_axis_angle(frame_rotation, result);
   return result;
+  */
 }

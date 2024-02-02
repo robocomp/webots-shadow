@@ -65,8 +65,12 @@
 ###
 ###-----------------------------------------------------------------------------
 
-INCLUDE = -I"../../libs/animation_skin"
-LIBRARIES = -L"/usr/local/lib" -lanimation_skin
+ifndef WEBOTS_SKIN_ANIMATION_PATH
+WEBOTS_SKIN_ANIMATION_PATH = ../../libs
+endif
+
+INCLUDE = -I"$(WEBOTS_SKIN_ANIMATION_PATH)/bvh_util" -I"$(WEBOTS_SKIN_ANIMATION_PATH)/animation_skin"
+LIBRARIES = -L"$(WEBOTS_SKIN_ANIMATION_PATH)/bvh_util" -lbvh_util -L"$(WEBOTS_SKIN_ANIMATION_PATH)/animation_skin" -lanimation_skin
 
 ### Do not modify: this includes Webots global Makefile.include
 null :=

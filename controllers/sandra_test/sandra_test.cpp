@@ -1,7 +1,7 @@
+#include <AnimationSkin.hpp>     
 #include <webots/Robot.hpp>
 #include <webots/Device.hpp>
 #include <stdio.h>
-#include <AnimationSkin.hpp>
 
 #define TIME_STEP 32
 
@@ -13,16 +13,15 @@ Skin* skin = NULL;
 int main(int argc, char **argv) {
 
   robot = new Robot();
+  AnimationSkin skin("skin", "../../motions/walk.bvh");
 
-  AnimationSkin anim = AnimationSkin("skin", "../../motions/walk.bvh");
+  while(robot->step(TIME_STEP) != -1){
+    
+    skin.update();
+    robot->step(TIME_STEP);
+  }
 
-    while(robot->step(TIME_STEP) != -1){
-      
-      anim.update();
-
-      robot->step(TIME_STEP);
-    }
-
+  delete robot;
   return 0;
 }
 
