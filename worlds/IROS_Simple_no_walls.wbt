@@ -5,13 +5,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/SimpleChair.proto"
 
 WorldInfo {
   info [
     "Simulation of the ROBOLAB shadow robot."
   ]
   title "IROS shadow simple"
-  basicTimeStep 16
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"
@@ -38,8 +38,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2513678584803628 0.9674266236797501 -0.029998791952271602 1.5380886972158363
-  position -1.3682986580661387 -1.4625818570373803 17.849851502734754
+  orientation 0.11865272903526691 0.9854726909528734 0.12151174954952197 1.4504206865602707
+  position -2.186456523129603 -2.764836652859473 15.472690148910658
 }
 DEF PROPS Group {
   children [
@@ -178,6 +178,7 @@ DEF ENVIROMENT Group {
       name "ceiling"
     }
     RectangleArena {
+      translation -0.435445 0.534326 5.32924e-15
       floorSize 6 6
       floorAppearance Parquetry {
         type "light strip"
@@ -217,24 +218,34 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden translation_5 0.1 -0.21 0.015
-  hidden rotation_5 0 -1 0 5.22836431295138
-  hidden translation_6 0.1 0.21 0.015
-  hidden rotation_6 0 -1 0 4.304504212109985
-  hidden translation_7 -0.16 -0.21 0.015
-  hidden rotation_7 0 -1 0 1.9965917379152038
-  hidden translation_8 -0.16 0.21 0.015
-  hidden rotation_8 0 0.9999999999999999 0 3.491910018706339
-  translation -1.7304300207994996 0.09537309994218482 0.03252546548774688
-  rotation -8.023075337517707e-06 0.9999999995303196 -2.958024654855655e-05 0.003877452109592075
+  hidden position_0_0 9401.79347117796
+  hidden position_0_1 8998.537344640568
+  hidden position_0_2 9864.90011140597
+  hidden position_0_3 8526.446008973258
+  hidden linearVelocity_0 6.606836290178432e-16 -1.6053824936079765e-15 -4.547473508864641e-16
+  hidden angularVelocity_0 2.529697831305133e-15 -1.1651151840094374e-15 3.0609916507017296e-16
+  hidden rotation_5 0 0.9999999999999999 0 2.1490990239038754
+  hidden linearVelocity_5 6.47556027252129e-16 -1.454830097479023e-15 1.424866078548353e-16
+  hidden angularVelocity_5 1.8506330126538445e-14 1.5273342749642665e-14 1.3387709431841997e-15
+  hidden rotation_6 0 0.9999999999999999 0 1.017060940818314
+  hidden linearVelocity_6 5.4769419561788957e-17 -1.8458854299027056e-15 1.8474157854694495e-15
+  hidden angularVelocity_6 1.1356917593814259e-14 8.518404554537633e-15 1.670969435624628e-15
+  hidden rotation_7 0 1 0 0.2991813779185612
+  hidden linearVelocity_7 1.2746455019623212e-15 -1.3900280326013757e-15 7.106266528856029e-16
+  hidden angularVelocity_7 1.6026681254914438e-14 1.1949362051072676e-14 1.0237879413632842e-15
+  hidden rotation_8 0 -1 0 6.119635937277462
+  hidden linearVelocity_8 6.001874317068329e-16 -1.3044086063719132e-15 7.104218101469587e-16
+  hidden angularVelocity_8 1.2361660345931357e-14 2.1950508744316856e-14 2.8281886744565255e-16
+  translation -1.6375678496413184 0.7414954255583732 0.03005293994007253
+  rotation -0.003847456322990949 0.008180508254850342 0.9999591373473894 0.8792887047177035
 }
 DEF CROWD_CONTROL Group {
   children [
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -0.965126 0.0937068 0
-          rotation 0 0 1 0.05231452639405202
+          translation 0.458566 2.0821 0.07
+          rotation 0 0 1 -2.808235307179586
           children [
             Shape {
               appearance PBRAppearance {
@@ -356,10 +367,14 @@ DEF CROWD_CONTROL Group {
           translation -1.17 -0.01 0
         }
         DEF WAYPOINT_2 Pose {
-          translation 2.65 0.190024 0
+          translation 2.39 0.190024 0
           rotation 0 0 1 4.692820414042842e-06
         }
       ]
     }
   ]
+}
+SimpleChair {
+  translation 1.9583256460843765 0.13576645636245413 -0.00048444490872412427
+  rotation 0.0002657650518719157 -1.6814410514852233e-09 0.9999999646844681 3.1415799999998515
 }

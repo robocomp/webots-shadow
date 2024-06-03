@@ -2,6 +2,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "../protos/Shadow.proto"
 
 WorldInfo {
   info [
@@ -35,16 +36,16 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2833836186433803 -0.38120282373830244 -0.8799875748318995 4.341813797236879
-  position 0.5889001562846299 -11.649775777604297 17.831435480610534
+  orientation -0.5850522466944041 0.5741770055910306 0.5727430793020094 2.1174100669744766
+  position -0.4214704633473523 1.0708583355221521 10.1021733408344
 }
 DEF CROWD_CONTROL Group {
   children [
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation 0.5602755984368784 4.047697946176658 3.30402e-13
-          rotation 0 0 1 -1.6170641237659422
+          translation 0.6637497713991173 5.421415593785811 3.30402e-13
+          rotation -1.5905596751370587e-38 1.4759423602085894e-38 1 1.4960766737725537
           children [
             Shape {
               appearance PBRAppearance {
@@ -155,9 +156,9 @@ DEF CROWD_CONTROL Group {
             }
           ]
           name "HUMAN_1"
-          controller "crowd_controller_four_rooms"
+          controller "<none>"
           supervisor TRUE
-          linearVelocity -0.032375903211184096 -0.6992508735796901 0
+          angularVelocity -8.933709047915093e-43 9.663655877055368e-308 4.67432618074666e-310
         }
       ]
     }
@@ -185,8 +186,26 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  hidden position_0_0 4267.474193334021
+  hidden position_0_1 3891.320174309116
+  hidden position_0_2 4572.1620963524065
+  hidden position_0_3 3547.1831969028085
+  hidden linearVelocity_0 -7.273696796387827e-15 -2.2565585763603934e-15 -1.240220047872175e-16
+  hidden angularVelocity_0 6.267089355790191e-16 -2.5444024446026946e-16 -1.8349690439756153e-15
+  hidden rotation_5 0 -1 0 5.091815548097767
+  hidden linearVelocity_5 5.663975446583355e-15 -4.0022040189402974e-17 3.908066063247183e-16
+  hidden angularVelocity_5 8.47824417296543e-15 3.918420998835043e-15 -1.8211948126686946e-15
+  hidden rotation_6 0 -1 0 4.254716142227788
+  hidden linearVelocity_6 3.9884939074738484e-15 -1.8166402801959063e-15 1.0666493089445848e-16
+  hidden angularVelocity_6 1.687588428978682e-14 6.0391005468774185e-15 -1.1288443287395366e-15
+  hidden rotation_7 0 -1 0 1.996807274332476
+  hidden linearVelocity_7 -4.769643984654871e-15 -5.853857947631184e-16 -7.460817802505515e-16
+  hidden angularVelocity_7 -1.687570924966366e-14 -6.038989844360127e-15 -1.495133483109463e-15
+  hidden rotation_8 0 0.9999999999999999 0 3.466683653521731
+  hidden linearVelocity_8 -3.656304720485303e-15 -1.7122874575136662e-15 -7.460628195283122e-16
+  hidden angularVelocity_8 4.279593175666193e-15 2.8582497732235904e-15 -1.1435436260829889e-15
+  translation 2.086462225147862 0.7235440587781368 0.03252546548775437
+  rotation -0.0019386480814429351 0.014806792927892746 0.9998884940466146 0.260388540473782
 }
 Group {
   children [
@@ -268,6 +287,7 @@ Group {
       name "solid(1)"
     }
     Solid {
+      translation -0.0374017 -0.116892 0
       children [
         Shape {
           appearance PBRAppearance {
