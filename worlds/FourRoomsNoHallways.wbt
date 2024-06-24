@@ -2,6 +2,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/living_room_furniture/protos/Carpet.proto"
 
 WorldInfo {
   info [
@@ -35,8 +36,499 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2833836186433803 -0.38120282373830244 -0.8799875748318995 4.341813797236879
-  position 0.5889001562846299 -11.649775777604297 17.831435480610534
+  orientation -0.4538782134112806 0.13383399248774563 0.880955747949563 2.8297010956211213
+  position 13.615146437090148 0.6661888793249544 25.54258724021215
+}
+DEF FORNITURES Group {
+  children [
+    Carpet {
+      translation -6.83 2.02 -0.01
+      rotation 0 0 1 -1.5707953071795862
+    }
+    DEF MIRROR Solid {
+      translation -2.99001 5.18 1.21
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Mirror.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(18)"
+    }
+    DEF MIRROR Solid {
+      translation -8.98001 0.56 1.21
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Mirror.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(19)"
+    }
+    DEF MIRROR Solid {
+      translation 1.97999 4.61 1.21
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Mirror.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(20)"
+    }
+    DEF BASIN Solid {
+      translation -1.87001 4.76 0.07
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Basin.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(17)"
+    }
+    DEF WASHING_MACHINE Solid {
+      translation -2.20001 8.24 -0.02
+      rotation 0 0 1 1.57079
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/WashingMachine.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(24)"
+    }
+    DEF RACK Solid {
+      translation 1.72999 6.26 0
+      rotation 0 0 1 1.01503e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Rack.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(14)"
+    }
+    DEF TABLE_NARROW Solid {
+      translation -2.50638 3.39739 0
+      rotation 0 0 -1 0.785402
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/TableNarrow.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(15)"
+    }
+    DEF SHELVES_BIG Solid {
+      translation -8.91001 2.07 0
+      rotation 0 0 1 1.01503e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/ShelvesBig.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(13)"
+    }
+    DEF BED_MEDIUM Solid {
+      translation -8.49001 3.9 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/BedSmall.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(12)"
+    }
+    DEF PLANT_POT Solid {
+      translation -3.48001 4.58 0
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/SmallProps.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/PlantPot.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(11)"
+    }
+    DEF PLANT_POT Solid {
+      translation -2.49001 3.39 0.81
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/SmallProps.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/PlantPot.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(16)"
+    }
+    DEF LAMP_STANDING Solid {
+      translation 2.45999 -1.4 0
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/SmallProps.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/LampStanding.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(10)"
+    }
+    DEF LAMP_DOME Solid {
+      translation -5.70001 2.06 2.52
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/SmallProps.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/LampDome.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(25)"
+    }
+    DEF TABLE_MEDIUM Solid {
+      translation -1.87001 -0.72 0
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/TableMedium.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(9)"
+    }
+    DEF BATHTUB Solid {
+      translation 1.43999 8.85 0
+      rotation 0 0 -1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/BathTub.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(8)"
+    }
+    DEF WASHBASIN Solid {
+      translation -1.22001 9.95 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/WashBasin.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(7)"
+    }
+    DEF TABLE_BIG Solid {
+      translation -7.56001 7.2 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/TableBig.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(23)"
+    }
+    DEF STORE Solid {
+      translation -3.78001 9.86 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Store.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(21)"
+    }
+    DEF STORE Solid {
+      translation -6.50001 9.86 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Store.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(22)"
+    }
+    DEF SOFA_ARMCHAIR Solid {
+      translation 2.58999 -0.14 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/SofaArmChair.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(6)"
+    }
+    DEF SOFA_DOUBLE Solid {
+      translation 0.629994 -1.46 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/TrimSheet_Blues.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0.2
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/SofaDouble.dae"
+            ]
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+  ]
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -181,14 +673,16 @@ DEF CROWD_CONTROL Group {
 }
 TexturedBackground {
   texture "noon_park_empty"
+  luminosity 3
 }
 TexturedBackgroundLight {
+  luminosity 0.4
 }
 DEF shadow Shadow {
   hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
   hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
 }
-Group {
+DEF ENVIROMENT Group {
   children [
     Solid {
       children [

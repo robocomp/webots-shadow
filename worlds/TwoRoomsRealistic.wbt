@@ -1,0 +1,31 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Door.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.35601985721622115 -0.195356115288934 0.9138303176667746 4.015155740784248
+  position 9.778019020089317 7.160550284633161 13.62471425774173
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 -1.27 0
+  floorSize 10 10
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+DEF shadow Shadow {
+  translation -0.612493 -3.52526 0.03
+  rotation 0 0 1 1.5708
+}
