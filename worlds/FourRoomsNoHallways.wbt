@@ -36,8 +36,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.4538782134112806 0.13383399248774563 0.880955747949563 2.8297010956211213
-  position 13.615146437090148 0.6661888793249544 25.54258724021215
+  orientation -0.2793637635448431 -0.23935908114621526 0.9298726353059867 4.884834323145362
+  position -7.94935791055112 25.261078743712314 12.869570002707981
 }
 DEF FORNITURES Group {
   children [
@@ -685,6 +685,22 @@ DEF shadow Shadow {
 DEF ENVIROMENT Group {
   children [
     Solid {
+      translation -2.66 4.25 2.92
+      rotation 0 1 0 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Plane {
+            size 13 14
+          }
+        }
+      ]
+      name "solid(26)"
+    }
+    Solid {
       children [
         Shape {
           appearance PBRAppearance {
@@ -697,6 +713,7 @@ DEF ENVIROMENT Group {
             ]
             materialIndex 0
           }
+          castShadows FALSE
         }
       ]
       name "solid(4)"
