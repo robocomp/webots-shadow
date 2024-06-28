@@ -3,63 +3,286 @@
   <asset>
     <contributor>
       <author>Blender User</author>
-      <authoring_tool>Blender 3.5.0 commit date:2023-03-29, commit time:02:56, hash:1be25cfff18b</authoring_tool>
+      <authoring_tool>Blender 4.1.0 commit date:2024-03-25, commit time:20:42, hash:40a5e739e270</authoring_tool>
     </contributor>
-    <created>2023-11-06T13:11:08</created>
-    <modified>2023-11-06T13:11:08</modified>
+    <created>2024-06-28T12:36:33</created>
+    <modified>2024-06-28T12:36:33</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
-  <library_images/>
+  <library_effects>
+    <effect id="laminate_floor_03-effect">
+      <profile_COMMON>
+        <newparam sid="laminate_floor_03_diff_8k_png-surface">
+          <surface type="2D">
+            <init_from>laminate_floor_03_diff_8k_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="laminate_floor_03_diff_8k_png-sampler">
+          <sampler2D>
+            <source>laminate_floor_03_diff_8k_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="laminate_floor_03_diff_8k_png-sampler" texcoord="Walls_006-mesh-map"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="concrete_floor_worn_001-effect">
+      <profile_COMMON>
+        <newparam sid="concrete_floor_worn_001_diff_16k_png-surface">
+          <surface type="2D">
+            <init_from>concrete_floor_worn_001_diff_16k_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="concrete_floor_worn_001_diff_16k_png-sampler">
+          <sampler2D>
+            <source>concrete_floor_worn_001_diff_16k_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="concrete_floor_worn_001_diff_16k_png-sampler" texcoord="Walls_006-mesh-map"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="marble_tiles-effect">
+      <profile_COMMON>
+        <newparam sid="marble_tiles_diff_png-surface">
+          <surface type="2D">
+            <init_from>marble_tiles_diff_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="marble_tiles_diff_png-sampler">
+          <sampler2D>
+            <source>marble_tiles_diff_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="marble_tiles_diff_png-sampler" texcoord="Walls_006-mesh-map"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="beige_wall_001_001-effect">
+      <profile_COMMON>
+        <newparam sid="beige_wall_001_diff_16k_png-surface">
+          <surface type="2D">
+            <init_from>beige_wall_001_diff_16k_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="beige_wall_001_diff_16k_png-sampler">
+          <sampler2D>
+            <source>beige_wall_001_diff_16k_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="beige_wall_001_diff_16k_png-sampler" texcoord="Walls_006-mesh-map"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="beige_wall_001_diff_16k_png" name="beige_wall_001_diff_16k_png">
+      <init_from>beige_wall_001_diff_16k.jpg</init_from>
+    </image>
+    <image id="concrete_floor_worn_001_diff_16k_png" name="concrete_floor_worn_001_diff_16k_png">
+      <init_from>concrete_floor_worn_001_diff_16k.jpg</init_from>
+    </image>
+    <image id="laminate_floor_03_diff_8k_png" name="laminate_floor_03_diff_8k_png">
+      <init_from>laminate_floor_03_diff_8k.jpg</init_from>
+    </image>
+    <image id="marble_tiles_diff_png" name="marble_tiles_diff_png">
+      <init_from>marble_tiles_diff.jpg</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="laminate_floor_03-material" name="laminate_floor_03">
+      <instance_effect url="#laminate_floor_03-effect"/>
+    </material>
+    <material id="concrete_floor_worn_001-material" name="concrete_floor_worn_001">
+      <instance_effect url="#concrete_floor_worn_001-effect"/>
+    </material>
+    <material id="marble_tiles-material" name="marble_tiles">
+      <instance_effect url="#marble_tiles-effect"/>
+    </material>
+    <material id="beige_wall_001_001-material" name="beige_wall_001.001">
+      <instance_effect url="#beige_wall_001_001-effect"/>
+    </material>
+  </library_materials>
   <library_geometries>
-    <geometry id="Walls-mesh" name="Walls">
+    <geometry id="Walls_011-mesh" name="Walls.011">
       <mesh>
-        <source id="Walls-mesh-positions">
-          <float_array id="Walls-mesh-positions-array" count="96">-3 -3 0 3 -3 0 -3 3 0 3 3 0 -3 0 0 3 0 0 3 0.99 0 -3 0.99 0 0 -3 0 0 3 0 1.005 -3 0 1.005 3 0 0 3.5 0 1.005 3.5 0 -3.5 0 0 -3.5 0.99 0 -3 -3 3 3 -3 3 3 3 3 -3 0 3 3 0 3 3 0.99 3 0 -3 3 1.005 -3 3 1.005 3 3 1.005 3.5 3 -3.5 0 3 -3 3 3 -3 0.99 3 0 3 3 0 3.5 3 -3.5 0.99 3</float_array>
+        <source id="Walls_011-mesh-positions">
+          <float_array id="Walls_011-mesh-positions-array" count="336">-3 -3 0 3 -3 0 -3 1.866373 0 3 1.866373 0 -3 -0.1484997 0 3 -0.1484991 0 3 1.138501 0 -3 1.1385 0 -0.1694058 -3 0 -0.1694067 1.866373 0 1.137094 -3 0 1.137093 1.866373 0 -3 -3 3 3 -3 3 3 1.866373 3 -3 -0.1484997 3 3 -0.1484991 3 3 1.138501 3 -0.1694058 -3 3 1.137094 -3 3 1.137093 1.866373 3 -3 1.866373 3 -3 1.1385 3 -0.1694067 1.866373 3 -0.1759037 2.005978 0 1.130596 2.005978 0 1.130596 2.005978 3 -0.1759037 2.005978 3 -1.999996 9.000001 0 -7.999996 9.000003 0 -1.999999 3.137868 0 -7.999999 3.13787 0 -1.999998 6.149084 0 -7.999998 6.149086 0 -7.999998 4.862086 0 -1.999998 4.849584 0 -4.85008 9.000002 0 -4.850082 3.137869 0 -6.156579 9.000002 0 -6.156582 3.137869 0 -1.999996 9.000001 3 -7.999996 9.000003 3 -7.999999 3.13787 3 -1.999998 6.149084 3 -7.999998 6.149086 3 -7.999998 4.862086 3 -4.85008 9.000002 3 -6.156579 9.000002 3 -6.156582 3.137869 3 -1.999999 3.137868 3 -1.999998 4.849584 3 -4.850082 3.137869 3 -4.843584 3.000002 0 -6.150083 3.000002 0 -6.150083 3.000002 3 -4.843584 3.000002 3 -7 -2.999999 0 -3.140055 -2.999998 0 -7 3.000001 0 -3.140055 3.000002 0 -7 -0.1484979 0 -3.140055 -0.1484966 0 -3.140055 1.138503 0 -7 1.138501 0 -6.150083 -2.999998 0 -6.150084 3.000002 0 -4.843583 -2.999998 0 -4.843584 3.000002 0 -7 -2.999999 3 -3.140055 -2.999998 3 -7 3.000001 3 -7 -0.1484979 3 -3.140055 -0.1484966 3 -7 1.138501 3 -6.150083 -2.999998 3 -6.150084 3.000002 3 -4.843583 -2.999998 3 -3.140055 3.000002 3 -3.140055 1.138503 3 -4.843584 3.000002 3 -3 -0.1484992 0 -3 1.1385 0 -3 -0.1484992 3 -3 1.1385 3 4.000002 2.005979 0 4.000001 8 0 -1.83191 2.005978 0 -1.831911 7.999999 0 1.130597 2.005979 0 1.130595 8 0 -0.1564046 7.999999 0 -0.1564025 2.005978 0 4.000002 4.849084 0 -1.83191 4.849082 0 4.000002 6.155584 0 -1.83191 6.155582 0 4.000002 2.005979 3 4.000001 8 3 -1.831911 7.999999 3 1.130597 2.005979 3 1.130595 8 3 -0.1564046 7.999999 3 4.000002 4.849084 3 4.000002 6.155584 3 -1.83191 6.155582 3 -1.83191 2.005978 3 -0.1564025 2.005978 3 -1.83191 4.849082 3 -1.999998 4.849584 0 -1.999998 6.149084 0 -1.999998 6.149084 3 -1.999998 4.849584 3</float_array>
           <technique_common>
-            <accessor source="#Walls-mesh-positions-array" count="32" stride="3">
+            <accessor source="#Walls_011-mesh-positions-array" count="112" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="Walls-mesh-normals">
-          <float_array id="Walls-mesh-normals-array" count="12">-1 0 0 0 1 0 1 0 0 0 -1 0</float_array>
+        <source id="Walls_011-mesh-normals">
+          <float_array id="Walls_011-mesh-normals-array" count="126">0 1 0 0 -1 0 -1 0 0 1 0 0 0.9989189 0.04648792 0 -0.998919 -0.04648625 0 0.9989189 0.04648852 0 -0.9989189 -0.04648852 0 -3.34613e-7 -1 0 -1 3.34515e-7 0 -5.17341e-7 -1 0 3.88005e-7 1 0 4.18266e-7 1 0 -1 3.7143e-7 0 -0.9988913 -0.04707795 0 0.9988909 0.04708713 0 1 -7.37475e-7 0 -3.34613e-7 -1 0 -1 4.4602e-7 0 1 -9.88008e-7 0 1 -8.9204e-7 0 -0.9988909 -0.04708713 0 1.12208e-6 -1 0 -1.12208e-6 1 0 -2.21301e-5 -1 0 1.86191e-5 1 0 1.12208e-6 -1 0 -2.21302e-5 -1 0 1.86192e-5 1 0 -1.6618e-7 1 0 3.70503e-7 -1 0 -1 -6.89414e-7 0 1.6618e-7 -1 0 1 0 0 -1.42296e-7 1 0 0.002984285 0.9999957 0 0.03862869 -0.9992536 0 -1.6618e-7 1 0 1 1.72353e-7 0 -1 -4.47245e-7 0 1 2.23623e-7 0 0.03862857 -0.9992538 0</float_array>
           <technique_common>
-            <accessor source="#Walls-mesh-normals-array" count="4" stride="3">
+            <accessor source="#Walls_011-mesh-normals-array" count="42" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="Walls-mesh-map">
-          <float_array id="Walls-mesh-map-array" count="168">0.7597239 0.3188983 0.9993701 0.4794613 0.7597239 0.4794613 0.7597239 0.638826 0.9993701 0.678767 0.7597239 0.6787671 0.5197399 0.2797561 0.7593862 0.5194023 0.51974 0.5194023 0.51974 0.5194023 0.7593862 0.5996838 0.51974 0.5996838 0.5197399 0.04010987 0.7593862 0.2797561 0.5197399 0.2797561 0.7597239 0.239815 0.9993701 0.3188983 0.7597239 0.3188983 0.5197399 1.68832e-4 0.7593862 0.04010981 0.5197399 0.04010987 0.51974 0.5996838 0.7593862 0.7590485 0.51974 0.7590486 0.7597239 0.4794613 0.9993701 0.638826 0.7597239 0.638826 0.7597239 1.68812e-4 0.9993701 0.239815 0.7597239 0.239815 0.2398151 0.559681 1.68871e-4 0.5197401 0.239815 0.51974 0.2398151 0.9598902 1.68832e-4 0.7202439 0.239815 0.7202439 0.239815 0.9998312 1.68851e-4 0.9598902 0.2398151 0.9598902 0.239815 0.7202439 1.68871e-4 0.559681 0.2398151 0.559681 0.7597239 0.3188983 0.9993701 0.3188983 0.9993701 0.4794613 0.7597239 0.638826 0.9993701 0.638826 0.9993701 0.678767 0.5197399 0.2797561 0.7593862 0.2797561 0.7593862 0.5194023 0.51974 0.5194023 0.7593862 0.5194023 0.7593862 0.5996838 0.5197399 0.04010987 0.7593862 0.04010981 0.7593862 0.2797561 0.7597239 0.239815 0.9993701 0.239815 0.9993701 0.3188983 0.5197399 1.68832e-4 0.7593862 1.68871e-4 0.7593862 0.04010981 0.51974 0.5996838 0.7593862 0.5996838 0.7593862 0.7590485 0.7597239 0.4794613 0.9993701 0.4794613 0.9993701 0.638826 0.7597239 1.68812e-4 0.9993701 1.68812e-4 0.9993701 0.239815 0.2398151 0.559681 1.68871e-4 0.559681 1.68871e-4 0.5197401 0.2398151 0.9598902 1.68851e-4 0.9598902 1.68832e-4 0.7202439 0.239815 0.9998312 1.68812e-4 0.9998312 1.68851e-4 0.9598902 0.239815 0.7202439 1.68832e-4 0.7202439 1.68871e-4 0.559681</float_array>
+        <source id="Walls_011-mesh-map-0">
+          <float_array id="Walls_011-mesh-map-0-array" count="576">-0.0887376 0.3401573 0.3159145 0.5914336 -0.0887376 0.5914336 -0.0887376 1.24783 0.3159145 1.499106 -0.0887376 1.499106 -0.0887376 0.5914336 0.3159145 0.9760556 -0.0887376 0.9760556 -0.0887376 1.149652 0.3159145 1.24783 -0.0887376 1.24783 -0.08873766 -0.2178707 0.3159145 0.1639313 -0.08873766 0.1639313 -0.08873766 -0.6024926 0.3159145 -0.2178707 -0.08873766 -0.2178707 -0.08873766 0.1639313 0.3159145 0.3401573 -0.0887376 0.3401573 -0.0887376 0.9760556 0.3159145 1.149652 -0.0887376 1.149652 1.453648 1.182856 1.048995 1.084677 1.453648 1.084677 1.453648 1.564658 1.048995 1.182856 1.453648 1.182856 1.438735 0.5344676 1.457586 0.9391198 1.438735 0.9391197 1.457982 0.3830599 1.439131 -0.02159208 1.457982 -0.02159208 -0.0887376 0.3401573 0.3159145 0.3401573 0.3159145 0.5914336 -0.0887376 1.24783 0.3159145 1.24783 0.3159145 1.499106 -0.0887376 0.5914336 0.3159145 0.5914336 0.3159145 0.9760556 -0.0887376 1.149652 0.3159145 1.149652 0.3159145 1.24783 -0.08873766 -0.2178707 0.3159145 -0.2178707 0.3159145 0.1639313 -0.08873766 -0.6024926 0.3159145 -0.6024926 0.3159145 -0.2178707 -0.08873766 0.1639313 0.3159145 0.1639313 0.3159145 0.3401573 -0.0887376 0.9760556 0.3159145 0.9760556 0.3159145 1.149652 1.453648 1.182856 1.048995 1.182856 1.048995 1.084677 1.453648 1.564658 1.048995 1.564658 1.048995 1.182856 1.438735 0.5344676 1.457586 0.5344676 1.457586 0.9391198 1.457982 0.3830599 1.439131 0.3830599 1.439131 -0.02159208 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float_array>
           <technique_common>
-            <accessor source="#Walls-mesh-map-array" count="84" stride="2">
+            <accessor source="#Walls_011-mesh-map-0-array" count="288" stride="2">
               <param name="S" type="float"/>
               <param name="T" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <vertices id="Walls-mesh-vertices">
-          <input semantic="POSITION" source="#Walls-mesh-positions"/>
+        <source id="Walls_011-mesh-map-1">
+          <float_array id="Walls_011-mesh-map-1-array" count="576">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3171658 0.9772154 0.6820272 1.186916 0.3171659 1.186915 0.317166 -0.2557628 0.6820274 0.09086573 0.3171659 0.09086567 0.3171659 0.09086567 0.6820273 0.2497628 0.3171659 0.2497627 0.317166 -0.6024927 0.6820274 -0.2557628 0.317166 -0.2557628 0.3171658 0.8206899 0.6820273 0.9772154 0.3171658 0.9772154 0.3171659 0.2497627 0.6820273 0.4739601 0.3171659 0.47396 0.3171659 1.186915 0.6820272 1.411113 0.3171658 1.411113 0.3171659 0.47396 0.6820273 0.8206899 0.3171658 0.8206899 1.048995 -0.02159202 1.413857 0.3250364 1.048995 0.3250365 1.048995 0.3250365 1.413857 0.5332162 1.048995 0.5332162 1.454899 1.084677 1.471685 1.449539 1.454899 1.449539 1.475623 0.899329 1.458837 0.5344676 1.475623 0.5344676 0.3171658 0.9772154 0.6820273 0.9772154 0.6820272 1.186916 0.317166 -0.2557628 0.6820274 -0.2557628 0.6820274 0.09086573 0.3171659 0.09086567 0.6820274 0.09086573 0.6820273 0.2497628 0.317166 -0.6024927 0.6820274 -0.6024927 0.6820274 -0.2557628 0.3171658 0.8206899 0.6820273 0.8206899 0.6820273 0.9772154 0.3171659 0.2497627 0.6820273 0.2497628 0.6820273 0.4739601 0.3171659 1.186915 0.6820272 1.186916 0.6820272 1.411113 0.3171659 0.47396 0.6820273 0.4739601 0.6820273 0.8206899 1.048995 -0.02159202 1.413857 -0.02159208 1.413857 0.3250364 1.048995 0.3250365 1.413857 0.3250364 1.413857 0.5332162 1.454899 1.084677 1.471685 1.084677 1.471685 1.449539 1.475623 0.899329 1.458837 0.899329 1.458837 0.5344676 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float_array>
+          <technique_common>
+            <accessor source="#Walls_011-mesh-map-1-array" count="288" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Walls_011-mesh-map-2">
+          <float_array id="Walls_011-mesh-map-2-array" count="576">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.5777685 -0.6024926 -0.08998894 -0.4643019 -0.5777685 -0.4643018 -0.5777685 0.5112572 -0.08998894 0.6494479 -0.5777685 0.6494479 -0.5777685 0.04762262 -0.08998894 0.5112572 -0.5777685 0.5112572 -0.5777685 0.6494479 -0.08998894 0.8618759 -0.5777685 0.8618759 -0.5777685 -0.1616346 -0.08998894 0.04762256 -0.5777685 0.04762262 -0.5777685 0.8618759 -0.08998894 1.138858 -0.5777685 1.138858 -0.5777685 -0.4643018 -0.08998888 -0.1616347 -0.5777685 -0.1616346 -0.5777685 1.138858 -0.08998888 1.602493 -0.5777684 1.602493 1.048995 -0.6024926 1.536775 -0.2998256 1.048995 -0.2998256 1.048995 -0.2998256 1.536775 -0.02284342 1.048995 -0.02284342 1.415108 -0.02159208 1.43788 0.4661874 1.415108 0.4661874 1.437484 1.022247 1.414711 0.5344676 1.437484 0.5344676 -0.5777685 -0.6024926 -0.08998888 -0.6024926 -0.08998894 -0.4643019 -0.5777685 0.5112572 -0.08998894 0.5112572 -0.08998894 0.6494479 -0.5777685 0.04762262 -0.08998894 0.04762256 -0.08998894 0.5112572 -0.5777685 0.6494479 -0.08998894 0.6494479 -0.08998894 0.8618759 -0.5777685 -0.1616346 -0.08998888 -0.1616347 -0.08998894 0.04762256 -0.5777685 0.8618759 -0.08998894 0.8618759 -0.08998894 1.138858 -0.5777685 -0.4643018 -0.08998894 -0.4643019 -0.08998888 -0.1616347 -0.5777685 1.138858 -0.08998894 1.138858 -0.08998888 1.602493 1.048995 -0.6024926 1.536775 -0.6024926 1.536775 -0.2998256 1.048995 -0.2998256 1.536775 -0.2998256 1.536775 -0.02284342 1.415108 -0.02159208 1.43788 -0.02159208 1.43788 0.4661874 1.437484 1.022247 1.414711 1.022247 1.414711 0.5344676 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float_array>
+          <technique_common>
+            <accessor source="#Walls_011-mesh-map-2-array" count="288" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Walls_011-mesh-map-3">
+          <float_array id="Walls_011-mesh-map-3-array" count="576">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.047744 0.7128911 0.6832789 0.5541666 1.047744 0.5541666 1.047744 1.406894 0.6832789 1.058295 1.047744 1.058295 1.047744 -0.01850777 0.6832788 -0.1748631 1.047744 -0.1748631 1.047744 0.5541666 0.6832788 0.3300917 1.047744 0.3300916 1.047744 -0.3784175 0.6832788 -0.6024926 1.047744 -0.6024926 1.047744 0.3300916 0.6832788 -0.01850771 1.047744 -0.01850777 1.047744 -0.1748631 0.6832788 -0.3784175 1.047744 -0.3784175 1.047744 1.058295 0.6832789 0.7128911 1.047744 0.7128911 1.048995 0.5344677 1.41346 0.8798715 1.048995 0.8798717 1.048995 0.8798717 1.41346 1.083426 1.048995 1.083426 1.472936 1.084677 1.493357 1.449142 1.472936 1.449142 1.479669 0.3428729 1.459233 -0.02159202 1.479669 -0.02159208 1.047744 0.7128911 0.6832789 0.7128911 0.6832789 0.5541666 1.047744 1.406894 0.6832789 1.406894 0.6832789 1.058295 1.047744 -0.01850777 0.6832788 -0.01850771 0.6832788 -0.1748631 1.047744 0.5541666 0.6832789 0.5541666 0.6832788 0.3300917 1.047744 -0.3784175 0.6832788 -0.3784175 0.6832788 -0.6024926 1.047744 0.3300916 0.6832788 0.3300917 0.6832788 -0.01850771 1.047744 -0.1748631 0.6832788 -0.1748631 0.6832788 -0.3784175 1.047744 1.058295 0.6832789 1.058295 0.6832789 0.7128911 1.048995 0.5344677 1.41346 0.5344677 1.41346 0.8798715 1.048995 0.8798717 1.41346 0.8798715 1.41346 1.083426 1.472936 1.084677 1.493357 1.084677 1.493357 1.449142 1.479669 0.3428729 1.459233 0.3428729 1.459233 -0.02159202</float_array>
+          <technique_common>
+            <accessor source="#Walls_011-mesh-map-3-array" count="288" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Walls_011-mesh-vertices">
+          <input semantic="POSITION" source="#Walls_011-mesh-positions"/>
         </vertices>
-        <triangles count="28">
-          <input semantic="VERTEX" source="#Walls-mesh-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#Walls-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#Walls-mesh-map" offset="2" set="0"/>
-          <p>6 0 0 18 0 1 3 0 2 11 0 3 25 0 4 13 0 5 0 1 6 22 1 7 8 1 8 8 1 9 23 1 10 10 1 11 4 2 12 16 2 13 0 2 14 5 0 15 21 0 16 6 0 17 14 1 18 19 1 19 4 1 20 10 1 21 17 1 22 1 1 23 3 3 24 24 3 25 11 3 26 1 0 27 20 0 28 5 0 29 7 3 30 31 3 31 15 3 32 9 3 33 27 3 34 2 3 35 12 2 36 29 2 37 9 2 38 2 2 39 28 2 40 7 2 41 6 0 42 21 0 43 18 0 44 11 0 45 24 0 46 25 0 47 0 1 48 16 1 49 22 1 50 8 1 51 22 1 52 23 1 53 4 2 54 19 2 55 16 2 56 5 0 57 20 0 58 21 0 59 14 1 60 26 1 61 19 1 62 10 1 63 23 1 64 17 1 65 3 3 66 18 3 67 24 3 68 1 0 69 17 0 70 20 0 71 7 3 72 28 3 73 31 3 74 9 3 75 29 3 76 27 3 77 12 2 78 30 2 79 29 2 80 2 2 81 27 2 82 28 2 83</p>
+        <triangles material="laminate_floor_03-material" count="24">
+          <input semantic="VERTEX" source="#Walls_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Walls_011-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-1" offset="2" set="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-2" offset="2" set="2"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-3" offset="2" set="3"/>
+          <p>10 0 0 13 0 1 1 0 2 3 1 3 20 1 4 11 1 5 1 2 6 16 2 7 5 2 8 6 2 9 14 2 10 3 2 11 0 0 12 18 0 13 8 0 14 4 3 15 12 3 16 0 3 17 8 0 18 19 0 19 10 0 20 5 2 21 17 2 22 6 2 23 2 3 24 22 3 25 7 3 26 9 1 27 21 1 28 2 1 29 9 4 30 27 4 31 23 4 32 20 5 33 25 5 34 11 5 35 10 0 36 19 0 37 13 0 38 3 1 39 14 1 40 20 1 41 1 2 42 13 2 43 16 2 44 6 2 45 17 2 46 14 2 47 0 0 48 12 0 49 18 0 50 4 3 51 15 3 52 12 3 53 8 0 54 18 0 55 19 0 56 5 2 57 16 2 58 17 2 59 2 3 60 21 3 61 22 3 62 9 1 63 23 1 64 21 1 65 9 6 66 24 6 67 27 6 68 20 7 69 26 7 70 25 7 71</p>
+        </triangles>
+        <triangles material="concrete_floor_worn_001-material" count="24">
+          <input semantic="VERTEX" source="#Walls_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Walls_011-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-1" offset="2" set="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-2" offset="2" set="2"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-3" offset="2" set="3"/>
+          <p>34 3 72 42 3 73 31 3 74 28 8 75 46 8 76 36 8 77 36 1 78 47 1 79 38 1 80 32 9 81 40 9 82 28 9 83 33 3 84 45 3 85 34 3 86 38 10 87 41 10 88 29 10 89 31 11 90 48 11 91 39 11 92 29 3 93 44 3 94 33 3 95 37 12 96 49 12 97 30 12 98 30 13 99 50 13 100 35 13 101 37 14 102 55 14 103 51 14 104 48 15 105 53 15 106 39 15 107 34 16 108 45 16 109 42 16 110 28 17 111 40 17 112 46 17 113 36 1 114 46 1 115 47 1 116 32 18 117 43 18 118 40 18 119 33 19 120 44 19 121 45 19 122 38 10 123 47 10 124 41 10 125 31 11 126 42 11 127 48 11 128 29 20 129 41 20 130 44 20 131 37 12 132 51 12 133 49 12 134 30 13 135 49 13 136 50 13 137 37 21 138 52 21 139 55 21 140 48 15 141 54 15 142 53 15 143</p>
+        </triangles>
+        <triangles material="marble_tiles-material" count="24">
+          <input semantic="VERTEX" source="#Walls_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Walls_011-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-1" offset="2" set="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-2" offset="2" set="2"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-3" offset="2" set="3"/>
+          <p>65 22 144 70 22 145 58 22 146 56 23 147 74 23 148 64 23 149 60 3 150 68 3 151 56 3 152 64 0 153 76 0 154 66 0 155 63 3 156 71 3 157 60 3 158 66 0 159 69 0 160 57 0 161 58 3 162 73 3 163 63 3 164 57 2 165 72 2 166 61 2 167 62 2 168 77 2 169 59 2 170 59 1 171 79 1 172 67 1 173 62 24 174 83 24 175 78 24 176 72 25 177 80 25 178 61 25 179 65 26 180 75 26 181 70 26 182 56 23 183 68 23 184 74 23 185 60 3 186 71 3 187 68 3 188 64 0 189 74 0 190 76 0 191 63 3 192 73 3 193 71 3 194 66 0 195 76 0 196 69 0 197 58 3 198 70 3 199 73 3 200 57 2 201 69 2 202 72 2 203 62 2 204 78 2 205 77 2 206 59 1 207 77 1 208 79 1 209 62 27 210 81 27 211 83 27 212 72 28 213 82 28 214 80 28 215</p>
+        </triangles>
+        <triangles material="beige_wall_001_001-material" count="24">
+          <input semantic="VERTEX" source="#Walls_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Walls_011-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-1" offset="2" set="1"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-2" offset="2" set="2"/>
+          <input semantic="TEXCOORD" source="#Walls_011-mesh-map-3" offset="2" set="3"/>
+          <p>92 2 216 103 2 217 94 2 218 88 29 219 96 29 220 84 29 221 89 30 222 101 30 223 90 30 224 94 31 225 97 31 226 85 31 227 87 3 228 104 3 229 95 3 230 85 32 231 100 32 232 89 32 233 90 1 234 98 1 235 87 1 236 84 2 237 102 2 238 92 2 239 93 33 240 105 33 241 86 33 242 86 34 243 106 34 244 91 34 245 93 35 246 111 35 247 107 35 248 104 36 249 109 36 250 95 36 251 92 2 252 102 2 253 103 2 254 88 37 255 99 37 256 96 37 257 89 30 258 100 30 259 101 30 260 94 2 261 103 2 262 97 2 263 87 38 264 98 38 265 104 38 266 85 32 267 97 32 268 100 32 269 90 1 270 101 1 271 98 1 272 84 39 273 96 39 274 102 39 275 93 40 276 107 40 277 105 40 278 86 34 279 105 34 280 106 34 281 93 35 282 108 35 283 111 35 284 104 41 285 110 41 286 109 41 287</p>
         </triangles>
       </mesh>
     </geometry>
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
-      <node id="Walls" name="Walls" type="NODE">
-        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-        <instance_geometry url="#Walls-mesh" name="Walls"/>
+      <node id="Walls_003" name="Walls.003" type="NODE">
+        <matrix sid="transform">-1 3.89414e-7 0 -5 -3.89414e-7 -1 0 7 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Walls_011-mesh" name="Walls.003">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="laminate_floor_03-material" target="#laminate_floor_03-material">
+                <bind_vertex_input semantic="Walls_006-mesh-map" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="Walls_004-mesh-map" input_semantic="TEXCOORD" input_set="1"/>
+                <bind_vertex_input semantic="Walls_005-mesh-map" input_semantic="TEXCOORD" input_set="2"/>
+                <bind_vertex_input semantic="Walls_007-mesh-map" input_semantic="TEXCOORD" input_set="3"/>
+              </instance_material>
+              <instance_material symbol="concrete_floor_worn_001-material" target="#concrete_floor_worn_001-material">
+                <bind_vertex_input semantic="Walls_006-mesh-map" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="Walls_004-mesh-map" input_semantic="TEXCOORD" input_set="1"/>
+                <bind_vertex_input semantic="Walls_005-mesh-map" input_semantic="TEXCOORD" input_set="2"/>
+                <bind_vertex_input semantic="Walls_007-mesh-map" input_semantic="TEXCOORD" input_set="3"/>
+              </instance_material>
+              <instance_material symbol="marble_tiles-material" target="#marble_tiles-material">
+                <bind_vertex_input semantic="Walls_006-mesh-map" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="Walls_004-mesh-map" input_semantic="TEXCOORD" input_set="1"/>
+                <bind_vertex_input semantic="Walls_005-mesh-map" input_semantic="TEXCOORD" input_set="2"/>
+                <bind_vertex_input semantic="Walls_007-mesh-map" input_semantic="TEXCOORD" input_set="3"/>
+              </instance_material>
+              <instance_material symbol="beige_wall_001_001-material" target="#beige_wall_001_001-material">
+                <bind_vertex_input semantic="Walls_006-mesh-map" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="Walls_004-mesh-map" input_semantic="TEXCOORD" input_set="1"/>
+                <bind_vertex_input semantic="Walls_005-mesh-map" input_semantic="TEXCOORD" input_set="2"/>
+                <bind_vertex_input semantic="Walls_007-mesh-map" input_semantic="TEXCOORD" input_set="3"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>

@@ -3,6 +3,7 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/living_room_furniture/protos/Carpet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Door.proto"
 
 WorldInfo {
   info [
@@ -36,8 +37,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.2328217120536449 -0.17789918476667482 0.9561097899591667 4.802156238110134
-  position -4.750390290133562 24.1347887119406 8.997462144080762
+  orientation 0.4270599667238627 0.44747968823949336 -0.7857364147313646 1.5662834740604208
+  position -7.148069704462358 12.244232449958957 16.94861033217993
 }
 DEF FORNITURES Group {
   children [
@@ -530,6 +531,15 @@ DEF FORNITURES Group {
     }
   ]
 }
+Door {
+  translation 3.13 2.46 0
+  rotation 0 0 1 3.14159
+}
+Door {
+  translation -4.61 -1.14 0
+  rotation 0 0 -1 -1.5707953071795862
+  name "door(1)"
+}
 DEF CROWD_CONTROL Group {
   children [
     DEF CROWD Group {
@@ -727,16 +737,15 @@ DEF ENVIROMENT Group {
         }
       ]
       name "solid(1)"
-      boundingObject Mesh {
-        url [
-          "FourRoom_meshes/FourRooms_Floor.obj"
-        ]
+      boundingObject Plane {
+        size 100 100
       }
     }
     DEF WALLS Solid {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 0.466667 0.462745 0.482353
             baseColorMap ImageTexture {
               url [
                 "FourRoom_meshes/beige_wall_001_diff_1k.jpg"
@@ -747,8 +756,63 @@ DEF ENVIROMENT Group {
           }
           geometry Mesh {
             url [
-              "FourRoom_meshes/FourRooms_Walls.obj"
+              "FourRoom_meshes/walls.dae"
             ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.756863 0.945098
+            baseColorMap ImageTexture {
+              url [
+                "FourRoom_meshes/beige_wall_001_diff_1k.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "FourRoom_meshes/walls.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.964706 0.380392 0.317647
+            baseColorMap ImageTexture {
+              url [
+                "FourRoom_meshes/beige_wall_001_diff_1k.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "FourRoom_meshes/walls.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.560784 0.941176 0.643137
+            baseColorMap ImageTexture {
+              url [
+                "FourRoom_meshes/beige_wall_001_diff_1k.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "FourRoom_meshes/walls.dae"
+            ]
+            materialIndex 3
           }
         }
       ]
