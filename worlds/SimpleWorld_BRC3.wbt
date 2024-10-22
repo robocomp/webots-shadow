@@ -1,0 +1,65 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "ROBOLAB shadow"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.5283238437102249 0.47422588963396334 0.7042611176034993 1.8234834995130929
+  position -1.561729284518522 -4.996381786647299 12.552191892241709
+}
+RectangleArena {
+  translation 0.0167301 -0.177657 -7.10539e-15
+  floorSize 10 5
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+  wallThickness 0.08
+  wallHeight 1
+}
+SolidBox {
+  translation 0 0 0.5000000000000001
+  size 6 1 1
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+DEF shadow Shadow {
+  translation 0.112743 1.76811 0.03
+}
