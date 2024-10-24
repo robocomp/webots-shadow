@@ -12,7 +12,7 @@ WorldInfo {
     "Simulation of the ROBOLAB shadow robot."
   ]
   title "ROBOLAB shadow"
-  basicTimeStep 16
+  basicTimeStep 30
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"
