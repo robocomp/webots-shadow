@@ -4,6 +4,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 
 WorldInfo {
   info [
@@ -37,8 +39,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
-  position -0.33840216297079173 -0.08807996660836989 15.655138174970086
+  orientation -0.5283238437102249 0.47422588963396334 0.7042611176034993 1.8234834995130929
+  position -1.561729284518522 -4.996381786647299 12.552191892241709
 }
 RectangleArena {
   translation 0.0167301 -0.177657 -7.10539e-15
@@ -49,12 +51,15 @@ RectangleArena {
   wallThickness 0.08
   wallHeight 1
 }
+SolidBox {
+  translation 0 0 0.5000000000000001
+  size 6 1 1
+}
 TexturedBackground {
   texture "noon_park_empty"
 }
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  translation 0.112743 1.76811 0.03
 }
