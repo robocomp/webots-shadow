@@ -39,8 +39,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.4362107292861681 0.2915684088829959 0.8512978694893272 2.1069457443729216
-  position 3.139501329134359 -10.602537791441842 16.061106891763245
+  orientation -0.5012899192061676 0.5791461963653275 0.6428826488075777 1.8639342492002149
+  position -3.006018545639667 -6.729182773586038 19.991954012118416
 }
 Wall {
   translation -3.37 -3.68 0
@@ -59,13 +59,13 @@ Wall {
   size 0.2 5 2.4
 }
 Wall {
-  translation 2.17 -1.2 0
+  translation 3.1 -1.2 0
   rotation 0 0 1 1.5708
   name "wall(3)"
   size 0.2 4 2.4
 }
 Wall {
-  translation -2.83 -1.2 0
+  translation -3.46 -1.2 0
   rotation 0 0 1 1.5708
   name "wall(4)"
   size 0.2 4 2.4
@@ -100,15 +100,26 @@ RectangleArena {
   }
 }
 DEF shadow Shadow {
-  hidden position_0_1 3891.2734330587373
-  hidden position_0_3 3547.208417696031
-  hidden linearVelocity_0 2.915657614333999e-15 -9.033460848038225e-15 -4.134066826240583e-17
-  hidden angularVelocity_0 1.0984710322266809e-15 -2.484599078798536e-15 -5.520257890207862e-17
-  hidden rotation_8 0 -1 0 5.225076234680469
-  hidden rotation_9 0 -1 0 4.301457392606333
-  hidden rotation_11 0 1 0 3.4919044467443467
-  translation 1.621395064856966 -3.7057278133867935 0.032525465487747054
-  rotation -0.001938730497370517 0.0007675698551638315 0.9999978260779251 2.38762051153479
+  hidden position_0_0 4267.336799109863
+  hidden position_0_1 3891.2734349871444
+  hidden position_0_2 4572.1623073874825
+  hidden position_0_3 3547.2084157677505
+  hidden linearVelocity_0 4.2328339364520906e-08 -3.974831783235526e-08 -4.367368529562105e-06
+  hidden angularVelocity_0 -3.9010202733984085e-06 -4.1542274472994246e-06 -9.085667402687007e-13
+  hidden rotation_8 0 -1 0 5.2250743063861735
+  hidden linearVelocity_8 -1.6993868217296999e-07 1.9232407276523986e-07 -4.954827314839013e-06
+  hidden angularVelocity_8 -3.8983296253858004e-06 -4.153105639077444e-06 -8.319987505269097e-13
+  hidden rotation_9 0 -1 0 4.30145546419926
+  hidden linearVelocity_9 -2.0261723247553887e-07 1.575239434295188e-07 -4.954825341751082e-06
+  hidden angularVelocity_9 -3.900069650122553e-06 -4.151471634865762e-06 -9.699810223865488e-13
+  hidden rotation_10 0 -1 0 1.996596239256413
+  hidden linearVelocity_10 -2.130528050874615e-07 2.3254391894854758e-07 -3.461577177700403e-06
+  hidden angularVelocity_10 -3.901977089167767e-06 -4.156975543776373e-06 -9.743721875961164e-13
+  hidden rotation_11 0 0.9999999999999999 0 3.4919025184636934
+  hidden linearVelocity_11 -2.4546588324649155e-07 1.9802727232839625e-07 -3.4615752082093153e-06
+  hidden angularVelocity_11 -3.903702993865742e-06 -4.155354876113626e-06 -1.0672163324501788e-12
+  translation 1.621309206379938 -3.7056471882042707 0.030362403550980143
+  rotation -0.003610306881765408 0.0014293865924416209 0.9999924612406779 2.387624184017036
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -118,33 +129,48 @@ DEF CROWD_CONTROL Group {
           translation -0.78 -4.93 0
         }
         DEF WAYPOINT_2 Pose {
-          translation -0.24 -1.15 0
+          translation 1.55 -4.29 0
         }
         DEF WAYPOINT_3 Pose {
-          translation 1.18 0.69 0
+          translation -0.22 -1.83 0
         }
         DEF WAYPOINT_4 Pose {
-          translation 3.04 1.73 0
+          translation -0.23 -0.41 0
         }
         DEF WAYPOINT_5 Pose {
-          translation -3.82 2.02 0
+          translation 2.64 -0.37 0
         }
         DEF WAYPOINT_6 Pose {
-          translation -1.55 0.09 0
+          translation 3.82 0.41 0
         }
         DEF WAYPOINT_7 Pose {
-          translation -0.49 -1.24 0
+          translation 3.69 1.75 0
         }
         DEF WAYPOINT_8 Pose {
-          translation -2.27 -4.82 0
+          translation -3.75 2.46 0
+        }
+        DEF WAYPOINT_9 Pose {
+          translation -2.84 0.35 0
+        }
+        DEF WAYPOINT_10 Pose {
+          translation -0.49 -0.49 0
+        }
+        DEF WAYPOINT_11 Pose {
+          translation -0.49 -1.75 0
+        }
+        DEF WAYPOINT_12 Pose {
+          translation -2.56 -2.4 0
+        }
+        DEF WAYPOINT_13 Pose {
+          translation -1.88 -4.88 0
         }
       ]
     }
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation 1.4594796609493008 0.8201797713362369 0
-          rotation 0 0 0.9999999999999999 0.5223196387822213
+          translation -2.4017111666932704 -2.8776209234342467 0
+          rotation 0 0 -1 1.3159172324902415
           children [
             Lidar {
               translation 0 0 1.17
@@ -257,8 +283,8 @@ DEF CROWD_CONTROL Group {
           name "HUMAN_1"
           controller "crowd_controller_two_rooms_big"
           supervisor TRUE
-          linearVelocity 0.6066649741372341 0.3492242724464736 0
-          angularVelocity 6.17776492909976e-310 0 0
+          linearVelocity 0.17648988454554254 -0.6773856390297928 0
+          angularVelocity 6.4506966908574e-310 0 0
         }
       ]
     }

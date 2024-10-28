@@ -22,8 +22,8 @@ void CrowdAgent::checkArrival() {
         return;
 
 
-    // Aquí revisarías si el agente ha llegado a su destino.
-    // Si ha llegado, entonces pides un nuevo destino al Crowd
+    // Aquí resisamos si el agente ha llegado a su destino.
+    // Si ha llegado, entonces pide un nuevo destino al Crowd
     if (hasArrivedToDestination()) {
 
         currentDestination = getNextDestination(currentDestinationName);
