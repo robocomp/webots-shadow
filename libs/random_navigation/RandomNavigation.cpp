@@ -4,7 +4,7 @@
 
 #include "RandomNavigation.h"
 
-RandomNavigation::RandomNavigation(){
+RandomNavigation::RandomNavigation(double range) : range(range){
     robotNode = getFromDef("BOX"); // Asegúrate de que el DEF de tu supervisor sea "SUPERVISOR"
     if (!robotNode) {
         std::cerr << "No se encontró el nodo del supervisor." << std::endl;

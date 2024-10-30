@@ -14,7 +14,7 @@ using namespace webots;
 class RandomNavigation: public webots::Supervisor {
 public:
 
-    RandomNavigation();
+    RandomNavigation(double range);
     void moveToRandomPosition();
     void pivotAroundInitialPosition();
     void update();

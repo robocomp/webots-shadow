@@ -6,7 +6,7 @@
 int main() {
 
 
-    RandomNavigation agent;
+    RandomNavigation agent(2.0);
 
     while (agent.step(TIME_STEP) != -1) {
         agent.update();
