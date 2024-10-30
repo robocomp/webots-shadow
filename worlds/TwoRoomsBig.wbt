@@ -6,6 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
 
 WorldInfo {
   info [
@@ -39,8 +40,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5012899192061676 0.5791461963653275 0.6428826488075777 1.8639342492002149
-  position -3.006018545639667 -6.729182773586038 19.991954012118416
+  orientation -0.35793797651601345 0.30196864514119415 0.8835696590078304 1.8433309172523125
+  position 0.6837918717400996 -7.651089880006092 5.856086153992705
 }
 Wall {
   translation -3.37 -3.68 0
@@ -100,26 +101,18 @@ RectangleArena {
   }
 }
 DEF shadow Shadow {
-  hidden position_0_0 4267.336799109863
-  hidden position_0_1 3891.2734349871444
-  hidden position_0_2 4572.1623073874825
-  hidden position_0_3 3547.2084157677505
-  hidden linearVelocity_0 4.2328339364520906e-08 -3.974831783235526e-08 -4.367368529562105e-06
-  hidden angularVelocity_0 -3.9010202733984085e-06 -4.1542274472994246e-06 -9.085667402687007e-13
-  hidden rotation_8 0 -1 0 5.2250743063861735
-  hidden linearVelocity_8 -1.6993868217296999e-07 1.9232407276523986e-07 -4.954827314839013e-06
-  hidden angularVelocity_8 -3.8983296253858004e-06 -4.153105639077444e-06 -8.319987505269097e-13
-  hidden rotation_9 0 -1 0 4.30145546419926
-  hidden linearVelocity_9 -2.0261723247553887e-07 1.575239434295188e-07 -4.954825341751082e-06
-  hidden angularVelocity_9 -3.900069650122553e-06 -4.151471634865762e-06 -9.699810223865488e-13
-  hidden rotation_10 0 -1 0 1.996596239256413
-  hidden linearVelocity_10 -2.130528050874615e-07 2.3254391894854758e-07 -3.461577177700403e-06
-  hidden angularVelocity_10 -3.901977089167767e-06 -4.156975543776373e-06 -9.743721875961164e-13
-  hidden rotation_11 0 0.9999999999999999 0 3.4919025184636934
-  hidden linearVelocity_11 -2.4546588324649155e-07 1.9802727232839625e-07 -3.4615752082093153e-06
-  hidden angularVelocity_11 -3.903702993865742e-06 -4.155354876113626e-06 -1.0672163324501788e-12
-  translation 1.621309206379938 -3.7056471882042707 0.030362403550980143
-  rotation -0.003610306881765408 0.0014293865924416209 0.9999924612406779 2.387624184017036
+  hidden position_0_0 4267.336799902185
+  hidden position_0_1 3891.2734357795107
+  hidden position_0_2 4572.162306595137
+  hidden position_0_3 3547.2084149754323
+  hidden linearVelocity_0 1.4222008974653738e-07 -1.335514138133569e-07 -1.3833877798506662e-05
+  hidden angularVelocity_0 -1.3089730944375078e-05 -1.393936131766193e-05 -2.110327748019279e-12
+  hidden rotation_8 0 -1 0 5.22507351406451
+  hidden rotation_9 0 -1 0 4.301454671832924
+  hidden rotation_10 0 -1 0 1.9965970316018307
+  hidden rotation_11 0 1 0 3.4919017261455605
+  translation 1.6213088708025263 -3.7056468730824013 0.03036349904029182
+  rotation -0.0036095721203630395 0.0014290956825977004 0.9999924643089255 2.387624181913569
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -169,8 +162,8 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -2.4017111666932704 -2.8776209234342467 0
-          rotation 0 0 -1 1.3159172324902415
+          translation -0.21219816562078964 -1.310750872669128 0
+          rotation 0 0 1 1.5905570816585306
           children [
             Lidar {
               translation 0 0 1.17
@@ -283,10 +276,19 @@ DEF CROWD_CONTROL Group {
           name "HUMAN_1"
           controller "crowd_controller_two_rooms_big"
           supervisor TRUE
-          linearVelocity 0.17648988454554254 -0.6773856390297928 0
-          angularVelocity 6.4506966908574e-310 0 0
+          linearVelocity -0.013831627948484646 0.6998633219272133 0
+          angularVelocity 6.32531554404641e-310 0 0
         }
       ]
     }
   ]
+}
+DEF BOX Robot {
+  translation 3.00872688206656e-310 1.11192080424196e-310 0
+  children [
+    CardboardBox {
+    }
+  ]
+  controller "random_navigation"
+  supervisor TRUE
 }
