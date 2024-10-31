@@ -6,6 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "../protos/NavegableBox.proto"
 
 WorldInfo {
   info [
@@ -39,8 +40,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5012899192061676 0.5791461963653275 0.6428826488075777 1.8639342492002149
-  position -3.006018545639667 -6.729182773586038 19.991954012118416
+  orientation 0.37572465390132154 -0.4149700265226428 -0.8286319216265624 4.640229833193999
+  position -1.0300288264504291 -11.588247900038477 14.546260776963916
 }
 Wall {
   translation -3.37 -3.68 0
@@ -100,26 +101,26 @@ RectangleArena {
   }
 }
 DEF shadow Shadow {
-  hidden position_0_0 4267.336799109863
-  hidden position_0_1 3891.2734349871444
-  hidden position_0_2 4572.1623073874825
-  hidden position_0_3 3547.2084157677505
-  hidden linearVelocity_0 4.2328339364520906e-08 -3.974831783235526e-08 -4.367368529562105e-06
-  hidden angularVelocity_0 -3.9010202733984085e-06 -4.1542274472994246e-06 -9.085667402687007e-13
-  hidden rotation_8 0 -1 0 5.2250743063861735
-  hidden linearVelocity_8 -1.6993868217296999e-07 1.9232407276523986e-07 -4.954827314839013e-06
-  hidden angularVelocity_8 -3.8983296253858004e-06 -4.153105639077444e-06 -8.319987505269097e-13
-  hidden rotation_9 0 -1 0 4.30145546419926
-  hidden linearVelocity_9 -2.0261723247553887e-07 1.575239434295188e-07 -4.954825341751082e-06
-  hidden angularVelocity_9 -3.900069650122553e-06 -4.151471634865762e-06 -9.699810223865488e-13
-  hidden rotation_10 0 -1 0 1.996596239256413
-  hidden linearVelocity_10 -2.130528050874615e-07 2.3254391894854758e-07 -3.461577177700403e-06
-  hidden angularVelocity_10 -3.901977089167767e-06 -4.156975543776373e-06 -9.743721875961164e-13
-  hidden rotation_11 0 0.9999999999999999 0 3.4919025184636934
-  hidden linearVelocity_11 -2.4546588324649155e-07 1.9802727232839625e-07 -3.4615752082093153e-06
-  hidden angularVelocity_11 -3.903702993865742e-06 -4.155354876113626e-06 -1.0672163324501788e-12
-  translation 1.621309206379938 -3.7056471882042707 0.030362403550980143
-  rotation -0.003610306881765408 0.0014293865924416209 0.9999924612406779 2.387624184017036
+  hidden position_0_0 4267.336823850195
+  hidden position_0_1 3891.273459728881
+  hidden position_0_2 4572.1622826463345
+  hidden position_0_3 3547.208391027461
+  hidden linearVelocity_0 4.785701672325389e-07 -4.4940012520480697e-07 -4.383289290181219e-05
+  hidden angularVelocity_0 -4.3994314439572686e-05 -4.68499130052416e-05 -4.2695084850857574e-12
+  hidden rotation_8 0 -1 0 5.225049566054124
+  hidden linearVelocity_8 -2.264634248210767e-06 2.157551062990201e-06 -5.034858290007249e-05
+  hidden angularVelocity_8 -4.398979797256941e-05 -4.684675252561214e-05 -4.034589266644117e-12
+  hidden rotation_9 0 -1 0 4.301430722462736
+  hidden linearVelocity_9 -2.2955236840430193e-06 2.1246557447599462e-06 -5.034856481160742e-05
+  hidden angularVelocity_9 -4.39914436651397e-05 -4.684520701419534e-05 -4.429329286828916e-12
+  hidden rotation_10 0 -1 0 1.9966209804044943
+  hidden linearVelocity_10 -2.390226880297016e-06 2.274451289601588e-06 -3.358664528803179e-05
+  hidden angularVelocity_10 -4.399720329029434e-05 -4.685458078262887e-05 -4.662094656472569e-12
+  hidden rotation_11 0 1 0 3.491877778174175
+  hidden linearVelocity_11 -2.4200812618848915e-06 2.2426589365973347e-06 -3.3586627198100564e-05
+  hidden angularVelocity_11 -4.399879337007955e-05 -4.6853087669964584e-05 -4.871155859329591e-12
+  translation 1.621297683636348 -3.7056363677970854 0.030366969705579262
+  rotation -0.0036071039183781456 0.0014281184610829673 0.9999924746111757 2.387624174844194
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -147,13 +148,13 @@ DEF CROWD_CONTROL Group {
           translation 3.69 1.75 0
         }
         DEF WAYPOINT_8 Pose {
-          translation -3.75 2.46 0
+          translation -2.06 2.46 0
         }
         DEF WAYPOINT_9 Pose {
-          translation -2.84 0.35 0
+          translation -4.05 1.45 0
         }
         DEF WAYPOINT_10 Pose {
-          translation -0.49 -0.49 0
+          translation -1.17 -0.49 0
         }
         DEF WAYPOINT_11 Pose {
           translation -0.49 -1.75 0
@@ -169,8 +170,8 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation -2.4017111666932704 -2.8776209234342467 0
-          rotation 0 0 -1 1.3159172324902415
+          translation -1.59087 -3.93185 0
+          rotation 0 0 1 1.5905446743107374
           children [
             Lidar {
               translation 0 0 1.17
@@ -283,10 +284,11 @@ DEF CROWD_CONTROL Group {
           name "HUMAN_1"
           controller "crowd_controller_two_rooms_big"
           supervisor TRUE
-          linearVelocity 0.17648988454554254 -0.6773856390297928 0
-          angularVelocity 6.4506966908574e-310 0 0
         }
       ]
     }
   ]
+}
+NavegableBox {
+  translation -0.04 1.06 0
 }
