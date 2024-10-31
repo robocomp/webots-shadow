@@ -65,7 +65,6 @@
 ###
 ###-----------------------------------------------------------------------------
 
-VERBOSE = 1
 RANDOM_NAVIGATION_PATH = ../../libs/random_navigation
 CFLAGS = -I"$(RANDOM_NAVIGATION_PATH)"
 LIBRARIES = -L"$(RANDOM_NAVIGATION_PATH)" -lrandom_navigation

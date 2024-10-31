@@ -1,0 +1,26 @@
+#VRML_SIM R2023b utf8
+# license: Copyright Robolab UEx. Open for all the purposes.
+# A cardboard box that navigates randomly.
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
+
+
+PROTO NavegableBox [
+  field SFVec3f           translation     0 0 0         
+  field SFRotation        rotation        0 0 1 0       
+  field SFString          name            "navegable box"      
+  field SFString          controller      "random_navigation"    
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      CardboardBox {
+      }
+    ]
+    controller IS controller
+    supervisor TRUE
+  }
+}

@@ -1,17 +1,20 @@
+#include <webots/Robot.hpp>
 #include "RandomNavigation.cpp"
 
-#define TIME_STEP 32
+// All the webots classes are defined in the "webots" namespace
+using namespace webots;
 
+int main(int argc, char **argv) {
+  // create the Robot instance.
+  RandomNavigation robot(2.0f);
+  robot.setSpeedMovement(0.3f);
 
-int main() {
+  int timeStep = 32;
 
+  while (robot.step(timeStep) != -1) {
+    robot.update();
+  };
 
-    RandomNavigation agent(2.0);
-
-    while (agent.step(TIME_STEP) != -1) {
-        agent.update();
-    }
-  
-
-    return 0;
+  // Enter here exit cleanup code.
+  return 0;
 }
