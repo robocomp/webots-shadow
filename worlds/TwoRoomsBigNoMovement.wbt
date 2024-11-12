@@ -40,8 +40,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5732338722092295 0.5776190189930591 0.5811705400736593 2.0820452171372583
-  position -0.21690382309775427 -0.20710910841235242 10.858446087774455
+  orientation -0.5524200006496794 0.551107347554733 0.6253901457117745 2.0259760409664973
+  position -0.023302374509613255 -1.602751072355376 12.090734970513479
 }
 Wall {
   translation -3.37 -3.68 0
@@ -94,28 +94,85 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation -0.364027 -1.58598 0.05
+  translation -0.162163 -1.47113 0.05
   floorSize 10 10
   floorAppearance Parquetry {
     type "light strip"
   }
 }
 SolidBox {
-  translation -0.228107 -1.40019 0.41
+  translation -0.338107 -1.18019 0.41
   name "box(1)"
+  size 1 0.2 3
+}
+SolidBox {
+  translation 0.102303 -2.35217 0.41
+  name "box(2)"
   size 0.5 0.5 2
 }
+SolidBox {
+  translation -0.698454 0.597365 0.41
+  rotation 0 0 1 -0.785395307179586
+  name "box(4)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation 1.91312 0.310097 0.41
+  rotation 0 0 1 -1.047195307179586
+  name "box(6)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation -2.87833 0.897447 0.51
+  rotation 0 0 1 -0.785395307179586
+  name "box(3)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation -0.781476 1.60047 0.41
+  rotation 0 0 1 -0.785395307179586
+  name "box(9)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation -0.753675 1.18027 0.41
+  rotation 0 0 1 -0.785395307179586
+  name "box(7)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation 1.85136 0.897992 0.41
+  rotation 0 0 1 0.261803
+  name "box(8)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation -2.82268 0.353747 0.49
+  rotation 0 0 -1 0.785395
+  name "box(5)"
+  size 0.5 0.5 0.5
+}
 DEF shadow Shadow {
-  hidden position_0_0 7908.287106832243
-  hidden position_0_1 8213.935159103245
-  hidden position_0_2 8144.2617831305615
-  hidden position_0_3 7809.381538174866
-  hidden rotation_5 0 1 0 4.03999040032311
-  hidden rotation_6 0 -1 0 4.475345689195391
-  hidden rotation_7 0 1 0 1.2536250258174515
-  hidden rotation_8 0 -1 0 3.0515940236046615
-  translation -1.69499 0.505568 0.0825255
-  rotation -0.001938746427508518 0.006618045586483403 0.999976221084734 0.5699435269010642
+  hidden position_0_0 19864.36175505947
+  hidden position_0_1 20035.895270727764
+  hidden position_0_2 20057.594458692114
+  hidden position_0_3 19586.142937368284
+  hidden linearVelocity_0 -3.684174177852707e-16 2.2000204688313567e-15 -1.0851925418881529e-15
+  hidden angularVelocity_0 -2.2942422700673746e-15 -4.744131473219555e-15 -3.998572558410669e-15
+  hidden rotation_5 0 -1 0 3.0701862423806787
+  hidden linearVelocity_5 -5.177634268202883e-16 1.4458149211957368e-15 -4.647821101362093e-16
+  hidden angularVelocity_5 -4.574715639444247e-14 1.0297893231503133e-14 -3.9913465666751164e-15
+  hidden rotation_6 0 1 0 5.096388437809049
+  hidden linearVelocity_6 -2.9675836974402482e-15 2.160347229844883e-15 -4.649301852668809e-16
+  hidden angularVelocity_6 -5.498220856187493e-14 6.785672661089182e-15 -3.2991797181519933e-15
+  hidden rotation_7 0 0.9999999999999999 0 1.6669581748740965
+  hidden linearVelocity_7 4.568211294809939e-15 6.93176444483728e-16 -2.466757985670574e-15
+  hidden angularVelocity_7 2.1836224493975207e-14 -7.295358392771816e-15 -3.833495115347445e-15
+  hidden rotation_8 0 -1 0 0.979460484731999
+  hidden linearVelocity_8 -7.496504020915481e-16 1.9975623044349457e-15 -2.0237780502670023e-16
+  hidden angularVelocity_8 8.031226103853663e-16 -4.1730524541284955e-15 -3.4580616925113905e-15
+  translation -2.8793015821304233 -0.6237385795272601 0.08036189752249492
+  rotation -0.003610624663614275 0.00038103319796509757 0.9999934090799001 2.931309478120802
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -150,8 +207,8 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation 0.18403 1.83127 0.15
-          rotation -1.791476955636784e-90 -3.1075211142287975e-90 -1 2.095675307179587
+          translation -3.40604 -0.532719 -0.04
+          rotation 2.37217e-89 -3.10761e-90 -1 -0.2605153071795865
           children [
             Lidar {
               translation 0 0 1.17

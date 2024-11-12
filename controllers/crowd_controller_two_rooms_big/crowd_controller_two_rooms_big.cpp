@@ -18,7 +18,9 @@ int main() {
         {"WAYPOINT_10", {"WAYPOINT_11"}},
         {"WAYPOINT_11", {"WAYPOINT_12"}},
         {"WAYPOINT_12", {"WAYPOINT_13"}},
-        {"WAYPOINT_13", {"WAYPOINT_1"}}
+        {"WAYPOINT_13", {"WAYPOINT_14"}},
+        {"WAYPOINT_15", {"WAYPOINT_1"}},
+        {"WAYPOINT_14", {"WAYPOINT_15"}}
     };
 
     CrowdAgent* agent = new CrowdAgent(miGrafo);
