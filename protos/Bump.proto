@@ -1,0 +1,45 @@
+#VRML_SIM R2023b utf8
+# license: Copyright Robolab UEx. Open for all the purposes.
+# A customizable size bump.
+# template language: javascript
+
+PROTO Bump [
+    field SFVec3f           translation     0 0 0.001         
+    field SFRotation        rotation        0 0 1 0       
+    field SFString          name            "Customizable Bump"   
+    field SFBool            invisible       FALSE
+    field SFString{"25x5cm", "25x7cm", "25x10cm", "50x5cm", "50x7cm", "50x10cm", "100x5cm", "100x7cm", "100x10cm"}  type    "100x5cm"
+]
+{
+    %<
+        const meshName = fields.type.value;
+        const isInvisible = fields.invisible.value ? 1 : 0;
+    >%
+    Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+        Shape {
+            appearance PBRAppearance {
+            baseColor 0.603922 0.6 0.588235
+            roughness 1
+            metalness 0
+            transparency %<= isInvisible >%
+        }
+        geometry Mesh {
+            url [
+            %<= '"./meshes/bumps/Bump_' + meshName + '.stl"' >%
+            ]
+        }
+        }
+    ]
+    boundingObject Shape {
+        geometry Mesh {
+            url [
+            %<= '"./meshes/bumps/Bump_' + meshName + '.stl"' >%
+            ]
+        }
+    }
+    }
+}
