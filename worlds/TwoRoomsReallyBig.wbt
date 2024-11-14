@@ -1,0 +1,362 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/fridge/protos/Fridge.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/WoodenChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/cabinet/protos/Cabinet.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "ROBOLAB shadow"
+  basicTimeStep 30
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5825062730131684 -0.5784396850022754 -0.571046384030909 4.183786703432027
+  position 0.17161403701262445 -0.6823895570571163 15.728312693817275
+}
+Wall {
+  translation -3.65 -3.68 0
+  size 0.2 5 2.4
+}
+Wall {
+  translation 0.0248109 -5.18553 0
+  rotation 0 0 1 1.5708
+  name "wall(1)"
+  size 0.2 9 2.4
+}
+Fridge {
+  hidden position_0_0 0.0005231758021014127
+  hidden position_0_1 0.000802617798714674
+  hidden translation_1 0.36 0.34 1.55
+  hidden rotation_1 0 0 1 0.0005231758018766949
+  hidden linearVelocity_1 4.966831183638912e-12 -9.828679251469337e-09 -3.2507330161024573e-15
+  hidden angularVelocity_1 -5.942199172290455e-14 -3.392849496147323e-17 2.8081650042548835e-08
+  hidden translation_2 0.36 0.34 0.65
+  hidden rotation_2 0 0 1 0.000802617798594375
+  hidden linearVelocity_2 1.2224252427700203e-11 -1.547012953402047e-08 -1.6520118606422328e-15
+  hidden angularVelocity_2 -9.278079728461e-14 -1.7749031724950352e-16 4.419991445949695e-08
+  translation 1.62237 2.20496 0.229997
+  rotation 2.3464099999870814e-06 -2.3464099999870814e-06 0.9999999999944944 -1.5707953071795862
+}
+Wall {
+  translation 3.78 -3.67 0
+  rotation 0 0 1 -3.1415853071795863
+  name "wall(2)"
+  size 0.2 5 2.4
+}
+Wall {
+  translation -0.0330597 2.65031 0
+  rotation 0 0 1 1.5708
+  name "wall(5)"
+  size 0.2 9 2.4
+}
+Wall {
+  translation -3.66 0.99996 0
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(6)"
+  size 0.2 5 2.4
+}
+Wall {
+  translation 3.78 1.01998 0
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(7)"
+  size 0.2 5 2.4
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0.113447 -0.920284 8.17125e-14
+  floorSize 10 10
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+Cabinet {
+  hidden position_6_0 7.206707957354872e-05
+  hidden translation_7 -1.4341348822722176e-05 -5.16769488312363e-10 0
+  hidden rotation_7 0 0 1 7.206708101460576e-05
+  hidden linearVelocity_7 -4.797903476091002e-20 -2.016694226828554e-21 -3.3564311551098652e-15
+  hidden angularVelocity_7 2.5815873275599113e-20 3.599888664702924e-18 -2.1359851026325385e-19
+  hidden position_10_0 -6.126786126654186e-05
+  hidden translation_11 -1.0363458726751902e-05 3.1747368622880856e-10 0
+  hidden rotation_11 0 0 -1 6.126786341987404e-05
+  hidden linearVelocity_11 -2.4807301952458998e-20 -3.700736775635205e-16 -3.415315912217056e-15
+  hidden angularVelocity_11 -8.29685065756204e-21 1.2669164933717783e-18 1.2947536017888054e-19
+  hidden translation_15 0.04339554929609104 0 0
+  hidden linearVelocity_15 0 0 -1.440289329243446e-15
+  hidden translation_23 0.06917734058708885 0 0
+  hidden linearVelocity_23 0 0 -6.913388780368541e-16
+  hidden translation_31 0.04209321347803532 0 0
+  hidden linearVelocity_31 0 0 -6.913388780368541e-16
+  hidden translation_39 0.06696385019349715 0 0
+  hidden linearVelocity_39 0 0 -4.4293573138291965e-16
+  translation 3.70439 0.026207 0.01
+  rotation 0 0 1 3.14159
+}
+Table {
+  translation -1.23145 -2.24091 -0.08999999999999986
+  rotation 0 0 1 -1.5707953071795862
+}
+WoodenChair {
+  translation -0.136618 -2.28409 3.55271e-15
+  rotation 0 0 1 3.14159
+}
+WoodenChair {
+  translation -2.15358 -2.25697 3.55271e-15
+  name "wooden chair(7)"
+}
+WoodenChair {
+  translation -1.60961 -2.9384 3.55271e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(1)"
+}
+WoodenChair {
+  translation -1.56707 -1.50828 3.55271e-15
+  rotation 0 0 1 -1.5708053071795867
+  name "wooden chair(4)"
+}
+WoodenChair {
+  translation -0.748471 -1.53981 3.55271e-15
+  rotation 0 0 1 -1.5708053071795867
+  name "wooden chair(5)"
+}
+WoodenChair {
+  translation -0.770467 -2.93259 3.55271e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(3)"
+}
+DEF shadow Shadow {
+  hidden position_0_0 143026.25938047454
+  hidden position_0_1 93594.31552832191
+  hidden position_0_2 142971.0363938087
+  hidden position_0_3 93018.40314504175
+  hidden linearVelocity_0 -0.0007888531085839473 0.0031092898744496645 2.7686695602903877e-10
+  hidden angularVelocity_0 -1.5846216944210418e-08 -1.361245470734893e-08 0.10262211693024305
+  hidden translation_5 0.1 -0.21 0.015
+  hidden rotation_5 0 -0.9999999999999999 0 4.170978783097772
+  hidden linearVelocity_5 0.01755967377341003 0.018405158376541962 5.038412216513308e-09
+  hidden angularVelocity_5 -0.18668102510581627 0.735134779833524 0.10276286900893147
+  hidden translation_6 0.1 0.21 0.015
+  hidden rotation_6 0 -1 0 0.016957096692140947
+  hidden linearVelocity_6 -0.02421394518362471 0.007793512128495906 -2.6651955997122504e-09
+  hidden angularVelocity_6 0.18668217067650633 -0.7351410060761665 0.10274349552211094
+  hidden translation_7 -0.16 -0.21 0.015
+  hidden rotation_7 0 1 0 3.437940871421692
+  hidden linearVelocity_7 0.02413020865403174 -0.007456868925180303 2.6693654059060427e-09
+  hidden angularVelocity_7 -0.18668355747339818 0.7351406332312973 0.10276209839869009
+  hidden translation_8 -0.16 0.21 0.015
+  hidden rotation_8 0 0.9999999999999999 0 5.977300825286734
+  hidden linearVelocity_8 -0.017643409302799843 -0.01806851487837742 -5.0343258845043845e-09
+  hidden angularVelocity_8 0.18668235776780892 -0.73513446196052 0.102744585394801
+  translation -0.1805631220323271 -0.24391127090419082 0.03036268555399032
+  rotation -0.003547672659178787 0.028595280150643613 0.9995847757803283 0.250351155066024
+}
+DEF CROWD_CONTROL Group {
+  children [
+    DEF WAYPOINTS Group {
+      children [
+        DEF WAYPOINT_1 Pose {
+          translation 1.07 -0.99 0
+        }
+        DEF WAYPOINT_2 Pose {
+          translation 1.82 -0.31 0
+        }
+        DEF WAYPOINT_3 Pose {
+          translation 1.81 1.03 0
+        }
+        DEF WAYPOINT_4 Pose {
+          translation -0.42 1.25 0
+        }
+        DEF WAYPOINT_5 Pose {
+          translation -2.2 1.19 0
+        }
+        DEF WAYPOINT_6 Pose {
+          translation -2.72 -1.56 0
+        }
+        DEF WAYPOINT_7 Pose {
+          translation -2.77 -4.26 0
+        }
+        DEF WAYPOINT_8 Pose {
+          translation 1.72 -4.58 0
+        }
+        DEF WAYPOINT_9 Pose {
+          translation 2.93 -2.93 0
+        }
+        DEF WAYPOINT_10 Pose {
+          translation 1.98 -0.91 0
+        }
+        DEF WAYPOINT_11 Pose {
+          translation 1.04 -1.41 0
+        }
+        DEF WAYPOINT_12 Pose {
+          translation 1.07 -3.54 0
+        }
+        DEF WAYPOINT_13 Pose {
+          translation -0.89 -4.33 0
+        }
+        DEF WAYPOINT_14 Pose {
+          translation -3.04 -4.62 -0.58
+        }
+        DEF WAYPOINT_15 Pose {
+          translation -3.04 -0.41 -0.58
+        }
+      ]
+    }
+    DEF CROWD Group {
+      children [
+        DEF HUMAN_1 Robot {
+          translation -2.311863715973817 0.6540848900854528 0
+          rotation 0 0 -1 1.7530863098406146
+          children [
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 10
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+          ]
+          name "HUMAN_1"
+          controller "crowd_controller_two_rooms_big"
+          supervisor TRUE
+          linearVelocity -0.126897459029793 -0.688401785443996 0
+          angularVelocity 6.92731642476644e-310 0 0
+        }
+      ]
+    }
+  ]
+}

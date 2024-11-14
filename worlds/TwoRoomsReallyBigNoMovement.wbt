@@ -40,36 +40,24 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.549652745895671 0.5428903928037175 0.6349424228469649 2.0213376453674896
-  position -0.07877348292567399 -1.7339197656020344 12.071967708421434
+  orientation -0.5671572825064898 0.5658094879348391 0.5984916375880025 2.0650739467142176
+  position 0.051953243978065 -2.5239488114899693 16.966408644556186
 }
 Wall {
-  translation -3.37 -3.68 0
+  translation -4.74 -3.68 -2.77556e-17
   size 0.2 5 2.4
 }
 Wall {
   translation -0.325191 -5.67553 0
   rotation 0 0 1 1.5708
   name "wall(1)"
-  size 0.2 6 2.4
+  size 0.2 9 2.4
 }
 Wall {
-  translation 2.64 -3.67 0
+  translation 4.21 -3.67 0
   rotation 0 0 1 -3.1415853071795863
   name "wall(2)"
   size 0.2 5 2.4
-}
-Wall {
-  translation 2.17 -1.2 0
-  rotation 0 0 1 1.5708
-  name "wall(3)"
-  size 0.2 4 2.4
-}
-Wall {
-  translation -2.83 -1.2 0
-  rotation 0 0 1 1.5708
-  name "wall(4)"
-  size 0.2 4 2.4
 }
 Wall {
   translation -0.34 3.22 0
@@ -78,7 +66,7 @@ Wall {
   size 0.2 9 2.4
 }
 Wall {
-  translation -4.74 0.99996 0
+  translation -4.74 0.99996 -2.7755575615628914e-17
   rotation 0 0 -1 -5.307179586466759e-06
   name "wall(6)"
   size 0.2 5 2.4
@@ -94,73 +82,93 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation 0.209195 -1.25544 0.05
+  translation 0.031722 -0.682361 0.05
   floorSize 10 10
   floorAppearance Parquetry {
     type "light strip"
   }
 }
 SolidBox {
-  translation -0.338107 -1.18019 0.41
-  name "box(1)"
-  size 1 0.2 3
+  translation 2.60581 -3.00527 0.21
+  rotation 0 0 1 -0.785395307179586
+  name "box(4)"
+  size 0.5 0.5 0.5
 }
 SolidBox {
-  translation 0.102303 -2.35217 0.41
-  name "box(2)"
-  size 0.5 0.5 2
-}
-SolidBox {
-  translation 0.861016 -0.289427 0.41
+  translation 1.93362 -3.05359 0.21
   rotation 0 0 1 -1.047195307179586
   name "box(6)"
   size 0.5 0.5 0.5
 }
 SolidBox {
-  translation 0.803631 0.57862 0.41
-  rotation 0 0 1 -1.3089953071795861
-  name "box(4)"
+  translation 2.22029 1.40126 0.21
+  rotation 0 0 1 -0.785395307179586
+  name "box(3)"
   size 0.5 0.5 0.5
 }
 SolidBox {
-  translation 0.666704 1.33462 0.41
+  translation 2.23551 0.527896 0.21
+  rotation 0 0 1 -0.785395307179586
+  name "box(9)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation 3.21873 -1.28288 0.21
+  rotation 0 0 -1 0.785395
+  name "box(7)"
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation 3.87423 -1.26842 0.21
   rotation 0 0 1 0.261803
   name "box(8)"
   size 0.5 0.5 0.5
 }
 SolidBox {
-  translation -0.814155 -0.522859 0.61
-  rotation 0 0 -1 0.785395
+  translation -2.87498 -1.31187 0.19
+  rotation 0 0 1 -1.5707953071795862
   name "box(5)"
-  size 0.5 0.5 0.5
+  size 6 0.1 0.5
 }
 SolidBox {
-  translation -1.26489 2.75294 0.61
-  rotation 0 0 -1 0.785395
-  name "box(3)"
-  size 0.5 0.5 0.5
+  translation 1.39375 -1.38114 0.19
+  rotation 0 0 1 -1.5707953071795862
+  name "box(10)"
+  size 6 0.1 0.5
+}
+SolidBox {
+  translation -0.74003 0.350747 0.19
+  rotation 0 0 1 -1.5707953071795862
+  name "box(1)"
+  size 5 0.1 0.5
+}
+SolidBox {
+  translation -0.677278 -3.98036 0.19
+  rotation 0 0 1 3.14159
+  name "box(2)"
+  size 4 0.1 0.5
 }
 DEF shadow Shadow {
-  hidden position_0_0 23586.1352204138
-  hidden position_0_1 26773.168149642832
-  hidden position_0_2 23752.54596201562
-  hidden position_0_3 26302.17906388878
-  hidden linearVelocity_0 -7.395599284491668e-17 -1.0608937970537432e-16 -1.1627062948801638e-16
-  hidden angularVelocity_0 -1.544072937258653e-16 -2.883656480277484e-15 1.4662076491612105e-16
-  hidden rotation_5 0 -0.9999999999999999 0 0.9424227383692555
-  hidden linearVelocity_5 1.0978570281836073e-15 -4.273316676109512e-16 -8.002562483021468e-16
-  hidden angularVelocity_5 2.8687330290968767e-14 -3.030750155264729e-14 1.2927158110472414e-15
-  hidden rotation_6 0 -1 0 5.771752557900746
-  hidden linearVelocity_6 5.288450214291925e-15 -7.488480336864242e-18 -3.729472137661013e-15
-  hidden angularVelocity_6 9.904464540567672e-15 -1.1617348210452426e-14 2.3574595096299055e-15
-  hidden rotation_7 0 1 0 2.105500876784743
-  hidden linearVelocity_7 -2.8644745466986027e-15 -2.5590452428250956e-16 -1.332215405125437e-15
-  hidden angularVelocity_7 3.419863607065422e-15 -1.3280227570058549e-14 -2.089218164160585e-16
-  hidden rotation_8 0 0.9999999999999999 0 4.614757967937579
-  hidden linearVelocity_8 -1.511800643190677e-15 2.9429706731105125e-16 7.995049491789341e-16
-  hidden angularVelocity_8 -6.641889268267248e-15 -1.5852216104521008e-15 1.6413690088642678e-15
-  translation 2.4042787186362635 1.4411491972844013 0.0803618975224999
-  rotation 0.0036103977789709524 0.011887579992379105 -0.9999228222566993 0.5897553657169173
+  hidden position_0_3 21999.003454720252
+  hidden linearVelocity_0 -4.648554268788467e-16 -3.926433042336893e-15 -7.751375299201093e-16
+  hidden angularVelocity_0 -3.0769006175548012e-15 2.7033636635040625e-15 6.145665920732314e-16
+  hidden translation_5 0.1 -0.21 0.015
+  hidden rotation_5 0 -1 0 3.644521646670792
+  hidden linearVelocity_5 -2.7940896745397946e-16 6.798729906980841e-15 -5.3138163988147135e-16
+  hidden angularVelocity_5 1.929130177791587e-14 4.866398499915888e-16 5.818756533149011e-16
+  hidden translation_6 0.1 0.21 0.015
+  hidden rotation_6 0 1 0 5.4658009000748695
+  hidden linearVelocity_6 -5.527937742740176e-16 -7.561306649034532e-15 -9.018093381213882e-19
+  hidden angularVelocity_6 1.1088875149465445e-14 1.5666086604033638e-15 6.153401483446659e-16
+  hidden translation_7 -0.16 -0.21 0.015
+  hidden linearVelocity_7 6.772707581742364e-17 5.916265552988032e-15 5.325618918189408e-16
+  hidden angularVelocity_7 4.990900958121387e-14 -6.925677010762023e-16 6.781210160929789e-16
+  hidden translation_8 -0.16 0.21 0.015
+  hidden rotation_8 0 -0.9999999999999999 0 0.8621010897251319
+  hidden linearVelocity_8 -6.521457698522304e-16 -8.382985718910353e-15 -1.8649679583355496e-15
+  hidden angularVelocity_8 2.351281988675914e-14 7.186564315912724e-16 7.496244570718782e-16
+  translation -0.19522916056717465 -4.958390448093715 0.08036189752247075
+  rotation -0.0035684710742124315 -0.1524937268068071 0.9882979962029487 -0.047345866132050496
 }
 DEF CROWD_CONTROL Group {
   children [
@@ -195,8 +203,8 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_1 Robot {
-          translation 2.89366 0.989547 -0.04
-          rotation -1.98488e-93 3.10753e-90 1 3.14031
+          translation 0.330285 -4.99254 -0.12
+          rotation 4.04824e-90 3.11044e-90 1 -1.3102853071795861
           children [
             Lidar {
               translation 0 0 1.17
