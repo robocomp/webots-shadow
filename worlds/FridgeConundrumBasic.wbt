@@ -1,0 +1,103 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/fridge/protos/Fridge.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "ROBOLAB shadow"
+  basicTimeStep 33
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5692147441696712 0.5979731833872539 -0.564289506343658 2.109165898973555
+  position 0.08408695880769498 -0.8925224073910003 26.381170608105485
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+DEF shadow Shadow {
+  translation 0 0 0.0298985
+  rotation 0.0039661706868468986 0.0029270264982899303 -0.9999878509291806 1.57
+}
+Fridge {
+  translation 2.5 0 3.19744e-13
+  rotation 0 0 1 3.14159
+  name "fridge(4)"
+}
+Group {
+  children [
+    Solid {
+      translation -0.061706 -1.00863 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.756863 0.945098
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "FourRoom_meshes/floors_no_hallways.dae"
+            ]
+            materialIndex 0
+          }
+        }
+      ]
+      boundingObject Plane {
+        size 30 30
+      }
+    }
+  ]
+}
+Wall {
+  translation 3 0 0
+  size 0.2 7 2.4
+}
+Wall {
+  translation -3 0 0
+  name "wall(1)"
+  size 0.2 7 2.4
+}
+Wall {
+  translation 0 -3 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wall(2)"
+  size 0.2 7 2.4
+}
+Wall {
+  translation 0 3 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wall(3)"
+  size 0.2 7 2.4
+}
