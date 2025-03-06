@@ -95,6 +95,9 @@ Robot {
           noise 0.005
           defaultFrequency 20
         }
+        Accelerometer {
+          resolution 0.001
+        }
       ]
     }
     DEF WHEEL1 HingeJoint {
@@ -899,10 +902,18 @@ Robot {
   boundingObject Group {
     children [
       Pose {
-        translation 0 0 0.6
+        translation 0.041 0 0.37
         children [
           Box {
-            size 0.5 0.5 1.2
+            size 0.46 0.44 0.71
+          }
+        ]
+      }
+      Pose {
+        translation -0.19 0 1.03
+        children [
+          Box {
+            size 0.1 0.42 0.61
           }
         ]
       }
