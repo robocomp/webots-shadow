@@ -104,7 +104,7 @@ Robot {
       jointParameters HingeJointParameters {
         position 4267.336797181569
         axis 0 1 0
-        anchor 0.1 -0.21 0.025
+        anchor 0.1 -0.21 0.045
       }
       device [
         RotationalMotor {
@@ -116,7 +116,7 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation 0.1 -0.21 0.025
+        translation 0.1 -0.21 0.045
         rotation 1 0 0 -1.5708
         children [
           Shape {
@@ -126,7 +126,7 @@ Robot {
             }
             geometry Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           }
@@ -137,7 +137,7 @@ Robot {
           children [
             Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           ]
@@ -152,7 +152,7 @@ Robot {
       jointParameters HingeJointParameters {
         position 3891.269310057118
         axis 0 1 0
-        anchor 0.1 0.21 0.025
+        anchor 0.1 0.21 0.045
       }
       device [
         RotationalMotor {
@@ -164,7 +164,7 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation 0.1 0.21 0.025
+        translation 0.1 0.21 0.045
         rotation 1 0 0 -1.5708
         children [
           Shape {
@@ -174,7 +174,7 @@ Robot {
             }
             geometry Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           }
@@ -185,7 +185,7 @@ Robot {
           children [
             Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           ]
@@ -200,7 +200,7 @@ Robot {
       jointParameters HingeJointParameters {
         position 4572.162309315833
         axis 0 1 0
-        anchor -0.16 -0.21 0.025
+        anchor -0.16 -0.21 0.045
       }
       device [
         RotationalMotor {
@@ -212,7 +212,7 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation -0.16 -0.21 0.025
+        translation -0.16 -0.21 0.045
         rotation 1 0 0 -1.5708
         children [
           Shape {
@@ -222,7 +222,7 @@ Robot {
             }
             geometry Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           }
@@ -233,7 +233,7 @@ Robot {
           children [
             Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           ]
@@ -248,7 +248,7 @@ Robot {
       jointParameters HingeJointParameters {
         position 3547.2084206986005
         axis 0 1 0
-        anchor -0.16 0.21 0.025
+        anchor -0.16 0.21 0.045
       }
       device [
         RotationalMotor {
@@ -260,7 +260,7 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation -0.16 0.21 0.025
+        translation -0.16 0.21 0.045
         rotation 1 0 0 -1.5708
         children [
           Shape {
@@ -270,7 +270,7 @@ Robot {
             }
             geometry Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           }
@@ -281,7 +281,7 @@ Robot {
           children [
             Cylinder {
               height 0.072
-              radius 0.08
+              radius 0.1
               subdivision 24
             }
           ]
