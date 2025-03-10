@@ -124,10 +124,10 @@ Robot {
               baseColor 0.75 0.75 0.75
               roughness 0.3
             }
-            geometry Cylinder {
-              height 0.072
-              radius 0.1
-              subdivision 24
+            geometry Mesh {
+            url [
+              "../protos/meshes/DifferentialWheel.dae"
+            ]
             }
           }
         ]
@@ -172,10 +172,10 @@ Robot {
               baseColor 0.75 0.75 0.75
               roughness 0.3
             }
-            geometry Cylinder {
-              height 0.072
-              radius 0.1
-              subdivision 24
+            geometry Mesh {
+            url [
+              "../protos/meshes/DifferentialWheel.dae"
+            ]
             }
           }
         ]
@@ -220,10 +220,10 @@ Robot {
               baseColor 0.75 0.75 0.75
               roughness 0.3
             }
-            geometry Cylinder {
-              height 0.072
-              radius 0.1
-              subdivision 24
+            geometry Mesh {
+            url [
+              "../protos/meshes/DifferentialWheel.dae"
+            ]
             }
           }
         ]
@@ -268,10 +268,10 @@ Robot {
               baseColor 0.75 0.75 0.75
               roughness 0.3
             }
-            geometry Cylinder {
-              height 0.072
-              radius 0.1
-              subdivision 24
+            geometry Mesh {
+            url [
+              "../protos/meshes/DifferentialWheel.dae"
+            ]
             }
           }
         ]
