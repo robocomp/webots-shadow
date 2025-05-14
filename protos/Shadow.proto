@@ -98,6 +98,7 @@ Robot {
         Accelerometer {
           resolution 0.001
         }
+        Gyro{}
       ]
     }
     DEF WHEEL1 HingeJoint {
