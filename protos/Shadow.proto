@@ -58,7 +58,7 @@ Robot {
           ]
         }
         Lidar {
-          translation -0.18 0 1.13
+          translation -0.17 0 1.13
           rotation 0 0 1 0.34
           name "helios"
           tiltAngle -0.34
