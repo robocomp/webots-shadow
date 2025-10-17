@@ -56,4 +56,4 @@ TexturedBackground {
 }
 TexturedBackgroundLight {
 }
-Shadow{}
+DEF shadow Shadow{}
