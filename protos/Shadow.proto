@@ -66,7 +66,7 @@ Robot {
           fieldOfView 6.28
           verticalFieldOfView 3.141592653589793
           numberOfLayers 82
-          maxRange 8
+          maxRange 20
           noise 0.005
           defaultFrequency 20
         }
@@ -91,7 +91,7 @@ Robot {
           fieldOfView 6.28
           verticalFieldOfView 3.141592653589793
           numberOfLayers 64
-          maxRange 10
+          maxRange 20
           noise 0.005
           defaultFrequency 20
         }
