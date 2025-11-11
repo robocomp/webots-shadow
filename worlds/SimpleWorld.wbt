@@ -5,7 +5,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
-
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidRoundedBox.proto"
 
 WorldInfo {
   info [
@@ -39,21 +40,59 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
-  position -0.33840216297079173 -0.08807996660836989 15.655138174970086
+  orientation -0.44335050069041954 0.4389399630913176 0.7815190607649609 1.82454879090896
+  position 0.12516278004299264 -5.145513034059748 12.449075572876907
 }
 RectangleArena {
-  translation 0.0167301 -0.177657 -7.10539e-15
+  translation 0.148203 -0.28767 -6.73239e-13
   floorSize 10 5
   floorAppearance Parquetry {
     type "light strip"
   }
   wallThickness 0.08
-  wallHeight 1
+  wallHeight 3
+}
+SolidBox {
+  translation 7.47123 1.0853 -0.26
 }
 TexturedBackground {
   texture "noon_park_empty"
 }
 TexturedBackgroundLight {
 }
-DEF shadow Shadow{}
+DEF shadow Shadow {
+  hidden position_0_0 6330.163484619361
+  hidden position_0_1 7795.202617075574
+  hidden position_0_2 6481.268660014368
+  hidden position_0_3 7603.018474084123
+  hidden linearVelocity_0 -7.607651882195073e-16 -2.6025646284531174e-16 2.0670334131202916e-17
+  hidden angularVelocity_0 -4.208524473703859e-16 -7.992561612600277e-16 -2.6608128884977274e-15
+  hidden rotation_7 0 -0.9999999999999999 0 3.287305017662126
+  hidden linearVelocity_7 -5.748642042227893e-16 -3.728687625522779e-17 -1.3503889048876856e-15
+  hidden angularVelocity_7 6.073695601469367e-16 -2.4877184253254617e-14 -1.174493532458123e-15
+  hidden rotation_8 0 0.9999999999999999 0 4.052836172887149
+  hidden linearVelocity_8 -8.455123072755274e-16 -4.620458657707718e-16 3.5536004507818717e-16
+  hidden angularVelocity_8 -1.128355375525521e-15 -2.4857492525104802e-14 -7.364933794153985e-16
+  hidden rotation_9 0 -0.9999999999999999 0 2.97857699496532
+  hidden linearVelocity_9 -6.512498826304258e-16 -1.9960913685061366e-16 4.971601239599367e-16
+  hidden angularVelocity_9 -8.406450688382864e-17 -1.64738433913588e-14 5.573702709837033e-15
+  hidden rotation_10 0 1 0 0.3642523968235897
+  hidden linearVelocity_10 -7.402458654394033e-16 -4.4016680036435266e-16 -4.974539064436879e-16
+  hidden angularVelocity_10 -2.2873883713446526e-15 4.534173954657887e-15 1.9212271966514775e-15
+  translation 0.13636079956087105 -0.020022947353205527 0.032525465486925226
+  rotation -0.001938740345074838 0.0018520104734688794 0.9999964056650806 1.6165302777127928
+}
+SolidRoundedBox {
+  translation 0.174061 2.11917 1.88
+  size 1 0.1 1
+  appearance PBRAppearance {
+    baseColor 1 0 0
+    baseColorMap ImageTexture {
+      url [
+        ""
+      ]
+    }
+    roughness 0.5
+    metalness 0
+  }
+}
