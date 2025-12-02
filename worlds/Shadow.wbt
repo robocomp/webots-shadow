@@ -121,7 +121,7 @@ DEF CROWD_CONTROL Group {
             Lidar {
               translation 0 0 1.17
               numberOfLayers 1
-              maxRange 10
+              maxRange 20
             }
             Shape {
               appearance PBRAppearance {
@@ -239,7 +239,7 @@ DEF CROWD_CONTROL Group {
             Lidar {
               translation 0 0 1.17
               numberOfLayers 1
-              maxRange 10
+              maxRange 20
             }
             Shape {
               appearance PBRAppearance {
@@ -357,7 +357,7 @@ DEF CROWD_CONTROL Group {
             Lidar {
               translation 0 0 1.17
               numberOfLayers 1
-              maxRange 10
+              maxRange 20
             }
             Shape {
               appearance PBRAppearance {
@@ -837,7 +837,7 @@ Group {
         Lidar {
           translation 0 0 1.17
           numberOfLayers 1
-          maxRange 10
+          maxRange 20
         }
         Shape {
           appearance PBRAppearance {
