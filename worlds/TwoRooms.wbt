@@ -4,7 +4,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Door.proto"
+EXTERNPROTO "../protos/Door.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/pedestrian/protos/Pedestrian.proto"
@@ -42,15 +42,15 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.493313008477804 0.5291131206133957 0.6904213070736828 1.8667784933499416
-  position -0.22858788854655798 -6.642894844523431 13.694289816454319
+  orientation 0.335565722332034 0.7324515402391653 -0.5923768962384125 1.316602953266146
+  position -5.279680841175121 3.2624576747111846 12.543697257069125
 }
-Door {
-  hidden translation_5 0.594646664521885 -0.25113543440383124 4.107825191113079e-15
-  hidden rotation_5 0 0 -1 1.408342963946588
+DEF CONTROLLABLE_DOOR Door {
+  hidden translation_5 0.594678027809411 -0.25119773999458433 4.218847493575595e-15
+  hidden rotation_5 0 0 -1 1.408483082828226
   translation -0.329996 -1.2 0
   rotation 0 0 1 1.5708
-  position -1.4087757097413427
+  position -1.4089158286229806
 }
 Wall {
   translation -2.39 -3.12 0
@@ -110,18 +110,18 @@ RectangleArena {
   }
 }
 DEF shadow Shadow {
-  hidden position_0_0 6021.259076180821
-  hidden position_0_1 7040.100093782029
-  hidden position_0_2 6644.794958633947
-  hidden position_0_3 6410.428211170906
-  hidden linearVelocity_0 2.924617618789553e-15 -7.395417611633094e-15 -6.201100239360875e-17
-  hidden angularVelocity_0 1.1373019326931512e-15 3.7216875651984463e-16 -1.3475383534357798e-15
+  hidden position_0_0 6021.259076069586
+  hidden position_0_1 7040.100093670788
+  hidden position_0_2 6644.794958745187
+  hidden position_0_3 6410.428211282148
   hidden rotation_5 0 1 0 1.967551902776712
   hidden rotation_6 0 0.9999999999999999 0 2.9325497408921803
-  hidden rotation_7 0 -1 0 2.8150963620551757
-  hidden rotation_8 0 1 0 1.5791978477280457
-  translation 0.023818481544765378 -3.8676156952810614 0.03252546548753723
-  rotation -0.0019387458167525445 0.0016157549434277058 0.9999968152952394 1.7520089053584538
+  hidden rotation_7 0 -1 0 2.8150964732900157
+  hidden rotation_8 0 0.9999999999999999 0 1.5791977364868393
+  hidden rotation_9 0 -0.9999999999999999 0 1.9965941996663406
+  hidden rotation_10 0 1 0 3.4919075605558914
+  translation 0.023797493898945494 -3.8675011450365786 0.030362256353422074
+  rotation -0.0036103347897739123 0.0030089060953769255 0.9999889559224217 1.7520166361543057
 }
 Pedestrian {
   translation 0.0453294 -2.46571 1.27
