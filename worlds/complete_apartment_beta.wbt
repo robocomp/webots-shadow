@@ -47,13 +47,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/plants/protos/PottedTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/paintings/protos/PortraitPainting.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/paintings/protos/LandscapePainting.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/television/protos/Television.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/fire_extinguisher/protos/FireExtinguisher.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/school_furniture/protos/Clock.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/bathroom/protos/BathroomSink.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/bathroom/protos/Toilet.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/CeilingSpotLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Cypress.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidRoundedBox.proto"
 
 WorldInfo {
   info [
@@ -63,8 +63,8 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation 0.7213197969966403 0.011334667677763184 -0.6925094048237616 3.2108777631689267
-  position -6.54911766179418 -9.42189197831027 34.92315374062557
+  orientation -0.23519819459889368 0.08428281726433683 -0.9682862262633954 0.2696990678897105
+  position -9.58805015215647 -4.096351481573909 1.5461098459333587
   exposure 0.5
   ambientOcclusionRadius 1
 }
@@ -247,6 +247,23 @@ DEF FLOOR Solid {
   model "floor"
   boundingObject Plane {
     size 13 10
+  }
+}
+SolidRoundedBox {
+  translation -4.1164 -5.5326 1.57
+  rotation 7.69303e-07 -2.17518e-07 -1 -1.5707953071795862
+  size 0.9 0.1 0.7
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "digit_one_512.jpg"
+      ]
+      repeatS FALSE
+      repeatT FALSE
+      filtering 2
+    }
+    roughness 0.5
+    metalness 0
   }
 }
 DEF KITCHEN_BLOCK Pose {
@@ -3121,11 +3138,6 @@ LandscapePainting {
   translation -2.29544 -6.38014 1.62868
   rotation 0 0 1 1.5708
   name "landscape painting(1)"
-}
-Television {
-  translation -4.04287 -2.45471 1.5595999999999999
-  rotation 0 0 1 3.14159
-  controller "<none>"
 }
 FireExtinguisher {
   translation -0.44006866050651655 -8.158107264330525 -0.0023544000000024767
