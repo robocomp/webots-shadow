@@ -1,0 +1,175 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidRoundedBox.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "ROBOLAB shadow"
+  basicTimeStep 30
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.5952083046833901 -0.5883480828397837 0.5473331777397346 4.133450046954366
+  position 0.12356127853956073 -1.8597416786267456 15.617156037428131
+}
+Wall {
+  translation -2.84633 -3.24133 1.77636e-15
+  size 0.2 4 2.4
+}
+Wall {
+  translation -0.163259 -5.26103 -5.32907e-15
+  rotation 0 0 1 1.5708
+  name "wall(1)"
+  size 0.2 5.5 2.4
+}
+Wall {
+  translation 2.6 -3.19 0
+  rotation 0 0 1 -3.1415853071795863
+  name "wall(2)"
+  size 0.2 4 2.4
+}
+Wall {
+  translation 3.59 -1.2 0
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+  size 0.2 3 2.4
+}
+Wall {
+  translation 0.31 -1.2 0
+  rotation 0 0 1 1.5708
+  name "wall(8)"
+  size 0.2 1.8 2.4
+}
+Wall {
+  translation -3.03 -1.2 0
+  rotation 0 0 1 1.5708
+  name "wall(4)"
+  size 0.2 3 2.4
+}
+Wall {
+  translation -0.45 2.51 0
+  rotation 0 0 1 1.5708
+  name "wall(5)"
+  size 0.2 8 2.4
+}
+Wall {
+  translation -3.85 0.439958 0
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(6)"
+  size 0.2 4 2.4
+}
+Wall {
+  translation 3.22 0.439979 0
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(7)"
+  size 0.2 4 2.4
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0.0874846 -1.34086 -1.5632e-13
+  floorSize 10 10
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+DEF shadow Shadow {
+  hidden position_0_0 21534.52616137452
+  hidden position_0_1 14718.964227748738
+  hidden position_0_2 21865.418624292237
+  hidden position_0_3 14345.618776950934
+  hidden linearVelocity_0 -8.178306516852402e-16 2.3009246023649023e-15 -3.8756876496005463e-16
+  hidden angularVelocity_0 -6.554443238100959e-16 -3.443594237680162e-16 -1.4136038853986513e-15
+  hidden rotation_7 0 -1 0 4.233071637101845
+  hidden linearVelocity_7 -1.6758396117865083e-15 1.7005670187805124e-15 -2.0020862353400299e-16
+  hidden angularVelocity_7 -4.012280126055009e-14 -2.0812996900569786e-14 -2.491952917246926e-15
+  hidden rotation_8 0 1 0 3.744238334146738
+  hidden linearVelocity_8 -1.327448779107204e-15 -3.4328066014392736e-15 -7.310196976565844e-16
+  hidden angularVelocity_8 1.9843797452517956e-14 -7.390364593353111e-15 -2.1202891001160156e-15
+  hidden rotation_9 0 -1 0 0.06624469272401504
+  hidden linearVelocity_9 1.405242375777026e-16 1.8933388056076516e-15 2.19791805647933e-15
+  hidden angularVelocity_9 -2.996045712065302e-15 5.2316426165678e-15 -2.8646517234780075e-15
+  hidden rotation_10 0 -1 0 5.176464647241252
+  hidden linearVelocity_10 -1.6709210773723506e-16 -1.7613865814344794e-16 -2.0112346260286068e-16
+  hidden angularVelocity_10 -1.7706503707373227e-14 -5.4931164197227054e-15 -2.890421789562336e-15
+  translation -0.31071573485976506 -2.585920193491014 0.030361897522299452
+  rotation -0.003610624042141028 -0.0009148755334436733 0.9999930631743325 -2.645271575162059
+}
+SolidRoundedBox {
+  translation -0.220418 -5.16761 1
+  size 0.8 0.1 0.8
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "digit_one_512.jpg"
+      ]
+    }
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidRoundedBox {
+  translation -0.530418 2.44239 1.34
+  rotation 0 0 1 3.14159
+  name "rounded box(1)"
+  size 0.8 0.1 0.8
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "digit_two_512.jpg"
+      ]
+    }
+    roughness 0.5
+    metalness 0
+  }
+}
+Pedestrian {
+  translation -3.61779 -2.3175 1.27
+  rotation 0 0 1 1.5708
+}
+SolidBox {
+  translation -3.63261 -3.72066 0.2
+  rotation 0 0 1 0.261799
+  size 0.5 0.5 0.5
+}
+SolidBox {
+  translation -3.81275 -2.64168 0.2
+  rotation 0 0 1 0.261799
+  name "box(2)"
+  size 0.5 0.5 0.5
+}
