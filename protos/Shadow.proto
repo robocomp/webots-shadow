@@ -99,8 +99,34 @@ Robot {
           resolution 0.001
         }
         Gyro{}
-      ]
-    }
+
+          Camera {
+                  translation 0.01 0 1.32
+                  children[
+                    RangeFinder{
+                      name "zed-ranger"
+                      fieldOfView 2.09
+                      width 640 #1920
+                      height 480 #1080
+                      maxRange 20
+                    }
+                     Shape {
+                          geometry Cylinder
+                          {
+                            height 0.3
+                            radius 0.02
+                          }
+                         }
+                      ]
+
+                  name "zed"
+                  fieldOfView 2.09
+                  width 640
+                  height 480
+                  projection "planar"
+            }
+    ]}
+
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
         position 4267.336797181569
