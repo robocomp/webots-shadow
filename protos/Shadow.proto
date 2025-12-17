@@ -27,7 +27,7 @@ Robot {
           }
           geometry Mesh {
             url [
-              "../protos/meshes/shadow.dae"
+              "../protos/meshes/shadow.stl"
             ]
           }
         }
@@ -101,7 +101,8 @@ Robot {
         Gyro{}
 
           Camera {
-                  translation 0.01 0 1.32
+                  translation -0.11 -2.38694e-05 0.92
+                  
                   children[
                     RangeFinder{
                       name "zed-ranger"
@@ -111,10 +112,9 @@ Robot {
                       maxRange 20
                     }
                      Shape {
-                          geometry Cylinder
+                          geometry Box
                           {
-                            height 0.3
-                            radius 0.02
+                            size 0.04 0.17 0.03
                           }
                          }
                       ]
