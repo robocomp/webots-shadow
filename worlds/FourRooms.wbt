@@ -161,8 +161,6 @@ TexturedBackgroundLight {
   luminosity 0.6
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
 }
 Group {
   children [

@@ -109,18 +109,6 @@ RectangleArena {
   }
 }
 DEF shadow Shadow {
-  hidden position_0_0 19752.14523920356
-  hidden position_0_1 9718.836664203125
-  hidden position_0_2 20103.876597223512
-  hidden position_0_3 9328.528405566542
-  hidden translation_7 0.1 -0.21 0.015
-  hidden rotation_7 0 -1 0 2.189366569059106
-  hidden translation_8 0.1 0.21 0.015
-  hidden rotation_8 0 1 0 5.032179303484417
-  hidden translation_9 -0.16 -0.21 0.015
-  hidden rotation_9 0 -1 0 2.3163857511643635
-  hidden translation_10 -0.16 0.21 0.015
-  hidden rotation_10 0 1 0 4.281409712035219
   translation 1.1585865100662192 0.5922343197775258 0.030362098930239403
   rotation 0.003610453948034574 0.003993155395302582 -0.9999855095611527 1.4702409693610394
 }
