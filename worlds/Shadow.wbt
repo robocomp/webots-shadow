@@ -42,8 +42,6 @@ Viewpoint {
   follow "shadow"
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
   translation 3.62 -15.87 0.03
 }
 DEF CROWD_CONTROL Group {
