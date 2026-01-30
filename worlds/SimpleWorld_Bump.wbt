@@ -1,4 +1,4 @@
-#VRML_SIM R2023b utf8
+#VRML_SIM R2025a utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
@@ -13,7 +13,6 @@ WorldInfo {
     "Simulation of the ROBOLAB shadow robot."
   ]
   title "ROBOLAB shadow"
-  basicTimeStep 16
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"
@@ -40,8 +39,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.2618277765767191 0.7554694216917519 0.6005931803655628 0.535377839987622
-  position -8.41384119708274 -2.264965397643852 2.8369786766342187
+  orientation 0.3682323081852386 -0.3120908517933847 -0.8757877981768478 4.626451086220409
+  position -1.096479537255616 -12.078495284476848 11.834499678794085
 }
 RectangleArena {
   translation 0.0167301 -0.177657 -7.10539e-15
@@ -52,13 +51,16 @@ RectangleArena {
   wallThickness 0.08
   wallHeight 1
 }
-DEF shadow Shadow{
-  translation -3.70255 -0.300063 0.0539754
+DEF shadow Shadow {
+  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
+  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  translation -3.6998616234649986 -0.2999984815541107 0.03250467817194789
+  rotation -0.011190562287933078 0.999937383689721 3.92882911770482e-06 0.003960803667080152
 }
 Bump {
-  translation 0 -0.33 0.001
+  translation 0 0.11 0.001
   name "Customizable Bump(1)"
-  type "50x5cm"
+  type "100x10cm"
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -77,7 +79,7 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_2 Robot {
-          translation -2.28248 0.0602609 0
+          translation 3.3 -0.3 0
           rotation 0 0 -1 0.026391386573661395
           children [
             Lidar {
@@ -197,7 +199,8 @@ DEF CROWD_CONTROL Group {
   ]
 }
 DEF flacon MedicineBottle {
-  translation -3.65565 -0.190058 0.81428
+  translation -3.652484893755113 -0.19002327757959248 0.7953035435317475
+  rotation -0.008184842242227873 0.9999665036056012 -4.925330828057793e-06 0.004103074014905703
   physics Physics {
   }
 }
