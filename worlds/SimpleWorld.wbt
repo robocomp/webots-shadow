@@ -6,6 +6,9 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/Shadow.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidRoundedBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/WoodenChair.proto"
 
 WorldInfo {
   info [
@@ -39,11 +42,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5417882017543326 -0.5255930514572691 0.6559096650451516 4.274970261484472
-  position 0.2288044427301069 2.283623079776839 11.403566695639288
+  orientation -0.565500910797093 -0.5596820567879609 0.6057761263018343 4.221764240895094
+  position 0.40179736867496973 0.6551136589900715 9.623911312630705
 }
 RectangleArena {
-  translation 0.223046 -0.268984 -6.73239e-13
+  translation 0 0 -7.44294e-13
   floorSize 6 4
   floorAppearance Parquetry {
     type "light strip"
@@ -51,32 +54,33 @@ RectangleArena {
   wallThickness 0.08
   wallHeight 3
 }
+Table {
+  translation 0 2.32 0
+  size 0.7 0.9 0.5
+}
+WoodenChair {
+  rotation 0 0 1 3.14159
+}
 TexturedBackground {
   texture "noon_park_empty"
 }
 TexturedBackgroundLight {
 }
 DEF shadow Shadow {
-  hidden position_0_0 23094.900164098555
-  hidden position_0_1 27229.59600326787
-  hidden position_0_2 26242.611484924335
-  hidden position_0_3 23953.28359943418
-  hidden linearVelocity_0 2.476976809218101e-10 -3.050756212299242e-10 -1.26084976479681e-09
-  hidden angularVelocity_0 -3.0165860691149605e-08 -2.449204544347181e-08 -1.74326460088435e-14
-  hidden rotation_9 0 -0.9999999999999999 0 2.089025093604638
-  hidden linearVelocity_9 3.1539756627814175e-08 -1.9066218893855505e-09 -5.054442596108089e-09
-  hidden angularVelocity_9 -2.762594900500274e-08 -2.3929436988896916e-08 -4.915389687517432e-14
-  hidden rotation_10 0 -1 0 1.7291180484573898
-  hidden linearVelocity_10 -4.61207352467681e-09 -3.125881118526172e-08 -5.054349898943326e-09
-  hidden angularVelocity_10 -2.909363345902336e-08 -2.212181988709427e-08 -6.8305553916484814e-15
-  hidden rotation_11 0 1 0 4.029642142381817
-  hidden linearVelocity_11 2.162952468459159e-09 3.4277587642752756e-08 4.850038597252337e-09
-  hidden angularVelocity_11 -3.123819035170104e-08 -2.6862408694579825e-08 -5.288787350905252e-14
-  hidden rotation_12 0 1 0 1.7812084655967098
-  hidden linearVelocity_12 -3.399089412515384e-08 4.9233077784528146e-09 4.850133235151235e-09
-  hidden angularVelocity_12 -3.2705925488792506e-08 -2.505464342811298e-08 -9.402917930241554e-15
-  translation -0.1278075821399471 0.2242272050536615 0.03252546577256734
-  rotation -0.001938728287224276 0.000923168949046882 0.9999976945432025 2.252766749132864
+  hidden position_0_0 32395.339992526136
+  hidden position_0_1 70435.90858301881
+  hidden position_0_2 35309.215113632185
+  hidden position_0_3 67385.98766887654
+  hidden rotation_9 0 -1 0 0.7634512918113908
+  hidden rotation_10 0 1 0 1.4012895356479447
+  hidden rotation_11 0 -1 0 2.2863127170914885
+  hidden rotation_12 0 1 0 5.108434682650812
+  translation 0.9905321482604118 -1.199090232173695 0.03252546548702353
+  rotation 0.001938665681832675 -0.006102557182755058 -0.9999794999754773 -0.6152150307112567
+}
+SolidBox {
+  translation 0 2.18 0.09
+  size 0.5 0.5 0.4
 }
 SolidRoundedBox {
   translation 0.174061 2.11917 1.88

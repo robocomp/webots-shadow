@@ -101,14 +101,14 @@ Robot {
         Gyro{}
 
           Camera {
-                  translation -0.11 -2.38694e-05 0.92
-                  
+                  translation -0.11 0.0 0.92
+
                   children[
                     RangeFinder{
                       name "zed-ranger"
-                      fieldOfView 2.09
+                      fieldOfView 1.0 #make2.09
                       width 640 #1920
-                      height 480 #1080
+                      height 640 #1080
                       maxRange 20
                     }
                      Shape {
@@ -120,9 +120,9 @@ Robot {
                       ]
 
                   name "zed"
-                  fieldOfView 2.09
+                  fieldOfView 1.0 #2.09
                   width 640
-                  height 480
+                  height 640
                   projection "planar"
             }
     ]}
