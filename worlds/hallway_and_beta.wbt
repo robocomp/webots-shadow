@@ -14,6 +14,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/school_furniture/protos/Blackboard.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/computers/protos/Monitor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/shapes/protos/TexturedBoxShape.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
 
 WorldInfo {
   info [
@@ -47,35 +48,31 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.6874068348688757 0.04294514207639694 0.7250017642375726 3.1134468841063954
-  position -2.785380426411985 -7.069917966711793 21.272767008832933
+  orientation 0.5887098305982481 0.5544032694156981 -0.5882667339040742 2.055336295299437
+  position 2.5230772197184907 -10.471281514876 34.85522524918456
   follow "shadow"
 }
 DEF shadow Shadow {
-  hidden position_0_0 51045.81616860517
-  hidden position_0_1 49346.88471194391
-  hidden position_0_2 49435.52146189009
-  hidden position_0_3 50849.34434896578
-  hidden linearVelocity_0 -3.253810334906278e-10 2.9320817863004447e-07 -2.0768421067755715e-10
-  hidden angularVelocity_0 -5.4338489855234235e-09 -1.0462408077471169e-10 4.769147430905444e-08
-  hidden translation_9 0.1 -0.21 0.015
-  hidden rotation_9 0 1 0 1.2187330782075203
-  hidden linearVelocity_9 9.438584028933275e-09 2.987905210324193e-07 8.990776834428331e-10
-  hidden angularVelocity_9 -6.207138859270878e-09 1.5914889439007543e-08 4.767653529166588e-08
-  hidden translation_10 0.1 0.21 0.015
-  hidden rotation_10 0 -1 0 1.2526906445634205
-  hidden linearVelocity_10 -1.0568175661809356e-08 2.978228335591418e-07 -1.3466301495425701e-09
-  hidden angularVelocity_10 -4.7444224565660364e-09 -1.4580710988094018e-08 4.770501438625129e-08
-  hidden translation_11 -0.16 -0.21 0.015
-  hidden rotation_11 0 -1 0 0.5805349988927673
-  hidden linearVelocity_11 1.0036674132975335e-08 2.864108171961301e-07 9.392287481355633e-10
-  hidden angularVelocity_11 -4.804751239153648e-09 -1.3131922482471536e-08 4.770362265209637e-08
-  hidden translation_12 -0.16 0.21 0.015
-  hidden rotation_12 0 1 0 5.808843268566457
-  hidden linearVelocity_12 -9.970669389223642e-09 2.854429534106941e-07 -1.3048716951198813e-09
-  hidden angularVelocity_12 -6.139647350783016e-09 1.4384885192322271e-08 4.767793765117389e-08
-  translation -4.027911347827805 -10.798749120226166 0.036923306139134464
-  rotation -0.021182228865920763 0.08010065998708428 0.9965616877293171 0.04840770410783893
+  hidden position_0_0 94748.9530121538
+  hidden position_0_1 94404.27522839628
+  hidden position_0_2 93123.68952142046
+  hidden position_0_3 95840.85202975568
+  hidden linearVelocity_0 -1.9094156033785826e-07 1.3901851966020938e-06 -8.896625372498872e-05
+  hidden angularVelocity_0 0.00013748088216303537 1.8882982509467207e-05 5.0958906951936105e-12
+  hidden rotation_9 0 -0.9999999999999999 0 1.4814201143667547
+  hidden linearVelocity_9 9.305843325112195e-07 -6.799586229555681e-06 -0.00010299077484770526
+  hidden angularVelocity_9 0.00013747697227407962 1.8882612805741806e-05 5.0616874582442585e-12
+  hidden rotation_10 0 1 0 5.699173330169132
+  hidden linearVelocity_10 9.371369230909647e-07 -6.798686531005341e-06 -0.00010299081082774077
+  hidden angularVelocity_10 0.00013747701661809495 1.8882290460802837e-05 6.234698236873471e-12
+  hidden rotation_11 0 -1 0 5.683101595374757
+  hidden linearVelocity_11 9.528440639286487e-07 -6.949065402315524e-06 -6.682010974447715e-05
+  hidden angularVelocity_11 0.00013748469304657564 1.8883591771342058e-05 6.030832532644072e-12
+  hidden rotation_12 0 -0.9999999999999999 0 2.8566459617296673
+  hidden linearVelocity_12 9.56003055705611e-07 -6.9486317880772125e-06 -6.682014572529667e-05
+  hidden angularVelocity_12 0.00013748471635319313 1.888342221054676e-05 3.967729300142606e-12
+  translation 5.753653296716332 -49.772608643051555 0.03253076211466867
+  rotation 0.0019349665126428305 0.0022188766218320826 -0.9999956662361752 1.4343056225966027
 }
 TexturedBoxShape {
 }
@@ -147,125 +144,9 @@ DEF CROWD_CONTROL Group {
     }
     DEF CROWD Group {
       children [
-        DEF HUMAN_2 Robot {
-          translation -2.24 -18.6376 0
-          rotation 0 0 -1 1.5707963267948966
-          children [
-            Lidar {
-              translation 0 0 1.17
-              numberOfLayers 1
-              maxRange 20
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_hair.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 2
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 3
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 4
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 5
-              }
-            }
-          ]
-          name "HUMAN_2"
-          controller "crowd_controller"
-          supervisor TRUE
-        }
         DEF HUMAN_3 Robot {
-          translation -9.21712 1.63614 -2.84217e-14
-          rotation 0 0 -1 1.5707963267948972
+          translation -6.560000000000002 18.27691547332831 -2.84217e-14
+          rotation 0 0 -1 1.5707963267948875
           children [
             Lidar {
               translation 0 0 1.17
@@ -378,10 +259,12 @@ DEF CROWD_CONTROL Group {
           name "HUMAN_3"
           controller "crowd_controller"
           supervisor TRUE
+          linearVelocity 6.9878850646937e-15 -0.699999988079071 0
+          angularVelocity 6.64295522894199e-310 0 0
         }
         DEF HUMAN_4 Robot {
-          translation -6.56 -96936.46088404728 0
-          rotation 0 0 -1 1.5707963267948966
+          translation -6.805556034612519 -140330.77052610248 0
+          rotation 0 0 1 1.570804982809535
           children [
             Lidar {
               translation 0 0 1.17
@@ -494,8 +377,8 @@ DEF CROWD_CONTROL Group {
           name "HUMAN_4"
           controller "crowd_controller"
           supervisor TRUE
-          linearVelocity 0 -0.699999988079071 0
-          angularVelocity 6.92009662787272e-310 0 0
+          linearVelocity -6.059210143551945e-06 0.6999999880528468 0
+          angularVelocity 6.08526161450908e-310 0 0
         }
       ]
     }
@@ -507,10 +390,10 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 SolidBox {
-  hidden linearVelocity_0 2.191261687998655e-17 8.108420963886786e-18 -2.631948715242043e-05
-  hidden angularVelocity_0 -2.842170943040403e-17 4.2632564145605957e-17 1.6150851006563435e-18
-  translation 0.39994 -17.9279 0.24941305940022182
-  rotation 0.6701947079172096 0.6732136029743474 -0.3124459925332116 7.531685247843251e-17
+  hidden linearVelocity_0 8.061407306778274e-18 -1.2717231638432807e-17 -4.678892340341108e-08
+  hidden angularVelocity_0 5.684341886080797e-17 4.2632564145606006e-17 2.4818148192441355e-18
+  translation 0.39994 -17.9279 0.2494114029499644
+  rotation 0.6843332849865399 0.6442597141886255 0.341492863370703 7.376077863730191e-17
   size 0.5 0.5 0.5
   physics Physics {
     mass 3
@@ -525,13 +408,31 @@ Group {
       size 0.2 7.5 2.4
     }
     Wall {
-      translation 3.65961 6.01563 7.10543e-15
+      translation 2.56961 6.01563 7.10543e-15
       rotation 0 0 1 1.5708
       name "wall(3)"
-      size 0.2 7.16 2.4
+      size 0.2 5.4 2.4
+    }
+    Wall {
+      translation 5.3209 7.2869 7.10543e-15
+      rotation 0 0 1 -3.1415853071795863
+      name "wall(3)"
+      size 0.2 2.7 2.4
+    }
+    Wall {
+      translation 6.33022 8.71465 0.03
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 2.2 2.4
+    }
+    Wall {
+      translation 7.31785 7.30454 7.10543e-15
+      rotation 0 0 1 -3.1415853071795863
+      name "wall(3)"
+      size 0.2 3 2.4
     }
     Solid {
-      translation 7.03 0 2.38
+      translation 2.03 -15.38 2.38
       rotation 0 1 0 3.14159
       children [
         Shape {
@@ -546,786 +447,6 @@ Group {
         }
       ]
       name "Ceiling"
-    }
-    Solid {
-      translation -16.6 0 2.38
-      rotation 0 1 0 3.14159
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.964706 0.960784 0.956863
-            roughness 1
-            metalness 0
-          }
-          geometry Plane {
-            size 20 80
-          }
-        }
-      ]
-      name "Ceiling(1)"
-    }
-    DEF SolidPot Solid {
-      translation 3.61855 -10.001 0.001
-      rotation 0 0 1 -2.8797953071795863
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot"
-      boundingObject DEF MeshPot Mesh {
-        url [
-          "../protos/enviroment/meshes/pot.dae"
-        ]
-      }
-    }
-    DEF SolidPot Solid {
-      translation 3.62995 -4.18264 0.001
-      rotation 0 0 1 1.5708
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(5)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.62962 -7.65242 0.001
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(1)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.78293 -23.2852 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(6)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.7857 -31.7492 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(7)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.91295 -28.7483 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(2)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.68587 -35.9753 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(8)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.5589 -39.7207 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(10)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.62994 -43.5146 0.001
-      rotation 0 0 1 2.87979
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(11)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.69371 -47.4663 0.001
-      rotation 0 0 1 3.14159
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(12)"
-      boundingObject USE MeshPot
     }
     DEF HUMAN_Manual Robot {
       translation -4.09571 -23.2418 0.03
@@ -1444,158 +565,6 @@ Group {
       supervisor TRUE
     }
     Solid {
-      translation 3.67912 -16.7556 0.001
-      rotation 0 0 0.9999999999999999 0.7853979999999999
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(3)"
-      boundingObject USE MeshPot
-    }
-    Solid {
-      translation 3.65578 -12.6054 0.001
-      rotation 0 0 1 2.61799
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/leaf.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 0
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/brown_mud_03_diff_1k.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 1
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/plant_body.jpg"
-              ]
-            }
-            roughness 0.8
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 2
-          }
-        }
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "../protos/enviroment/meshes/terracota.jpg"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry Mesh {
-            url [
-              "../protos/enviroment/meshes/pot.dae"
-            ]
-            materialIndex 3
-          }
-        }
-      ]
-      name "Pot(4)"
-      boundingObject USE MeshPot
-    }
-    Solid {
       translation -0.973915 -1.83623 -6.03961e-14
       rotation 0 0 1 1.5708
       children [
@@ -1646,7 +615,57 @@ Group {
       }
     }
     Solid {
-      translation -2.64077 -4.23152 -0.02
+      translation 8.06608 -1.83623 -6.03961e-14
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open(3)"
+      boundingObject DEF MeshSimpleDoor Mesh {
+        url [
+          "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -2.35077 -4.23152 -0.02
       rotation 0 0 1 -3.1415853071795863
       children [
         Shape {
@@ -1694,62 +713,10 @@ Group {
           "../protos/enviroment/meshes/puerta_simple_abierta.dae"
         ]
       }
+      rotationStep 0.27
     }
     Group {
       children [
-        Solid {
-          translation -10.6205 3.99073 -3.41061e-13
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco"
-          boundingObject DEF MeshBanco Mesh {
-            url [
-              "../protos/enviroment/meshes/banco.dae"
-            ]
-          }
-        }
         Solid {
           translation 3.84369 -19.3682 0
           children [
@@ -1797,7 +764,11 @@ Group {
             }
           ]
           name "Banco(2)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 3.94048 -33.1003 4.79616e-14
@@ -1846,7 +817,11 @@ Group {
             }
           ]
           name "Banco(3)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 0.333181 -39.4015 5.50671e-14
@@ -1895,7 +870,11 @@ Group {
             }
           ]
           name "Banco(18)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 0.332685 -44.6765 5.9508e-14
@@ -1944,7 +923,11 @@ Group {
             }
           ]
           name "Banco(19)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 4.76259 -53.7435 -5.15144e-14
@@ -1994,7 +977,11 @@ Group {
             }
           ]
           name "Banco(17)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 3.65918 -44.6575 1.77636e-15
@@ -2043,302 +1030,11 @@ Group {
             }
           ]
           name "Banco(20)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -6.57418 4.15996 -7.10543e-15
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(4)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.3 4.26 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(5)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.3 12.38 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(6)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.3 15.84 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(7)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.3 22.89 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(8)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -9.23672 2.41184 -2.45137e-13
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(1)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 3.37033 -21.1522 3.55271e-15
@@ -2388,7 +1084,11 @@ Group {
             }
           ]
           name "Banco(10)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
         Solid {
           translation 3.57077 -34.9004 -7.63833e-14
@@ -2438,311 +1138,16 @@ Group {
             }
           ]
           name "Banco(11)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -6.94475 2.35938 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(12)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.78 2.46 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(13)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.78 10.6 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(14)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.77999 14.07 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(15)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -4.77999 21.1 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(16)"
-          boundingObject USE MeshBanco
-        }
-        Solid {
-          translation -8.47071 4.16778 -3.55271e-15
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.711 0.711 0.711
-                roughness 0.37
-                metalness 0.46
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.26
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/enviroment/meshes/banco.dae"
-                ]
-                materialIndex 2
-              }
-            }
-          ]
-          name "Banco(9)"
-          boundingObject USE MeshBanco
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
         }
       ]
     }
     Solid {
-      translation 8.83288 -20.6057 -1.03029e-13
+      translation 8.84654 -20.6061 -1.03029e-13
       children [
         Shape {
           appearance DEF CristalMaterial PBRAppearance {
@@ -2791,14 +1196,74 @@ Group {
       }
     }
     Wall {
-      translation 7.30768 2.69126 0
+      translation 7.30768 3.86126 0
       name "wall(4)"
-      size 0.2 6.5 2.4
+      size 0.2 4.5 2.4
     }
     Wall {
-      translation 0 2.67 0
+      translation -0.032952 3.77484 1.79412e-13
       name "wall(3)"
-      size 0.2 6.5 2.4
+      size 0.2 4.5 2.4
+    }
+    Wall {
+      translation -1.09295 1.62484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -1.09295 -54.1652 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -2.00194 -52.9823 1.79412e-13
+      rotation 0 0 -1 -5.307179586466759e-06
+      name "wall(3)"
+      size 0.2 2.5 2.4
+    }
+    Wall {
+      translation 9.29806 -52.6223 1.79412e-13
+      rotation 0 0 -1 -5.307179586466759e-06
+      name "wall(3)"
+      size 0.2 3.3 2.4
+    }
+    Wall {
+      translation -1.09295 -51.7852 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.30705 -51.0352 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2.2 2.4
+    }
+    Wall {
+      translation 8.36705 -54.1752 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.19705 1.62484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -1.08295 0.35484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.16705 0.35484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
     }
     Wall {
       translation -0.409925 -22.14 0
@@ -2950,44 +1415,41 @@ Group {
       size 1.5 1.4 0.74
     }
     Cabinet {
-      hidden position_6_0 -6.406136652132116e-06
-      hidden translation_7 1.2748211937655723e-06 -4.083233751117632e-12 0
-      hidden rotation_7 0 0 -1 6.406113008859535e-06
-      hidden linearVelocity_7 2.7756283941081383e-15 -8.881783966880911e-14 -5.08764301406127e-15
-      hidden angularVelocity_7 -3.1456268496962025e-21 -4.376425239703494e-19 -3.142908055388002e-19
-      hidden position_10_0 5.446180062413534e-06
-      hidden translation_11 9.212213575526949e-07 2.5086044352917725e-12 0
-      hidden rotation_11 0 0 0.9999999999999999 5.446165469934237e-06
-      hidden linearVelocity_11 2.1945141346341747e-15 8.868876591717181e-14 -5.1504534216422736e-15
-      hidden angularVelocity_11 7.236137173987658e-17 -4.030021375894377e-18 4.2210345102977554e-15
-      hidden translation_15 0 0 0
+      hidden position_6_0 1.601534163039819e-05
+      hidden translation_7 -3.1870529842602895e-06 -2.5520308088999855e-11 0
+      hidden rotation_7 0 0 1 1.60153310480187e-05
+      hidden linearVelocity_7 -1.1102229929802165e-14 -6.93894760860393e-16 -5.213263829223277e-15
+      hidden angularVelocity_7 -2.644017585716767e-18 -1.567698801699634e-17 -2.3646092516212618e-20
+      hidden position_10_0 -1.3615450151363245e-05
+      hidden translation_11 -2.3030533927376013e-06 1.5678680576058923e-11 0
+      hidden rotation_11 0 0 -1 1.3615454445611651e-05
+      hidden linearVelocity_11 2.7755541335417898e-15 -1.3878755858839153e-15 -5.181858625432775e-15
+      hidden angularVelocity_11 5.824196944019551e-18 2.927576329685541e-17 5.053060297486909e-19
+      hidden translation_15 0.16811712946881652 0 0
       hidden linearVelocity_15 0 0 -2.3966414438610943e-15
-      hidden translation_23 0 0 0
+      hidden translation_23 0.1494192476448767 0 0
       hidden linearVelocity_23 0 0 -1.6899394796456434e-15
-      hidden translation_31 0 0 0
+      hidden translation_31 0.16811712946881652 0 0
       hidden linearVelocity_31 0 0 -1.6899394796456434e-15
-      hidden translation_39 0 0 0
-      hidden linearVelocity_39 0 0 -5.315228776595037e-16
-      translation -1.22939 -47.4637 0
+      hidden translation_39 0.01337972818282207 0 0
+      hidden linearVelocity_39 0 0 -5.61051926418365e-16
+      translation -2.06755 0.00052 0
+      rotation 0 0 1 -1.5707953071795862
     }
     Cabinet {
-      hidden position_6_0 -6.4061366521842355e-06
-      hidden translation_7 1.274821193775944e-06 -4.083233751117632e-12 0
-      hidden rotation_7 0 0 -0.9999999999999999 6.406113008859535e-06
-      hidden linearVelocity_7 2.7755904582634763e-15 -8.881784083154898e-14 -5.08764301406127e-15
-      hidden angularVelocity_7 1.6934446247006464e-20 2.3560189839976927e-18 -1.4605636810282586e-19
-      hidden position_10_0 5.4461800621200054e-06
-      hidden translation_11 9.212213575030445e-07 2.5086044352917725e-12 0
-      hidden rotation_11 0 0 1 5.446165469934237e-06
-      hidden linearVelocity_11 2.1945355772030384e-15 8.868876496987536e-14 -5.119048217851771e-15
-      hidden angularVelocity_11 -7.231700077214454e-17 -2.857058669788368e-18 4.221146454140608e-15
-      hidden translation_15 0 0 0
+      hidden position_6_0 -1.601534163034647e-05
+      hidden translation_7 3.1870529843027085e-06 -2.5520641155907242e-11 0
+      hidden rotation_7 0 0 -1 1.60153310480187e-05
+      hidden linearVelocity_7 2.775529168644119e-15 -1.776356848432145e-13 -5.08764301406127e-15
+      hidden angularVelocity_7 -4.6011866659143404e-21 -6.399318558978023e-19 1.258712061446319e-19
+      hidden position_10_0 1.3615450155383478e-05
+      hidden translation_11 2.3030533937119577e-06 1.5678625064907692e-11 0
+      hidden rotation_11 0 0 1 1.3615454445611651e-05
+      hidden linearVelocity_11 1.3877928256172542e-15 1.7763568346982805e-13 -5.0562378102707685e-15
+      hidden angularVelocity_11 7.233739679364306e-17 -3.124688222250487e-19 7.33460638255308e-20
       hidden linearVelocity_15 0 0 -2.3966414438610943e-15
-      hidden translation_23 0 0 0
       hidden linearVelocity_23 0 0 -1.6899394796456434e-15
-      hidden translation_31 0 0 0
       hidden linearVelocity_31 0 0 -1.6899394796456434e-15
-      hidden translation_39 0 0 0
       hidden linearVelocity_39 0 0 -5.315228776595036e-16
       translation -1.2734 -49.0095 5.32907e-15
       name "cabinet(1)"
@@ -2999,23 +1461,23 @@ Group {
       size 0.7 0 2.4
     }
     SolidBox {
-      hidden linearVelocity_0 -1.0254052653317335e-17 -3.108481320737812e-17 -2.6319487151359863e-05
-      hidden angularVelocity_0 4.8552197450098835e-17 -3.1650010501563333e-18 2.0807686939574955e-19
-      translation 3.6334599999999875 -37.7499 0.9994130594002217
-      rotation 5.847603986913839e-17 2.116527464902612e-17 1 3.1415926535897927
+      hidden linearVelocity_0 -3.36752842814036e-17 -1.3395256969198341e-17 -4.6788923402997215e-08
+      hidden angularVelocity_0 3.6991339805377085e-17 -5.722484019039731e-17 1.4689639911093237e-18
+      translation 3.633460000000006 -37.598700001247344 0.49941140294996433
+      rotation -2.563444321206933e-17 -2.465052008443166e-19 1 3.141591644974139
       name "box(2)"
-      size 0.7 1.9 2
+      size 0.7 1.9 1
       physics Physics {
         mass 3
       }
     }
     SolidBox {
-      hidden linearVelocity_0 -1.0254052653317335e-17 -3.108481320737812e-17 -2.6319487151359863e-05
-      hidden angularVelocity_0 4.8552197450098835e-17 -3.1650010501563333e-18 2.0807686939574955e-19
-      translation 3.5688599999999875 -41.7971 0.9994130594002217
-      rotation 5.847603986913839e-17 2.116527464902612e-17 1 3.1415926535897927
+      hidden linearVelocity_0 -3.210950415184373e-17 -7.915791589648185e-18 -4.678892344168165e-08
+      hidden angularVelocity_0 1.237040137221339e-17 -8.137204031543178e-17 -2.9495582541289065e-18
+      translation 3.7370967937797475 -41.537699410126194 0.5994114029499642
+      rotation -3.712211241605596e-17 -1.3067880935135323e-17 0.9999999999999999 -3.1194953071879894
       name "box(1)"
-      size 0.7 1.9 2
+      size 0.7 1.9 1.2
       physics Physics {
         mass 3
       }
@@ -3027,12 +1489,12 @@ Group {
       size 0.5 0.5 0.01
     }
     SolidBox {
-      hidden linearVelocity_0 2.2942138293710144e-17 5.183050288521786e-18 -2.631948715240227e-05
-      hidden angularVelocity_0 2.842170943040403e-17 1.1368683772161603e-16 -1.0418547444470675e-17
-      translation 6.90942 -9.20335 0.24941305940022182
-      rotation 0.4762988080942201 0.016424096831360795 -0.8791300782314864 9.690735170274605e-17
+      hidden linearVelocity_0 7.350570035468919e-17 -4.3237900606888484e-17 -4.678892366859367e-08
+      hidden angularVelocity_0 1.3551496168718637e-16 3.0502483290389485e-16 -1.0382228331699517e-17
+      translation -1.876751601052041 -9.226841979235159 0.2494114029499643
+      rotation -1.4468051779838594e-17 1.4850865539210072e-17 0.9999999999999999 1.6340138062084684
       name "box(4)"
-      size 0.5 0.5 0.5
+      size 0.8 0.5 0.5
       physics Physics {
         mass 3
       }
@@ -3048,10 +1510,10 @@ Group {
       size 0.2 2 2.4
     }
     Wall {
-      translation -2.96185 -4.29243 1.58984e-13
+      translation -2.81185 -4.29243 1.58984e-13
       rotation 0 0 1 -1.5707953071795862
       name "wall(3)"
-      size 0.2 0.6 2.4
+      size 0.2 0.9 2.4
     }
     Wall {
       translation -3.16048 -2.35353 2.86881e-13
@@ -3089,10 +1551,10 @@ Group {
       name "wall(3)"
     }
     Wall {
-      translation -0.868126 -4.21278 8.88175e-15
+      translation -0.508126 -4.21278 8.88175e-15
       rotation 0 0 1 1.5708
       name "wall(3)"
-      size 0.2 1.55 2.4
+      size 0.2 1.8 2.4
     }
     Wall {
       translation -0.4 -0.5 0
@@ -3134,10 +1596,16 @@ Group {
       size 0.2 3.5 2.4
     }
     Wall {
-      translation 8.09 -2.3 -1.12627e-06
+      translation 8.1 -1.15 -1.1732e-06
       rotation 0 1 0 4.692820414042842e-06
       name "wall(3)"
-      size 0.2 3.5 2.4
+      size 0.2 1.3 2.4
+    }
+    Wall {
+      translation 8.09 -3.49 -1.12627e-06
+      rotation 0 1 0 4.692820414042842e-06
+      name "wall(3)"
+      size 0.2 1.3 2.4
     }
     Wall {
       translation -0.99446 -34.1652 1.36099e-05
@@ -3190,14 +1658,14 @@ Wall {
   size 0.2 10.4 2.4
 }
 Wall {
-  translation 0 -45.08 0
+  translation 0 -43.88 0
   name "wall(3)"
-  size 0.2 18 2.4
+  size 0.2 16 2.4
 }
 Wall {
-  translation 7.31 -45.1 0
+  translation 7.31 -43.52 0
   name "wall(3)"
-  size 0.2 18 2.4
+  size 0.2 15 2.4
 }
 Wall {
   translation -0.385545 -35.9699 -1.59872e-14
@@ -3211,14 +1679,83 @@ Wall {
 }
 Floor {
   translation 0 -24 0
-  size 25 65
+  size 25 67
   appearance Parquetry {
     type "dark strip"
   }
 }
+PottedTree {
+  translation 3.75307 -7.54825 0
+}
+PottedTree {
+  translation 3.75307 -9.70825 0
+  name "potted tree(2)"
+}
+PottedTree {
+  translation 3.71307 -12.5283 0
+  name "potted tree(3)"
+}
+PottedTree {
+  translation 3.71307 -16.7983 0
+  name "potted tree(4)"
+}
+PottedTree {
+  translation 3.71307 -22.9883 0
+  name "potted tree(5)"
+}
+PottedTree {
+  translation 3.71307 -28.6583 0
+  name "potted tree(6)"
+}
+PottedTree {
+  translation 3.71307 -31.7683 0
+  name "potted tree(7)"
+}
+PottedTree {
+  translation 3.71307 -35.9883 0
+  name "potted tree(8)"
+}
+PottedTree {
+  translation 3.71647 -47.4134 0
+  name "potted tree(9)"
+}
+PottedTree {
+  translation 3.61108 -43.4832 0
+  name "potted tree(11)"
+}
+PottedTree {
+  translation 3.55263 -39.6484 0
+  name "potted tree(12)"
+}
+PottedTree {
+  translation 3.55263 -39.9084 0
+  name "potted tree(10)"
+}
+PottedTree {
+  translation 3.57 -4.1 0
+  rotation 0 0 1 4.692820414042842e-06
+  name "potted tree(1)"
+}
 Wall {
-  translation -2.17 -0.26 -0.14
-  rotation 0 0 1 1.5708
+  translation -0.02 -0.0299984 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+}
+Wall {
+  translation 7.32 -0.029958 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+}
+Wall {
+  translation -2.02 1.02 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+  size 0.2 1.2 2.4
+}
+Wall {
+  translation 9.11 1.02 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+  size 0.2 1.2 2.4
 }
 Monitor {
   translation -5.80834 -5.69589 0.73
