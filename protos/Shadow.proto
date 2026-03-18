@@ -106,10 +106,10 @@ Robot {
                   children[
                     RangeFinder{
                       name "zed-ranger"
-                      fieldOfView 1.0 #make2.09
-                      width 640 #1920
-                      height 640 #1080
-                      maxRange 20
+                      fieldOfView 1.9198 
+                      width 1280
+                      height 720
+                      maxRange 100
                     }
                      Shape {
                           geometry Box
@@ -120,9 +120,9 @@ Robot {
                       ]
 
                   name "zed"
-                  fieldOfView 1.0 #2.09
-                  width 640
-                  height 640
+                  fieldOfView 1.9198
+                  width 1280
+                  height 720
                   projection "planar"
             }
     ]}
