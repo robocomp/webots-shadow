@@ -5,8 +5,8 @@ EXTERNPROTO "InteriorWheel.proto"
 EXTERNPROTO "ExteriorWheel.proto"
 
 PROTO Shadow [
-  field SFVec3f           translation     0 0 0.03         # Is `Pose.translation`.
-  field SFRotation        rotation        0 0 1 0       # Is `Pose.rotation`.
+  field SFVec3f           translation     0 0 0.033         # Is `Pose.translation`.
+  field SFRotation        rotation        0 0 0 0      # Is `Pose.rotation`.
   field SFString          name            "shadow"      # Is `Solid.name`.
   field SFString          controller      "<extern>"      # Is `Robot.controller`.
 ]
@@ -38,16 +38,17 @@ Robot {
         Group {
           children [
             Camera {
-              translation -0.18 0 1.34
+              translation 0 -0.17 1.275
               rotation 0 0 1 -1.5707953071795862
               name "camera_360_2"
               fieldOfView 3.14
               width 960
               height 960
               projection "cylindrical"
+
             }
             Camera {
-              translation -0.18 0 1.34
+              translation 0 -0.17 1.275
               rotation 0 0 -1 -1.5708053071795867
               name "camera_360_1"
               fieldOfView 3.14
@@ -58,10 +59,10 @@ Robot {
           ]
         }
         Lidar {
-          translation -0.17 0 1.13
-          rotation 0 0 1 0.34
+          translation 0 -0.17 1.1
+          rotation 0 0 1 -4.7116
           name "helios"
-          tiltAngle -0.34
+          tiltAngle -0.
           horizontalResolution 900
           fieldOfView 6.28
           verticalFieldOfView 3.141592653589793
@@ -71,21 +72,21 @@ Robot {
           defaultFrequency 20
         }
         Lidar {
-          translation 0.1 -2.65355e-08 0.54
-          rotation 1 0 0 3.14159
-          children [
-            Shape {
-              appearance DEF BlackMetalAppearance PBRAppearance {
-                baseColor 0 0 0
-                roughness 0.5
-                name "BlackMetal"
-              }
-              geometry Cylinder {
-                height 0.01
-                radius 0.05
-              }
-            }
-          ]
+          translation 0 0.14 0.7
+          rotation -1 -1 0 3.14159
+          # children [
+            # Shape {
+              # appearance DEF BlackMetalAppearance PBRAppearance {
+                # baseColor 0 0 0
+                # roughness 0.5
+                # name "BlackMetal"
+              # }
+              # geometry Cylinder {
+                # height 0.01
+                # radius 0.05
+              # }
+            # }
+          # ]
           name "bpearl"
           horizontalResolution 875
           fieldOfView 6.28
@@ -101,7 +102,8 @@ Robot {
         Gyro{}
 
           Camera {
-                  translation -0.11 0.0 0.92
+                  translation 0.0 -0.075 0.945
+                  rotation 0 0 1 1.57
 
                   children[
                     RangeFinder{
@@ -111,12 +113,12 @@ Robot {
                       height 720
                       maxRange 100
                     }
-                     Shape {
-                          geometry Box
-                          {
-                            size 0.04 0.17 0.03
-                          }
-                         }
+                     # Shape {
+                          # geometry Box
+                          # {
+                            # size 0.04 0.17 0.03
+                          # }
+                         # }
                       ]
 
                   name "zed"
@@ -129,9 +131,9 @@ Robot {
 
     DEF WHEEL1 HingeJoint {
       jointParameters HingeJointParameters {
-        position 4267.336797181569
-        axis 0 1 0
-        anchor 0.1 -0.21 0.015
+        position 0
+        axis -1 0 0
+        anchor -0.21 -0.1 0.015
       }
       device [
         RotationalMotor {
@@ -143,8 +145,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation 0.1 -0.21 0.015
-        rotation 0 -1 0 5.229211700550078
+        translation -0.21 -0.1 0.015
+        rotation 0 0 1 1.57
         children [
           Shape {
             appearance PBRAppearance {
@@ -328,9 +330,9 @@ Robot {
     }
     DEF WHEEL2 HingeJoint {
       jointParameters HingeJointParameters {
-        position 3891.269310057118
-        axis 0 1 0
-        anchor 0.1 0.21 0.015
+        position 0
+        axis -1 0 0
+        anchor 0.21 -0.1 0.015
       }
       device [
         RotationalMotor {
@@ -342,8 +344,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation 0.1 0.21 0.015
-        rotation 0 -1 0 4.305580394225397
+        translation 0.21 -0.1 0.015
+        rotation 0 0 1 1.57
         children [
           Shape {
             appearance PBRAppearance {
@@ -527,9 +529,9 @@ Robot {
     }
     DEF WHEEL3 HingeJoint {
       jointParameters HingeJointParameters {
-        position 4572.162309315833
-        axis 0 1 0
-        anchor -0.16 -0.21 0.015
+        position 0
+        axis -1 0 0
+        anchor -0.21 0.16 0.015
       }
       device [
         RotationalMotor {
@@ -541,8 +543,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation -0.16 -0.21 0.015
-        rotation 0 -1 0 1.9965943109057285
+        translation -0.21 0.16 0.015
+        rotation 0 0 1 1.57
         children [
           Shape {
             appearance PBRAppearance {
@@ -726,9 +728,9 @@ Robot {
     }
     DEF WHEEL4 HingeJoint {
       jointParameters HingeJointParameters {
-        position 3547.2084206986005
-        axis 0 1 0
-        anchor -0.16 0.21 0.015
+        position 0
+        axis -1 0 0
+        anchor 0.21 0.16 0.015
       }
       device [
         RotationalMotor {
@@ -740,8 +742,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_SOLID Solid {
-        translation -0.16 0.21 0.015
-        rotation 0 1 0 3.4919074493137754
+        translation 0.21 0.16 0.015
+        rotation 0 0 1 1.57
         children [
           Shape {
             appearance PBRAppearance {
@@ -929,18 +931,18 @@ Robot {
   boundingObject Group {
     children [
       Pose {
-        translation 0.041 0 0.37
+        translation 0 0 0.38
         children [
           Box {
-            size 0.46 0.44 0.71
+            size 0.44 0.46 0.76
           }
         ]
       }
       Pose {
-        translation -0.19 0 1.03
+        translation 0 -0.17 1.03
         children [
           Box {
-            size 0.1 0.42 0.61
+            size 0.1 0.1 0.61
           }
         ]
       }
@@ -948,12 +950,12 @@ Robot {
   }
   physics Physics {
     density -1
-    mass 22
+    mass 50
     centerOfMass [
       0 0 -0.045
     ]
     inertiaMatrix [
-      0.166204 0.418086 0.55459
+      0.418086 0.166204 0.55459
       0 0 0
     ]
   }
