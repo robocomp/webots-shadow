@@ -1,0 +1,2049 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "../protos/Shadow.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/cabinet/protos/Cabinet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/VarnishedPine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/WoodenChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/school_furniture/protos/Blackboard.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/computers/protos/Monitor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/shapes/protos/TexturedBoxShape.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
+
+WorldInfo {
+  info [
+    "Simulation of the ROBOLAB shadow robot."
+  ]
+  title "ROBOLAB shadow"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5847564140793564 0.5501815346398443 -0.5961209735736513 2.0442903124669414
+  position -2.0570782615981997 -23.825930809655027 40.73726678276983
+  follow "shadow"
+}
+DEF shadow Shadow {
+  hidden linearVelocity_0 2.8619694997738584e-15 -1.1460953398444543e-14 -2.0670334131202916e-17
+  hidden angularVelocity_0 8.520747291780156e-16 -3.922622358242764e-17 -3.0965963084071432e-15
+  hidden translation_9 0.1 -0.21 0.015
+  hidden rotation_9 0 0.9999999999999999 0 0.8520352588241378
+  hidden linearVelocity_9 4.653559552160174e-15 -3.497021801811733e-14 -3.6637251742991367e-17
+  hidden angularVelocity_9 3.0798410522584873e-15 2.6536611514753852e-14 7.075758366497254e-16
+  hidden translation_10 0.1 0.21 0.015
+  hidden rotation_10 0 -1 0 4.324096102233894
+  hidden linearVelocity_10 -2.8641171767240928e-15 -4.0202169024112767e-14 -2.4772860927773585e-16
+  hidden angularVelocity_10 6.117215429492811e-15 1.7870795485617572e-14 -9.99478724454958e-16
+  hidden translation_11 -0.16 -0.21 0.015
+  hidden rotation_11 0 1 0 4.257411053755914
+  hidden linearVelocity_11 5.584993906091758e-15 3.934400166665935e-14 4.862583969062924e-16
+  hidden angularVelocity_11 -1.8097777943389405e-15 2.2086815263926675e-14 2.64959964047517e-17
+  hidden translation_12 -0.16 0.21 0.015
+  hidden linearVelocity_12 -4.581167148092337e-15 3.40292601679855e-14 3.842398904282104e-17
+  hidden angularVelocity_12 -9.568799716506156e-16 -6.6879322503699965e-15 3.670769004257271e-15
+  translation -1.8134210395767696 -8.567277157658081 0.03252546548778398
+  rotation 0.0019387255869263349 -0.0021012981088126357 -0.9999959129363262 -1.4903580398099328
+}
+TexturedBoxShape {
+}
+DEF CROWD_CONTROL Group {
+  children [
+    DEF WAYPOINTS Group {
+      children [
+        DEF WAYPOINT_1 Pose {
+          translation -2.24 26.74 0
+        }
+        DEF WAYPOINT_2 Pose {
+          translation -2.24 18.3 0
+        }
+        DEF WAYPOINT_3 Pose {
+          translation -2.24 7.25 0
+        }
+        DEF WAYPOINT_4 Pose {
+          translation -2.24 -6.8 0
+        }
+        DEF WAYPOINT_5 Pose {
+          translation -2.24 -16.38 0
+        }
+        DEF WAYPOINT_6 Pose {
+          translation -2.24 -29.07 0
+        }
+        DEF WAYPOINT_7 Pose {
+          translation -6.56 -29.07 0
+        }
+        DEF WAYPOINT_8 Pose {
+          translation -6.56 -15.62 0
+        }
+        DEF WAYPOINT_9 Pose {
+          translation -6.56 -10.18 0
+        }
+        DEF WAYPOINT_10 Pose {
+          translation -6.56 -1.69 0
+        }
+        DEF WAYPOINT_11 Pose {
+          translation -6.56 7.24 0
+        }
+        DEF WAYPOINT_12 Pose {
+          translation -6.56 18.01 0
+        }
+        DEF WAYPOINT_13 Pose {
+          translation -6.56 26.37 0
+        }
+        DEF WAYPOINT_14 Pose {
+          translation -8.02 -10.5 0
+        }
+        DEF WAYPOINT_15 Pose {
+          translation -8.02 -30.18 0
+        }
+        DEF WAYPOINT_16 Pose {
+          translation 7.16 -17.75 0
+        }
+        DEF WAYPOINT_17 Pose {
+          translation 2.69 -17.75 0
+        }
+        DEF WAYPOINT_18 Pose {
+          translation 2.69 -15.3 0
+        }
+        DEF WAYPOINT_19 Pose {
+          translation 3.55 -13.71 0
+        }
+        DEF WAYPOINT_20 Pose {
+          translation 7.65 -13.71 0
+        }
+      ]
+    }
+    DEF CROWD Group {
+      children [
+        DEF HUMAN_3 Robot {
+          translation -6.560000000000002 13.024115562782914 -2.84217e-14
+          rotation 0 0 1 1.5707963267948961
+          children [
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 20
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+          ]
+          name "HUMAN_3"
+          controller "crowd_controller"
+          supervisor TRUE
+          linearVelocity 3.7325257820066944e-16 0.699999988079071 0
+          angularVelocity 6.10077276494214e-310 0 0
+        }
+        DEF HUMAN_4 Robot {
+          translation -7.659349833830443 -41694.86983343399 0
+          rotation 0 0 1 1.5708049828095605
+          children [
+            Lidar {
+              translation 0 0 1.17
+              numberOfLayers 1
+              maxRange 20
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_hair.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 2
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 3
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 4
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/meshes/Sandra_custom/Sandra.dae"
+                ]
+                materialIndex 5
+              }
+            }
+          ]
+          name "HUMAN_4"
+          controller "crowd_controller"
+          supervisor TRUE
+          linearVelocity -6.059210161390995e-06 0.6999999880528468 0
+          angularVelocity 6.48729782111104e-310 0 0
+        }
+      ]
+    }
+  ]
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+SolidBox {
+  hidden linearVelocity_0 -1.0602628966125316e-17 1.5385719318738076e-18 -0.00010223319426167624
+  hidden angularVelocity_0 -2.8421709430404027e-17 -7.105427357601001e-17 1.5335851451639606e-18
+  translation 0.39994 -17.9279 0.24941784563415142
+  rotation 0.6251840703555113 0.7056533070475557 0.33346407366695935 7.346553537929546e-17
+  size 0.5 0.5 0.5
+  physics Physics {
+    mass 3
+  }
+}
+Group {
+  children [
+    Wall {
+      translation 3.66 -54.17 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 7.5 2.4
+    }
+    Wall {
+      translation 2.56961 6.01563 7.10543e-15
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 5.4 2.4
+    }
+    Wall {
+      translation 5.3209 7.2869 7.10543e-15
+      rotation 0 0 1 -3.1415853071795863
+      name "wall(3)"
+      size 0.2 2.7 2.4
+    }
+    Wall {
+      translation 6.33022 8.71465 0.03
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 2.2 2.4
+    }
+    Wall {
+      translation 7.31785 7.30454 7.10543e-15
+      rotation 0 0 1 -3.1415853071795863
+      name "wall(3)"
+      size 0.2 3 2.4
+    }
+    Solid {
+      translation 2.03 -15.38 2.38
+      rotation 0 1 0 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.964706 0.960784 0.956863
+            roughness 1
+            metalness 0
+          }
+          geometry Plane {
+            size 20 80
+          }
+        }
+      ]
+      name "Ceiling"
+    }
+    DEF HUMAN_Manual Robot {
+      translation -4.09571 -23.2418 0.03
+      rotation 0 0 -1 6.53317e-06
+      children [
+        Lidar {
+          translation 0 0 1.17
+          numberOfLayers 1
+          maxRange 20
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_hair.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 3
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_skin.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 4
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../protos/meshes/Sandra_custom/sandra_suit.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/Sandra_custom/Sandra.dae"
+            ]
+            materialIndex 5
+          }
+        }
+      ]
+      name "human"
+      controller "human_keyboard_controlled"
+      supervisor TRUE
+    }
+    Solid {
+      translation -0.973915 -1.83623 -6.03961e-14
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open(1)"
+      boundingObject DEF MeshSimpleDoor Mesh {
+        url [
+          "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+        ]
+      }
+    }
+    Solid {
+      translation 8.06608 -1.83623 -6.03961e-14
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open(3)"
+      boundingObject DEF MeshSimpleDoor Mesh {
+        url [
+          "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -2.11105 -4.2086 -0.02
+      rotation 0 0 1 -3.1415853071795863
+      children [
+        Shape {
+          appearance DEF Wood_Green PBRAppearance {
+            baseColor 0.236 0.296 0.155
+            roughness 1
+            metalness 0.394
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 1
+          }
+        }
+        Shape {
+          appearance DEF Iron_White PBRAppearance {
+            baseColor 0.801 0.731 0.596
+            roughness 0.528
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance DEF Wood_GreenDark PBRAppearance {
+            baseColor 0.257 0.31 0.185
+            roughness 1
+            metalness 0.276
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+            ]
+            materialIndex 2
+          }
+        }
+      ]
+      name "Door_Simple_Open(2)"
+      boundingObject DEF MeshSimpleDoor Mesh {
+        url [
+          "../protos/enviroment/meshes/puerta_simple_abierta.dae"
+        ]
+      }
+      rotationStep 0.27
+    }
+    Group {
+      children [
+        Solid {
+          translation 3.84369 -19.3682 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(2)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 3.94048 -33.1003 4.79616e-14
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(3)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 0.333181 -39.4015 5.50671e-14
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(18)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 0.332685 -44.6765 5.9508e-14
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(19)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 4.76259 -53.7435 -5.15144e-14
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(17)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 3.65918 -44.6575 1.77636e-15
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(20)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 3.37033 -21.1522 3.55271e-15
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(10)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+        Solid {
+          translation 3.57077 -34.9004 -7.63833e-14
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.711 0.711 0.711
+                roughness 0.37
+                metalness 0.46
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 1
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.26
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 0
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "../protos/enviroment/meshes/UsedBrownTeakWood_Base_color.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "../protos/enviroment/meshes/banco.dae"
+                ]
+                materialIndex 2
+              }
+            }
+          ]
+          name "Banco(11)"
+          boundingObject DEF MeshBanco Mesh {
+            url [
+              "../protos/enviroment/meshes/banco.dae"
+            ]
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 8.84654 -20.6061 -1.03029e-13
+      children [
+        Shape {
+          appearance DEF CristalMaterial PBRAppearance {
+            baseColor 0.168 0.168 0.168
+            transparency 0.559
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 0
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.766 0.432
+            roughness 0.823
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 2
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 0.512
+            metalness 0.447
+          }
+          geometry Mesh {
+            url [
+              "../protos/enviroment/meshes/pecera.dae"
+            ]
+            materialIndex 1
+          }
+        }
+      ]
+      name "Pecera"
+      boundingObject Mesh {
+        url [
+          "../protos/enviroment/meshes/pecera.dae"
+        ]
+      }
+    }
+    Wall {
+      translation 7.30768 3.86126 0
+      name "wall(4)"
+      size 0.2 4.5 2.4
+    }
+    Wall {
+      translation -0.032952 3.77484 1.79412e-13
+      name "wall(3)"
+      size 0.2 4.5 2.4
+    }
+    Wall {
+      translation -1.09295 1.62484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -1.09295 -54.1652 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -2.00194 -52.9823 1.79412e-13
+      rotation 0 0 -1 -5.307179586466759e-06
+      name "wall(3)"
+      size 0.2 2.5 2.4
+    }
+    Wall {
+      translation 9.29806 -52.6223 1.79412e-13
+      rotation 0 0 -1 -5.307179586466759e-06
+      name "wall(3)"
+      size 0.2 3.3 2.4
+    }
+    Wall {
+      translation -1.09295 -51.7852 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.30705 -51.0352 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2.2 2.4
+    }
+    Wall {
+      translation 8.36705 -54.1752 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.19705 1.62484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -1.08295 0.35484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation 8.16705 0.35484 1.79412e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -0.409925 -22.14 0
+      rotation 0 0 1 1.5708
+      name "wall(8)"
+    }
+    Wall {
+      translation -0.409925 -22.14 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Solid {
+    }
+    Table {
+      translation 1.12512 -29.8207 1.24345e-13
+      rotation 0 0 1 1.5708
+      size 0.9 1.9 0.74
+    }
+    Table {
+      translation 6.88359 -40.1482 1.11911e-13
+      rotation 0 0 1 1.5708
+      name "table(5)"
+      size 1.1 0.5 0.74
+    }
+    Table {
+      translation 6.4458 -30.3058 1.27897e-13
+      rotation 0 0 1 1.5708
+      name "table(9)"
+      size 0.7 1.4 0.74
+    }
+    Table {
+      translation 6.44072 -44.809 1.24345e-13
+      rotation 0 0 1 1.5708
+      name "table(10)"
+      size 2.4 1.3 0.74
+    }
+    Table {
+      translation 0.516934 -38.0585 1.24345e-13
+      rotation 0 0 1 1.5708
+      name "table(4)"
+      size 1 0.7 0.74
+    }
+    Table {
+      translation 0.607102 -48.6147 1.94511e-13
+      rotation 0 0 1 1.5708
+      name "table(7)"
+      size 2 0.9 0.74
+    }
+    Table {
+      translation 0.543363 -42.3037 1.28786e-13
+      rotation 0 0 1 1.5708
+      name "table(8)"
+      size 1 0.7 0.74
+    }
+    Table {
+      translation 6.59737 -24.6552 1.95399e-14
+      rotation 0 0 1 1.5708
+      name "table(6)"
+      size 1.1 0.9 0.74
+    }
+    Table {
+      translation 6.43261 -15.9938 1.11911e-13
+      rotation 0 0 1 1.5708
+      name "table(3)"
+      size 0.7 1 0.74
+    }
+    Table {
+      translation 0.755031 -14.3683 1.13687e-13
+      rotation 0 0 1 1.5708
+      name "table(2)"
+      size 0.7 1.4 0.74
+    }
+    Table {
+      translation -4.5828 -15.6971 -3.5527e-14
+      rotation 0 0 1 1.5708
+      name "table(12)"
+      size 1 4.6 0.74
+      trayAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 10 10
+        }
+      }
+      legAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 4 5
+        }
+      }
+    }
+    Table {
+      translation -5.17909 -5.52029 -1.04805e-13
+      rotation 0 0 1 1.5708
+      name "table(11)"
+      size 1 3.6 0.74
+      trayAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 10 10
+        }
+      }
+      legAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 4 5
+        }
+      }
+    }
+    Table {
+      translation -5.13955 -11.946 -6.57251e-14
+      rotation 0 0 1 1.5708
+      name "table(13)"
+      size 1 3.6 0.74
+      trayAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 10 10
+        }
+      }
+      legAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 4 5
+        }
+      }
+    }
+    Table {
+      translation -5.22198 -8.98766 -5.15142e-14
+      rotation 0 0 1 -1.5838853071795862
+      name "table(14)"
+      size 1 3.6 0.74
+      trayAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 10 10
+        }
+      }
+      legAppearance VarnishedPine {
+        colorOverride 1 1 1
+        textureTransform TextureTransform {
+          scale 4 5
+        }
+      }
+    }
+    Table {
+      translation 0.921581 -7.61684 1.21681e-13
+      rotation 0 0 1 1.5708
+      name "table(1)"
+      size 1.5 1.4 0.74
+    }
+    Cabinet {
+      hidden translation_7 0.19899993636256874 -0.19884085323165354 0
+      hidden rotation_7 0 0 -1 1.5699965942053948
+      hidden linearVelocity_7 1.4394134580898797e-17 -2.775108785724424e-15 6.02979912777632e-15
+      hidden angularVelocity_7 -1.9708507113646363e-20 -2.820405836284256e-18 6.381716344109894e-17
+      hidden position_10_0 0.41952729504619124
+      hidden translation_11 0.16882533848790954 0.15867490647093313 0
+      hidden rotation_11 0 0 1 1.5088288391193696
+      hidden linearVelocity_11 8.877279666428421e-20 2.08165936577331e-15 -5.1504534216422736e-15
+      hidden angularVelocity_11 -3.307154659198514e-20 -6.260476081903965e-18 4.641047051011674e-19
+      hidden translation_15 0.2170101475456233 0 0
+      hidden linearVelocity_15 0 0 -2.3966414438610943e-15
+      hidden translation_23 0.2801187925005008 0 0
+      hidden linearVelocity_23 0 0 -1.6899394796456434e-15
+      hidden translation_31 0.23398564656705118 0 0
+      hidden linearVelocity_31 0 0 -1.6899394796456434e-15
+      hidden translation_39 0.22788526177831278 0 0
+      hidden linearVelocity_39 0 0 -5.61051926418365e-16
+      translation -2.06755 0.00052 0
+      rotation 0 0 1 -1.5707953071795862
+    }
+    Cabinet {
+      hidden position_6_0 -2.5624546608617222e-05
+      hidden translation_7 5.099284774556792e-06 -6.533301677436043e-11 0
+      hidden rotation_7 0 0 -1 2.5624538688862076e-05
+      hidden linearVelocity_7 2.775467888384243e-15 -8.881784478013814e-14 -5.1504534216422736e-15
+      hidden angularVelocity_7 9.294781845077587e-21 1.2922987403146012e-18 3.976258232496403e-19
+      hidden position_10_0 2.17847202486621e-05
+      hidden translation_11 3.684885429769732e-06 4.0137254631034125e-11 0
+      hidden rotation_11 0 0 1 2.1784723035974595e-05
+      hidden linearVelocity_11 2.775625691090292e-15 8.881783955023743e-14 -5.1504534216422736e-15
+      hidden angularVelocity_11 -3.249269668867873e-21 4.95028247628799e-19 3.549113170474299e-19
+      hidden translation_15 0 0 0
+      hidden linearVelocity_15 0 0 -2.3966414438610943e-15
+      hidden translation_23 0 0 0
+      hidden linearVelocity_23 0 0 -1.6899394796456434e-15
+      hidden translation_31 0 0 0
+      hidden linearVelocity_31 0 0 -1.6899394796456434e-15
+      hidden translation_39 0 0 0
+      hidden linearVelocity_39 0 0 -5.315228776595036e-16
+      translation -1.2734 -49.0095 5.32907e-15
+      name "cabinet(1)"
+    }
+    Wall {
+      translation -0.409929 -18.72 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 0.99 2.4
+    }
+    SolidBox {
+      hidden linearVelocity_0 1.7297474579386253e-17 6.453208604030181e-18 -0.00010223319426241512
+      hidden angularVelocity_0 -2.4660919245469857e-17 3.8149945544166476e-17 3.9079841618532363e-19
+      translation 4.0292334134719745 -37.646976350003484 0.4994178456341515
+      rotation 0.11196652426132497 0.6124209248594837 0.7825625267281157 1.233414619684499e-16
+      name "box(2)"
+      size 0.7 1.9 1
+      physics Physics {
+        mass 3
+      }
+    }
+    SolidBox {
+      hidden linearVelocity_0 1.5753547023621354e-18 9.760056645043876e-18 -0.0001022331942617147
+      hidden angularVelocity_0 -3.3768367640083975e-17 1.472627431627151e-17 8.780927077703104e-18
+      translation 3.7370967937797475 -41.537699410126194 0.5994178456341513
+      rotation 0.14187212280032263 0.3876662501585776 -0.9108167649204297 5.014282798546633e-17
+      name "box(1)"
+      size 0.7 1.9 1.2
+      physics Physics {
+        mass 3
+      }
+    }
+    SolidBox {
+      translation -4.01967 -10.865 -0.00059
+      rotation 5.67571e-17 -1.2852e-16 -1 -1.5692153071795865
+      name "box(3)"
+      size 0.5 0.5 0.01
+    }
+    SolidBox {
+      hidden linearVelocity_0 -2.5764510033091692e-17 1.1699114814009488e-17 4.793792674310276e-15
+      hidden angularVelocity_0 -7.653112793650063e-18 -2.314383790689028e-17 -3.6818490288442e-18
+      translation -9.064668607459197 -6.921965586837641 1.2494113999999994
+      rotation -1.366023497315423e-13 -8.966813751469039e-13 1 0.00027789446697034005
+      name "box(4)"
+      size 0.8 1.5 2.5
+      physics Physics {
+        mass 3
+      }
+    }
+    SolidBox {
+      hidden linearVelocity_0 0.001219300901688626 -0.00030169112488159875 -0.000909993883359923
+      hidden angularVelocity_0 0.00024087020813000186 0.0009727966438816992 3.102678720807224e-07
+      translation -1.9698340088478183 -3.671081832433181 1.2527297607396346
+      rotation -0.002843283944269782 -0.001546886420271116 0.9999947614256863 1.6112741356123739
+      name "box(5)"
+      size 0.8 1.5 2.5
+      physics Physics {
+        mass 3
+      }
+    }
+  ]
+}
+Group {
+  children [
+    Wall {
+      translation -2.07008 -0.521255 1.00364e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 2 2.4
+    }
+    Wall {
+      translation -2.70185 -4.29243 1.58984e-13
+      rotation 0 0 1 -1.5707953071795862
+      name "wall(3)"
+      size 0.2 1.1 2.4
+    }
+    Wall {
+      translation -3.16048 -2.35353 2.86881e-13
+      name "wall(3)"
+      size 0.2 3.8 2.4
+    }
+    Wall {
+      translation -4.02807 -18.0579 -5.5689e-13
+      name "wall(3)"
+      size 7.9 0.2 2.4
+    }
+    Wall {
+      translation -5.67982 -3.45538 -5.65772e-13
+      name "wall(3)"
+      size 4.9 0.2 2.4
+    }
+    Wall {
+      translation 8.29011 -34.2475 -7.28305e-14
+      name "wall(3)"
+      size 0.2 3.7 2.4
+    }
+    Wall {
+      translation -0.409929 -22.1 0
+      rotation 0 0 1 -1.5708
+      name "wall(6)"
+    }
+    Wall {
+      translation 7.71 -22.1 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Wall {
+      translation 7.69 -4.1 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Wall {
+      translation -0.518126 -4.21278 8.88175e-15
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+      size 0.2 1.2 2.4
+    }
+    Wall {
+      translation -0.4 -0.5 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Wall {
+      translation 7.71225 -0.576647 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Wall {
+      translation 7.7 -18.6 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+    Wall {
+      translation -0.390549 -32.338 -1.77636e-15
+      rotation 0 0 1 1.5708
+      name "wall(1)"
+    }
+    Wall {
+      translation 7.69818 -32.5005 0
+      rotation 0 0 1 1.5708
+      name "wall(3)"
+    }
+  ]
+}
+Group {
+  children [
+    Wall {
+      translation -0.8 -20.4 0
+      name "wall(2)"
+      size 0.2 3.5 2.4
+    }
+    Wall {
+      translation 8.1 -20.4 0
+      name "wall(3)"
+      size 0.2 3.5 2.4
+    }
+    Wall {
+      translation 8.1 -1.15 -1.1732e-06
+      rotation 0 1 0 4.692820414042842e-06
+      name "wall(3)"
+      size 0.2 1.3 2.4
+    }
+    Wall {
+      translation 8.09 -3.49 -1.12627e-06
+      rotation 0 1 0 4.692820414042842e-06
+      name "wall(3)"
+      size 0.2 1.3 2.4
+    }
+    Wall {
+      translation -0.95446 -34.1652 1.36099e-05
+      rotation -0.00012884199791575373 0.00012551199796962233 0.9999999838232387 0
+      name "wall(3)"
+      size 0.2 3.85 2.4
+    }
+    Wall {
+      translation -0.995517 -1.09709 6.9278e-14
+      rotation 0 1 0 4.6928e-06
+      name "wall(3)"
+      size 0.2 1.4 2.4
+    }
+    Wall {
+      translation -0.989011 -3.47715 6.12843e-14
+      rotation 0 1 0 4.692820414042842e-06
+      name "wall(3)"
+      size 0.2 1.3 2.4
+    }
+    Wall {
+      translation -0.409929 -22.1 0
+      rotation 0 0 1 1.5708
+      name "wall(2)"
+    }
+  ]
+}
+Wall {
+  translation 7.29 -11.37 0
+  name "wall(7)"
+  size 0.2 14.5 2.4
+}
+Wall {
+  translation 0 -11.37 0
+  name "wall(3)"
+  size 0.2 14.5 2.4
+}
+Wall {
+  translation -8.07852 -10.8468 3.19744e-14
+  name "wall(3)"
+  size 0.2 14.6 2.4
+}
+Wall {
+  translation 0 -27.24 0
+  name "wall(3)"
+  size 0.2 10 2.4
+}
+Wall {
+  translation 7.28771 -27.298 0
+  name "wall(3)"
+  size 0.2 10.4 2.4
+}
+Wall {
+  translation 0 -43.88 0
+  name "wall(3)"
+  size 0.2 16 2.4
+}
+Wall {
+  translation 7.31 -43.52 0
+  name "wall(3)"
+  size 0.2 15 2.4
+}
+Wall {
+  translation -0.385545 -35.9699 -1.59872e-14
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+}
+Wall {
+  translation 7.72028 -36.0021 -1.77635e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wall(3)"
+}
+Floor {
+  translation 0 -24 0
+  size 25 67
+  appearance Parquetry {
+    type "dark strip"
+  }
+}
+PottedTree {
+  translation 3.75307 -7.54825 0
+}
+PottedTree {
+  translation 3.75307 -9.70825 0
+  name "potted tree(2)"
+}
+PottedTree {
+  translation 3.71307 -12.5283 0
+  name "potted tree(3)"
+}
+PottedTree {
+  translation 3.71307 -16.7983 0
+  name "potted tree(4)"
+}
+PottedTree {
+  translation 3.71307 -22.9883 0
+  name "potted tree(5)"
+}
+PottedTree {
+  translation 3.71307 -28.6583 0
+  name "potted tree(6)"
+}
+PottedTree {
+  translation 3.71307 -31.7683 0
+  name "potted tree(7)"
+}
+PottedTree {
+  translation 3.71307 -35.9883 0
+  name "potted tree(8)"
+}
+PottedTree {
+  translation 3.71647 -47.4134 0
+  name "potted tree(9)"
+}
+PottedTree {
+  translation 3.61108 -43.4832 0
+  name "potted tree(11)"
+}
+PottedTree {
+  translation 3.55263 -39.6484 0
+  name "potted tree(12)"
+}
+PottedTree {
+  translation 3.55263 -39.9084 0
+  name "potted tree(10)"
+}
+PottedTree {
+  translation 3.57 -4.1 0
+  rotation 0 0 1 4.692820414042842e-06
+  name "potted tree(1)"
+}
+Wall {
+  translation -0.02 -0.0299984 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+}
+Wall {
+  translation 7.32 -0.029958 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+}
+Wall {
+  translation -2.02 1.02 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+  size 0.2 1.2 2.4
+}
+Wall {
+  translation 9.11 1.02 -0.03
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "wall(3)"
+  size 0.2 1.2 2.4
+}
+Monitor {
+  translation -5.80834 -5.69589 0.73
+  rotation 0 0 -1 1.7
+  scale 1.4
+}
+Monitor {
+  translation -5.68186 -11.8366 0.73
+  rotation 0 0 -1 1.7
+  name "monitor(9)"
+  scale 1.4
+}
+Monitor {
+  translation -2.70517 -15.8432 0.73
+  rotation 0 0 -1 1.7
+  name "monitor(6)"
+  scale 1.4
+}
+Monitor {
+  translation -6.47312 -15.4828 0.73
+  rotation 0 0 1 1.44159
+  name "monitor(10)"
+  scale 1.4
+}
+Monitor {
+  translation -6.50736 -5.32626 0.73
+  rotation 0 0 1 1.44159
+  name "monitor(15)"
+  scale 1.4
+}
+Monitor {
+  translation -6.58666 -9.02021 0.73
+  rotation 0 0 1 1.44159
+  name "monitor(18)"
+  scale 1.4
+}
+Monitor {
+  translation -4.6098 -9.05576 0.73
+  rotation 0 0 1 1.44159
+  name "monitor(17)"
+  scale 1.4
+}
+Monitor {
+  translation -3.39358 -15.5577 0.73
+  rotation 0 0 1 1.44159
+  name "monitor(12)"
+  scale 1.4
+}
+Monitor {
+  translation -5.7726 -15.8122 0.73
+  rotation 0 0 -1 1.7
+  name "monitor(7)"
+  scale 1.4
+}
+Monitor {
+  translation -3.83703 -11.876 0.73
+  rotation 0 0 -1 1.7
+  name "monitor(3)"
+  scale 1.4
+}
+Monitor {
+  translation -6.49028 -5.67607 0.73
+  rotation 0 0 -1 1.5
+  name "monitor(2)"
+  scale 1.4
+}
+Monitor {
+  translation -6.43398 -11.8115 0.73
+  rotation 0 0 -1 1.5
+  name "monitor(8)"
+  scale 1.4
+}
+Monitor {
+  translation -6.47452 -15.7949 0.73
+  rotation 0 0 -1 1.5
+  name "monitor(4)"
+  scale 1.4
+}
+Monitor {
+  translation -3.40843 -15.826 0.73
+  rotation 0 0 -1 1.5
+  name "monitor(5)"
+  scale 1.4
+}
+Monitor {
+  translation -2.72038 -15.5737 0.73
+  rotation 0 0 1 1.64159
+  name "monitor(11)"
+  scale 1.4
+}
+Monitor {
+  translation -5.77532 -15.5083 0.73
+  rotation 0 0 1 1.64159
+  name "monitor(13)"
+  scale 1.4
+}
+Monitor {
+  translation -5.81683 -5.34429 0.73
+  rotation 0 0 1 1.64159
+  name "monitor(14)"
+  scale 1.4
+}
+Monitor {
+  translation -5.89413 -9.03592 0.73
+  rotation 0 0 1 1.64159
+  name "monitor(19)"
+  scale 1.4
+}
+Monitor {
+  translation -3.92466 -9.06522 0.73
+  rotation 0 0 1 1.64159
+  name "monitor(16)"
+  scale 1.4
+}
+Monitor {
+  translation -4.60314 -11.8693 0.73
+  rotation 0 0 -1 1.5
+  name "monitor(1)"
+  scale 1.4
+}
+WoodenChair {
+  translation 1.20821 -8.71701 0
+  rotation 0 0 1 1.5708
+}
+WoodenChair {
+  translation -2.77695 -16.5458 5.32907e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(4)"
+}
+WoodenChair {
+  translation -3.43423 -14.8391 5.32907e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(13)"
+}
+WoodenChair {
+  translation -3.37903 -16.5689 5.32907e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(14)"
+}
+WoodenChair {
+  translation -5.82395 -16.528 5.32907e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(15)"
+}
+WoodenChair {
+  translation -4.54301 -12.8247 3.55271e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(17)"
+}
+WoodenChair {
+  translation -5.44098 -12.7955 1.24345e-14
+  rotation 0 0 1 1.5708
+  name "wooden chair(19)"
+}
+WoodenChair {
+  translation -3.82843 -12.782 6.21725e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(20)"
+}
+WoodenChair {
+  translation -6.22574 -12.795 -9.76996e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(18)"
+}
+WoodenChair {
+  translation -6.45758 -16.53 5.32907e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(16)"
+}
+WoodenChair {
+  translation -6.46936 -14.8632 5.32907e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(10)"
+}
+WoodenChair {
+  translation -6.5086 -8.1733 7.10543e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(11)"
+}
+WoodenChair {
+  translation -3.93034 -8.20334 7.10543e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(22)"
+}
+WoodenChair {
+  translation -4.76795 -8.20015 7.10543e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(23)"
+}
+WoodenChair {
+  translation -5.70309 -4.68638 1.77636e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(25)"
+}
+WoodenChair {
+  translation -6.49225 -6.42251 -7.10542e-15
+  rotation 0 0 1 1.5708
+  name "wooden chair(27)"
+}
+WoodenChair {
+  translation -5.67661 -6.43694 9.05942e-14
+  rotation 0 0 1 1.5708
+  name "wooden chair(28)"
+}
+Blackboard {
+  translation -0.13046 -8.04169 1.36
+  rotation 0 0 1 3.14159
+}
+Blackboard {
+  translation -0.130477 -14.2217 1.36
+  rotation 0 0 1 3.14159
+  name "blackboard(1)"
+}
+Blackboard {
+  translation -0.090471 -11.1917 1.36
+  rotation 0 0 1 3.14159
+  name "blackboard(2)"
+}
+WoodenChair {
+  translation -6.51714 -4.68944 -1.13687e-13
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(26)"
+}
+WoodenChair {
+  translation -5.62496 -8.1886 7.10543e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(24)"
+}
+WoodenChair {
+  translation -5.82845 -14.8381 5.32907e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(21)"
+}
+WoodenChair {
+  translation 0.554707 -13.6621 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(9)"
+}
+WoodenChair {
+  translation 6.79386 -29.6535 -1.59872e-14
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(5)"
+}
+WoodenChair {
+  translation 6.83829 -30.9723 7.4607e-14
+  rotation 0 0 1 1.5708
+  name "wooden chair(7)"
+}
+WoodenChair {
+  translation 6.15854 -29.6331 8.34888e-14
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(8)"
+}
+WoodenChair {
+  translation 6.57474 -23.9156 -3.55271e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(12)"
+}
+WoodenChair {
+  translation 6.57474 -15.3456 -3.55271e-15
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(6)"
+}
+WoodenChair {
+  translation 1.20797 -6.52894 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(2)"
+}
+WoodenChair {
+  translation 0.559554 -8.7077 0
+  rotation 0 0 1 1.5708
+  name "wooden chair(3)"
+}
+WoodenChair {
+  translation 0.565069 -6.51914 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wooden chair(1)"
+}
