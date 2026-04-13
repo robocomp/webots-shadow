@@ -9,10 +9,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/VarnishedPine.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/WoodenChair.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/school_furniture/protos/Blackboard.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/computers/protos/Monitor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/shapes/protos/TexturedBoxShape.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
 
@@ -48,28 +46,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.5847564140793564 0.5501815346398443 -0.5961209735736513 2.0442903124669414
-  position -2.0570782615981997 -23.825930809655027 40.73726678276983
+  orientation 0.591347452033766 0.5344951555128602 -0.6038403097727545 2.0682906087648014
+  position -3.6676970928497177 -8.488460788545826 19.205507399597685
   follow "shadow"
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.8619694997738584e-15 -1.1460953398444543e-14 -2.0670334131202916e-17
-  hidden angularVelocity_0 8.520747291780156e-16 -3.922622358242764e-17 -3.0965963084071432e-15
-  hidden translation_9 0.1 -0.21 0.015
-  hidden rotation_9 0 0.9999999999999999 0 0.8520352588241378
-  hidden linearVelocity_9 4.653559552160174e-15 -3.497021801811733e-14 -3.6637251742991367e-17
-  hidden angularVelocity_9 3.0798410522584873e-15 2.6536611514753852e-14 7.075758366497254e-16
-  hidden translation_10 0.1 0.21 0.015
-  hidden rotation_10 0 -1 0 4.324096102233894
-  hidden linearVelocity_10 -2.8641171767240928e-15 -4.0202169024112767e-14 -2.4772860927773585e-16
-  hidden angularVelocity_10 6.117215429492811e-15 1.7870795485617572e-14 -9.99478724454958e-16
-  hidden translation_11 -0.16 -0.21 0.015
-  hidden rotation_11 0 1 0 4.257411053755914
-  hidden linearVelocity_11 5.584993906091758e-15 3.934400166665935e-14 4.862583969062924e-16
-  hidden angularVelocity_11 -1.8097777943389405e-15 2.2086815263926675e-14 2.64959964047517e-17
-  hidden translation_12 -0.16 0.21 0.015
-  hidden linearVelocity_12 -4.581167148092337e-15 3.40292601679855e-14 3.842398904282104e-17
-  hidden angularVelocity_12 -9.568799716506156e-16 -6.6879322503699965e-15 3.670769004257271e-15
   translation -1.8134210395767696 -8.567277157658081 0.03252546548778398
   rotation 0.0019387255869263349 -0.0021012981088126357 -0.9999959129363262 -1.4903580398099328
 }
@@ -1336,123 +1317,16 @@ Group {
       size 0.7 1.4 0.74
     }
     Table {
-      translation -4.5828 -15.6971 -3.5527e-14
-      rotation 0 0 1 1.5708
-      name "table(12)"
-      size 1 4.6 0.74
-      trayAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 10 10
-        }
-      }
-      legAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 4 5
-        }
-      }
-    }
-    Table {
-      translation -5.17909 -5.52029 -1.04805e-13
-      rotation 0 0 1 1.5708
-      name "table(11)"
-      size 1 3.6 0.74
-      trayAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 10 10
-        }
-      }
-      legAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 4 5
-        }
-      }
-    }
-    Table {
-      translation -5.13955 -11.946 -6.57251e-14
-      rotation 0 0 1 1.5708
-      name "table(13)"
-      size 1 3.6 0.74
-      trayAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 10 10
-        }
-      }
-      legAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 4 5
-        }
-      }
-    }
-    Table {
-      translation -5.22198 -8.98766 -5.15142e-14
-      rotation 0 0 1 -1.5838853071795862
-      name "table(14)"
-      size 1 3.6 0.74
-      trayAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 10 10
-        }
-      }
-      legAppearance VarnishedPine {
-        colorOverride 1 1 1
-        textureTransform TextureTransform {
-          scale 4 5
-        }
-      }
-    }
-    Table {
       translation 0.921581 -7.61684 1.21681e-13
       rotation 0 0 1 1.5708
       name "table(1)"
       size 1.5 1.4 0.74
     }
     Cabinet {
-      hidden translation_7 0.19899993636256874 -0.19884085323165354 0
-      hidden rotation_7 0 0 -1 1.5699965942053948
-      hidden linearVelocity_7 1.4394134580898797e-17 -2.775108785724424e-15 6.02979912777632e-15
-      hidden angularVelocity_7 -1.9708507113646363e-20 -2.820405836284256e-18 6.381716344109894e-17
-      hidden position_10_0 0.41952729504619124
-      hidden translation_11 0.16882533848790954 0.15867490647093313 0
-      hidden rotation_11 0 0 1 1.5088288391193696
-      hidden linearVelocity_11 8.877279666428421e-20 2.08165936577331e-15 -5.1504534216422736e-15
-      hidden angularVelocity_11 -3.307154659198514e-20 -6.260476081903965e-18 4.641047051011674e-19
-      hidden translation_15 0.2170101475456233 0 0
-      hidden linearVelocity_15 0 0 -2.3966414438610943e-15
-      hidden translation_23 0.2801187925005008 0 0
-      hidden linearVelocity_23 0 0 -1.6899394796456434e-15
-      hidden translation_31 0.23398564656705118 0 0
-      hidden linearVelocity_31 0 0 -1.6899394796456434e-15
-      hidden translation_39 0.22788526177831278 0 0
-      hidden linearVelocity_39 0 0 -5.61051926418365e-16
       translation -2.06755 0.00052 0
       rotation 0 0 1 -1.5707953071795862
     }
     Cabinet {
-      hidden position_6_0 -2.5624546608617222e-05
-      hidden translation_7 5.099284774556792e-06 -6.533301677436043e-11 0
-      hidden rotation_7 0 0 -1 2.5624538688862076e-05
-      hidden linearVelocity_7 2.775467888384243e-15 -8.881784478013814e-14 -5.1504534216422736e-15
-      hidden angularVelocity_7 9.294781845077587e-21 1.2922987403146012e-18 3.976258232496403e-19
-      hidden position_10_0 2.17847202486621e-05
-      hidden translation_11 3.684885429769732e-06 4.0137254631034125e-11 0
-      hidden rotation_11 0 0 1 2.1784723035974595e-05
-      hidden linearVelocity_11 2.775625691090292e-15 8.881783955023743e-14 -5.1504534216422736e-15
-      hidden angularVelocity_11 -3.249269668867873e-21 4.95028247628799e-19 3.549113170474299e-19
-      hidden translation_15 0 0 0
-      hidden linearVelocity_15 0 0 -2.3966414438610943e-15
-      hidden translation_23 0 0 0
-      hidden linearVelocity_23 0 0 -1.6899394796456434e-15
-      hidden translation_31 0 0 0
-      hidden linearVelocity_31 0 0 -1.6899394796456434e-15
-      hidden translation_39 0 0 0
-      hidden linearVelocity_39 0 0 -5.315228776595036e-16
       translation -1.2734 -49.0095 5.32907e-15
       name "cabinet(1)"
     }
@@ -1770,208 +1644,9 @@ Wall {
   name "wall(3)"
   size 0.2 1.2 2.4
 }
-Monitor {
-  translation -5.80834 -5.69589 0.73
-  rotation 0 0 -1 1.7
-  scale 1.4
-}
-Monitor {
-  translation -5.68186 -11.8366 0.73
-  rotation 0 0 -1 1.7
-  name "monitor(9)"
-  scale 1.4
-}
-Monitor {
-  translation -2.70517 -15.8432 0.73
-  rotation 0 0 -1 1.7
-  name "monitor(6)"
-  scale 1.4
-}
-Monitor {
-  translation -6.47312 -15.4828 0.73
-  rotation 0 0 1 1.44159
-  name "monitor(10)"
-  scale 1.4
-}
-Monitor {
-  translation -6.50736 -5.32626 0.73
-  rotation 0 0 1 1.44159
-  name "monitor(15)"
-  scale 1.4
-}
-Monitor {
-  translation -6.58666 -9.02021 0.73
-  rotation 0 0 1 1.44159
-  name "monitor(18)"
-  scale 1.4
-}
-Monitor {
-  translation -4.6098 -9.05576 0.73
-  rotation 0 0 1 1.44159
-  name "monitor(17)"
-  scale 1.4
-}
-Monitor {
-  translation -3.39358 -15.5577 0.73
-  rotation 0 0 1 1.44159
-  name "monitor(12)"
-  scale 1.4
-}
-Monitor {
-  translation -5.7726 -15.8122 0.73
-  rotation 0 0 -1 1.7
-  name "monitor(7)"
-  scale 1.4
-}
-Monitor {
-  translation -3.83703 -11.876 0.73
-  rotation 0 0 -1 1.7
-  name "monitor(3)"
-  scale 1.4
-}
-Monitor {
-  translation -6.49028 -5.67607 0.73
-  rotation 0 0 -1 1.5
-  name "monitor(2)"
-  scale 1.4
-}
-Monitor {
-  translation -6.43398 -11.8115 0.73
-  rotation 0 0 -1 1.5
-  name "monitor(8)"
-  scale 1.4
-}
-Monitor {
-  translation -6.47452 -15.7949 0.73
-  rotation 0 0 -1 1.5
-  name "monitor(4)"
-  scale 1.4
-}
-Monitor {
-  translation -3.40843 -15.826 0.73
-  rotation 0 0 -1 1.5
-  name "monitor(5)"
-  scale 1.4
-}
-Monitor {
-  translation -2.72038 -15.5737 0.73
-  rotation 0 0 1 1.64159
-  name "monitor(11)"
-  scale 1.4
-}
-Monitor {
-  translation -5.77532 -15.5083 0.73
-  rotation 0 0 1 1.64159
-  name "monitor(13)"
-  scale 1.4
-}
-Monitor {
-  translation -5.81683 -5.34429 0.73
-  rotation 0 0 1 1.64159
-  name "monitor(14)"
-  scale 1.4
-}
-Monitor {
-  translation -5.89413 -9.03592 0.73
-  rotation 0 0 1 1.64159
-  name "monitor(19)"
-  scale 1.4
-}
-Monitor {
-  translation -3.92466 -9.06522 0.73
-  rotation 0 0 1 1.64159
-  name "monitor(16)"
-  scale 1.4
-}
-Monitor {
-  translation -4.60314 -11.8693 0.73
-  rotation 0 0 -1 1.5
-  name "monitor(1)"
-  scale 1.4
-}
 WoodenChair {
   translation 1.20821 -8.71701 0
   rotation 0 0 1 1.5708
-}
-WoodenChair {
-  translation -2.77695 -16.5458 5.32907e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(4)"
-}
-WoodenChair {
-  translation -3.43423 -14.8391 5.32907e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(13)"
-}
-WoodenChair {
-  translation -3.37903 -16.5689 5.32907e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(14)"
-}
-WoodenChair {
-  translation -5.82395 -16.528 5.32907e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(15)"
-}
-WoodenChair {
-  translation -4.54301 -12.8247 3.55271e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(17)"
-}
-WoodenChair {
-  translation -5.44098 -12.7955 1.24345e-14
-  rotation 0 0 1 1.5708
-  name "wooden chair(19)"
-}
-WoodenChair {
-  translation -3.82843 -12.782 6.21725e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(20)"
-}
-WoodenChair {
-  translation -6.22574 -12.795 -9.76996e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(18)"
-}
-WoodenChair {
-  translation -6.45758 -16.53 5.32907e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(16)"
-}
-WoodenChair {
-  translation -6.46936 -14.8632 5.32907e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(10)"
-}
-WoodenChair {
-  translation -6.5086 -8.1733 7.10543e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(11)"
-}
-WoodenChair {
-  translation -3.93034 -8.20334 7.10543e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(22)"
-}
-WoodenChair {
-  translation -4.76795 -8.20015 7.10543e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(23)"
-}
-WoodenChair {
-  translation -5.70309 -4.68638 1.77636e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(25)"
-}
-WoodenChair {
-  translation -6.49225 -6.42251 -7.10542e-15
-  rotation 0 0 1 1.5708
-  name "wooden chair(27)"
-}
-WoodenChair {
-  translation -5.67661 -6.43694 9.05942e-14
-  rotation 0 0 1 1.5708
-  name "wooden chair(28)"
 }
 Blackboard {
   translation -0.13046 -8.04169 1.36
@@ -1986,21 +1661,6 @@ Blackboard {
   translation -0.090471 -11.1917 1.36
   rotation 0 0 1 3.14159
   name "blackboard(2)"
-}
-WoodenChair {
-  translation -6.51714 -4.68944 -1.13687e-13
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(26)"
-}
-WoodenChair {
-  translation -5.62496 -8.1886 7.10543e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(24)"
-}
-WoodenChair {
-  translation -5.82845 -14.8381 5.32907e-15
-  rotation 0 0 1 -1.5707953071795862
-  name "wooden chair(21)"
 }
 WoodenChair {
   translation 0.554707 -13.6621 0
