@@ -8,7 +8,7 @@ PROTO Bump [
     field SFRotation        rotation        0 0 1 0       
     field SFString          name            "Customizable Bump"   
     field SFBool            invisible       FALSE
-    field SFString{"25x5cm", "25x7cm", "25x10cm", "50x5cm", "50x7cm", "50x10cm", "100x5cm", "100x7cm", "100x10cm"}  type    "100x5cm"
+    field SFString{"25x2cm", "25x3_5cm","25x5cm", "25x7cm", "25x10cm", "50x5cm", "50x7cm", "50x10cm", "100x5cm", "100x7cm", "100x10cm"}  type    "100x5cm"
 ]
 {
     %<
