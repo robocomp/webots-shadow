@@ -13,6 +13,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/school_furniture/protos/Blackboard.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/shapes/protos/TexturedBoxShape.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
 
 WorldInfo {
   info [
@@ -51,28 +52,6 @@ Viewpoint {
   follow "shadow"
 }
 DEF shadow Shadow {
-  hidden position_0_0 33.81983533566537
-  hidden position_0_1 106.85985955287681
-  hidden position_0_2 115.51943519785678
-  hidden position_0_3 65.88119992899058
-  hidden linearVelocity_0 -2.712743838519425e-10 -4.3021834827996454e-10 -4.7050942248153823e-08
-  hidden angularVelocity_0 -4.633808965464753e-08 2.931366259823373e-08 -1.6243184872436727e-11
-  hidden translation_9 -0.21 -0.1 0.015
-  hidden rotation_9 0.6823788927739024 -0.6818357124231443 -0.26355095894548747 3.6573678455887637
-  hidden linearVelocity_9 8.4460737174389e-09 -2.856551247120911e-08 -5.546933930879381e-08
-  hidden angularVelocity_9 -4.49807435595116e-08 2.7133769492946443e-08 -1.6733789686820825e-11
-  hidden translation_10 0.21 -0.1 0.015
-  hidden rotation_10 0.02286490200418362 -0.0228467013159412 -0.9994774757318543 4.712662646428809
-  hidden linearVelocity_10 -2.9387497344322506e-08 -4.645900564713854e-09 -5.545234312557418e-08
-  hidden angularVelocity_10 -4.3857880316392835e-08 2.9070889165172577e-08 -1.631906258926832e-11
-  hidden translation_11 -0.21 0.16 0.015
-  hidden rotation_11 -0.6836426612924335 0.6830984749694297 0.256922527535907 2.638242076058444
-  hidden linearVelocity_11 3.229679470077332e-08 9.394571281525573e-09 -3.999804189450986e-08
-  hidden angularVelocity_11 -4.87509161481201e-08 2.9519694164938524e-08 -1.7935389773001962e-11
-  hidden translation_12 0.21 0.16 0.015
-  hidden rotation_12 -0.7070121246051918 0.7064493359581513 0.03260661567135904 3.0763506223854655
-  hidden linearVelocity_12 -5.4385232342605704e-09 3.316787130700645e-08 -3.998104514237628e-08
-  hidden angularVelocity_12 -4.761627669706059e-08 3.143964207322784e-08 -1.656260201565825e-11
   translation -3.0435164995191495 -8.892249491843325 0.029578723708373382
   rotation 0.0012586403679192206 0.004364137600744627 0.9999896850105136 2.578452521736326
 }
@@ -144,246 +123,7 @@ DEF CROWD_CONTROL Group {
         }
       ]
     }
-    DEF CROWD Group {
-      children [
-        DEF HUMAN_3 Robot {
-          translation -6.560000000000002 4.422515709266907 -2.84217e-14
-          rotation 0 0 -1 1.5707963267948961
-          children [
-            Lidar {
-              translation 0 0 1.17
-              numberOfLayers 1
-              maxRange 20
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_hair.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 2
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 3
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 4
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 5
-              }
-            }
-          ]
-          name "HUMAN_3"
-          controller "crowd_controller"
-          supervisor TRUE
-          linearVelocity 3.051402627528337e-16 -0.699999988079071 0
-          angularVelocity 6.7495325124692e-310 0 0
-        }
-        DEF HUMAN_4 Robot {
-          translation -7.801902786943703 -25226.210912834144 0
-          rotation 0 0 1 1.5708049828095605
-          children [
-            Lidar {
-              translation 0 0 1.17
-              numberOfLayers 1
-              maxRange 20
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyebrow.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 0
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_eyes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 1
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_hair.png"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 2
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_shoes.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 3
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_skin.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 4
-              }
-            }
-            Shape {
-              appearance PBRAppearance {
-                baseColorMap ImageTexture {
-                  url [
-                    "../protos/meshes/Sandra_custom/sandra_suit.jpg"
-                  ]
-                }
-                roughness 1
-                metalness 0
-              }
-              geometry Mesh {
-                url [
-                  "../protos/meshes/Sandra_custom/Sandra.dae"
-                ]
-                materialIndex 5
-              }
-            }
-          ]
-          name "HUMAN_4"
-          controller "crowd_controller"
-          supervisor TRUE
-          linearVelocity -6.0592101613910085e-06 0.6999999880528467 0
-          angularVelocity 6.31533373318661e-310 0 0
-        }
-      ]
-    }
+    
   ]
 }
 TexturedBackground {
@@ -1626,6 +1366,11 @@ Wall {
   translation 7.72028 -36.0021 -1.77635e-15
   rotation 0 0 1 -1.5707953071795862
   name "wall(3)"
+}
+DEF bottle BeerBottle {
+  translation -3.918 -11.017 0.74
+  name "bottle"
+  mass 0.4
 }
 Floor {
   translation 0 -24 0
