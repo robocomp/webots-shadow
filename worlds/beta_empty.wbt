@@ -12,6 +12,9 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/SimpleChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/kitchen/fridge/protos/Fridge.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/WoodenBox.proto"
 
 WorldInfo {
   info [
@@ -45,15 +48,32 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.5782998768915244 0.5418920450121927 -0.6098542973036688 2.027368393832474
-  position -5.084236898236728 -7.7440068550480765 16.528716655523905
+  orientation 0.5464492297812317 -0.544404131232427 -0.6364097588571099 4.271717521889944
+  position -5.1607086606018004 -16.892528128575076 48.36968097581581
   follow "shadow"
+  followType "None"
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  translation -3.0435164995191495 -8.892249491843325 0.029578723708373382
-  rotation 0.0012586403679192206 0.004364137600744627 0.9999896850105136 2.578452521736326
+  hidden position_0_0 133415.81625638963
+  hidden position_0_1 127850.06209884616
+  hidden position_0_2 134163.5431662692
+  hidden position_0_3 129001.27880646067
+  hidden linearVelocity_0 -1.1899364633916054e-12 2.9761459760177526e-13 -7.094058673828841e-16
+  hidden angularVelocity_0 -3.168807901044405e-15 4.5180169133599745e-15 -3.890063000154128e-12
+  hidden rotation_9 0.5279814248333758 -0.5275611463948322 0.6655184834739669 1.9664433854732382
+  hidden linearVelocity_9 -1.43754796208281e-12 -5.631223445526513e-13 -1.0220701139361846e-15
+  hidden angularVelocity_9 2.530216422833088e-11 -2.2573140055642003e-11 -3.889936605673994e-12
+  hidden rotation_10 0.09575179061914842 -0.09567557124635069 0.9907965379733172 1.5792459749141476
+  hidden linearVelocity_10 -3.4859498061412725e-13 6.34045327729584e-13 -2.1440643852541595e-15
+  hidden angularVelocity_10 2.157647476235041e-11 -1.9218406624565504e-11 -3.8906267271833316e-12
+  hidden rotation_11 -0.521203617941188 0.5207887347039999 -0.6761108507119397 4.331356593600081
+  hidden linearVelocity_11 -2.1915976851476845e-12 1.3527750253869374e-13 4.455643038261349e-16
+  hidden angularVelocity_11 3.137712638469456e-11 -2.8057963077678326e-11 -3.891228796919178e-12
+  hidden rotation_12 0.49231920781828425 -0.4919273168573749 -0.7180733336802592 4.387853343573231
+  hidden linearVelocity_12 -1.096739211230462e-12 1.321906513028861e-12 9.93576156990443e-16
+  hidden angularVelocity_12 -4.4431309442221245e-11 3.967501364550883e-11 -3.89190269393188e-12
+  translation -1.919826619462081 -9.453480936251925 0.02957871382766529
+  rotation 0.0016656742965299256 0.004362119366628096 0.9999890986624649 2.413302875180867
 }
 TexturedBoxShape {
 }
@@ -133,7 +153,7 @@ TexturedBackgroundLight {
 Group {
   children [
     Solid {
-      translation 2.03 -15.38 2.38
+      translation -4 -11 2.38
       rotation 0 1 0 3.14159
       children [
         Shape {
@@ -143,14 +163,14 @@ Group {
             metalness 0
           }
           geometry Plane {
-            size 20 80
+            size 8 15
           }
         }
       ]
       name "Ceiling"
     }
     DEF HUMAN_Manual Robot {
-      translation -4.09571 -23.2418 0.03
+      translation -5.74571 -14.3718 0.03
       rotation 0 0 -1 6.53317e-06
       children [
         Lidar {
@@ -266,8 +286,8 @@ Group {
       supervisor TRUE
     }
     Solid {
-      translation -2.11105 -4.2086 -0.02
-      rotation 0 0 1 -3.1415853071795863
+      translation -1.51985 -2.97329 -0.02
+      rotation 0 0 -1 -0.025315307179586632
       children [
         Shape {
           appearance DEF Wood_Green PBRAppearance {
@@ -321,13 +341,69 @@ Group {
     Solid {
     }
     Table {
-      translation -3.91842 -11.0168 1.21681e-13
+      translation 1.44163 -13.9805 1.21681e-13
       rotation 0 0 1 1.5708
       name "table(11)"
       size 1.5 1.4 0.74
     }
+    Table {
+      translation 1.09284 -14.4241 -1.15458e-14
+      rotation 0 0 1 1.5708
+      name "table(2)"
+      size 1.5 1.4 0.74
+    }
+    Table {
+      translation -3.94716 -2.4741 -1.15458e-14
+      rotation 0 0 1 1.5708
+      name "table(3)"
+      size 1.8 1 0.74
+    }
+    Table {
+      translation -3.96271 -10.8804 -1.15458e-14
+      rotation 0 0 1 -3.1415853071795863
+      name "table(4)"
+      size 1.8 1 0.74
+    }
+    Fridge {
+      hidden position_0_0 -0.00010987193902493259
+      hidden position_0_1 0.00010987193941838547
+      hidden rotation_1 0 0 -0.9999999999999999 0.00010987193947389281
+      hidden rotation_2 0 0 1 0.00010987193947389281
+      translation -8.92385 -4.07708 3.09086e-13
+      rotation 0 0 1 -1.5707953071795862
+    }
+    Table {
+      translation -3.97318 -2.7499 1.21681e-13
+      rotation 0 0 1 1.5708
+      name "table(1)"
+      size 1.5 1.4 0.74
+    }
+    SimpleChair {
+      translation 0.3765268067944971 -14.074571844694974 -0.00023283745759550278
+      rotation 0.036857650419156895 -0.01969529003956655 0.999126423009539 0.016245692808418987
+    }
+    SimpleChair {
+      translation -9.029825643709746 -6.016777917155745 -0.00024226873292254592
+      rotation -0.00013249917958629484 -0.00013014589062105048 -0.999999982753007 1.5887157817937896
+      name "simple chair(3)"
+    }
+    WoodenBox {
+      translation -8.99444 -11.1196 0.3
+      name "wooden box(5)"
+      size 0.4 0.4 0.4
+    }
+    SimpleChair {
+      translation 2.4636300591799523 -14.14770322053223 -0.00024226873292276796
+      rotation 0.0001324991807085285 1.8469920354931075e-08 0.9999999912219834 -3.141313860620005
+      name "simple chair(2)"
+    }
+    SimpleChair {
+      translation 1.3325586660184847 -15.195788389888643 -0.00024226873292221285
+      rotation 0.0001324991800717899 -9.803449002234276e-05 0.999999986416603 1.8675973737024185
+      name "simple chair(1)"
+    }
     SolidBox {
-      translation -4.01967 -10.865 -0.00059
+      translation -4.01967 -10.865 -0.02059
       rotation 5.67571e-17 -1.2852e-16 -1 -1.5692153071795865
       name "box(3)"
       size 0.5 0.5 0.01
@@ -337,10 +413,10 @@ Group {
 Group {
   children [
     Wall {
-      translation -2.70185 -4.29243 1.58984e-13
+      translation -2.17185 -4.20243 1.58984e-13
       rotation 0 0 1 -1.5707953071795862
-      name "wall(3)"
-      size 0.2 1.1 2.4
+      name "wall(4)"
+      size 0.2 2.1 2.4
     }
     Wall {
       translation -4.02807 -18.0579 -5.5689e-13
@@ -370,9 +446,9 @@ Group {
   ]
 }
 Wall {
-  translation 0 -11.37 0
-  name "wall(3)"
-  size 0.2 14.5 2.4
+  translation 0 -11.04 0
+  name "wall(2)"
+  size 0.2 14 2.4
 }
 Wall {
   translation -8.07852 -10.8468 3.19744e-14
@@ -380,8 +456,14 @@ Wall {
   size 0.2 14.6 2.4
 }
 DEF bottle BeerBottle {
-  translation -3.918 -11.017 0.74
+  translation -3.7698999622336147 -14.070699916402278 0.000421520011825674
+  rotation -3.3859730724565237e-13 -1.2919868571784358e-13 -1 0.00043281092434982574
   name "bottle"
+}
+DEF bottle BeerBottle {
+  translation -3.9915972114212623 -14.021407068364676 0.030904975346093922
+  rotation 0.1797087047645796 -0.8313519916414311 0.5258884362920171 -1.964366520283618
+  name "bottle(1)"
 }
 PottedTree {
   translation 3.71647 -47.4134 0

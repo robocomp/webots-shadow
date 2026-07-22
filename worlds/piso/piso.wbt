@@ -1,0 +1,1757 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Shadow.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5741366062582948 0.5988521354075771 0.5583397507539585 2.1248161052555488
+  position -3.549307161088981 4.320824142662097 12.96469615743178
+  follow "shadow"
+  followType "None"
+}
+TexturedBackground {
+}
+Group {
+  children [
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 6.8 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 8.4 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 5.2 2.9
+      radius 18
+    }
+  ]
+}
+Group {
+}
+TexturedBackgroundLight {
+}
+Group {
+  children [
+    Solid {
+      translation -6.77985 0.173777 0
+      children [
+        Transform {
+          scale 1.3333333 1 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Mesh {
+                url [
+                  "meshes/heater.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Heater"
+      boundingObject Pose {
+        translation -0.02 0.005 0.398
+        children [
+          Box {
+            size 1.5013 0.116 0.8
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -1.86985 0.173777 0
+      children [
+        Transform {
+          scale 1.3333333 1 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Mesh {
+                url [
+                  "meshes/heater.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Heater(2)"
+      boundingObject Pose {
+        translation -0.02 0.005 0.398
+        children [
+          Box {
+            size 1.5013 0.116 0.8
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -1.62564 4.79931 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_BaseColor.png"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Roughness.png"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Metallic.png"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Normal.png"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Emissive.png"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/table1.dae"
+            ]
+          }
+        }
+      ]
+      name "Table1"
+      boundingObject Mesh {
+        url [
+          "meshes/table1.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -1.63325 2.84585 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_BaseColor.png"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Roughness.png"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Metallic.png"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Normal.png"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Emissive.png"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/table1.dae"
+            ]
+          }
+        }
+      ]
+      name "Table1(1)"
+      boundingObject Mesh {
+        url [
+          "meshes/table1.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -6.68445 1.87241 0
+      children [
+        Pose {
+          translation 0 0 0.725
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 1
+                roughness 0.2
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.5
+                subdivision 48
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.37
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.95 0.95
+                roughness 0.35
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.68
+                radius 0.065
+                subdivision 24
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.015
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.95 0.95
+                roughness 0.35
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.36
+                subdivision 48
+              }
+            }
+          ]
+        }
+      ]
+      name "RoundTable"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0 0 0.725
+            children [
+              Cylinder {
+                height 0.03
+                radius 0.5
+                subdivision 48
+              }
+            ]
+          }
+          Pose {
+            translation 0 0 0.37
+            children [
+              Cylinder {
+                height 0.68
+                radius 0.065
+                subdivision 24
+              }
+            ]
+          }
+          Pose {
+            translation 0 0 0.015
+            children [
+              Cylinder {
+                height 0.03
+                radius 0.36
+                subdivision 48
+              }
+            ]
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -4.47 4.71 3
+      rotation 1 0 0 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Plane {
+            size 9 10
+          }
+        }
+      ]
+      name "Ceiling"
+    }
+    Solid {
+      translation -7.7932 3.95066 -2.83525e-14
+      rotation -9.58979e-09 1.27237e-14 -1 -3.1415853071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/fridge.dae"
+            ]
+          }
+        }
+      ]
+      name "Fridge"
+      boundingObject Mesh {
+        url [
+          "meshes/fridge.dae"
+        ]
+      }
+    }
+    Solid {
+      children [
+        Transform {
+          translation -0.01277 0.01388 0
+          scale 0.997 0.997 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_diff_2k.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_rough_2k.jpg"
+                  ]
+                }
+                normalMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_nor_dx_2k.jpg"
+                  ]
+                }
+                occlusionMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_ao_2k.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "meshes/rodapies.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Rodapies"
+      boundingObject Mesh {
+        url [
+          "meshes/rodapies.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -1.75132 0.258775 0
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_BaseColor.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Roughness.jpg"
+                  ]
+                }
+                metalnessMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Metallic.jpg"
+                  ]
+                }
+                normalMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Normal.jpg"
+                  ]
+                }
+                emissiveColorMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Emissive.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "meshes/blackboard.dae"
+                ]
+              }
+            }
+          ]
+          boundingObject Mesh {
+            url [
+              "meshes/blackboard.dae"
+            ]
+          }
+        }
+      ]
+      name "Blackboard"
+      boundingObject Mesh {
+        url [
+          "meshes/blackboard.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -1.65 7.166 1.4
+      children [
+        Pose {
+          translation 0 -0.015 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.75 0.76 0.78
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 2.08 0.03 1.08
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 -0.02 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 1
+                roughness 0.12
+                metalness 0
+              }
+              geometry Box {
+                size 2 0.04 1
+              }
+            }
+          ]
+        }
+      ]
+      name "Whiteboard"
+      boundingObject Pose {
+        translation 0 -0.02 0
+        children [
+          Box {
+            size 2.08 0.04 1.08
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -0.090218 4 1.5
+      rotation 0.565348 -0.583259 -0.583259 2.112493
+      children [
+        Pose {
+          translation 0 0 0.006
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.22
+                roughness 0.6
+                metalness 0
+              }
+              geometry Box {
+                size 3.02 1.22 0.012
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.013
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 1
+                roughness 0.6
+                metalness 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/robolab/poster_robolab.png"
+                  ]
+                }
+              }
+              geometry Plane {
+                size 3 1.2
+              }
+            }
+          ]
+        }
+      ]
+      name "Poster"
+      boundingObject Pose {
+        translation 0 0 0.006
+        children [
+          Box {
+            size 3.02 1.22 0.012
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -7.31334 6.73255 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera4.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop4"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera4.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -8.17593 5.43893 -0.14
+      rotation 0 0 1 -3.1415853071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera1.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop1"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera1.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -7.42283 6.66977 -0.02
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Emissive.jpg"
+              ]
+            }
+            name "Worktop2"
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera2.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop2"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera2.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -3.58277 7.13979 0.1
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/door.dae"
+            ]
+          }
+        }
+      ]
+      name "Door"
+      boundingObject Mesh {
+        url [
+          "meshes/door.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -4.77109 9.21748 0
+      rotation 0 0 -1 -3.1415853071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/puerta/puerta_Puerta_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/door.dae"
+            ]
+          }
+        }
+      ]
+      name "Door(1)"
+      boundingObject Mesh {
+        url [
+          "meshes/door.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -6.24566 5.91599 -2.22045e-14
+      rotation 0 0 1 1.62771e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Emissive.jpg"
+              ]
+            }
+            name "worktop_3"
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera3.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop3"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera3.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -8.225 4.9 0.905
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.93 0.93 0.9
+            roughness 0.5
+            metalness 0.1
+          }
+          geometry Box {
+            size 0.35 0.48 0.29
+          }
+        }
+        Pose {
+          translation 0.176 -0.07 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.06
+                roughness 0.15
+                metalness 0.3
+              }
+              geometry Box {
+                size 0.015 0.3 0.22
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.182 0.11 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.22
+                roughness 0.3
+                metalness 0.8
+              }
+              geometry Box {
+                size 0.02 0.02 0.2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.176 0.18 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.11
+                roughness 0.35
+                metalness 0.4
+              }
+              geometry Box {
+                size 0.014 0.1 0.24
+              }
+            }
+          ]
+        }
+      ]
+      name "Microwave"
+      boundingObject Box {
+        size 0.35 0.48 0.29
+      }
+    }
+    Solid {
+      translation -8.15 5.7 1.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.75 0.76 0.78
+            roughness 0.35
+            metalness 0.85
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.25 -0.648 0
+                0.25 -0.648 0
+                0.25 0.648 0
+                -0.25 0.648 0
+                -0.09 -0.302 0.3
+                0.09 -0.302 0.3
+                0.09 0.302 0.3
+                -0.09 0.302 0.3
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 7, 6, 5, -1, 0, 4, 5, 1, -1, 2, 6, 7, 3, -1, 3, 7, 4, 0, -1, 1, 5, 6, 2, -1
+            ]
+            creaseAngle 0.5
+          }
+        }
+        Pose {
+          translation -0.1 0 0.575
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.75 0.76 0.78
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.16 0.475 0.55
+              }
+            }
+          ]
+        }
+      ]
+      name "KitchenHood"
+      boundingObject Pose {
+        translation 0 0 0.15
+        children [
+          Box {
+            size 0.5 1.3 0.3
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -8.3 -1.51 0
+      rotation 0 0 1 -1.5708
+      children [
+        Pose {
+          translation -4.4 0 0.2
+          children [
+            DEF CUBE_ORANGE Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_ORANGE PBRAppearance {
+                        baseColor 0.85 0.38 0.1
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry DEF BXBACK Box {
+                        size 0.4 0.018 0.4
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry DEF BXTB Box {
+                        size 0.4 0.4 0.018
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry DEF BXLR Box {
+                        size 0.018 0.4 0.4
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.98 0 0.2
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -4.4 0 0.62
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -3.98 0 0.62
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -3.56 0 0.2
+          children [
+            DEF CUBE_GRAY Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_GRAY PBRAppearance {
+                        baseColor 0.55 0.56 0.57
+                        roughness 0.7
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.56 0 0.62
+          children [
+            USE CUBE_GRAY
+          ]
+        }
+        Pose {
+          translation -3.98 0 1.04
+          children [
+            DEF CUBE_WHITE Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_WHITE PBRAppearance {
+                        baseColor 0.92 0.92 0.9
+                        roughness 0.7
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.56 0 1.04
+          children [
+            USE CUBE_WHITE
+          ]
+        }
+        Pose {
+          translation -4.82 0 1.9
+          children [
+            DEF CUBE_CHAR Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_CHAR PBRAppearance {
+                        baseColor 0.12 0.12 0.13
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -4.4 0 2.32
+          children [
+            USE CUBE_CHAR
+          ]
+        }
+        Pose {
+          translation -3.14 0 1.5
+          children [
+            DEF CUBE_NAVY Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_NAVY PBRAppearance {
+                        baseColor 0.16 0.22 0.33
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.14 0 1.92
+          children [
+            USE CUBE_NAVY
+          ]
+        }
+        Pose {
+          translation -3.14 0 2.34
+          children [
+            USE CUBE_NAVY
+          ]
+        }
+      ]
+      name "BookshelfCubes"
+      boundingObject Group {
+        children [
+          Pose {
+            translation -4.4 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.4 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 1.04
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 1.04
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.82 0 1.9
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.4 0 2.32
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 1.5
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 1.92
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 2.34
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -8.31 1.07 1.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.99 0.93 0.85
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25 0.4 3
+          }
+        }
+      ]
+      name "Pillar"
+      boundingObject Box {
+        size 0.4 0.6 3
+      }
+    }
+    Solid {
+      translation -0.310883 1.08 1.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.91 0.95 0.9
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25 0.4 3
+          }
+        }
+      ]
+      name "Pillar(1)"
+      boundingObject Box {
+        size 0.4 0.6 3
+      }
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_diff_2k.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_rough_2k.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_nor_dx_2k.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_ao_2k.jpg"
+              ]
+            }
+            name "LaminateFloor"
+          }
+          geometry Mesh {
+            url [
+              "meshes/floor.dae"
+            ]
+          }
+        }
+      ]
+      name "Floor"
+      boundingObject Mesh {
+        url [
+          "meshes/floor.dae"
+        ]
+      }
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.99 0.93 0.85
+            roughness 1
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+              ]
+            }
+            normalMapFactor 0.7
+            occlusionMapStrength 0
+            emissiveIntensity 0
+            name "WallWest"
+          }
+          geometry Mesh {
+            url [
+              "meshes/wall_west.dae"
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.91 0.95 0.9
+            roughness 1
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+              ]
+            }
+            normalMapFactor 0.7
+            occlusionMapStrength 0
+            emissiveIntensity 0
+            name "WallEast"
+          }
+          geometry Mesh {
+            url [
+              "meshes/wall_east.dae"
+            ]
+          }
+        }
+      ]
+      name "Wall"
+      boundingObject Mesh {
+        url [
+          "meshes/wall.dae"
+        ]
+      }
+      locked TRUE
+    }
+    Solid {
+      children [
+        Pose {
+          translation -3.725 0.8 1.5
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.62 0.79 0.85
+                  specularColor 0.9 0.95 1
+                  transparency 0.78
+                }
+              }
+              geometry Box {
+                size 0.99 0.02 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 1.5
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.62 0.79 0.85
+                  specularColor 0.9 0.95 1
+                  transparency 0.78
+                }
+              }
+              geometry Box {
+                size 0.88 0.02 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.257 0.8 1.5
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.06 0.14 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -3.725 0.8 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.99 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -3.725 0.8 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.99 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.88 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.88 0.05 0.06
+              }
+            }
+          ]
+        }
+      ]
+      name "GlassBay"
+      locked TRUE
+    }
+  ]
+}
+DEF shadow Shadow {
+  hidden position_0_0 5006.682573006567
+  hidden position_0_1 5342.574864330886
+  hidden position_0_2 4928.527807192156
+  hidden position_0_3 5472.763960481989
+  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
+  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  hidden rotation_9 -0.4377440645386445 0.4373956159318126 -0.7855349827504928 4.4740831335418365
+  hidden rotation_10 -0.6268083416490028 0.6263093960068085 0.46351682095994523 2.272909856003892
+  hidden rotation_11 -0.6892779925543626 0.688729320451913 0.22482831701116757 2.6989496341911203
+  hidden rotation_12 0.0547131128676396 -0.05466956068841274 -0.9970043703086104 4.710185183476704
+  translation -6.839106870135037 3.0906546512500994 0.024168141332881376
+  rotation 0.01591115537395801 0.008578007245042962 0.9998366131155478 0.9886761459019807
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/rejiband/wiremesh.png"
+          ]
+        }
+        roughness 0.45
+        metalness 0.8
+      }
+      geometry Mesh {
+        url [
+          "meshes/cable_tray.dae"
+        ]
+      }
+    }
+  ]
+  name "CableTray"
+  locked TRUE
+}
