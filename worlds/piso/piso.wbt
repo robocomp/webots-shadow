@@ -5,6 +5,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Shadow.proto"
 
 WorldInfo {
+  basicTimeStep 8
 }
 Viewpoint {
   orientation -0.5741366062582948 0.5988521354075771 0.5583397507539585 2.1248161052555488
