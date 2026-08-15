@@ -1,0 +1,396 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "BodyMesh.proto"
+
+PROTO ShadowDiff [
+  field SFVec3f           translation     0 0 0.033         # Is `Pose.translation`.
+  field SFRotation        rotation        0 0 0 0      # Is `Pose.rotation`.
+  field SFString          name            "shadow"      # Is `Solid.name`.
+  field SFString          controller      "<extern>"      # Is `Robot.controller`.
+  field SFBool            synchronization TRUE            # Is `Robot.synchronization`. FALSE ⇒ async (real-time) so this robot doesn't gate the sim when multiple extern controllers share a world.
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  name IS name
+  model "ROBOLAB shadow"
+  children [
+    Group {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.870588 0.866667 0.854902
+            roughness 1
+            metalness 0.3
+          }
+          geometry Mesh {
+            url [
+              "../protos/meshes/shadow.stl"
+            ]
+          }
+        }
+      ]
+    }
+    Group {
+      children [
+        Group {
+          children [
+            Camera {
+              translation 0 -0.17 1.275
+              rotation 0 0 1 -1.5707953071795862
+              name "camera_360_2"
+              fieldOfView 3.14
+              width 960
+              height 960
+              projection "cylindrical"
+            }
+            Camera {
+              translation 0 -0.17 1.275
+              rotation 0 0 -1 -1.5708053071795867
+              name "camera_360_1"
+              fieldOfView 3.14
+              width 960
+              height 960
+              projection "cylindrical"
+            }
+          ]
+        }
+        Lidar {
+          translation 0 -0.155 1.075
+          rotation 0 0 1 -4.7116
+          name "helios"
+          tiltAngle -0.
+          horizontalResolution 900
+          fieldOfView 6.28
+          verticalFieldOfView 3.141592653589793
+          numberOfLayers 82
+          maxRange 100
+          noise 0.005
+          defaultFrequency 20
+        }
+        Lidar {
+          translation 0 0.14 0.67
+          rotation -1 -1 0 3.14159
+          # children [
+            # Shape {
+              # appearance DEF BlackMetalAppearance PBRAppearance {
+                # baseColor 0 0 0
+                # roughness 0.5
+                # name "BlackMetal"
+              # }
+              # geometry Cylinder {
+                # height 0.01
+                # radius 0.05
+              # }
+            # }
+          # ]
+          name "bpearl"
+          horizontalResolution 875
+          fieldOfView 6.28
+          verticalFieldOfView 3.141592653589793
+          numberOfLayers 64
+          maxRange 100
+          noise 0.005
+          defaultFrequency 20
+        }
+        Accelerometer {
+          resolution 0.001
+        }
+        Gyro{}
+
+          Camera {
+                  translation 0.0 -0.075 0.945
+                  rotation 0 0 1 1.57
+
+                  children[
+                    RangeFinder{
+                      name "zed-ranger"
+                      fieldOfView 1.9198 
+                      width 1280
+                      height 720
+                      #fieldOfView 2.09
+                      #width 1920
+                      #height 1080
+                      maxRange 100
+                    }
+                     # Shape {
+                          # geometry Box
+                          # {
+                            # size 0.04 0.17 0.03
+                          # }
+                         # }
+                      ]
+
+                  name "zed"
+                  fieldOfView 1.9198
+                  width 1280
+                  height 720
+                  #fieldOfView 2.09
+                  #width 1920
+                  #height 1080
+                  projection "planar"
+            }
+    ]}
+
+    # ==== DIFFERENTIAL RUNNING GEAR ==================================================
+    # Two drive wheels on the lateral axis plus front and back casters, matching the real Shadow.
+    # Geometry is taken from the robot's own driver config, not invented:
+    #   SVD48VBase/etc/config_diferential -> wheelRadius = 100 mm, axesLength = 518 mm
+    # so R = 0.1 and the half-track is 0.259 (axesLength/2, which is what that component's 2x2
+    # m_wheels matrix uses). The bridge's differential kinematics must use those same two numbers.
+    #
+    # The body and EVERY sensor above are byte-identical to Shadow.proto, and the axle height is set
+    # to R - 0.033 = 0.067 so the chassis sits at exactly the height it did with the 50 mm
+    # mecanum wheels. That keeps all lidar and camera extrinsics valid -- changing them would have a
+    # far larger blast radius than the wheels themselves.
+    #
+    # The drive wheels sit at |x| = 0.259, outside the body's 0.44-wide boundingObject, so they
+    # protrude ~2 cm per side exactly as on the real robot and never interpenetrate the chassis.
+    # LEFT drive wheel. Axis -1 0 0 and a +90 deg z-rotation on the endPoint keep the
+    # SAME conventions the mecanum Shadow used, so a positive motor velocity still drives forward
+    # (+y) and the bridge's sign handling is unchanged.
+    DEF WHEEL_LEFT HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0
+        axis -1 0 0
+        anchor -0.259 0 0.067
+      }
+      device [
+        RotationalMotor {
+          name "wheel_left"
+          maxVelocity 30
+        }
+        PositionSensor {
+          name "wheel_leftsensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.259 0 0.067
+        rotation 0 0 1 1.5708
+        children [
+          # A Webots Cylinder is aligned with its local Z. Getting a WHEEL out of that needs two
+          # rotations, composed exactly as the mecanum Shadow does it:
+          #   Cylinder Z --(Pose: R_x -90)--> Y --(Solid: R_z +90)--> -X, the lateral axle.
+          # Applying only the Solid's rotation leaves the cylinder on Z and the wheel lies flat on
+          # the floor like a pancake, which is what happened the first time.
+          Pose {
+            rotation 1 0 0 -1.5708
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.12 0.12 0.12
+                  roughness 0.7
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.1
+                  subdivision 32
+                }
+              }
+            ]
+          }
+        ]
+        name "wheel_left_solid"
+        contactMaterial "DriveWheelMat"
+        boundingObject Pose {
+          rotation 1 0 0 -1.5708
+          children [
+            Cylinder {
+              height 0.05
+              radius 0.1
+              subdivision 24
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 2
+        }
+      }
+    }
+    # RIGHT drive wheel. Axis -1 0 0 and a +90 deg z-rotation on the endPoint keep the
+    # SAME conventions the mecanum Shadow used, so a positive motor velocity still drives forward
+    # (+y) and the bridge's sign handling is unchanged.
+    DEF WHEEL_RIGHT HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0
+        axis -1 0 0
+        anchor 0.259 0 0.067
+      }
+      device [
+        RotationalMotor {
+          name "wheel_right"
+          maxVelocity 30
+        }
+        PositionSensor {
+          name "wheel_rightsensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.259 0 0.067
+        rotation 0 0 1 1.5708
+        children [
+          # A Webots Cylinder is aligned with its local Z. Getting a WHEEL out of that needs two
+          # rotations, composed exactly as the mecanum Shadow does it:
+          #   Cylinder Z --(Pose: R_x -90)--> Y --(Solid: R_z +90)--> -X, the lateral axle.
+          # Applying only the Solid's rotation leaves the cylinder on Z and the wheel lies flat on
+          # the floor like a pancake, which is what happened the first time.
+          Pose {
+            rotation 1 0 0 -1.5708
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.12 0.12 0.12
+                  roughness 0.7
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.1
+                  subdivision 32
+                }
+              }
+            ]
+          }
+        ]
+        name "wheel_right_solid"
+        contactMaterial "DriveWheelMat"
+        boundingObject Pose {
+          rotation 1 0 0 -1.5708
+          children [
+            Cylinder {
+              height 0.05
+              radius 0.1
+              subdivision 24
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 2
+        }
+      }
+    }
+    # Front ball caster, on a BallJoint so it is free to rotate about all three axes --
+    # which is what makes it a caster rather than a skid. The first version bolted the sphere rigidly
+    # to the chassis; it could not roll, so it dragged, and the only way to stop it fighting a pivot
+    # was a friction so low (0.05) that nothing damped the fore/aft rocking. A rolling ball needs no
+    # such trick: it takes ordinary friction and simply follows the chassis.
+    #
+    # A BallJoint is also deliberately preferred over a modelled swivel castor (a vertical hinge plus
+    # a wheel hinge): the swivel can jitter or lock under load, and that noise would land straight in
+    # the wheel-odometry measurements this base exists to make clean.
+    DEF CASTER_FRONT BallJoint {
+      jointParameters BallJointParameters {
+        anchor 0 0.18 0.007
+      }
+      endPoint Solid {
+        translation 0 0.18 0.007
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.25 0.25 0.25
+              roughness 0.4
+              metalness 0.3
+            }
+            geometry Sphere {
+              radius 0.04
+              subdivision 3
+            }
+          }
+        ]
+        name "caster_front"
+        contactMaterial "CasterMat"
+        boundingObject Sphere {
+          radius 0.04
+          subdivision 3
+        }
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    # Back ball caster, on a BallJoint so it is free to rotate about all three axes --
+    # which is what makes it a caster rather than a skid. The first version bolted the sphere rigidly
+    # to the chassis; it could not roll, so it dragged, and the only way to stop it fighting a pivot
+    # was a friction so low (0.05) that nothing damped the fore/aft rocking. A rolling ball needs no
+    # such trick: it takes ordinary friction and simply follows the chassis.
+    #
+    # A BallJoint is also deliberately preferred over a modelled swivel castor (a vertical hinge plus
+    # a wheel hinge): the swivel can jitter or lock under load, and that noise would land straight in
+    # the wheel-odometry measurements this base exists to make clean.
+    DEF CASTER_BACK BallJoint {
+      jointParameters BallJointParameters {
+        anchor 0 -0.18 0.007
+      }
+      endPoint Solid {
+        translation 0 -0.18 0.007
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.25 0.25 0.25
+              roughness 0.4
+              metalness 0.3
+            }
+            geometry Sphere {
+              radius 0.04
+              subdivision 3
+            }
+          }
+        ]
+        name "caster_back"
+        contactMaterial "CasterMat"
+        boundingObject Sphere {
+          radius 0.04
+          subdivision 3
+        }
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+  ]
+  name "shadow"
+  description "ROBOLAB shadow"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 0 0 0.38
+        children [
+          Box {
+            size 0.44 0.46 0.76
+          }
+        ]
+      }
+      Pose {
+        translation 0 -0.17 1.03
+        children [
+          Box {
+            size 0.1 0.1 0.61
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 -0.045
+    ]
+    inertiaMatrix [
+      0.418086 0.166204 0.55459
+      0 0 0
+    ]
+  }
+  controller IS controller
+  synchronization IS synchronization
+  supervisor TRUE
+  linearVelocity 2.5768635962415814e-15 -4.075325935301325e-16 0
+  angularVelocity 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  }
+}

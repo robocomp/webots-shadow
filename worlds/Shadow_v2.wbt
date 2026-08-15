@@ -14,7 +14,13 @@ WorldInfo {
     "Simulation of the ROBOLAB shadow robot."
   ]
   title "ROBOLAB shadow"
-  basicTimeStep 16
+  # 8 ms, so the bridge's IMU and control loop actually run at 125 Hz. It was 16, which silently
+  # rounded webots-bridge's Period.Compute = 8 up to 16 and capped the IMU at 62.5 Hz -- against a
+  # real robot whose IMU thread polls at ~108 Hz. Heavy sensors are unaffected: they are gated by
+  # Period.Sensors (32 ms, now 4 steps) and are not re-rendered more often. The cost is physics steps
+  # only, so expect the simulation to run further behind wall clock; the bridge measures that as
+  # sim_wall_rate_ and corrects the published velocities for it.
+  basicTimeStep 8
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"

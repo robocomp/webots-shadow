@@ -2,14 +2,84 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Shadow.proto"
+EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/ShadowDiff.proto"
+EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Door.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Desk.proto"
 
 WorldInfo {
   basicTimeStep 8
+  # The wheels declare contactMaterial "InteriorWheelMat" / "ExteriorWheelMat" (InteriorWheel.proto:86,
+  # ExteriorWheel.proto:86), and WITHOUT these ContactProperties Webots falls back to default ISOTROPIC
+  # friction -- the rollers stop sliding freely and the base behaves like a skid-steer rather than a
+  # mecanum. This world was missing them entirely, and it is measurable: comparing the wheel-encoder
+  # forward kinematics against the supervisor over 809 publish intervals on 2026-08-15, the effective
+  # (LX+LY) came out at ~0.287 instead of the geometric 0.340 -- between the ideal-mecanum 0.340 and
+  # the ideal-differential half-track 0.210, exactly what partial skidding looks like. The base was
+  # therefore over-rotating ~18% against every commanded rot, which hits open-loop heading control as
+  # well as odometry. Translation was unaffected (adv tracked ground truth to 0.1%), because it does
+  # not depend on the roller anisotropy.
+  # Copied verbatim from Shadow_v2.wbt. coulombFriction [0, 2, 0] is the anisotropy: zero along the
+  # roller axis, 2 across it; frictionRotation +-45 deg orients it along the rollers, opposite for the
+  # interior and exterior wheels, which is what makes the diagonal pairs work.
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      # Differential drive wheels: ordinary isotropic rubber-on-floor grip. Nothing anisotropic here
+      # -- that was only ever needed to make mecanum rollers slide sideways.
+      # softCFM gives the contact a little compliance. The drive wheels and both casters rest at
+      # EXACTLY z=0 (axle 0.100 with r=0.100; caster centre 0.040 with r=0.040), so the chassis sits
+      # on four perfectly coplanar contacts -- statically over-constrained for a rigid body, which a
+      # hard solver resolves by rocking fore and aft. A hair of compliance makes the load share
+      # smoothly instead.
+      material1 "DriveWheelMat"
+      coulombFriction [
+        1.2
+      ]
+      bounce 0
+      bounceVelocity 0
+      softCFM 0.0005
+    }
+    ContactProperties {
+      # Ball casters. These are on BallJoints and ROLL, so they need ordinary friction rather than an
+      # artificially slippery contact: a rolling ball follows the chassis without resisting a pivot.
+      # The earlier 0.05 was compensating for casters that were bolted rigid and could only skid, and
+      # it left the fore/aft rocking with nothing to dissipate against.
+      material1 "CasterMat"
+      coulombFriction [
+        0.9
+      ]
+      bounce 0
+      bounceVelocity 0
+      softCFM 0.002
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
 }
 Viewpoint {
-  orientation -0.5741366062582948 0.5988521354075771 0.5583397507539585 2.1248161052555488
-  position -3.549307161088981 4.320824142662097 12.96469615743178
+  orientation -0.5706698428291066 0.583942582406752 0.5773620969006679 2.1125162755223674
+  position -4.634486009405993 3.0495689949253304 11.85864975659117
   follow "shadow"
   followType "None"
 }
@@ -180,7 +250,7 @@ Group {
       }
     }
     Solid {
-      translation -1.62564 4.79931 0
+      translation 0.375712 4.61128 0
       rotation 0 0 1 3.14159
       children [
         Shape {
@@ -225,9 +295,16 @@ Group {
         ]
       }
     }
+    Desk {
+      translation 0.19357 2.36267 0
+    }
+    Desk {
+      translation -2.19979 4.59268 0
+      name "desk(1)"
+    }
     Solid {
-      translation -1.63325 2.84585 0
-      rotation 0 0 1 3.14159
+      translation 0.309031 1.91724 0
+      rotation 0 0 1 -5.307179586466759e-06
       children [
         Shape {
           appearance PBRAppearance {
@@ -279,7 +356,6 @@ Group {
           children [
             Shape {
               appearance PBRAppearance {
-                baseColor 1 1 1
                 roughness 0.2
                 metalness 0
               }
@@ -546,7 +622,6 @@ Group {
           children [
             Shape {
               appearance PBRAppearance {
-                baseColor 1 1 1
                 roughness 0.12
                 metalness 0
               }
@@ -569,7 +644,7 @@ Group {
     }
     Solid {
       translation -0.090218 4 1.5
-      rotation 0.565348 -0.583259 -0.583259 2.112493
+      rotation 0.5653478633933162 -0.5832588590654292 -0.5832588590654292 2.112493
       children [
         Pose {
           translation 0 0 0.006
@@ -591,14 +666,13 @@ Group {
           children [
             Shape {
               appearance PBRAppearance {
-                baseColor 1 1 1
-                roughness 0.6
-                metalness 0
                 baseColorMap ImageTexture {
                   url [
                     "textures/robolab/poster_robolab.png"
                   ]
                 }
+                roughness 0.6
+                metalness 0
               }
               geometry Plane {
                 size 3 1.2
@@ -756,96 +830,34 @@ Group {
         ]
       }
     }
-    Solid {
-      translation -3.58277 7.13979 0.1
-      rotation 0 0 1 3.14159
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_BaseColor.jpg"
-              ]
-            }
-            roughnessMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Roughness.jpg"
-              ]
-            }
-            metalnessMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Metallic.jpg"
-              ]
-            }
-            normalMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Normal.jpg"
-              ]
-            }
-            emissiveColorMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Emissive.jpg"
-              ]
-            }
-          }
-          geometry Mesh {
-            url [
-              "meshes/door.dae"
-            ]
-          }
-        }
-      ]
+    DEF DOOR_0 Door {
+      hidden translation_4 0.0010186018592568957 3.876639026789697e-06 0
+      hidden rotation_4 0 0 -1 3.916164645077095e-05
+      translation -3.58277 7.166 0
+      rotation 0 0 1 1.5707963
       name "Door"
-      boundingObject Mesh {
-        url [
-          "meshes/door.dae"
-        ]
+      size 0.1 1 2.1
+      position -3.916164915103619e-05
+      frameHeight 2.1
+      doorAppearance PBRAppearance {
+        baseColor 0.532 0.747 0.481
+        roughness 0.8
+        metalness 0
       }
     }
-    Solid {
-      translation -4.77109 9.21748 0
-      rotation 0 0 -1 -3.1415853071795863
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_BaseColor.jpg"
-              ]
-            }
-            roughnessMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Roughness.jpg"
-              ]
-            }
-            metalnessMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Metallic.jpg"
-              ]
-            }
-            normalMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Normal.jpg"
-              ]
-            }
-            emissiveColorMap ImageTexture {
-              url [
-                "textures/puerta/puerta_Puerta_Emissive.jpg"
-              ]
-            }
-          }
-          geometry Mesh {
-            url [
-              "meshes/door.dae"
-            ]
-          }
-        }
-      ]
+    DEF DOOR_1 Door {
+      hidden translation_4 0.0010186018592567292 3.8766390267341855e-06 0
+      hidden rotation_4 0 0 -1 3.916164645077095e-05
+      translation -4.77112 9.23958 0
+      rotation 0 0 1 -1.5857206
       name "Door(1)"
-      boundingObject Mesh {
-        url [
-          "meshes/door.dae"
-        ]
+      size 0.1 1 2.1
+      position -3.916164915068274e-05
+      frameHeight 2.1
+      doorAppearance PBRAppearance {
+        baseColor 0.532 0.747 0.481
+        roughness 0.8
+        metalness 0
       }
     }
     Solid {
@@ -1550,6 +1562,17 @@ Group {
         ]
       }
     }
+    Chair {
+      translation -6.90769 1.43326 0
+      rotation 0 0 1 1.0472
+      color 1 1 0.1
+    }
+    Chair {
+      translation -6.12235 1.90409 -0.3
+      rotation 0 0 1 -2.8797953071795863
+      name "chair(1)"
+      color 1 0.3 1
+    }
     Solid {
       children [
         Shape {
@@ -1720,19 +1743,9 @@ Group {
     }
   ]
 }
-DEF shadow Shadow {
-  hidden position_0_0 5006.682573006567
-  hidden position_0_1 5342.574864330886
-  hidden position_0_2 4928.527807192156
-  hidden position_0_3 5472.763960481989
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  hidden rotation_9 -0.4377440645386445 0.4373956159318126 -0.7855349827504928 4.4740831335418365
-  hidden rotation_10 -0.6268083416490028 0.6263093960068085 0.46351682095994523 2.272909856003892
-  hidden rotation_11 -0.6892779925543626 0.688729320451913 0.22482831701116757 2.6989496341911203
-  hidden rotation_12 0.0547131128676396 -0.05466956068841274 -0.9970043703086104 4.710185183476704
-  translation -6.839106870135037 3.0906546512500994 0.024168141332881376
-  rotation 0.01591115537395801 0.008578007245042962 0.9998366131155478 0.9886761459019807
+DEF shadow ShadowDiff {
+  translation -4.526270845883212 4.12357505587043 0.03228806177507833
+  rotation -0.006356564603980897 -0.002198381606470259 -0.9999773803465495 -0.6666889602150166
 }
 Solid {
   children [
@@ -1755,4 +1768,25 @@ Solid {
   ]
   name "CableTray"
   locked TRUE
+}
+
+# The SAME beer bottle the shadow scenes use — identical PROTO and fields to
+# worlds/hallway_and_beta_empty.wbt:1370 and webots-kinova/worlds/shadow_arm.wbt:78
+# (BeerBottle, name "bottle", mass 0.4). NOT the blue WaterBottleOpaque cylinder from
+# arm_base.wbt, which is a different object.
+#
+# The PROTO is fetched from the Webots GitHub tree, as every other PROTO in this repo's worlds
+# is: this Webots install ships NO local proto library (projects/objects/drinks/ holds only a
+# webots.yaml stub; the one .proto on disk is Mavic2Pro), so a local path would not resolve.
+#
+# Placed on the "RoundTable" Solid at (-6.68445, 1.87241): its top face is the Pose at z=0.725
+# carrying a Cylinder of height 0.03, so the surface is at 0.725 + 0.015 = 0.740. BeerBottle is
+# BOTTOM-CENTRED, hence z = 0.74 exactly — the same value both reference worlds use to stand it
+# on a 0.74 m table. Offset ~9 cm off the table centre on purpose: dead-centre placement lets a
+# fit that has not actually localised the bottle still look correct, which is the last thing a
+# test should allow.
+DEF bottle BeerBottle {
+  translation -6.60445 1.83241 0.74
+  name "bottle"
+  mass 0.4
 }
