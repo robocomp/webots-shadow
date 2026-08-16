@@ -9,6 +9,7 @@ PROTO Shadow [
   field SFRotation        rotation        0 0 0 0      # Is `Pose.rotation`.
   field SFString          name            "shadow"      # Is `Solid.name`.
   field SFString          controller      "<extern>"      # Is `Robot.controller`.
+  field SFBool            synchronization TRUE            # Is `Robot.synchronization`. FALSE ⇒ async (real-time) so this robot doesn't gate the sim when multiple extern controllers share a world.
 ]
 {
 Robot {
@@ -965,6 +966,7 @@ Robot {
     ]
   }
   controller IS controller
+  synchronization IS synchronization
   supervisor TRUE
   linearVelocity 2.5768635962415814e-15 -4.075325935301325e-16 0
   angularVelocity 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
