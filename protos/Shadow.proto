@@ -62,11 +62,44 @@ Robot {
           translation 0 -0.155 1.075
           rotation 0 0 1 -4.7116
           name "helios"
-          tiltAngle -0.
+          # ── THE SENSOR IS AN RS-Helios H32F70, AND THE SPAN BELOW MUST SAY SO ──────────────────
+          # ★★★2026-08-29: verticalFieldOfView was pi (180 deg) with 82 layers and tiltAngle -0.
+          # That is not a Helios, and it is not conservative — it is a sensor that can see STRAIGHT
+          # DOWN, so every near-field behaviour validated in this world was validated against
+          # visibility the real robot does not have. The H32F70 spans -55..+15 deg: 70 deg of
+          # vertical FOV in 32 beams, centred at -20.
+          #
+          # This is the SAME fix P3Bot.proto took on 2026-08-27, arriving here two days late. It was
+          # found from the other end: lidar3d_dds advertises this geometry on the `helios` DSR node
+          # (etc/config_helios_webots.toml [SensorModel]), and that block had been filled in with
+          # P3Bot's already-corrected numbers — 32 beams over 70 deg — while THIS proto still emitted
+          # 82 over 180. The channel meant to end "two sources of truth for one physical fact" was
+          # itself the second source. The config now describes whatever this file says; the two move
+          # together or the graph lies.
+          #
+          # ★TWO OF THE THREE NUMBERS WERE ALREADY RIGHT, WHICH IS WHY THIS IS A THREE-TOKEN CHANGE:
+          #   angular resolution  sim 180/82 = 2.20 deg/layer   vs real 70/32 = 2.19   -> already right
+          #   span                180 deg                       vs 70                  -> WRONG
+          #   tilt                0                             vs the -20 centre      -> WRONG
+          # (P3Bot only had the span wrong; its tilt was already -0.34. Here BOTH were, so the beams
+          # removed are not only the ones below -55 deg — the whole fan also rotates down by 19.5.)
+          #
+          # ★WHAT THIS COSTS, AND IT IS MEANT TO. With the sensor at 1.075 m, a target of height h is
+          # invisible to THIS sensor inside r = (1.075 - h)/tan(54.48 deg):
+          #     h = 0    -> 0.77 m     h = 0.25 -> 0.59 m     h = 0.45 -> 0.45 m     h = 0.75 -> 0.23 m
+          # Low objects will now VANISH from the helios cloud on the final approach, as they do on the
+          # real robot. Shadow is better off than P3Bot here and the reason is real, not luck: it
+          # carries the bpearl downward dome at 0.67 m, whose entire job is the near field this ring
+          # cannot reach. That makes the blind ring a BPEARL COVERAGE QUESTION, not an unobservable
+          # one — and it is now posed honestly instead of being answered by a helios that looked at
+          # its own feet. Verify the dome actually covers 0.33..0.77 m before trusting it.
+          # ⚠Do not "fix" a near-field regression by widening this back out. That hides the defect in
+          # the one place it is cheap to reproduce.
+          tiltAngle -0.34                    # -19.5 deg, the H32F70's -20 centre. Was -0.
           horizontalResolution 900
           fieldOfView 6.28
-          verticalFieldOfView 3.141592653589793
-          numberOfLayers 82
+          verticalFieldOfView 1.2217304764   # 70 deg (H32F70). Was pi. With tilt -0.34: -54.5..+15.5
+          numberOfLayers 32                  # was 82
           maxRange 100
           noise 0.005
           defaultFrequency 20
