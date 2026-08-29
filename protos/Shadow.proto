@@ -117,11 +117,36 @@ Robot {
           # its own feet. Verify the dome actually covers 0.33..0.77 m before trusting it.
           # ⚠Do not "fix" a near-field regression by widening this back out. That hides the defect in
           # the one place it is cheap to reproduce.
-          tiltAngle -0.34                    # -19.5 deg, the H32F70's -20 centre. Was -0.
+          # ── THE CHANNELS MUST LAND WHERE ROBOSENSE PUTS THEM, AND tiltAngle CANNOT DO IT ─────
+          # ★★★2026-08-29, MEASURED: Webots does NOT apply `tiltAngle` to the beams. Scoring every
+          # candidate reconstruction of a recorded frame against the room the robot stands in, only
+          # the UNTILTED fan puts 100% of points inside the 0..3 m box, finds the floor at z = 0
+          # (4474 pts) and leaves the walls vertical; assuming the tilt threw 27% of the cloud
+          # outside the building. Webots spreads numberOfLayers SYMMETRICALLY about the device's own
+          # horizon, over verticalFieldOfView, and that is all it does.
+          #
+          # So the H32F70's -55..+15 span cannot be declared -- it has to be GENERATED. A symmetric
+          # 110 deg fan (= 2 x 55) contains every RoboSense channel elevation; the 18 layers above
+          # +15 that the real unit does not have are dropped by the bridge, which keeps the window
+          # [-55, +15] (Webots2Robocomp, LidarChannels.helios.*). What survives:
+          #     50 layers over 110 deg  ->  2.2449 deg/layer   (real H32F70 mean: 70/31 = 2.258)
+          #     window [-55, +15]       ->  layers 18..49 = 32 channels, +14.6 .. -55.0 deg
+          # i.e. the right SPAN, the right COUNT, and a uniform spacing 0.6% off the real mean. The
+          # real table is NON-uniform (2 / 1.5 / 1.33 / 2 / 3 deg bands, manual Table 5) and Webots
+          # cannot express that at all -- a uniform fan is the closest this simulator gets.
+          #
+          # ⚠Do NOT "simplify" this back to verticalFieldOfView 1.2217 / numberOfLayers 32. That is
+          # a SYMMETRIC +-35 deg sensor: right count, right spacing, wrong coverage, and it quietly
+          # gives the robot 20 deg of downward vision the real unit does not have while taking 40
+          # deg of upward vision away.
+          # ⚠Do NOT try to get the asymmetry by rotating this node either. Rotating tilts the SPIN
+          # AXIS, so the cones tilt with it and each layer's elevation then varies with azimuth --
+          # that is a lidar mounted crooked, not a lidar with asymmetric channels.
+          tiltAngle 0                        # INERT in Webots (measured). Was -0.34, which did nothing.
           horizontalResolution 900
           fieldOfView 6.28
-          verticalFieldOfView 1.2217304764   # 70 deg (H32F70). Was pi. With tilt -0.34: -54.5..+15.5
-          numberOfLayers 32                  # was 82
+          verticalFieldOfView 1.9198621771937625   # 110 deg = 2 x 55, so the -55 channel exists
+          numberOfLayers 50                  # 32 of them survive the [-55,+15] window
           maxRange 100
           noise 0.005
           defaultFrequency 20
