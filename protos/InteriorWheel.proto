@@ -16,6 +16,20 @@ PROTO InteriorWheel [
 {
   HingeJoint {
     device [
+      # ── WHEEL DYNAMICS ARE LIMITED IN THE BRIDGE, NOT HERE ─────────────────────────────────────
+      # ⚠ DO NOT add an `acceleration` field to these wheel motors. Webots' RotationalMotor carries
+      #   ONE SYMMETRIC number, but the real base accelerates at 0.35-0.50 m/s^2 and brakes at 1.00,
+      #   so the field cannot express it. The ramp lives where the real driver's does — webots-bridge
+      #   apply_pending_speed_command(), fed from SVD48VBase's own config (SVD48V.py:129-130 is the
+      #   original). Adding it here would COMPOSE with that ramp: the sim would then accelerate more
+      #   slowly than either the hardware or the number written here.
+      # ⚠ DO NOT lower `maxVelocity` to maxLinSpeed/wheelRadius. It is a PER-WHEEL bound while the
+      #   real limits are per-AXIS of the twist, and a LEGAL twist can demand more wheel speed than
+      #   v_max/r: worst legal case is 21.95 rad/s (P3Bot, at advz 0.7 + advx 0.7 + rot 1.5) and
+      #   14.18 (Shadow). Both are under 30, so once the bridge clips the twist this never binds.
+      #   Capping it at 8.75 would silently distort every combined motion — a NEW sim2real error
+      #   introduced while closing one.
+      # The twist clamp itself mirrors SVD48VBase/src/specificworker.py:161-173.
       RotationalMotor {
         name IS name
         maxVelocity 14.81
