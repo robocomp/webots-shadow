@@ -58,7 +58,29 @@ Robot {
         }
         Lidar {
           translation 0 -0.155 1.075
-          rotation 0 0 1 -4.7116
+          # ── MOUNTED UPSIDE DOWN, ON PURPOSE ──────────────────────────────────────────────────
+          # 2026-08-29: was `rotation 0 0 1 -4.7116` (yaw only, sensor upright). Shadow carries the
+          # helios INVERTED so the wide part of its fan points UP: the H32F70 is asymmetric about its
+          # own horizon (-54.5..+15.5), and hanging it upside down turns that into +54.5..-15.5 in the
+          # body frame. What it buys is the UPPER WALLS — from 1.075 m the top beam reaches 2.48 m of
+          # wall height at 1 m range and 3.88 m at 2 m — which is high-contrast, permanent structure and
+          # far better localisation geometry than the floor. What it costs is the near floor: the fan
+          # now only reaches down 15.5 deg, so the floor is first hit at 3.88 m instead of 0.77 m. That
+          # near-floor band is the BPEARL's job (it hangs inverted at 0.67 m for exactly this reason),
+          # so the two sensors now have IDENTICAL orientation and differ only in height.
+          #
+          # ★THE ENCODING, because a 180 deg flip has two equally valid axes and only one keeps the
+          # yaw: this is Rz(+90 deg) * Rx(180 deg) — the SAME bracket yaw as before, sensor inverted
+          # about its own x. As axis-angle that is (1,1,0) by 180 deg, which is bit-identical to the
+          # rotation the bpearl node already carries: two upside-down lidars, one encoding.
+          # ★-4.7116 was -3pi/2 rounded, 0.045 deg shy of a right angle. The clean axis-angle removes
+          # that stray 0.8 mrad, which is why the yaw is now exactly 90 and not 90.045.
+          # ★THE MOUNT INVARIANT still holds and is what keeps consumers correct (ROBOT_GEOMETRY.md):
+          # R_json = R_proto * Rz(-90 deg), the -90 being the device->canonical swap lidar3d_dds
+          # applies at specificworker.cpp:530. With R_proto = Rz(90)Rx(180) that gives R_json = Ry(180),
+          # so shadow.json's body<-helios RT edge reads euler_xyz (0, pi, 0) — updated in the same
+          # commit. Change one without the other and every consumer's cloud is upside down.
+          rotation 1 1 0 3.14159265359
           name "helios"
           # ── THE SENSOR IS AN RS-Helios H32F70, AND THE SPAN BELOW MUST SAY SO ──────────────────
           # ★★★2026-08-29: verticalFieldOfView was pi (180 deg) with 82 layers and tiltAngle -0.
