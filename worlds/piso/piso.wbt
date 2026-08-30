@@ -2,7 +2,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "../../protos/ShadowDiff.proto"
+EXTERNPROTO "../../protos/Shadow.proto"
 EXTERNPROTO "../../protos/Door.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
@@ -1743,7 +1743,7 @@ Group {
     }
   ]
 }
-DEF shadow ShadowDiff {
+DEF shadow Shadow {
   translation -4.526270845883212 4.12357505587043 0.03228806177507833
   rotation -0.006356564603980897 -0.002198381606470259 -0.9999773803465495 -0.6666889602150166
 }
