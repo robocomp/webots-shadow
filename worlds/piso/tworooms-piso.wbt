@@ -1,0 +1,2073 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "../../protos/Shadow.proto"
+EXTERNPROTO "../../protos/Door.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Desk.proto"
+
+WorldInfo {
+  basicTimeStep 8
+  # The wheels declare contactMaterial "InteriorWheelMat" / "ExteriorWheelMat" (InteriorWheel.proto:86,
+  # ExteriorWheel.proto:86), and WITHOUT these ContactProperties Webots falls back to default ISOTROPIC
+  # friction -- the rollers stop sliding freely and the base behaves like a skid-steer rather than a
+  # mecanum. This world was missing them entirely, and it is measurable: comparing the wheel-encoder
+  # forward kinematics against the supervisor over 809 publish intervals on 2026-08-15, the effective
+  # (LX+LY) came out at ~0.287 instead of the geometric 0.340 -- between the ideal-mecanum 0.340 and
+  # the ideal-differential half-track 0.210, exactly what partial skidding looks like. The base was
+  # therefore over-rotating ~18% against every commanded rot, which hits open-loop heading control as
+  # well as odometry. Translation was unaffected (adv tracked ground truth to 0.1%), because it does
+  # not depend on the roller anisotropy.
+  # Copied verbatim from Shadow_v2.wbt. coulombFriction [0, 2, 0] is the anisotropy: zero along the
+  # roller axis, 2 across it; frictionRotation +-45 deg orients it along the rollers, opposite for the
+  # interior and exterior wheels, which is what makes the diagonal pairs work.
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      # Differential drive wheels: ordinary isotropic rubber-on-floor grip. Nothing anisotropic here
+      # -- that was only ever needed to make mecanum rollers slide sideways.
+      # softCFM gives the contact a little compliance. The drive wheels and both casters rest at
+      # EXACTLY z=0 (axle 0.100 with r=0.100; caster centre 0.040 with r=0.040), so the chassis sits
+      # on four perfectly coplanar contacts -- statically over-constrained for a rigid body, which a
+      # hard solver resolves by rocking fore and aft. A hair of compliance makes the load share
+      # smoothly instead.
+      material1 "DriveWheelMat"
+      coulombFriction [
+        1.2
+      ]
+      bounce 0
+      bounceVelocity 0
+      softCFM 0.0005
+    }
+    ContactProperties {
+      # Ball casters. These are on BallJoints and ROLL, so they need ordinary friction rather than an
+      # artificially slippery contact: a rolling ball follows the chassis without resisting a pivot.
+      # The earlier 0.05 was compensating for casters that were bolted rigid and could only skid, and
+      # it left the fore/aft rocking with nothing to dissipate against.
+      material1 "CasterMat"
+      coulombFriction [
+        0.9
+      ]
+      bounce 0
+      bounceVelocity 0
+      softCFM 0.002
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.5706698428291066 0.583942582406752 0.5773620969006679 2.1125162755223674
+  position -4.634486009405993 3.0495689949253304 11.85864975659117
+  follow "shadow"
+  followType "None"
+}
+TexturedBackground {
+}
+Group {
+  children [
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -6.51 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 6.8 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -4.91 8.4 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.31 5.2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 2 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 3.6 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -1.71 5.2 2.9
+      radius 18
+    }
+  ]
+}
+Group {
+}
+TexturedBackgroundLight {
+}
+Group {
+  children [
+    Solid {
+      translation -6.77985 0.173777 0
+      children [
+        Transform {
+          scale 1.3333333 1 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Mesh {
+                url [
+                  "meshes/heater.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Heater"
+      boundingObject Pose {
+        translation -0.02 0.005 0.398
+        children [
+          Box {
+            size 1.5013 0.116 0.8
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -1.86985 0.173777 0
+      children [
+        Transform {
+          scale 1.3333333 1 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Mesh {
+                url [
+                  "meshes/heater.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Heater(2)"
+      boundingObject Pose {
+        translation -0.02 0.005 0.398
+        children [
+          Box {
+            size 1.5013 0.116 0.8
+          }
+        ]
+      }
+    }
+    Solid {
+      translation 0.375712 4.61128 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_BaseColor.png"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Roughness.png"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Metallic.png"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Normal.png"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Emissive.png"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/table1.dae"
+            ]
+          }
+        }
+      ]
+      name "Table1"
+      boundingObject Mesh {
+        url [
+          "meshes/table1.dae"
+        ]
+      }
+    }
+    Desk {
+      translation 0.19357 2.36267 0
+    }
+    Desk {
+      translation -2.19979 4.59268 0
+      name "desk(1)"
+    }
+    Solid {
+      translation 0.309031 1.91724 0
+      rotation 0 0 1 -5.307179586466759e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_BaseColor.png"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Roughness.png"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Metallic.png"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Normal.png"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/mesa_1/mesa1_Mesa1_Emissive.png"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/table1.dae"
+            ]
+          }
+        }
+      ]
+      name "Table1(1)"
+      boundingObject Mesh {
+        url [
+          "meshes/table1.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -6.68445 1.87241 0
+      children [
+        Pose {
+          translation 0 0 0.725
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 0.2
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.5
+                subdivision 48
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.37
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.95 0.95
+                roughness 0.35
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.68
+                radius 0.065
+                subdivision 24
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.015
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.95 0.95
+                roughness 0.35
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.36
+                subdivision 48
+              }
+            }
+          ]
+        }
+      ]
+      name "RoundTable"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0 0 0.725
+            children [
+              Cylinder {
+                height 0.03
+                radius 0.5
+                subdivision 48
+              }
+            ]
+          }
+          Pose {
+            translation 0 0 0.37
+            children [
+              Cylinder {
+                height 0.68
+                radius 0.065
+                subdivision 24
+              }
+            ]
+          }
+          Pose {
+            translation 0 0 0.015
+            children [
+              Cylinder {
+                height 0.03
+                radius 0.36
+                subdivision 48
+              }
+            ]
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -4.47 4.71 3
+      rotation 1 0 0 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Plane {
+            size 9 10
+          }
+        }
+      ]
+      name "Ceiling"
+    }
+    Solid {
+      translation -7.7932 3.95066 -2.83525e-14
+      rotation -9.58979e-09 1.27237e-14 -1 -3.1415853071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/fridge/fridge_Fridge_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/fridge.dae"
+            ]
+          }
+        }
+      ]
+      name "Fridge"
+      boundingObject Mesh {
+        url [
+          "meshes/fridge.dae"
+        ]
+      }
+    }
+    Solid {
+      children [
+        Transform {
+          translation -0.01277 0.01388 0
+          scale 0.997 0.997 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_diff_2k.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_rough_2k.jpg"
+                  ]
+                }
+                normalMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_nor_dx_2k.jpg"
+                  ]
+                }
+                occlusionMap ImageTexture {
+                  url [
+                    "textures/laminate_floor/laminate_floor_03_ao_2k.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "meshes/rodapies.dae"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      name "Rodapies"
+      boundingObject Mesh {
+        url [
+          "meshes/rodapies.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -1.75132 0.258775 0
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_BaseColor.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Roughness.jpg"
+                  ]
+                }
+                metalnessMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Metallic.jpg"
+                  ]
+                }
+                normalMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Normal.jpg"
+                  ]
+                }
+                emissiveColorMap ImageTexture {
+                  url [
+                    "textures/pizarra/pizarra_Pizarra_Emissive.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "meshes/blackboard.dae"
+                ]
+              }
+            }
+          ]
+          boundingObject Mesh {
+            url [
+              "meshes/blackboard.dae"
+            ]
+          }
+        }
+      ]
+      name "Blackboard"
+      boundingObject Mesh {
+        url [
+          "meshes/blackboard.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -1.65 7.166 1.4
+      children [
+        Pose {
+          translation 0 -0.015 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.75 0.76 0.78
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 2.08 0.03 1.08
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 -0.02 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 0.12
+                metalness 0
+              }
+              geometry Box {
+                size 2 0.04 1
+              }
+            }
+          ]
+        }
+      ]
+      name "Whiteboard"
+      boundingObject Pose {
+        translation 0 -0.02 0
+        children [
+          Box {
+            size 2.08 0.04 1.08
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -0.090218 4 1.5
+      rotation 0.5653478633933162 -0.5832588590654292 -0.5832588590654292 2.112493
+      children [
+        Pose {
+          translation 0 0 0.006
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.22
+                roughness 0.6
+                metalness 0
+              }
+              geometry Box {
+                size 3.02 1.22 0.012
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.013
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/robolab/poster_robolab.png"
+                  ]
+                }
+                roughness 0.6
+                metalness 0
+              }
+              geometry Plane {
+                size 3 1.2
+              }
+            }
+          ]
+        }
+      ]
+      name "Poster"
+      boundingObject Pose {
+        translation 0 0 0.006
+        children [
+          Box {
+            size 3.02 1.22 0.012
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -7.31334 6.73255 0
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_4/encimera4_Worktop_4_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera4.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop4"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera4.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -8.17593 5.43893 -0.14
+      rotation 0 0 1 -3.1415853071795863
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_1/encimera1_Worktop1_Emissive.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera1.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop1"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera1.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -7.42283 6.66977 -0.02
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_2/encimera2_Worktop2_Emissive.jpg"
+              ]
+            }
+            name "Worktop2"
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera2.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop2"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera2.dae"
+        ]
+      }
+    }
+    DEF DOOR_0 Door {
+      hidden translation_4 0.0010186018592568957 3.876639026789697e-06 0
+      hidden rotation_4 0 0 -1 3.916164645077095e-05
+      translation -3.58277 7.166 0
+      rotation 0 0 1 1.5707963
+      name "Door"
+      size 0.1 1 2.1
+      position -3.916164915103619e-05
+      frameHeight 2.1
+      doorAppearance PBRAppearance {
+        baseColor 0.532 0.747 0.481
+        roughness 0.8
+        metalness 0
+      }
+    }
+    DEF DOOR_1 Door {
+      hidden translation_4 0.0010186018592567292 3.8766390267341855e-06 0
+      hidden rotation_4 0 0 -1 3.916164645077095e-05
+      translation -4.77112 9.23958 0
+      rotation 0 0 1 -1.5857206
+      name "Door(1)"
+      size 0.1 1 2.1
+      position -3.916164915068274e-05
+      frameHeight 2.1
+      doorAppearance PBRAppearance {
+        baseColor 0.532 0.747 0.481
+        roughness 0.8
+        metalness 0
+      }
+    }
+    Solid {
+      translation -6.24566 5.91599 -2.22045e-14
+      rotation 0 0 1 1.62771e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_BaseColor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Roughness.jpg"
+              ]
+            }
+            metalnessMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Metallic.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Normal.jpg"
+              ]
+            }
+            emissiveColorMap ImageTexture {
+              url [
+                "textures/worktop_3/encimera3_Worktop_3_Emissive.jpg"
+              ]
+            }
+            name "worktop_3"
+          }
+          geometry Mesh {
+            url [
+              "meshes/encimera3.dae"
+            ]
+          }
+        }
+      ]
+      name "Worktop3"
+      boundingObject Mesh {
+        url [
+          "meshes/encimera3.dae"
+        ]
+      }
+    }
+    Solid {
+      translation -8.225 4.9 0.905
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.93 0.93 0.9
+            roughness 0.5
+            metalness 0.1
+          }
+          geometry Box {
+            size 0.35 0.48 0.29
+          }
+        }
+        Pose {
+          translation 0.176 -0.07 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.06
+                roughness 0.15
+                metalness 0.3
+              }
+              geometry Box {
+                size 0.015 0.3 0.22
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.182 0.11 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.22
+                roughness 0.3
+                metalness 0.8
+              }
+              geometry Box {
+                size 0.02 0.02 0.2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.176 0.18 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.11
+                roughness 0.35
+                metalness 0.4
+              }
+              geometry Box {
+                size 0.014 0.1 0.24
+              }
+            }
+          ]
+        }
+      ]
+      name "Microwave"
+      boundingObject Box {
+        size 0.35 0.48 0.29
+      }
+    }
+    Solid {
+      translation -8.15 5.7 1.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.75 0.76 0.78
+            roughness 0.35
+            metalness 0.85
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.25 -0.648 0
+                0.25 -0.648 0
+                0.25 0.648 0
+                -0.25 0.648 0
+                -0.09 -0.302 0.3
+                0.09 -0.302 0.3
+                0.09 0.302 0.3
+                -0.09 0.302 0.3
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 7, 6, 5, -1, 0, 4, 5, 1, -1, 2, 6, 7, 3, -1, 3, 7, 4, 0, -1, 1, 5, 6, 2, -1
+            ]
+            creaseAngle 0.5
+          }
+        }
+        Pose {
+          translation -0.1 0 0.575
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.75 0.76 0.78
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.16 0.475 0.55
+              }
+            }
+          ]
+        }
+      ]
+      name "KitchenHood"
+      boundingObject Pose {
+        translation 0 0 0.15
+        children [
+          Box {
+            size 0.5 1.3 0.3
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -8.3 -1.51 0
+      rotation 0 0 1 -1.5708
+      children [
+        Pose {
+          translation -4.4 0 0.2
+          children [
+            DEF CUBE_ORANGE Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_ORANGE PBRAppearance {
+                        baseColor 0.85 0.38 0.1
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry DEF BXBACK Box {
+                        size 0.4 0.018 0.4
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry DEF BXTB Box {
+                        size 0.4 0.4 0.018
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry DEF BXLR Box {
+                        size 0.018 0.4 0.4
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_ORANGE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.98 0 0.2
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -4.4 0 0.62
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -3.98 0 0.62
+          children [
+            USE CUBE_ORANGE
+          ]
+        }
+        Pose {
+          translation -3.56 0 0.2
+          children [
+            DEF CUBE_GRAY Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_GRAY PBRAppearance {
+                        baseColor 0.55 0.56 0.57
+                        roughness 0.7
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_GRAY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.56 0 0.62
+          children [
+            USE CUBE_GRAY
+          ]
+        }
+        Pose {
+          translation -3.98 0 1.04
+          children [
+            DEF CUBE_WHITE Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_WHITE PBRAppearance {
+                        baseColor 0.92 0.92 0.9
+                        roughness 0.7
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_WHITE
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.56 0 1.04
+          children [
+            USE CUBE_WHITE
+          ]
+        }
+        Pose {
+          translation -4.82 0 1.9
+          children [
+            DEF CUBE_CHAR Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_CHAR PBRAppearance {
+                        baseColor 0.12 0.12 0.13
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_CHAR
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -4.4 0 2.32
+          children [
+            USE CUBE_CHAR
+          ]
+        }
+        Pose {
+          translation -3.14 0 1.5
+          children [
+            DEF CUBE_NAVY Group {
+              children [
+                Pose {
+                  translation 0 -0.191 0
+                  children [
+                    Shape {
+                      appearance DEF APP_NAVY PBRAppearance {
+                        baseColor 0.16 0.22 0.33
+                        roughness 0.6
+                        metalness 0
+                      }
+                      geometry USE BXBACK
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 0.191
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0 0 -0.191
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXTB
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.191 0 0
+                  children [
+                    Shape {
+                      appearance USE APP_NAVY
+                      geometry USE BXLR
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        Pose {
+          translation -3.14 0 1.92
+          children [
+            USE CUBE_NAVY
+          ]
+        }
+        Pose {
+          translation -3.14 0 2.34
+          children [
+            USE CUBE_NAVY
+          ]
+        }
+      ]
+      name "BookshelfCubes"
+      boundingObject Group {
+        children [
+          Pose {
+            translation -4.4 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.4 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 0.2
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 0.62
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.98 0 1.04
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.56 0 1.04
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.82 0 1.9
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -4.4 0 2.32
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 1.5
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 1.92
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+          Pose {
+            translation -3.14 0 2.34
+            children [
+              Box {
+                size 0.4 0.4 0.4
+              }
+            ]
+          }
+        ]
+      }
+    }
+    Solid {
+      translation -8.31 1.07 1.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.99 0.93 0.85
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25 0.4 3
+          }
+        }
+      ]
+      name "Pillar"
+      boundingObject Box {
+        size 0.4 0.6 3
+      }
+    }
+    Solid {
+      translation -0.310883 1.08 1.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.91 0.95 0.9
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25 0.4 3
+          }
+        }
+      ]
+      name "Pillar(1)"
+      boundingObject Box {
+        size 0.4 0.6 3
+      }
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_diff_2k.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_rough_2k.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_nor_dx_2k.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "textures/laminate_floor/laminate_floor_03_ao_2k.jpg"
+              ]
+            }
+            name "LaminateFloor"
+          }
+          geometry Mesh {
+            url [
+              "meshes/floor_tworooms.dae"
+            ]
+          }
+        }
+      ]
+      # floor.dae in piso.wbt, floor_tworooms.dae here: the same 22 apartment triangles plus 6
+      # that carry room 2, cut against the apartment outline so the two share a border rather
+      # than overlap it.  Regenerate with make_floor_tworooms.py; do NOT point this at
+      # floor.dae, which stops at the north wall's inner face and leaves the doorway open.
+      name "Floor"
+      boundingObject Mesh {
+        url [
+          "meshes/floor_tworooms.dae"
+        ]
+      }
+    }
+    Chair {
+      translation -6.90769 1.43326 0
+      rotation 0 0 1 1.0472
+      color 1 1 0.1
+    }
+    Chair {
+      translation -6.12235 1.90409 -0.3
+      rotation 0 0 1 -2.8797953071795863
+      name "chair(1)"
+      color 1 0.3 1
+    }
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.99 0.93 0.85
+            roughness 1
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+              ]
+            }
+            normalMapFactor 0.7
+            occlusionMapStrength 0
+            emissiveIntensity 0
+            name "WallWest"
+          }
+          geometry Mesh {
+            url [
+              "meshes/wall_west.dae"
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.91 0.95 0.9
+            roughness 1
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+              ]
+            }
+            normalMapFactor 0.7
+            occlusionMapStrength 0
+            emissiveIntensity 0
+            name "WallEast"
+          }
+          geometry Mesh {
+            url [
+              "meshes/wall_east.dae"
+            ]
+          }
+        }
+      ]
+      name "Wall"
+      boundingObject Mesh {
+        url [
+          "meshes/wall.dae"
+        ]
+      }
+      locked TRUE
+    }
+    Solid {
+      children [
+        Pose {
+          translation -3.725 0.8 1.5
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.62 0.79 0.85
+                  specularColor 0.9 0.95 1
+                  transparency 0.78
+                }
+              }
+              geometry Box {
+                size 0.99 0.02 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 1.5
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.62 0.79 0.85
+                  specularColor 0.9 0.95 1
+                  transparency 0.78
+                }
+              }
+              geometry Box {
+                size 0.88 0.02 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.257 0.8 1.5
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.06 0.14 3
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -3.725 0.8 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.99 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -3.725 0.8 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.99 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.88 0.05 0.06
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -4.77 0.8 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.96 0.96 0.96
+                roughness 0.35
+                metalness 0.85
+              }
+              geometry Box {
+                size 0.88 0.05 0.06
+              }
+            }
+          ]
+        }
+      ]
+      name "GlassBay"
+      locked TRUE
+    }
+  ]
+}
+
+# ---------------------------------------------------------------------------------------------
+# GROUND -- a backstop, not scenery.
+#
+# Every walkable surface in this world is a finite trimesh (floor_tworooms.dae), so any hole in
+# it, anywhere, drops the robot out of the world with no diagnostic beyond a falling z.  A Plane
+# used as a boundingObject is INFINITE in Webots regardless of its rendered `size`, so this one
+# catches the robot everywhere, including outside the building.  It sits 1 cm below z = 0: far
+# enough not to z-fight the floor, close enough that if the robot ever does find a gap the
+# symptom is a 1 cm drop you can see rather than a fall to -inf you have to instrument for.
+#
+# It also gives the world an outside.  Until now the apartment floated in the TexturedBackground
+# void, which did not matter when the only room was sealed; room 2's floor has to run out to its
+# walls' OUTER faces, so a 17 cm lip of slab is visible from outside along the south side.  On
+# ground it reads as a foundation instead of as a mistake.
+# ---------------------------------------------------------------------------------------------
+Solid {
+  translation -4.3 6.7 -0.01
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.34 0.35 0.33
+        roughness 1
+        metalness 0
+      }
+      geometry Plane {
+        size 80 80
+      }
+    }
+  ]
+  name "Ground"
+  boundingObject Plane {
+    size 80 80
+  }
+  locked TRUE
+}
+
+# ---------------------------------------------------------------------------------------------
+# ROOM 2 -- the far side of DOOR_1, for the "crossing door" problem.
+#
+# DOOR_1 (translation -4.77112 9.23958) sits in the apartment's NORTH wall, at the end of the
+# short corridor that runs up from the living room.  Everything below is the room the robot ends
+# up in after it opens that door and drives through; nothing here touches the apartment itself,
+# so piso.wbt geometry (meshes/wall.dae, floor.dae, the door apertures in door_apertures.json)
+# is bit-identical between the two worlds and anything fitted in room 1 stays valid.
+#
+# Deliberately a plain axis-aligned rectangle -- 6.0 x 4.0 m of clear floor, 3 m to the ceiling,
+# no furniture.  The point of this world is the ROOM-TO-ROOM handover: re-run layout estimation
+# from scratch on the far side and keep an anchor back through the door, so a featureless box is
+# exactly what you want to fit first.  Add clutter later, once the anchor is trusted.
+#
+# Geometry, all world coordinates (x right, y up-the-page, z up):
+#     interior   x in [-7.77, -1.77]   y in [ 9.48, 13.48]   z in [0, 3]
+#     walls      0.11 m thick, matching THICKNESS in thicken_walls.py, height 3.0 = WALL_TOP
+#     doorway    x in [-5.30, -4.24] left open in the south wall
+#
+# The south wall starts at y = 9.37 because that is where the apartment's own outer wall face
+# ends: buffer(air_polygon, 0.11) peaks at y = 9.3676 (vertex -5.9798, 9.3676).  So the two
+# slabs stack with 2 mm of air between them and nothing z-fights, and the doorway reads as a
+# ~0.24 m deep tunnel: door leaf slab 9.19..9.29, apartment wall ..9.37, this wall 9.37..9.48.
+#
+# The door leaf never reaches this wall, because DOOR_1 opens SOUTH, back into the corridor:
+# jointAtLeft is TRUE, so Door.proto:132 clamps the hinge to [-3.14, 0.01], and at -pi/2 the leaf
+# swings onto the door's local +x, which this rotation (0 0 1 -1.5857206) maps to world -y.  The
+# hinge anchor lands at about (-5.246, 9.14), the aperture's west edge, so a fully open leaf lies
+# ALONG the line of travel at x = -5.25 rather than across it -- the robot still has the full
+# x in [-5.25, -4.27] to drive through.  The corridor is 1.68 x 2.1 m (x in [-5.88, -4.20],
+# y from 7.16 up to the door), so the 1 m leaf has room to swing without hitting its own walls.
+#
+# There is no floor node down here: room 2's floor is part of the "Floor" Solid above, which in
+# this world points at meshes/floor_tworooms.dae instead of floor.dae.  One mesh, so the
+# threshold is continuous -- see the comment there and make_floor_tworooms.py.
+# ---------------------------------------------------------------------------------------------
+Group {
+  children [
+    # ---- walls -------------------------------------------------------------------------------
+    # Cooler grey than the apartment's beige so it is obvious in the viewport which side of the
+    # door you are on.  Same normal map, so the LiDAR-relevant surface is identical.
+    DEF ROOM2_WALL_SOUTH_WEST Solid {
+      translation -6.535 9.425 1.5
+      children [
+        Shape {
+          appearance DEF ROOM2_WALL_APP PBRAppearance {
+            baseColor 0.87 0.89 0.92
+            roughness 1
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+              ]
+            }
+            normalMapFactor 0.7
+            occlusionMapStrength 0
+            emissiveIntensity 0
+            name "Room2Wall"
+          }
+          geometry Box {
+            size 2.47 0.11 3
+          }
+        }
+      ]
+      name "Room2WallSouthWest"
+      boundingObject Box {
+        size 2.47 0.11 3
+      }
+      locked TRUE
+    }
+    DEF ROOM2_WALL_SOUTH_EAST Solid {
+      translation -3.005 9.425 1.5
+      children [
+        Shape {
+          appearance USE ROOM2_WALL_APP
+          geometry Box {
+            size 2.47 0.11 3
+          }
+        }
+      ]
+      name "Room2WallSouthEast"
+      boundingObject Box {
+        size 2.47 0.11 3
+      }
+      locked TRUE
+    }
+    DEF ROOM2_WALL_NORTH Solid {
+      translation -4.77 13.535 1.5
+      children [
+        Shape {
+          appearance USE ROOM2_WALL_APP
+          geometry Box {
+            size 6 0.11 3
+          }
+        }
+      ]
+      name "Room2WallNorth"
+      boundingObject Box {
+        size 6 0.11 3
+      }
+      locked TRUE
+    }
+    DEF ROOM2_WALL_WEST Solid {
+      translation -7.825 11.48 1.5
+      children [
+        Shape {
+          appearance USE ROOM2_WALL_APP
+          geometry Box {
+            size 0.11 4.22 3
+          }
+        }
+      ]
+      name "Room2WallWest"
+      boundingObject Box {
+        size 0.11 4.22 3
+      }
+      locked TRUE
+    }
+    DEF ROOM2_WALL_EAST Solid {
+      translation -1.715 11.48 1.5
+      children [
+        Shape {
+          appearance USE ROOM2_WALL_APP
+          geometry Box {
+            size 0.11 4.22 3
+          }
+        }
+      ]
+      name "Room2WallEast"
+      boundingObject Box {
+        size 0.11 4.22 3
+      }
+      locked TRUE
+    }
+    # ---- ceiling: a downward-facing plane at z = 3, same trick as the apartment "Ceiling" -----
+    Solid {
+      translation -4.77 11.48 3
+      rotation 1 0 0 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Plane {
+            size 6 4
+          }
+        }
+      ]
+      name "Room2Ceiling"
+      locked TRUE
+    }
+    # ---- lighting: same lamp as the apartment grid, same 1.6 m pitch, so the two rooms expose
+    #      the camera identically and a crossing does not look like a gain change ---------------
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -7.17 9.88 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -7.17 11.48 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -7.17 13.08 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -5.57 9.88 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -5.57 11.48 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -5.57 13.08 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.97 9.88 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.97 11.48 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -3.97 13.08 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -2.37 9.88 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -2.37 11.48 2.9
+      radius 18
+    }
+    PointLight {
+      attenuation 0 0 1
+      color 1 0.92 0.82
+      intensity 3.2
+      location -2.37 13.08 2.9
+      radius 18
+    }
+  ]
+}
+DEF shadow Shadow {
+  translation -4.526270845883212 4.12357505587043 0.03228806177507833
+  rotation -0.006356564603980897 -0.002198381606470259 -0.9999773803465495 -0.6666889602150166
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/rejiband/wiremesh.png"
+          ]
+        }
+        roughness 0.45
+        metalness 0.8
+      }
+      geometry Mesh {
+        url [
+          "meshes/cable_tray.dae"
+        ]
+      }
+    }
+  ]
+  name "CableTray"
+  locked TRUE
+}
+
+# The SAME beer bottle the shadow scenes use — identical PROTO and fields to
+# worlds/hallway_and_beta_empty.wbt:1370 and webots-kinova/worlds/shadow_arm.wbt:78
+# (BeerBottle, name "bottle", mass 0.4). NOT the blue WaterBottleOpaque cylinder from
+# arm_base.wbt, which is a different object.
+#
+# The PROTO is fetched from the Webots GitHub tree, as every other PROTO in this repo's worlds
+# is: this Webots install ships NO local proto library (projects/objects/drinks/ holds only a
+# webots.yaml stub; the one .proto on disk is Mavic2Pro), so a local path would not resolve.
+#
+# Placed on the "RoundTable" Solid at (-6.68445, 1.87241): its top face is the Pose at z=0.725
+# carrying a Cylinder of height 0.03, so the surface is at 0.725 + 0.015 = 0.740. BeerBottle is
+# BOTTOM-CENTRED, hence z = 0.74 exactly — the same value both reference worlds use to stand it
+# on a 0.74 m table. Offset ~9 cm off the table centre on purpose: dead-centre placement lets a
+# fit that has not actually localised the bottle still look correct, which is the last thing a
+# test should allow.
+DEF bottle BeerBottle {
+  translation -6.60445 1.83241 0.74
+  name "bottle"
+  mass 0.4
+}
