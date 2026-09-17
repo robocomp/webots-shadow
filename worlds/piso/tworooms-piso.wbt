@@ -2,27 +2,14 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "../../protos/Shadow.proto"
-EXTERNPROTO "../../protos/Door.proto"
+EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Shadow.proto"
+EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Door.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Desk.proto"
 
 WorldInfo {
   basicTimeStep 8
-  # The wheels declare contactMaterial "InteriorWheelMat" / "ExteriorWheelMat" (InteriorWheel.proto:86,
-  # ExteriorWheel.proto:86), and WITHOUT these ContactProperties Webots falls back to default ISOTROPIC
-  # friction -- the rollers stop sliding freely and the base behaves like a skid-steer rather than a
-  # mecanum. This world was missing them entirely, and it is measurable: comparing the wheel-encoder
-  # forward kinematics against the supervisor over 809 publish intervals on 2026-08-15, the effective
-  # (LX+LY) came out at ~0.287 instead of the geometric 0.340 -- between the ideal-mecanum 0.340 and
-  # the ideal-differential half-track 0.210, exactly what partial skidding looks like. The base was
-  # therefore over-rotating ~18% against every commanded rot, which hits open-loop heading control as
-  # well as odometry. Translation was unaffected (adv tracked ground truth to 0.1%), because it does
-  # not depend on the roller anisotropy.
-  # Copied verbatim from Shadow_v2.wbt. coulombFriction [0, 2, 0] is the anisotropy: zero along the
-  # roller axis, 2 across it; frictionRotation +-45 deg orients it along the rollers, opposite for the
-  # interior and exterior wheels, which is what makes the diagonal pairs work.
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"
@@ -36,13 +23,6 @@ WorldInfo {
       ]
     }
     ContactProperties {
-      # Differential drive wheels: ordinary isotropic rubber-on-floor grip. Nothing anisotropic here
-      # -- that was only ever needed to make mecanum rollers slide sideways.
-      # softCFM gives the contact a little compliance. The drive wheels and both casters rest at
-      # EXACTLY z=0 (axle 0.100 with r=0.100; caster centre 0.040 with r=0.040), so the chassis sits
-      # on four perfectly coplanar contacts -- statically over-constrained for a rigid body, which a
-      # hard solver resolves by rocking fore and aft. A hair of compliance makes the load share
-      # smoothly instead.
       material1 "DriveWheelMat"
       coulombFriction [
         1.2
@@ -52,10 +32,6 @@ WorldInfo {
       softCFM 0.0005
     }
     ContactProperties {
-      # Ball casters. These are on BallJoints and ROLL, so they need ordinary friction rather than an
-      # artificially slippery contact: a rolling ball follows the chassis without resisting a pivot.
-      # The earlier 0.05 was compensating for casters that were bolted rigid and could only skid, and
-      # it left the fore/aft rocking with nothing to dissipate against.
       material1 "CasterMat"
       coulombFriction [
         0.9
@@ -78,8 +54,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5706698428291066 0.583942582406752 0.5773620969006679 2.1125162755223674
-  position -4.634486009405993 3.0495689949253304 11.85864975659117
+  orientation -0.4941703935825115 0.5051646645989073 0.7075339452967462 1.9331155592090992
+  position -4.8959167694630725 3.218612021048398 15.240996952728059
   follow "shadow"
   followType "None"
 }
@@ -831,13 +807,13 @@ Group {
       }
     }
     DEF DOOR_0 Door {
-      hidden translation_4 0.0010186018592568957 3.876639026789697e-06 0
-      hidden rotation_4 0 0 -1 3.916164645077095e-05
+      hidden translation_4 0.0010372038703150427 7.752549571027334e-06 0
+      hidden rotation_4 0 0 -1 7.832329857524614e-05
       translation -3.58277 7.166 0
       rotation 0 0 1 1.5707963
       name "Door"
       size 0.1 1 2.1
-      position -3.916164915103619e-05
+      position -7.832329830194424e-05
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -846,13 +822,13 @@ Group {
       }
     }
     DEF DOOR_1 Door {
-      hidden translation_4 0.0010186018592567292 3.8766390267341855e-06 0
-      hidden rotation_4 0 0 -1 3.916164645077095e-05
-      translation -4.77112 9.23958 0
+      hidden translation_4 0.0011488191228944539 3.099271437151385e-05 2.4424906541753444e-15
+      hidden rotation_4 0 0 -0.9999999999999999 0.0003132931931837953
+      translation -4.76901 9.3796 0
       rotation 0 0 1 -1.5857206
       name "Door(1)"
       size 0.1 1 2.1
-      position -3.916164915068274e-05
+      position -0.0003132931932082148
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -1555,10 +1531,6 @@ Group {
           }
         }
       ]
-      # floor.dae in piso.wbt, floor_tworooms.dae here: the same 22 apartment triangles plus 6
-      # that carry room 2, cut against the apartment outline so the two share a border rather
-      # than overlap it.  Regenerate with make_floor_tworooms.py; do NOT point this at
-      # floor.dae, which stops at the north wall's inner face and leaves the doorway open.
       name "Floor"
       boundingObject Mesh {
         url [
@@ -1747,22 +1719,6 @@ Group {
     }
   ]
 }
-
-# ---------------------------------------------------------------------------------------------
-# GROUND -- a backstop, not scenery.
-#
-# Every walkable surface in this world is a finite trimesh (floor_tworooms.dae), so any hole in
-# it, anywhere, drops the robot out of the world with no diagnostic beyond a falling z.  A Plane
-# used as a boundingObject is INFINITE in Webots regardless of its rendered `size`, so this one
-# catches the robot everywhere, including outside the building.  It sits 1 cm below z = 0: far
-# enough not to z-fight the floor, close enough that if the robot ever does find a gap the
-# symptom is a 1 cm drop you can see rather than a fall to -inf you have to instrument for.
-#
-# It also gives the world an outside.  Until now the apartment floated in the TexturedBackground
-# void, which did not matter when the only room was sealed; room 2's floor has to run out to its
-# walls' OUTER faces, so a 17 cm lip of slab is visible from outside along the south side.  On
-# ground it reads as a foundation instead of as a mistake.
-# ---------------------------------------------------------------------------------------------
 Solid {
   translation -4.3 6.7 -0.01
   children [
@@ -1783,48 +1739,8 @@ Solid {
   }
   locked TRUE
 }
-
-# ---------------------------------------------------------------------------------------------
-# ROOM 2 -- the far side of DOOR_1, for the "crossing door" problem.
-#
-# DOOR_1 (translation -4.77112 9.23958) sits in the apartment's NORTH wall, at the end of the
-# short corridor that runs up from the living room.  Everything below is the room the robot ends
-# up in after it opens that door and drives through; nothing here touches the apartment itself,
-# so piso.wbt geometry (meshes/wall.dae, floor.dae, the door apertures in door_apertures.json)
-# is bit-identical between the two worlds and anything fitted in room 1 stays valid.
-#
-# Deliberately a plain axis-aligned rectangle -- 6.0 x 4.0 m of clear floor, 3 m to the ceiling,
-# no furniture.  The point of this world is the ROOM-TO-ROOM handover: re-run layout estimation
-# from scratch on the far side and keep an anchor back through the door, so a featureless box is
-# exactly what you want to fit first.  Add clutter later, once the anchor is trusted.
-#
-# Geometry, all world coordinates (x right, y up-the-page, z up):
-#     interior   x in [-7.77, -1.77]   y in [ 9.48, 13.48]   z in [0, 3]
-#     walls      0.11 m thick, matching THICKNESS in thicken_walls.py, height 3.0 = WALL_TOP
-#     doorway    x in [-5.30, -4.24] left open in the south wall
-#
-# The south wall starts at y = 9.37 because that is where the apartment's own outer wall face
-# ends: buffer(air_polygon, 0.11) peaks at y = 9.3676 (vertex -5.9798, 9.3676).  So the two
-# slabs stack with 2 mm of air between them and nothing z-fights, and the doorway reads as a
-# ~0.24 m deep tunnel: door leaf slab 9.19..9.29, apartment wall ..9.37, this wall 9.37..9.48.
-#
-# The door leaf never reaches this wall, because DOOR_1 opens SOUTH, back into the corridor:
-# jointAtLeft is TRUE, so Door.proto:132 clamps the hinge to [-3.14, 0.01], and at -pi/2 the leaf
-# swings onto the door's local +x, which this rotation (0 0 1 -1.5857206) maps to world -y.  The
-# hinge anchor lands at about (-5.246, 9.14), the aperture's west edge, so a fully open leaf lies
-# ALONG the line of travel at x = -5.25 rather than across it -- the robot still has the full
-# x in [-5.25, -4.27] to drive through.  The corridor is 1.68 x 2.1 m (x in [-5.88, -4.20],
-# y from 7.16 up to the door), so the 1 m leaf has room to swing without hitting its own walls.
-#
-# There is no floor node down here: room 2's floor is part of the "Floor" Solid above, which in
-# this world points at meshes/floor_tworooms.dae instead of floor.dae.  One mesh, so the
-# threshold is continuous -- see the comment there and make_floor_tworooms.py.
-# ---------------------------------------------------------------------------------------------
 Group {
   children [
-    # ---- walls -------------------------------------------------------------------------------
-    # Cooler grey than the apartment's beige so it is obvious in the viewport which side of the
-    # door you are on.  Same normal map, so the LiDAR-relevant surface is identical.
     DEF ROOM2_WALL_SOUTH_WEST Solid {
       translation -6.535 9.425 1.5
       children [
@@ -1918,7 +1834,6 @@ Group {
       }
       locked TRUE
     }
-    # ---- ceiling: a downward-facing plane at z = 3, same trick as the apartment "Ceiling" -----
     Solid {
       translation -4.77 11.48 3
       rotation 1 0 0 3.14159
@@ -1936,8 +1851,6 @@ Group {
       name "Room2Ceiling"
       locked TRUE
     }
-    # ---- lighting: same lamp as the apartment grid, same 1.6 m pitch, so the two rooms expose
-    #      the camera identically and a crossing does not look like a gain change ---------------
     PointLight {
       attenuation 0 0 1
       color 1 0.92 0.82
@@ -2025,8 +1938,30 @@ Group {
   ]
 }
 DEF shadow Shadow {
-  translation -4.526270845883212 4.12357505587043 0.03228806177507833
-  rotation -0.006356564603980897 -0.002198381606470259 -0.9999773803465495 -0.6666889602150166
+  hidden position_0_0 52.62950042833911
+  hidden position_0_1 48.39877420597402
+  hidden position_0_2 -165.96204132919212
+  hidden position2_0_2 0.9800965068743611
+  hidden position3_0_2 37.39412144485284
+  hidden position_0_3 -174.59946766274075
+  hidden position2_0_3 -0.6818192365955884
+  hidden position3_0_3 -47.22537364610185
+  hidden linearVelocity_0 5.903427234780132e-06 2.269713484539651e-06 -5.698520018086129e-08
+  hidden angularVelocity_0 2.534155599873829e-06 -8.188929692001439e-08 1.599347138653893e-05
+  hidden rotation_9 -0.6791867420658634 0.6791892368626524 0.2782217639435964 2.5988765804159986
+  hidden linearVelocity_9 5.746607273348543e-06 -2.153695996514893e-06 -5.2724844655494585e-08
+  hidden angularVelocity_9 2.8678164716899067e-06 -9.326079938547527e-08 1.599346827989506e-05
+  hidden rotation_10 0.6264130179019737 -0.6264153188496937 0.46390794271426095 2.272876676567782
+  hidden linearVelocity_10 6.029532790415255e-06 6.125679239832905e-06 -5.506718733048258e-08
+  hidden angularVelocity_10 1.2444072366846333e-06 -3.7787156491630836e-08 1.5993480344220377e-05
+  hidden rotation_11 -0.8712536673330347 -0.004575327289252031 -0.4908116884701643 2.8106436678096585
+  hidden linearVelocity_11 3.0193557673082688e-06 2.2378513765006693e-06 3.9784177529256227e-07
+  hidden angularVelocity_11 -6.040438501959274e-05 8.149885653300625e-05 -1.0648006373085289e-17
+  hidden rotation_12 -0.24054847643271002 -0.6124973759617045 0.7529829977668342 2.6493833427657654
+  hidden linearVelocity_12 8.774132574993487e-06 2.0384520644367575e-06 -5.152574580513658e-07
+  hidden angularVelocity_12 -0.00016986102316569356 0.0005427962856429693 -1.978781423100874e-08
+  translation -5.057853130231102 7.284526207324397 0.030621166482816313
+  rotation -0.09576724207716453 0.0018510258144074235 -0.9954020338779546 0.034315455758705114
 }
 Solid {
   children [
@@ -2050,24 +1985,8 @@ Solid {
   name "CableTray"
   locked TRUE
 }
-
-# The SAME beer bottle the shadow scenes use — identical PROTO and fields to
-# worlds/hallway_and_beta_empty.wbt:1370 and webots-kinova/worlds/shadow_arm.wbt:78
-# (BeerBottle, name "bottle", mass 0.4). NOT the blue WaterBottleOpaque cylinder from
-# arm_base.wbt, which is a different object.
-#
-# The PROTO is fetched from the Webots GitHub tree, as every other PROTO in this repo's worlds
-# is: this Webots install ships NO local proto library (projects/objects/drinks/ holds only a
-# webots.yaml stub; the one .proto on disk is Mavic2Pro), so a local path would not resolve.
-#
-# Placed on the "RoundTable" Solid at (-6.68445, 1.87241): its top face is the Pose at z=0.725
-# carrying a Cylinder of height 0.03, so the surface is at 0.725 + 0.015 = 0.740. BeerBottle is
-# BOTTOM-CENTRED, hence z = 0.74 exactly — the same value both reference worlds use to stand it
-# on a 0.74 m table. Offset ~9 cm off the table centre on purpose: dead-centre placement lets a
-# fit that has not actually localised the bottle still look correct, which is the last thing a
-# test should allow.
 DEF bottle BeerBottle {
-  translation -6.60445 1.83241 0.74
+  translation -6.60445 1.83241 0.7404803800000002
+  rotation 0.28916670537350303 -0.9546539687644112 0.07084078222176925 1.0060842829107248e-15
   name "bottle"
-  mass 0.4
 }
