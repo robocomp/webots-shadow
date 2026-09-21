@@ -8,6 +8,7 @@ PROTO Shadow [
   field SFString          name            "shadow"      # Is `Solid.name`.
   field SFString          controller      "<extern>"      # Is `Robot.controller`.
   field SFBool            synchronization TRUE            # Is `Robot.synchronization`. FALSE ⇒ async (real-time) so this robot doesn't gate the sim when multiple extern controllers share a world.
+  field MFNode            extensionSlot   []              # Extra children grafted into the robot, e.g. a kinematic drone on a tray. EMPTY BY DEFAULT: a world that does not set it instantiates exactly the robot that existed before this field, same geometry and same devices. Anything placed here rides the robot's frame and, being inside this Robot node, its devices are reachable from THIS robot's controller — which is the whole point, since a supervisor can move any node but only a node's own controller can read its camera.
 ]
 {
 Robot {
@@ -48,6 +49,29 @@ Robot {
             Camera {
               translation 0 -0.17 1.275
               rotation 0 0 -1 -1.5708053071795867
+              # Just the two fisheye lenses. The body sleeve was removed -- too big, and the
+              # THETA is a flat slab, not a cylinder -- but the lens circles are the thing
+              # that actually reads as "this is the 360 camera", and they are small enough
+              # to sit proud of the mast mesh rather than inside it.
+              #
+              # +-0.0115 in LOCAL x: `rotation 0 0 -1 -pi/2` maps local x -> robot y, which
+              # is the lens axis, so one bump faces forward and one back, as on the real
+              # unit. 22.9 mm over the lenses is the published THETA V depth.
+              children [
+                Pose { translation 0.0115 0 0
+                  children [ Shape { appearance PBRAppearance { baseColor 0.02 0.02 0.03 roughness 0.08 metalness 0.1 }
+                    geometry Sphere { radius 0.0105 subdivision 3 } } ] }
+                Pose { translation -0.0115 0 0
+                  children [ Shape { appearance PBRAppearance { baseColor 0.02 0.02 0.03 roughness 0.08 metalness 0.1 }
+                    geometry Sphere { radius 0.0105 subdivision 3 } } ] }
+              ]
+              # > 0.0115 + 0.0105 = 0.022, the outer face of a lens bump.
+              near 0.03
+              # NO BODY HOUSING, deliberately. A cylindrical sleeve was tried and removed: too
+              # big, and the THETA is a flat slab, not a cylinder. A scale-accurate slab is
+              # narrower than the mast mesh here (45.2 mm vs ~56 mm) and cannot be seen at
+              # all. There is no shape that is both correct and visible, so nothing is
+              # drawn and `near` goes back to its default.
               name "camera_360_1"
               fieldOfView 3.14
               width 960
@@ -81,6 +105,36 @@ Robot {
           # so shadow.json's body<-helios RT edge reads euler_xyz (0, pi, 0) — updated in the same
           # commit. Change one without the other and every consumer's cloud is upside down.
           rotation 1 1 0 3.14159265359
+          # Black housing, drawn for the viewer but INVISIBLE TO THIS SENSOR.
+          #
+          # Webots ray-casts the GRAPHICS for a lidar (which is why a simulated lidar cannot
+          # see a boundingObject), so a shape at the sensor's own origin would otherwise be
+          # hit by its own beams. `near` is the OpenGL near clipping plane for this sensor's
+          # render: geometry inside it is clipped out of the lidar's view while still being
+          # drawn normally. minRange is set to match so the range gate and the clip agree.
+          #
+          # What it costs: this lidar goes blind within 10 cm of itself, and nothing physical can be that close to a sensor bolted to the
+          # chassis. Measured baseline before this change: 20533 returns/scan, nearest
+          # return 0.361 m, ZERO returns under 0.20 m -- so the 6 cm gate discards nothing
+          # that was ever there. (Contrast the 0.55 m footprint disc in this robot's
+          # history, which deleted real returns 22 cm past its own skin.)
+          # Dark sleeve over the mast, centred on THIS NODE.
+          #
+          # An earlier attempt modelled the real RS-Helios-5515 to its drawing -- base 23.5
+          # / band 60 / cap 16.5, with the optical origin 63.5 mm up from the base. That is
+          # accurate and it looked wrong: the offset slid the body up the mast until the
+          # mesh hid most of it. The sleeve is what reads correctly from outside.
+          #
+          # x = -0.0125 in LOCAL x is the measured gap between this node and the mast axis
+          # in shadow.stl, (0.0005, -0.1675) vs (0, -0.155); `rotation 1 1 0 pi` maps local
+          # x -> robot y.
+          children [
+            Pose { translation -0.0125 0 0
+              children [ Shape { appearance PBRAppearance { baseColor 0.04 0.04 0.05 roughness 0.12 metalness 0.2 }
+                geometry Cylinder { height 0.10 radius 0.055 } } ] }
+          ]
+          near 0.09
+          minRange 0.09
           name "helios"
           # ── THE SENSOR IS AN RS-Helios H32F70, AND THE SPAN BELOW MUST SAY SO ──────────────────
           # ★★★2026-08-29: verticalFieldOfView was pi (180 deg) with 82 layers and tiltAngle -0.
@@ -165,6 +219,22 @@ Robot {
               # }
             # }
           # ]
+          # Black dome, sized and placed to cover the dome the MESH already has.
+          #
+          # MEASURED, after two wrong guesses: mesh points within 90 mm of this sensor's
+          # axis form a dome from an apex at z 0.613 out to r 0.054 by z 0.69. Fitting a
+          # sphere gives R = 0.056 centred at z 0.669 -- i.e. centred on THIS NODE (0.670).
+          # The datasheet's SR42.4 dome, offset 26.5 mm to the real optical origin, is the
+          # true sensor but NOT what this mesh draws, and at r 0.0424 offset upward it sat
+          # entirely inside the shell and showed nothing.
+          children [
+            Pose { translation 0 0 0
+              children [ Shape { appearance PBRAppearance { baseColor 0.04 0.04 0.05 roughness 0.12 metalness 0.2 }
+                geometry Sphere { radius 0.050 subdivision 3 } } ] }
+          ]
+          # > the 0.050 sphere itself.
+          near 0.058
+          minRange 0.058
           name "bpearl"
           horizontalResolution 875
           fieldOfView 6.28
@@ -200,7 +270,15 @@ Robot {
                             # size 0.04 0.17 0.03
                           # }
                          # }
+
+                     # NO HOUSING, deliberately. Covering the mesh element made it huge: that
+                     # element is 175 x 71 x 90 mm because it is the camera AND its bracket,
+                     # while the camera alone is 175 x 30 x 33. A datasheet-accurate bar is
+                     # smaller than the mesh and invisible inside it; a mesh-sized box is
+                     # correct in extent and looks like a brick. Neither is worth having, so
+                     # nothing is drawn and `near` goes back to its default.
                       ]
+
 
                   name "zed"
                   fieldOfView 1.9198
@@ -450,6 +528,11 @@ Robot {
           mass 0.2
         }
       }
+    }
+    # Grafting point for extra children; see the extensionSlot field. A Group is used so
+    # the slot APPENDS to the robot's children rather than replacing them.
+    Group {
+      children IS extensionSlot
     }
   ]
   name "shadow"
