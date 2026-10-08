@@ -39,8 +39,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.38203801068805715 -0.326538643813251 -0.8645342517715043 4.613787124634698
-  position -1.0485648698329095 -12.663784578980271 13.071740239375123
+  orientation 0.37339906082093255 -0.32090434328558154 -0.8703984971485733 4.630830339131953
+  position -1.1192644445092879 -11.24410189023558 10.836281517639643
 }
 RectangleArena {
   floorSize 14 5
@@ -51,15 +51,12 @@ RectangleArena {
   wallHeight 1
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  translation -3.6998616234649986 -0.2999984815541107 0.03250467817194789
+  translation -3.69986 -0.249998 0.0325026
   rotation 0.0020024301562529584 -0.0019581101527945946 0.9999960780313586 -1.5707953071795862
 }
 Bump {
-  translation 0 -0.1 0.001
   name "Customizable Bump(1)"
-  type "25x2cm"
+  type "25x3_5cm"
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -78,7 +75,7 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_2 Robot {
-          translation 3.3 -0.3 0
+          translation 3.3013 -0.250015 0
           rotation 0 0 -1 0.026391386573661395
           children [
             Lidar {
