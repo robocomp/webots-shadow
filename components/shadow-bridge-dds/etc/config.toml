@@ -1,0 +1,395 @@
+# webots-bridge configuration — TOML is the default format for this component.
+# DERIVED FROM etc/config (the flat legacy file) on 2026-08-30, key for key, with its
+# comments carried across. Two deliberate differences, both stated rather than silent:
+#   * `Base.Kinematics` is DROPPED. This bridge drives the differential Shadow only, so the
+#     key is obsolete; the code warns if an old config still sets it to anything else.
+#   * `[DoorControl] Doors` was carried below as a COMMENT when this file was derived, because
+#     enabling it changes behaviour (getCapabilities() starts reporting canActuate=true) and a
+#     derived file must not do that on its own. ★IT HAS SINCE BEEN ENABLED, deliberately and with
+#     the world checked — see the [DoorControl] section at the bottom. The note above is kept only
+#     to record why it was ever off.
+# ⚠ Values that DISAGREED between etc/config and the old etc/config.toml are taken from
+#   etc/config: Endpoints.DoorControl 10017 (toml said 10008), FullPose.PublishPeriod 100 (20),
+#   Period.Compute 8 (10).
+# ★★★AND `etc/config` IS NOT THE FILE BEING RUN — THIS ONE IS. That claim stood in this header for
+#   weeks and was simply wrong: verified 2026-09-12 off the live process, `bin/Webots2Robocomp
+#   etc/config.toml`. It matters because the two files DISAGREE about DoorControl.Doors (only this
+#   one sets it), so anybody reading the old wording concluded the bridge could not actuate a door
+#   while the running bridge could. A header that names the wrong live file is worse than no header.
+
+
+[Proxies]
+# This property is used by the clients to connect to IceStorm.
+TopicManager = "IceStorm/TopicManager:default -p 9999"
+# Proxies for publishes interfaces
+FullPoseEstimationPubPrefix = ""
+
+[Endpoints]
+# Endpoints for implements interfaces
+IMU = "tcp -p 10007"
+Laser = "tcp -p 10003"
+OmniRobot = "tcp -p 10004"
+VisualElements = "tcp -p 10005"
+Webots2Robocomp = "tcp -p 10006"
+DoorControl = "tcp -p 10017"
+DroneControl = "tcp -p 10019"
+# MediaPlaneDDS descriptor endpoints, on the PORTS OF THE DRIVERS THIS BRIDGE REPLACES, so robot_concept's
+# Proxies.MediaPlaneDDS..4 (zed, ricoh, helios, bpearl, imu) adopt the streams with no config change.
+MediaPlaneZed    = "tcp -p 12002"   # was zed_camera
+MediaPlaneRicoh  = "tcp -p 10099"   # was ricoh_omni_dds
+MediaPlaneHelios = "tcp -p 11890"   # was lidar3d_dds (helios)
+MediaPlaneBpearl = "tcp -p 11889"   # was lidar3d_dds (bpearl)
+MediaPlaneImu    = "tcp -p 11891"   # was imu_dds
+# Endpoints for subscriptions interfaces
+JoystickAdapterTopic = "tcp -p 11025"
+JoystickAdapterPrefix = ""
+
+[Period]
+# Step/actuation rate. This is what bounds how quickly a setSpeedBase command
+# reaches the wheels, so lower it to tighten the control loop.
+#
+# Must be a multiple of the LOADED world's basicTimeStep -- Webots silently rounds UP to one
+# otherwise, so a value below it buys nothing and misreports the rate. The world normally run here is
+# worlds/piso/piso.wbt, which is basicTimeStep 8, so this is honoured exactly. Several other Shadow
+# worlds are still at 16 (a few at 30/33); loading one of those silently halves every rate below.
+#
+# This also sets the IMU sampling rate, which is the fast channel a consumer integrates between
+# slower pose estimates: 8 ms = 125 Hz, against room_concept's IMU thread polling at ~108 Hz.
+Compute = 8
+# Sampling rate for the heavy sensors (lidars, 360 camera, zed). Independent of
+# Period.Compute, so the loop above can be made faster without multiplying point
+# cloud and image processing cost. Clamped up to Period.Compute if set lower.
+# Defaults to Period.Compute when absent.
+Sensors = 32
+# The LIDARS' own rate. A real Helios and a real Bpearl both scan at 20 Hz (50 ms); sampling them at
+# the camera period published ~30 Hz clouds in simulation, a sim2real gap in exactly the number a
+# motion model divides by. Snapped at startup to a multiple of Period.Compute, because Webots only
+# refreshes a device on step multiples — on an 8 ms step this applies 48 ms (20.8 Hz); 56 would be
+# 17.9 Hz, a worse approximation of 20. Absent, the lidars follow Period.Sensors as before.
+Lidar = 50
+Emergency = 500
+
+[Base]
+# ── WHAT THE REAL BASE WILL AND WILL NOT DO ───────────────────────────────────────────────────
+# The base component's OWN config, i.e. the same file the real robot runs. It supplies maxLinSpeed,
+# maxRotSpeed, maxAcceleration, maxDeceleration, wheelRadius and axesLength, and the bridge then
+# enforces them the way the real stack does: the twist is clipped exactly as
+# SVD48VBase/src/specificworker.py:161-173 clips it, and the wheels are ramped exactly where
+# SVD48V.py:129-130 puts the driver's ramp.
+# ★Without this key the simulated base is bound by NOTHING: measured, it would drive 3.3x faster,
+#  turn 5.8x faster and accelerate instantaneously where the real robot needs 1.8 s to reach
+#  0.9 m/s. Every dynamics number measured in sim inherits that gap.
+# ★It must match Base.Kinematics — differential here, so config_diferential. The bridge
+#  cross-checks the file's `baseType` against it and says so if the two disagree.
+ConfigFile = "/home/pbustos/robocomp/components/robocomp-robolab/components/hardware/base/SVD48VBase/etc/config_diferential.toml"
+
+[FullPose]
+# Source of the VELOCITY fields published on FullPoseEstimationPub. The pose fields are supervisor
+# ground truth either way, and OmniRobot is unaffected by this setting.
+#   "wheels"     - wheel-encoder forward kinematics: the exact inverse of the mecanum IK in
+#                  apply_pending_speed_command(), which is what SVD48VBase computes on the real
+#                  robot (inv_m_wheels @ get_speed()). Includes real wheel slip.
+#   "supervisor" - the historical robotNode->getVelocity() ground truth. Kept for A/B measurement.
+# MUST be quoted: ConfigLoader throws on a bare word and aborts startup rather than defaulting.
+VelocitySource = "wheels"
+# Publish period for the wheel-odometry channel, ms. 100 = 10 Hz, matching the real base
+# (SVD48VBase/etc/config_omnidirectional: Period.Compute = 100). The IMU stays at the step rate, and
+# that rate GAP is what a consumer's high-rate injection propagates across. The published velocity is
+# differenced over this whole interval, so it is the exact mean over it, not a sample of one step.
+PublishPeriod = 100
+NominalVelVar = 1e-4
+NominalRotVar = 1e-4
+
+[SensorNoise]
+# Nominal per-sample variances, SI units squared. The simulated gyro and encoders are EXACT and the
+# accelerometer only quantises at 0.001, so a measured covariance here would be ~0 -- and a zero
+# variance reads downstream as infinite confidence, which wrecks any filter consuming it. So publish
+# plausible real-robot figures instead; the real IMU and base controller overwrite them once
+# calibrated. For scale: room_concept measured sigma_v = 3.9e-7 m/sqrt(s) over 24434 parked frames in
+# this simulator, five orders below what its own motion prior is configured with.
+# ── Synthetic sensor error ────────────────────────────────────────────────────
+# This bridge publishes the supervisor's GROUND TRUTH. Measured in room_concept over 24434 parked
+# frames, the odometry that produces has sigma_v = 3.9e-7 m/sqrt(s) -- five to six orders below what
+# every consumer's motion model is configured for. So in simulation the motion prior does no work,
+# and anything tuned against it is tuned against a robot that does not exist. Turn this on to make
+# the simulated sensors behave like sensors.
+#
+# sigma_* are DENSITIES (m/sqrt(s), rad/sqrt(s)): the rate is perturbed by sigma/sqrt(dt) so the
+# accumulated increment has variance sigma^2*dt. One constant therefore means the same thing on the
+# 10 Hz wheel channel and the 125 Hz IMU channel.
+# scale_* are CONSTANT fractional errors held for the whole run (a wheel radius does not change per
+# sample): reported = true * (1 + s).
+#
+# ★ THE WHEELS AND THE GYRO ARE DELIBERATELY DIFFERENT. A gyro does not scrub, so it gets NO scale --
+# only its own noise and a slow bias. A differential base over-reports rotation because it turns BY
+# scrubbing (measured wheel/gyro ratio ~1.05-1.08 on this robot), which is precisely why a gyro
+# heading path is worth having. One shared error model would simulate a gyro that scrubs and argue
+# against a feature that is genuinely valuable on hardware.
+#
+# ⚠ WITH THIS ON THE BRIDGE NO LONGER PUBLISHES GROUND TRUTH, and every consumer sees it -- which is
+# the point, and also why runs with it on are not comparable to runs without. It is announced at
+# startup as "[SensorNoise] ON".
+# Suggested starting values (encoder-plausible; scale_w is the measured scrubbing figure):
+#   WheelSigmaV = 0.006   WheelSigmaW = 0.010   WheelScaleV = 0.0   WheelScaleW = 0.06
+#   GyroSigma   = 0.002   GyroBias    = 0.0
+Enabled = true
+# ★ SLIP COEFFICIENTS per unit speed since 2026-08-29, NOT flat densities. sigma(v) =
+#   sqrt(Floor^2 + (WheelSigmaV * |v|)^2). An encoder at rest emits no counts, so it reports zero
+#   with near-certainty; a flat density injects motion into a parked robot and the consumer
+#   integrates it. Measured on P3Bot: parked drift 3.49 -> 0.122 mm/cycle.
+# ⚠ The FLOORS are carried over from P3Bot and are NOT measured on Shadow. Shadow's encoders and
+#   its differential base are not P3Bot's mecanum one. Re-measure with the robot demonstrably
+#   parked (the zero-command residual) before trusting them; they are a starting point, not a
+#   result. The same caution applies to reading WheelSigmaV/W as slip rather than as the flat
+#   density they used to be.
+WheelSigmaVFloor = 0.0005   # m/sqrt(s)   — sub-count residual at standstill
+WheelSigmaWFloor = 0.0010   # rad/sqrt(s) — same, yaw
+WheelSigmaV = 0.006   # m/sqrt(s)   encoder velocity noise: ~19 mm/s of jitter at 10 Hz
+WheelSigmaW = 0.010   # rad/sqrt(s) wheel-derived yaw-rate noise
+WheelScaleV = 0.0     # no odometer scale error assumed; raise if the real base shows one
+# ★ ZEROED 2026-08-17 after a CLOSURE TEST, and the reason is the opposite of what it first looked
+# like. A 4-turn pivot (4.0479 turns by the posterior, net travel 0.040 m, closing to within 17 deg
+# on 1440 -- the test resolves to ~1.2%) integrated as:
+#     truth 25.1327 rad | gyro 25.4197 (1.0114) | wheel 30.9178 (1.2302)
+# The gyro is accurate to within the test's own resolution. The wheel over-reports 23%, and with the
+# +0.06 injected here backed out its INTRINSIC error is 1.16.
+#
+# ⚠ THAT IS NOT A CALIBRATION BUG. Checked against Shadow.proto -- the robot piso.wbt actually
+# loads, not Shadow.proto -- the drive-wheel anchors are at x = +-0.259 and the wheel radius is 0.1,
+# which match half_track_ = 0.259 and wheel_radius_ = 0.100 exactly. The constants are right.
+#
+# It is SCRUBBING, and its size tracks how much of the motion is rotation, exactly as it should:
+#     mixed tour   wheel/gyro 1.1427 measured  ->  intrinsic 1.078   (the 1.05-1.08 the code expects)
+#     pure pivot   wheel/gyro 1.2302           ->  intrinsic 1.16    (all rotation, the worst case)
+# So the simulator ALREADY reproduces the scrubbing this knob was added to model, and setting it
+# non-zero duplicates a real effect the physics is generating on its own.
+#
+# Leave at 0. If a future world's base does NOT scrub (an idealised wheel contact, say), a value here
+# would then be modelling something absent rather than doubling something present -- so check the
+# wheel/gyro ratio on a pivot before re-introducing it.
+WheelScaleW = 0.0
+GyroSigma = 0.002   # rad/sqrt(s) — 3x quieter than the wheels, and with NO scale
+GyroBias = 0.0     # a real gyro drifts; left at 0 until there is a figure to use
+
+[IMU]
+NominalGyroVar = 1e-5
+NominalAccVar = 1e-3
+
+[Camera.ZED]
+points3D = false
+
+[Component.Debug]
+Verbose = true
+
+[omnirobot.ThreadPool]
+# Give OmniRobot its own dispatch thread. Without this all adapters share the
+# single default server thread pool, so a setSpeedBase/getBaseState call queues
+# behind whatever lidar or camera call is being marshalled at that instant.
+Size = "2"
+SizeMax = "4"
+
+# ── Per-adapter pools for the LONG-POLLING sensor interfaces ──────────────────────────────────
+# Each interface gets its own object adapter (generated/main.cpp: "lidar3d", "camera360rgb",
+# "camerargbdsimple", ...), so each can have its own dispatch pool — the isolation OmniRobot above
+# already relies on, extended to the streams that now BLOCK.
+#
+# Since the sensor servants wait on the DoubleBuffer for the next frame instead of returning the
+# last one, every subscribed driver holds a dispatch thread for up to one source period. Blocked
+# threads cost a thread, not CPU (it is a condition-variable wait), but out of the SHARED pool they
+# would crowd out the interfaces that do not block: five permanent waiters (helios, bpearl, ricoh,
+# zed, and any second puller) against Ice.ThreadPool.Server's initial size of 4 leaves nothing for
+# Laser, VisualElements, DoorControl or Webots2Robocomp until the pool grows. Sized per adapter,
+# a blocked sensor call cannot starve anything but its own interface.
+
+
+
+[imu.ThreadPool]
+Size = "2"       # imu_dds polls this at ~17 ms; it must never queue behind a blocking sensor call
+SizeMax = "4"
+
+[Ice.ThreadPool.Server]
+# Shared pool for the remaining adapters: still enough that a large Lidar3D or
+# Camera360 payload does not serialise the small IMU/VisualElements calls.
+Size = "4"
+SizeMax = "8"
+
+[Ice.Warn]
+Connections = "0"
+
+[Ice.Trace]
+Network = "0"
+Protocol = "0"
+
+[Ice]
+MessageSizeMax = "20004800"
+
+[LidarChannels.helios]
+# ---------------------------------------------------------------------------------------------
+# LIDAR CHANNEL WINDOW — which of the layers Webots generates the real device actually has.
+#
+# Webots spreads numberOfLayers SYMMETRICALLY about the device horizon and IGNORES tiltAngle
+# (measured 2026-08-29: only the untilted reconstruction puts 100% of a recorded frame inside the
+# room and the floor at z = 0). An RS-Helios H32F70 is not symmetric — its 32 channels span
+# -55..+15 deg — so Shadow.proto generates a symmetric 110 deg fan (2 x 55) with
+# 50 layers, which CONTAINS every real channel elevation, and this window drops the 18 layers
+# above +15 that the unit does not have. 50 layers over 110 deg = 2.2449 deg/layer; the window
+# keeps layers 18..49 = 32 channels at +14.6 .. -55.0 deg.
+#
+# This is a statement about the DEVICE, not a tuning knob: it is applied to elevations that were
+# reconstructed correctly, so a dropped layer changes nothing about the layers that remain.
+# Delete both keys to publish every layer. Elevations are in the DEVICE frame, + is up — the
+# mount (inverted on Shadow) lives in the RT edge, not here.
+ElevMinDeg = -55.0
+ElevMaxDeg = 15.0
+
+[DoorControl]
+# Which doors this provider advertises over DoorControl: the hinge DEFs of the loaded world.
+# Absent => it advertises none and getCapabilities() reports canActuate=false, which is the
+# honest answer for a world whose doors are scenery. Set it only if the loaded world really has
+# actuable hinges by these DEF names — the bridge resolves each DEF against the world and
+# advertises only the ones that resolve, so a wrong name drops out rather than lying.
+# ★ENABLED AND LIVE. This file is the one the bridge is run with (see the header), so canActuate
+#  is TRUE today. The line below is not a suggestion.
+# ENABLED 2026-09-09 after checking the loaded world rather than trusting the names: piso.wbt has
+# `DEF DOOR_0 Door` and `DEF DOOR_1 Door` (lines 833/848), and the Door PROTO exposes the `position`
+# field setDoorAperture() writes — so getFromDef() resolves and the aperture actually moves. Both are
+# currently at position ~-3.9e-05, i.e. shut.
+# ⚠This flips getCapabilities() to canActuate = true, which is what lets a caller OFFER the
+#   open-a-door affordance. That is a behaviour change, not a comment change.
+Doors = ["DOOR_0", "DOOR_1"]
+
+# How fast a door swings, rad/s. It used to TELEPORT: one setSFFloat and the leaf was at 90 degrees
+# between two frames. Nothing in Webots forbids that, but no hinge does it and no camera could track
+# it — and the reason to open a door in this scene is to find out whether the robot NOTICES. 1.2 rad/s
+# is ~1.3 s for a 90 degree swing. The step is rate x the world's own timestep, so the swing takes the
+# same wall-clock time whatever speed the simulation is run at.
+# SLOWED 2026-09-13 from 1.2 to 0.5 rad/s: 90 degrees now takes ~3.1 s instead of ~1.3 s.
+# ★NOT COSMETIC. The reason to open a door in this scene is to find out whether the robot NOTICES, and a
+# faster swing gives the perception less to work with: the leaf spends longer at intermediate angles where
+# the contour check can actually track it, and the agent's commanded-swing anticipation has more frames to
+# be confirmed or refuted by the image rather than running to completion unchallenged.
+# ⚠MUST STAY IN STEP WITH door_concept's [DoorAffordance] ActuationSwingRate. That agent predicts the leaf
+# angle from (rate x elapsed) while a swing is in flight, so if this is slower than what it assumes, it
+# believes the door open before it is. The interface does not advertise the rate (DoorControl.idsl carries
+# typicalLatencySec and nothing else), so the two numbers are duplicated by necessity — advertising it is
+# the real fix and wants an .idsl change on both sides.
+SwingRate = 0.5
+
+[DroneControl]
+# The kinematic drone that rides on Shadow's base, flown from the same joystick as the robot.
+# Press the pad's `drone_mode` button (etc/config_shadow, Button_3 = Xbox 'A') to swap which
+# vehicle the sticks address; press again to hand them back to the base.
+#   advance -> forward    side -> lateral    rotate -> yaw    altitude -> climb
+#
+# "Forward" is the drone's OWN nose, which the Mavic mesh points along the robot's +x -- i.e. the
+# robot's RIGHT, since Shadow faces +y. That is a property of the mesh, not of the mapping, and the
+# bridge accounts for it so the stick moves the drone the way it visibly points.
+#
+# ★ONLY beta_drone.wbt HAS A DRONE. This section is harmless in every other world: the bridge looks
+#  the DEF up once, says so if it is not there, and drone mode then flies nothing. Nothing else in
+#  the bridge changes, and the base is untouched until the button is pressed.
+
+# DEF name of the drone's Pose node in the world file.
+Def = "DRONE"
+
+# Speeds at FULL stick. The drone has no physics, so these are exactly what it does -- there is no
+# thrust to build up and no drag to settle against, and the stick is the velocity.
+LinearSpeed = 1.0     # m/s, horizontal
+ClimbSpeed  = 0.7     # m/s, vertical
+YawSpeed    = 1.5     # rad/s
+
+# Acceleration limits -- this is the drone's entire "mass". It is a kinematic node, so nothing
+# simulates inertia: without these the stick IS the velocity, the drone reaches full speed in one
+# frame and stops dead on release, and it reads as a cursor being dragged rather than as something
+# flying. The stick sets a TARGET velocity and the bridge walks the real one toward it at these
+# rates, so holding a stick ramps up and releasing one coasts to a stop.
+# Lower them for a heavier, more sluggish drone; raise them toward instantaneous for the old feel.
+MaxAccel    = 2.0     # m/s^2, horizontal: ~0.5 s from rest to LinearSpeed
+ClimbAccel  = 1.5     # m/s^2, vertical
+YawAccel    = 4.0     # rad/s^2
+
+# DroneControl.setVelocity commands, and gamepad frames, EXPIRE after this long. A program that
+# stops calling (crashed, hung) or a pad that stops publishing with a stick leaning must not
+# leave the drone cruising into the geofence: after WatchdogSec without news it brakes to a
+# hover. Callers are expected to resend every cycle, so keep this a few cycles long.
+# This assumes the pad publisher keeps publishing while a stick is held, not only on change:
+# python_xbox_controller does, every ~16 ms. An event-only publisher would see a held-still
+# stick time out after WatchdogSec and brake even though nothing changed.
+WatchdogSec = 0.5
+
+# Flight envelope, ABSOLUTE in the ROBOT's frame -- the node is a child of the robot, so it rides
+# along with it and these limits ride along too.
+# ⚠Without a limit a stick left leaning walks the drone out of the world and there is no way back
+#  short of reloading: nothing stops it, because nothing is simulating it.
+# ★ABSOLUTE, NOT RELATIVE TO WHERE THE DRONE STARTED. They used to be measured from the pose read at
+#  bridge startup, which is a bug you hit exactly once: restart the bridge while the drone is
+#  AIRBORNE and its floor rises with it, so it can never be landed again. MinZ is the height of the
+#  base's top surface -- the drone's landing height -- so it always reaches the pad.
+MaxRadius = 6.0       # m, horizontally from the robot's vertical axis
+MinZ = 0.7925         # m, robot frame: the top of the base, where beta_drone.wbt parks the drone
+MaxZ = 2.2            # m, robot frame: beta_drone.wbt's ceiling is at world z 2.38 m and the drone is
+                       #  kinematic, so it would pass straight through with no other guard. Raise this
+                       #  for a world with a higher ceiling.
+
+# ⚠MUST MATCH etc/config_shadow's Axis_0 max in python_xbox_controller. That axis is published in
+#  mm/s (+-750) while every other axis is already [-1, 1], and the drone wants a fraction of full
+#  stick. If the two drift apart the drone flies slower or faster than the stick suggests -- it is
+#  named here rather than hidden in the parsing so the coupling is visible from both ends.
+AdvanceAxisFullScale = 750.0
+
+# ─────────────────────────────── DDS media plane (src/media_plane.h) ───────────────────────────────
+# Topics, types and QoS are the ones the sim drivers published, so no consumer can tell the difference.
+[MediaPlane]
+Domain = 7                 # the dedicated media domain, never the DSR one (0)
+HistoryDepth = 2           # images + LiDAR, as zed_camera / ricoh_omni_dds / lidar3d_dds ran
+SharedMemoryOnly = true
+DataSharing = true         # zero-copy loans
+ImuHistoryDepth = 8        # as imu_dds ran
+ImuDataSharing = false     # a ~100-byte sample gains nothing from zero-copy
+ZedRGBTopic   = "rc/zed/rgb"
+ZedDepthTopic = "rc/zed/depth"
+RicohTopic    = "rc/ricoh/rgb"
+ImuTopic      = "rc/imu/data"
+# body<-sensor mounts for the self-filter: the DSR model is the single source of geometry. No fallback
+# numbers on purpose: if this cannot be read the filter is DISABLED loudly, not run on a stale mount.
+MountFile = "/home/pbustos/robocomp/components/active_inference/robot_concept/shadow.json"
+
+# LiDAR robot-body self-filter (Embree), as lidar3d_dds ran it in its *_webots configs.
+[MeshFilter]
+enabled = true
+robot_name = "Shadow"
+geometry_source = "proto"
+proto_file = "/home/pbustos/robocomp/components/webots-shadow/protos/Shadow.proto"
+proto_include_bounding_objects = false
+dilate = 0.05             # m
+floor_z = -100000.0       # mm, effectively off (as configured in lidar3d_dds)
+top_z = 100000.0
+
+# Per-LiDAR stream + filter bands + the sensor model advertised in its descriptor. Rings, ring
+# elevations, vertical FoV and azimuth step are COMPUTED from the Webots device (media_plane.cpp).
+[Lidar.helios]
+Topic = "rc/lidar3d/points"
+FootprintRadius = 0.0
+SkirtRadius = 0.75        # m
+SkirtZMin = 110.0         # mm
+SkirtZMax = 600.0
+Source = "simulated"
+Ref = "geometry: webots-shadow/protos/Shadow.proto Lidar 'helios' (worlds/piso/piso.wbt) | noise: RoboSense RS-Helios-5515 User Manual 3.0.1 (2022-06-29) sec 5.1.1"
+RateHz = 20.0
+RangeMaxM = 100.0
+RangeSigmaFloorM = 0.02
+
+[Lidar.bpearl]
+Topic = "rc/lidar3d/bpearl"
+FootprintRadius = 0.0
+SkirtRadius = 0.75
+SkirtZMin = 110.0
+SkirtZMax = 350.0
+Source = "simulated"
+Ref = "geometry: webots-shadow/protos/Shadow.proto Lidar 'bpearl' (worlds/piso/piso.wbt) | noise: RoboSense RS-Bpearl User Manual 2.0.1 (2020-02-18) sec 3 Table 1"
+RateHz = 20.0
+RangeMaxM = 100.0
+RangeSigmaFloorM = 0.03
+
+[Debug]
+LoopLog = "/tmp/shadow_bridge_loop.csv"   # one line per wall second: passes, sim advance, our work vs robot->step(); "" = off

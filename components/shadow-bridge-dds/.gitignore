@@ -1,0 +1,11 @@
+build/
+bin/
+build_cmake.log
+__pycache__/
+generated/*.ice
+generated/[A-Z]*.cpp
+generated/[A-Z]*.h
+generated/*_autogen/
+generated/CMakeFiles/
+generated/Makefile
+generated/cmake_install.cmake

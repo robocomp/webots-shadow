@@ -1,0 +1,24 @@
+import "Laser.idsl";
+import "Lidar3D.idsl";
+import "CameraRGBDSimple.idsl";
+import "Camera360RGB.idsl";
+import "OmniRobot.idsl";
+import "JoystickAdapter.idsl";
+import "VisualElements.idsl";
+import "Webots2Robocomp.idsl";
+import "DoorControl.idsl";
+import "DroneControl.idsl";
+import "IMU.idsl";
+import "FullPoseEstimationPub.idsl";
+
+Component Webots2Robocomp
+{
+    Communications
+    {
+        implements Laser, Lidar3D, CameraRGBDSimple, Camera360RGB, OmniRobot, VisualElements, Webots2Robocomp, IMU, DoorControl, DroneControl;
+        subscribesTo JoystickAdapter;
+        publishes FullPoseEstimationPub;
+    };
+    language Cpp11;
+};
+
