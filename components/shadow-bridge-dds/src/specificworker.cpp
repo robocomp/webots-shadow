@@ -2166,6 +2166,34 @@ void SpecificWorker::Webots2Robocomp_setDoorAngle(std::string DEF, float angle)
     post_webots_task([this, DEF = std::move(DEF), angle] { setDoorAperture(DEF, angle); });
 }
 
+// TELEPORT (2026-10-10, for multi-start experiments). Same units as getObjectPose: position in MILLIMETRES, orientation a
+// unit quaternion. The field writes run on the supervisor thread (Webots node access is not thread-safe), then the node's
+// physics is reset so it does not carry its old velocity into the new pose.
+void SpecificWorker::Webots2Robocomp_setObjectPose(std::string DEF, RoboCompWebots2Robocomp::ObjectPose pose)
+{
+    last_read.store(std::chrono::high_resolution_clock::now());
+    post_webots_task([this, DEF = std::move(DEF), pose]
+    {
+        webots::Node* node = robot->getFromDef(DEF);
+        if (node == nullptr) { std::cout << "[ setObjectPose ] no node with DEF " << DEF << std::endl; return; }
+        webots::Field* tr = node->getField("translation");
+        webots::Field* ro = node->getField("rotation");
+        if (tr == nullptr or ro == nullptr) { std::cout << "[ setObjectPose ] " << DEF << " has no translation/rotation" << std::endl; return; }
+        const double t[3] = {pose.position.x / 1000.0, pose.position.y / 1000.0, pose.position.z / 1000.0};
+        double qx = pose.orientation.x, qy = pose.orientation.y, qz = pose.orientation.z, qw = pose.orientation.w;
+        const double qn = std::sqrt(qx * qx + qy * qy + qz * qz + qw * qw);
+        if (qn > 0) { qx /= qn; qy /= qn; qz /= qn; qw /= qn; } else { qw = 1; }
+        const double angle = 2.0 * std::acos(std::clamp(qw, -1.0, 1.0));
+        const double s = std::sqrt(std::max(0.0, 1.0 - qw * qw));
+        const double r[4] = {s > 1e-9 ? qx / s : 0.0, s > 1e-9 ? qy / s : 0.0, s > 1e-9 ? qz / s : 1.0, angle};
+        tr->setSFVec3f(t);
+        ro->setSFRotation(r);
+        node->resetPhysics();
+        std::cout << "[ setObjectPose ] " << DEF << " -> (" << t[0] << ", " << t[1] << ", " << t[2] << ") axis ("
+                  << r[0] << ", " << r[1] << ", " << r[2] << ") angle " << r[3] << std::endl;
+    });
+}
+
 RoboCompWebots2Robocomp::Quaternion axisAngleToQuaternion(const webots::Field &rotation) {
     RoboCompWebots2Robocomp::Quaternion q;
 

@@ -223,7 +223,7 @@ public:
 	void Webots2Robocomp_setDoorAngle(std::string DEF, float angle);
 	void Webots2Robocomp_setPathToHuman(int humanId, RoboCompGridder::TPath path);
     void Webots2Robocomp_setArmJointsInstant(RoboCompKinovaArm::TJointAngles angles){};
-	void Webots2Robocomp_setObjectPose(std::string DEF, RoboCompWebots2Robocomp::ObjectPose pose){};
+	void Webots2Robocomp_setObjectPose(std::string DEF, RoboCompWebots2Robocomp::ObjectPose pose);
 	void JoystickAdapter_sendData(RoboCompJoystickAdapter::TData data);
 
 	// --- DoorControl: this simulator's implementation of a provider-agnostic door actuator -------
