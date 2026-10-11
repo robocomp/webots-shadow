@@ -28,7 +28,9 @@
 #define SPECIFICWORKER_H
 
 // If you want to reduce the period automatically due to lack of use, you must uncomment the following line
-#define HIBERNATION_ENABLED
+// OFF: this bridge publishes to DDS and has no Ice pollers to keep it awake, so hibernation would
+// drop robot->step() to 500 ms after 5 s and stall every stream at 2 Hz.
+//#define HIBERNATION_ENABLED
 
 #include <genericworker.h>
 #include <webots/Robot.hpp>
