@@ -2874,12 +2874,21 @@ void SpecificWorker::update_door_swing()
     const float step = static_cast<float>(door_swing_rate * dt);
     for (auto &[DEF, sw] : doorSwings)
     {
-        if (not sw.active)
+        if (not sw.active and not sw.held)
             continue;
         auto it = doorNodes.find(DEF);
-        if (it == doorNodes.end() or not it->second) { sw.active = false; continue; }
+        if (it == doorNodes.end() or not it->second) { sw.active = false; sw.held = false; continue; }
         webots::Field *pf = it->second->getField("position");
-        if (not pf) { sw.active = false; continue; }
+        if (not pf) { sw.active = false; sw.held = false; continue; }
+        // ★ HOLD THE LEAF WHERE IT WAS SENT (2026-10-18, user). The hinge is passive, so a robot brushing the leaf
+        //   on its way through swung it back into the opening (live: a 1.0 m door narrowed to a ~0.6 m gap on the
+        //   return leg, and a 0.543 m body wedged in it). A commanded door now stays at its commanded angle, as a
+        //   door on a stop does; a new open/close request moves it as before.
+        if (not sw.active)
+        {
+            if (std::abs(pf->getSFFloat() - sw.target) > 1e-3) pf->setSFFloat(sw.target);
+            continue;
+        }
 
         const float remaining = sw.target - sw.current;
         if (std::abs(remaining) <= step)
@@ -2887,7 +2896,8 @@ void SpecificWorker::update_door_swing()
             // Land exactly on the target rather than oscillating around it by a fraction of a step.
             sw.current = sw.target;
             sw.active = false;
-            std::cout << "[Info] Door '" << DEF << "' reached " << sw.target << " rad.\n";
+            sw.held = true;
+            std::cout << "[Info] Door '" << DEF << "' reached " << sw.target << " rad (held there).\n";
             // ★DELIVERED MEANS THE LEAF ARRIVED — still not a claim that the door "is open", which
             // stays the caller's perceptual question. It is a claim about what this provider did.
             if (sw.request_id >= 0)

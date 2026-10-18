@@ -317,7 +317,8 @@ private:
     // `request_id` ties the motion back to its DoorControl request, so getRequestStatus reports
     // InProgress while the leaf is moving and Delivered only when it arrives. Reporting Delivered the
     // moment the target was SET was true of a teleport and is a lie about a swing.
-    struct DoorSwing { float target = 0.f; float current = 0.f; bool active = false; int request_id = -1; };
+    // held: the leaf has arrived and is re-asserted at `target` every step, like a door on a stop (see update_door_swing).
+    struct DoorSwing { float target = 0.f; float current = 0.f; bool active = false; int request_id = -1; bool held = false; };
     std::map<std::string, DoorSwing> doorSwings;
     float door_swing_rate = 1.2f;   // rad/s; ~1.3 s for a 90 degree swing. Config: DoorControl.SwingRate
     void update_door_swing();       // supervisor thread, once per compute() cycle
