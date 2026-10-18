@@ -98,6 +98,8 @@ void SpecificWorker::initialize()
         // offering an open-the-door affordance it could never carry out.
         try { door_swing_rate = static_cast<float>(configLoader.get<double>("DoorControl.SwingRate")); }
         catch (...) { /* default 1.2 rad/s */ }
+        try { door_hold_radius = static_cast<float>(configLoader.get<double>("DoorControl.HoldRadius")); }
+        catch (...) { /* default 2.0 m */ }
         // [DroneControl]: every key optional, defaults in the header fly it sensibly with no config.
         try { drone_def = configLoader.get<std::string>("DroneControl.Def"); } catch(...) {}
         try { drone_linear_speed = configLoader.get<double>("DroneControl.LinearSpeed"); } catch(...) {}
@@ -2884,8 +2886,17 @@ void SpecificWorker::update_door_swing()
         //   on its way through swung it back into the opening (live: a 1.0 m door narrowed to a ~0.6 m gap on the
         //   return leg, and a 0.543 m body wedged in it). A commanded door now stays at its commanded angle, as a
         //   door on a stop does; a new open/close request moves it as before.
+        //   Only while the robot is NEAR the doorway (2026-10-18, user): away from it the leaf is free, so it can be
+        //   pushed by hand in Webots, and wherever it is left becomes the angle held when the robot next comes near.
         if (not sw.active)
         {
+            bool near = true;
+            if (robotNode)
+            {
+                const double *r = robotNode->getPosition(), *d = it->second->getPosition();
+                near = std::hypot(r[0] - d[0], r[1] - d[1]) <= door_hold_radius;
+            }
+            if (not near) { sw.target = sw.current = static_cast<float>(pf->getSFFloat()); continue; }
             if (std::abs(pf->getSFFloat() - sw.target) > 1e-3) pf->setSFFloat(sw.target);
             continue;
         }

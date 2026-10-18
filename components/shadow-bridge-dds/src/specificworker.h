@@ -321,6 +321,8 @@ private:
     struct DoorSwing { float target = 0.f; float current = 0.f; bool active = false; int request_id = -1; bool held = false; };
     std::map<std::string, DoorSwing> doorSwings;
     float door_swing_rate = 1.2f;   // rad/s; ~1.3 s for a 90 degree swing. Config: DoorControl.SwingRate
+    float door_hold_radius = 2.0f;  // m, robot centre to door origin: the leaf is held only this close (a decision level of
+                                    // the SIM harness: body half-length + leaf width + margin). Config: DoorControl.HoldRadius
     void update_door_swing();       // supervisor thread, once per compute() cycle
     webots::Field* robotRotationField = nullptr;
     webots::Field* robotTranslationField = nullptr;
