@@ -7,8 +7,9 @@ EXTERNPROTO "/home/pbustos/robocomp/components/webots-shadow/protos/Door.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/Chair.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Desk.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/bedroom/protos/Bed.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/computers/protos/Monitor.proto"
 
 WorldInfo {
   basicTimeStep 8
@@ -56,8 +57,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5346761187617048 0.5509622198717138 0.6407511843921575 1.9744781855147153
-  position -3.5156151431681546 5.725700318088359 12.740510837553987
+  orientation -0.5577525330349825 0.5690207745582174 0.6042577844051552 2.0367204364432485
+  position -4.254591681351766 7.061937046560267 20.492021720075655
   follow "shadow"
   followType "None"
 }
@@ -228,7 +229,7 @@ Group {
       }
     }
     Solid {
-      translation 0.375712 4.61128 0
+      translation -1.83401 4.54934 0
       rotation 0 0 1 3.14159
       children [
         Shape {
@@ -276,12 +277,49 @@ Group {
     Desk {
       translation 0.19357 2.36267 0
     }
-    Desk {
-      translation -2.19979 4.59268 0
-      name "desk(1)"
+    Solid {
+      translation -7.44605 11.8148 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/wooden_table_02/wooden_table_02_diff_2k.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/wooden_table_02/wooden_table_02_rough_2k.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "textures/wooden_table_02/wooden_table_02_nor_gl_2k.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "textures/wooden_table_02/wooden_table_02_ao_2k.jpg"
+              ]
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/wooden_table_02_150.obj"
+            ]
+          }
+        }
+      ]
+      name "WoodenTable"
+      boundingObject Mesh {
+        url [
+          "meshes/wooden_table_02_150.obj"
+        ]
+      }
     }
     Solid {
-      translation 0.309031 1.91724 0
+      translation -1.86893 2.46796 0
       rotation 0 0 1 -5.307179586466759e-06
       children [
         Shape {
@@ -809,10 +847,13 @@ Group {
       }
     }
     DEF DOOR_0 Door {
+      hidden translation_4 0.5750038809656478 -0.37601862262233754 3.3306690738754696e-14
+      hidden rotation_4 0 0 -1 1.570835532155438
       translation -3.59333 7.22555 0
       rotation 0 0 -1 1.57
       name "Door"
       size 0.1 1 2.1
+      position -1.5708355321554377
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -821,11 +862,13 @@ Group {
       }
     }
     DEF DOOR_1 Door {
+      hidden translation_4 0.5750000043274347 -0.3760000207629151 3.3306690738754696e-14
+      hidden rotation_4 0 0 -1 1.5707963715409208
       translation -4.76901 9.3796 0
       rotation 0 0 1 -1.5857206
       name "Door(1)"
       size 0.1 1 2.1
-      position -3.916164915099764e-05
+      position -1.570835532155427
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -1535,15 +1578,37 @@ Group {
         ]
       }
     }
+    Monitor {
+      translation -2.1125 2.08051 0.78
+      rotation 0 0 1 0.1
+      scale 1.5
+    }
+    Monitor {
+      translation -2.06292 4.50206 0.78
+      name "monitor(1)"
+      scale 2
+    }
+    Monitor {
+      translation -2.10431 2.83905 0.78
+      rotation 0 0 1 -0.1
+      name "monitor(2)"
+      scale 1.5
+    }
     Chair {
       translation -6.90769 1.43326 0
       rotation 0 0 1 1.0472
       color 1 1 0.1
     }
     Chair {
+      translation -7.48367 11.1441 -0.3
+      rotation 0 0 1 1.57079
+      name "chair(1)"
+      color 1 0.3 1
+    }
+    Chair {
       translation -6.12235 1.90409 -0.3
       rotation 0 0 1 -2.8797953071795863
-      name "chair(1)"
+      name "chair(2)"
       color 1 0.3 1
     }
     Solid {
@@ -1736,107 +1801,147 @@ Solid {
   }
   locked TRUE
 }
+Bed {
+  translation 0.80754 12.3911 7.49623e-13
+  rotation 0 0 1 -1.5707953071795862
+}
 Wall {
-  translation -0.85768 13.5399 -3.55271e-14
+  translation 0.84232 13.5799 -3.55271e-14
   rotation 0 0 1 1.5708
   name "wall(1)"
-  size 0.2 1.8 3
+  size 0.2 5 3
+}
+Wall {
+  translation 1.62232 7.1999 -3.55271e-14
+  rotation 0 0 1 1.5708
+  name "wall(2)"
+  size 0.2 3.6 3
+}
+Wall {
+  translation -3.005 9.38 0
+  name "Room2WallSouthEast"
+  size 2.47 0.2 3
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+Wall {
+  translation -5.02 13.58 0
+  name "Room2WallNorth"
+  size 7 0.2 3
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+Wall {
+  translation -8.49 10.32 0
+  name "Room2WallWest"
+  size 0.2 6.5 3
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+Wall {
+  translation -1.715 9.75 0
+  name "Room2WallEastSouth"
+  size 0.2 1 3
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+Wall {
+  translation -1.715 10.76 2.1
+  name "Room2WallEastSouth(1)"
+  size 0.2 1.2 0.9
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+Wall {
+  translation -1.715 12.36 0
+  name "Room2WallEastNorth"
+  size 0.2 2.2 3
+  appearance PBRAppearance {
+    baseColor 0.87 0.89 0.92
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/pared/beige_wall_001_nor_dx_2k.jpg"
+      ]
+    }
+    normalMapFactor 0.7
+    occlusionMapStrength 0
+    emissiveIntensity 0
+  }
+}
+DEF DOOR_2 Door {
+  hidden translation_4 0.0010186018592568957 3.876639026789697e-06 0
+  hidden rotation_4 0 0 -1 3.916164645077095e-05
+  translation -1.615 10.77 0
+  rotation 0 0 1 3.14159
+  name "Door(2)"
+  size 0.1 1 2.1
+  position -3.916164915102554e-05
+  frameHeight 2.1
+  doorAppearance PBRAppearance {
+    baseColor 0.532 0.747 0.481
+    roughness 0.8
+    metalness 0
+  }
 }
 Group {
   children [
-    DEF ROOM2_WALL_SOUTH_WEST Solid {
-      translation -6.535 9.425 1.5
-      children [
-        Shape {
-          appearance DEF ROOM2_WALL_APP PBRAppearance {
-            baseColor 0.87 0.89 0.92
-            roughness 1
-            metalness 0
-            normalMap ImageTexture {
-              url [
-                "textures/pared/beige_wall_001_nor_dx_2k.jpg"
-              ]
-            }
-            normalMapFactor 0.7
-            occlusionMapStrength 0
-            emissiveIntensity 0
-            name "Room2Wall"
-          }
-          geometry Box {
-            size 2.47 0.11 3
-          }
-        }
-      ]
-      name "Room2WallSouthWest"
-      boundingObject Box {
-        size 2.47 0.11 3
-      }
-      locked TRUE
-    }
-    DEF ROOM2_WALL_SOUTH_EAST Solid {
-      translation -3.005 9.425 1.5
-      children [
-        Shape {
-          appearance USE ROOM2_WALL_APP
-          geometry Box {
-            size 2.47 0.11 3
-          }
-        }
-      ]
-      name "Room2WallSouthEast"
-      boundingObject Box {
-        size 2.47 0.11 3
-      }
-      locked TRUE
-    }
-    DEF ROOM2_WALL_NORTH Solid {
-      translation -4.77 13.535 1.5
-      children [
-        Shape {
-          appearance USE ROOM2_WALL_APP
-          geometry Box {
-            size 6 0.11 3
-          }
-        }
-      ]
-      name "Room2WallNorth"
-      boundingObject Box {
-        size 6 0.11 3
-      }
-      locked TRUE
-    }
-    DEF ROOM2_WALL_WEST Solid {
-      translation -7.825 11.48 1.5
-      children [
-        Shape {
-          appearance USE ROOM2_WALL_APP
-          geometry Box {
-            size 0.11 4.22 3
-          }
-        }
-      ]
-      name "Room2WallWest"
-      boundingObject Box {
-        size 0.11 4.22 3
-      }
-      locked TRUE
-    }
-    DEF ROOM2_WALL_EAST Solid {
-      translation -1.715 11.48 1.5
-      children [
-        Shape {
-          appearance USE ROOM2_WALL_APP
-          geometry Box {
-            size 0.11 4.22 3
-          }
-        }
-      ]
-      name "Room2WallEast"
-      boundingObject Box {
-        size 0.11 4.22 3
-      }
-      locked TRUE
-    }
     Solid {
       translation -4.77 11.48 3
       rotation 1 0 0 3.14159
@@ -1941,14 +2046,30 @@ Group {
   ]
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  translation -5.32998 3.65841 0.0305498
-  rotation 5.059602068258485e-10 -1.7095387873163697e-09 1 0.5760996228069885
-}
-SolidBox {
-  translation -4.23252 14.2524 1
-  size 1 1 2
+  hidden position_0_0 1464.3825414705918
+  hidden position_0_1 954.9855235397469
+  hidden position_0_2 -3111.5486952131
+  hidden position2_0_2 -3.2520751725841315
+  hidden position3_0_2 -42.17094329870743
+  hidden position_0_3 -2824.8906894210245
+  hidden position2_0_3 3.0792025761973876
+  hidden position3_0_3 233.87372588513398
+  hidden linearVelocity_0 2.573902630962872e-15 -4.251018579323541e-14 9.622453944757582e-15
+  hidden angularVelocity_0 -1.6643543321072133e-14 -2.546858199683696e-13 1.3266763730563937e-14
+  hidden rotation_9 0.19502903559252813 -0.1950297519754926 -0.9612112520774122 4.672834556470276
+  hidden linearVelocity_9 -2.190124751082242e-14 6.148836080094874e-14 9.103022917244606e-15
+  hidden angularVelocity_9 -1.687179710390107e-14 -2.5824293725719987e-13 -2.606645246884314e-16
+  hidden rotation_10 0.029304675695650692 -0.029304783337932506 0.9991408637704144 1.5716595053914435
+  hidden linearVelocity_10 -2.9853437105528075e-14 -5.6581596744927336e-14 9.282555483325699e-15
+  hidden angularVelocity_10 -1.8858139100665078e-14 -2.5987784697731924e-13 -2.5858400815004064e-16
+  hidden rotation_11 -0.6884339797901093 -0.5921543590937453 0.418822003333907 4.244722202127483
+  hidden linearVelocity_11 -8.038593772844087e-15 -8.841773414169094e-14 -3.623959352644483e-14
+  hidden angularVelocity_11 2.354347796913764e-12 -2.1372732589937162e-13 -8.976167600928576e-05
+  hidden rotation_12 -0.2670822914119053 -0.2600862148292223 -0.9279128248224473 1.8378095938809567
+  hidden linearVelocity_12 -1.0513492153417533e-14 9.39600557002311e-14 5.693522405664041e-14
+  hidden angularVelocity_12 -2.50150481938483e-12 -2.800805892455119e-13 -0.00023192212876519308
+  translation 0.6011302351081549 9.703517250964484 0.030549833655978256
+  rotation -8.700917608671761e-09 9.29175717219785e-09 0.9999999999999999 1.5050205686909106
 }
 Solid {
   children [
@@ -1973,11 +2094,11 @@ Solid {
   locked TRUE
 }
 DEF bottle BeerBottle {
-  translation -6.60445 1.8324099999999999 0.7404803800000002
-  rotation -0.8359773870131355 0.392194036920083 0.38383023044963416 1.659044479423133e-15
+  translation -6.60445 1.8324099999999994 0.7404803800000002
+  rotation -0.9052173924365609 0.4161812772862332 0.08587558946960851 7.029373010945058e-15
   name "bottle"
 }
 Wall {
-  translation -0.06 10.3 0
+  translation 3.33 10.34 0
   size 0.2 6.5 3
 }

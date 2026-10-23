@@ -256,7 +256,7 @@ ElevMaxDeg = 15.0
 # currently at position ~-3.9e-05, i.e. shut.
 # ⚠This flips getCapabilities() to canActuate = true, which is what lets a caller OFFER the
 #   open-a-door affordance. That is a behaviour change, not a comment change.
-Doors = ["DOOR_0", "DOOR_1"]
+Doors = ["DOOR_0", "DOOR_1", "DOOR_2"]   # DOOR_2: threerooms-piso.wbt only (room 2 <-> room 3); drops out elsewhere
 
 # How fast a door swings, rad/s. It used to TELEPORT: one setSFFloat and the leaf was at 90 degrees
 # between two frames. Nothing in Webots forbids that, but no hinge does it and no camera could track
