@@ -696,6 +696,9 @@ private:
     std::map<int, RoboCompDoorControl::RequestStatus> door_control_requests;
     int door_control_next_id = 1;
     std::vector<std::string> door_control_defs;            // from config, compute()-thread only
+    // DEF -> {closed hinge angle, sign of opening}. Not every leaf is seated shut at 0 (threerooms DOOR_1 is shut
+    // at -pi/2 and opens toward 0), so open/close are mapped per door. Written once in the constructor, read-only after.
+    std::map<std::string, std::pair<float, float>> door_hinge;
     void update_door_control();
 
     void receiving_lidarData(std::string name, webots::Lidar* _lidar, DoubleBuffer<RoboCompLidar3D::TData, RoboCompLidar3D::TData>& lidar_doubleBuffer, FixedSizeDeque<RoboCompLidar3D::TData>& delay_queue, long timestamp);

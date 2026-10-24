@@ -257,6 +257,13 @@ ElevMaxDeg = 15.0
 # ⚠This flips getCapabilities() to canActuate = true, which is what lets a caller OFFER the
 #   open-a-door affordance. That is a behaviour change, not a comment change.
 Doors = ["DOOR_0", "DOOR_1", "DOOR_2"]   # DOOR_2: threerooms-piso.wbt only (room 2 <-> room 3); drops out elsewhere
+# Per-door hinge convention, parallel to Doors (2026-10-24): the angle the leaf is SHUT at, and the direction it
+# opens (-1 toward -pi, +1 toward 0). threerooms-piso.wbt seats DOOR_1 shut at -pi/2, opening toward 0; with the
+# old fixed close=0/open=-pi/2 every DOOR_1 command was INVERTED ("close" opened it, "open" shut it). Re-seating
+# the leaf in the world would move its handle and swing side, so the convention lives here instead.
+# ⚠piso.wbt / tworooms seat DOOR_1 shut at 0 — reset DOOR_1 to 0.0 / -1.0 when running those worlds.
+ClosedAngle = [0.0, -1.5708, 0.0]
+OpenSign = [-1.0, 1.0, -1.0]
 
 # How fast a door swings, rad/s. It used to TELEPORT: one setSFFloat and the leaf was at 90 degrees
 # between two frames. Nothing in Webots forbids that, but no hinge does it and no camera could track

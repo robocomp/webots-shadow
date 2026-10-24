@@ -118,6 +118,16 @@ void SpecificWorker::initialize()
         catch(...) {}
         if (not door_control_defs.empty())
             std::cout << "[DoorControl] advertising " << door_control_defs.size() << " door(s)\n";
+        // Per-door hinge convention, parallel to Doors: the angle at which the leaf is SHUT, and the direction it
+        // opens (-1: toward -pi, the PROTO's default; +1: toward 0). Missing entries keep the default {0, -1}.
+        {
+            std::vector<double> closed, sign;
+            try { closed = configLoader.get<std::vector<double>>("DoorControl.ClosedAngle"); } catch(...) {}
+            try { sign = configLoader.get<std::vector<double>>("DoorControl.OpenSign"); } catch(...) {}
+            for (std::size_t i = 0; i < door_control_defs.size(); ++i)
+                door_hinge[door_control_defs[i]] = { i < closed.size() ? static_cast<float>(closed[i]) : 0.f,
+                                                     i < sign.size() and sign[i] > 0 ? 1.f : -1.f };
+        }
 
         // Where the published base velocity comes from, and how often it goes out. Note the string
         // MUST be quoted in etc/config: ConfigLoader::processLine throws "type not recognized" for a
@@ -3034,11 +3044,14 @@ RoboCompDoorControl::RequestAck SpecificWorker::DoorControl_requestDoor(RoboComp
         return ack;   // UnknownDoor: telling the caller to stop asking is more useful than silence
     }
 
-    // setDoorAperture clamps to [-pi, 0]; 0 is flush. "Open" without a usable hint means 90 degrees.
-    float target = 0.f;
+    // setDoorAperture clamps to [-pi, 0]. The hint is an opening MAGNITUDE in the PROTO's default convention
+    // (-pi/2 = 90 degrees open); it is applied from this door's own shut angle in its own opening direction.
+    // "Open" without a usable hint means 90 degrees.
+    const auto [closed, sign] = door_hinge.contains(def) ? door_hinge.at(def) : std::pair{0.f, -1.f};
+    float target = closed;
     if (req.action == RoboCompDoorControl::DoorAction::OpenDoor)
-        target = (req.apertureHint < -1e-3f) ? req.apertureHint
-                                             : -static_cast<float>(M_PI) / 2.f;
+        target = closed + sign * ((req.apertureHint < -1e-3f) ? -req.apertureHint
+                                                               : static_cast<float>(M_PI) / 2.f);
 
     int id = 0;
     {
