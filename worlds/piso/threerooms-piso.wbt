@@ -10,6 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/bedroom/protos/Bed.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/computers/protos/Monitor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/bathroom/protos/Toilet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/bathroom/protos/Bathtube.proto"
 
 WorldInfo {
   basicTimeStep 8
@@ -57,8 +59,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5577525330349825 0.5690207745582174 0.6042577844051552 2.0367204364432485
-  position -4.254591681351766 7.061937046560267 20.492021720075655
+  orientation -0.5900552853911296 0.5959854092257489 0.5446431420407395 2.1357315800214653
+  position -4.028175557673262 9.733161073389903 17.742075898597886
   follow "shadow"
   followType "None"
 }
@@ -229,7 +231,7 @@ Group {
       }
     }
     Solid {
-      translation -1.83401 4.54934 0
+      translation -1.83401 4.42934 0
       rotation 0 0 1 3.14159
       children [
         Shape {
@@ -278,7 +280,7 @@ Group {
       translation 0.19357 2.36267 0
     }
     Solid {
-      translation -7.44605 11.8148 0
+      translation -7.4485 7.85881 -7.10543e-15
       children [
         Shape {
           appearance PBRAppearance {
@@ -311,7 +313,7 @@ Group {
           }
         }
       ]
-      name "WoodenTable"
+      name "WoodenTable(1)"
       boundingObject Mesh {
         url [
           "meshes/wooden_table_02_150.obj"
@@ -847,13 +849,13 @@ Group {
       }
     }
     DEF DOOR_0 Door {
-      hidden translation_4 0.5750038809656478 -0.37601862262233754 3.3306690738754696e-14
-      hidden rotation_4 0 0 -1 1.570835532155438
+      hidden translation_4 0.574996126960858 -0.3759814190553001 5.810907310888069e-13
+      hidden rotation_4 0 0 -1 1.5707572173678348
       translation -3.59333 7.22555 0
       rotation 0 0 -1 1.57
       name "Door"
       size 0.1 1 2.1
-      position -1.5708355321554377
+      position -1.5708355321553524
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -862,13 +864,13 @@ Group {
       }
     }
     DEF DOOR_1 Door {
-      hidden translation_4 0.5750000043274347 -0.3760000207629151 3.3306690738754696e-14
-      hidden rotation_4 0 0 -1 1.5707963715409208
+      hidden translation_4 -0.3749964724189002 -0.5740169237508878 1.2800871473928055e-12
+      hidden rotation_4 0 0 1 1.5708319558620893
       translation -4.76901 9.3796 0
       rotation 0 0 1 -1.5857206
       name "Door(1)"
       size 0.1 1 2.1
-      position -1.570835532155427
+      position -4.273792783759944e-05
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
@@ -1600,9 +1602,15 @@ Group {
       color 1 1 0.1
     }
     Chair {
-      translation -7.48367 11.1441 -0.3
-      rotation 0 0 1 1.57079
+      translation -1.44865 2.46618 -0.3
+      rotation 0 0 1 3.14159
       name "chair(1)"
+      color 1 0.3 1
+    }
+    Chair {
+      translation -7.43231 8.513 0.04
+      rotation 0 0 1 -1.5707953071795862
+      name "chair(3)"
       color 1 0.3 1
     }
     Chair {
@@ -1802,23 +1810,106 @@ Solid {
   locked TRUE
 }
 Bed {
-  translation 0.80754 12.3911 7.49623e-13
+  translation -5.18246 12.3911 7.49623e-13
   rotation 0 0 1 -1.5707953071795862
+  name "bed(1)"
+}
+Solid {
+  translation -6.3615 13.216 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_diff_2k.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_rough_2k.jpg"
+          ]
+        }
+        metalness 0
+        normalMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_nor_gl_2k.jpg"
+          ]
+        }
+        occlusionMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_ao_2k.jpg"
+          ]
+        }
+      }
+      geometry Mesh {
+        url [
+          "meshes/painted_wooden_nightstand.obj"
+        ]
+      }
+    }
+  ]
+  name "nightstand_bed1_left"
+  boundingObject Mesh {
+    url [
+      "meshes/painted_wooden_nightstand.obj"
+    ]
+  }
+}
+Solid {
+  translation -4.0035 13.216 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_diff_2k.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_rough_2k.jpg"
+          ]
+        }
+        metalness 0
+        normalMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_nor_gl_2k.jpg"
+          ]
+        }
+        occlusionMap ImageTexture {
+          url [
+            "textures/painted_wooden_nightstand/painted_wooden_nightstand_ao_2k.jpg"
+          ]
+        }
+      }
+      geometry Mesh {
+        url [
+          "meshes/painted_wooden_nightstand.obj"
+        ]
+      }
+    }
+  ]
+  name "nightstand_bed1_right"
+  boundingObject Mesh {
+    url [
+      "meshes/painted_wooden_nightstand.obj"
+    ]
+  }
 }
 Wall {
-  translation 0.84232 13.5799 -3.55271e-14
+  translation 0.11232 13.5799 -3.55271e-14
   rotation 0 0 1 1.5708
   name "wall(1)"
-  size 0.2 5 3
+  size 0.2 3.5 3
 }
 Wall {
-  translation 1.62232 7.1999 -3.55271e-14
+  translation 0.87232 7.1799 -3.55271e-14
   rotation 0 0 1 1.5708
   name "wall(2)"
-  size 0.2 3.6 3
+  size 0.2 2 3
 }
 Wall {
-  translation -3.005 9.38 0
+  translation -3.005 9.25 0
   name "Room2WallSouthEast"
   size 2.47 0.2 3
   appearance PBRAppearance {
@@ -1926,13 +2017,13 @@ Wall {
   }
 }
 DEF DOOR_2 Door {
-  hidden translation_4 0.0010186018592568957 3.876639026789697e-06 0
-  hidden rotation_4 0 0 -1 3.916164645077095e-05
-  translation -1.615 10.77 0
+  hidden translation_4 0.5749961269608594 -0.37598141905530086 6.148415110374117e-13
+  hidden rotation_4 0 0 -1 1.5707572179065352
+  translation -1.705 10.77 0
   rotation 0 0 1 3.14159
   name "Door(2)"
   size 0.1 1 2.1
-  position -3.916164915102554e-05
+  position -1.570835532155347
   frameHeight 2.1
   doorAppearance PBRAppearance {
     baseColor 0.532 0.747 0.481
@@ -2046,30 +2137,30 @@ Group {
   ]
 }
 DEF shadow Shadow {
-  hidden position_0_0 1464.3825414705918
-  hidden position_0_1 954.9855235397469
-  hidden position_0_2 -3111.5486952131
-  hidden position2_0_2 -3.2520751725841315
-  hidden position3_0_2 -42.17094329870743
-  hidden position_0_3 -2824.8906894210245
-  hidden position2_0_3 3.0792025761973876
-  hidden position3_0_3 233.87372588513398
-  hidden linearVelocity_0 2.573902630962872e-15 -4.251018579323541e-14 9.622453944757582e-15
-  hidden angularVelocity_0 -1.6643543321072133e-14 -2.546858199683696e-13 1.3266763730563937e-14
-  hidden rotation_9 0.19502903559252813 -0.1950297519754926 -0.9612112520774122 4.672834556470276
-  hidden linearVelocity_9 -2.190124751082242e-14 6.148836080094874e-14 9.103022917244606e-15
-  hidden angularVelocity_9 -1.687179710390107e-14 -2.5824293725719987e-13 -2.606645246884314e-16
-  hidden rotation_10 0.029304675695650692 -0.029304783337932506 0.9991408637704144 1.5716595053914435
-  hidden linearVelocity_10 -2.9853437105528075e-14 -5.6581596744927336e-14 9.282555483325699e-15
-  hidden angularVelocity_10 -1.8858139100665078e-14 -2.5987784697731924e-13 -2.5858400815004064e-16
-  hidden rotation_11 -0.6884339797901093 -0.5921543590937453 0.418822003333907 4.244722202127483
-  hidden linearVelocity_11 -8.038593772844087e-15 -8.841773414169094e-14 -3.623959352644483e-14
-  hidden angularVelocity_11 2.354347796913764e-12 -2.1372732589937162e-13 -8.976167600928576e-05
-  hidden rotation_12 -0.2670822914119053 -0.2600862148292223 -0.9279128248224473 1.8378095938809567
-  hidden linearVelocity_12 -1.0513492153417533e-14 9.39600557002311e-14 5.693522405664041e-14
-  hidden angularVelocity_12 -2.50150481938483e-12 -2.800805892455119e-13 -0.00023192212876519308
-  translation 0.6011302351081549 9.703517250964484 0.030549833655978256
-  rotation -8.700917608671761e-09 9.29175717219785e-09 0.9999999999999999 1.5050205686909106
+  hidden position_0_0 4234.8196479094195
+  hidden position_0_1 3965.70850739512
+  hidden position_0_2 -8388.381126136912
+  hidden position2_0_2 3.0980522598985143
+  hidden position3_0_2 934.0428713907281
+  hidden position_0_3 -8271.815397355489
+  hidden position2_0_3 -2.1111625040992874
+  hidden position3_0_3 -482.0553167626894
+  hidden linearVelocity_0 -1.4942837204565896e-14 2.0049584848862113e-14 2.912202035076916e-14
+  hidden angularVelocity_0 -8.463226718724272e-14 1.2636708081349173e-12 8.948072372834471e-15
+  hidden rotation_9 0.023615692514348547 -0.02361577925978989 0.9994421414154101 1.5713580142160481
+  hidden linearVelocity_9 1.192552455949786e-13 1.0436029421906022e-13 2.829508830986918e-14
+  hidden angularVelocity_9 -8.267470391567937e-14 1.258645071348445e-12 5.1272917719775065e-15
+  hidden rotation_10 0.43824223295405135 -0.4382438427106131 -0.7847840974316965 4.472376776158344
+  hidden linearVelocity_10 1.3303095294595797e-13 -8.83929399483117e-14 2.8448387269497164e-14
+  hidden angularVelocity_10 -8.219617133323098e-14 1.2662859635961948e-12 5.126700879860703e-15
+  hidden rotation_11 -0.8775144048984778 0.4695391928072036 -0.09747520512227899 3.409921150950703
+  hidden linearVelocity_11 6.197886659258891e-14 2.284421478637427e-14 2.6243006133149526e-13
+  hidden angularVelocity_11 -6.077836123463258e-13 1.6507029295005642e-12 8.217409653490296e-05
+  hidden rotation_12 0.42365799100581014 -0.5090427701828681 -0.7492592106750993 1.678022116726896
+  hidden linearVelocity_12 5.062026406245646e-14 2.61060580028607e-14 -1.9925936511045275e-13
+  hidden angularVelocity_12 -6.953788128652871e-13 1.3472512251048817e-12 -4.201152582973102e-07
+  translation -3.5269188606165627 10.513928480972515 0.030549833656029493
+  rotation -3.940204808165649e-09 3.6831803258463933e-09 1 1.63812088477954
 }
 Solid {
   children [
@@ -2094,11 +2185,80 @@ Solid {
   locked TRUE
 }
 DEF bottle BeerBottle {
-  translation -6.60445 1.8324099999999994 0.7404803800000002
-  rotation -0.9052173924365609 0.4161812772862332 0.08587558946960851 7.029373010945058e-15
+  translation -6.60445 1.8324099999999992 0.7404803800000002
+  rotation -0.9536241937036115 0.28814127842598053 0.08703735318917973 1.0215450310652355e-14
   name "bottle"
 }
 Wall {
-  translation 3.33 10.34 0
+  translation 1.79 10.34 0
   size 0.2 6.5 3
+}
+Bathtube {
+  translation 1.205 12.51 0
+}
+Toilet {
+  translation -0.874478 12.8652 0
+  rotation 0 0 1 -1.5707953071795862
+}
+Solid {
+  translation 1.4365 9.709 0
+  rotation 0 0 1 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/vanity_white/vanity_white_diff.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "meshes/vanity_white.obj"
+        ]
+      }
+    }
+  ]
+  name "vanity"
+  boundingObject Pose {
+    translation 0 0 0.43
+    children [
+      Box {
+        size 1.211 0.497 0.86
+      }
+    ]
+  }
+}
+Solid {
+  translation 1.68 9.709 1.45
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.95 0.95
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.94 0.84
+      }
+    }
+    Pose {
+      translation -0.011 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.004 0.9 0.8
+          }
+        }
+      ]
+    }
+  ]
+  name "mirror"
+  boundingObject Box {
+    size 0.02 0.94 0.84
+  }
 }
