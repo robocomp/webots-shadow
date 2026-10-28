@@ -13,6 +13,7 @@ WorldInfo {
     "Simulation of the ROBOLAB shadow robot."
   ]
   title "ROBOLAB shadow"
+  basicTimeStep 8
   contactProperties [
     ContactProperties {
       material1 "InteriorWheelMat"
@@ -39,8 +40,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.38203801068805715 -0.326538643813251 -0.8645342517715043 4.613787124634698
-  position -1.0485648698329095 -12.663784578980271 13.071740239375123
+  orientation -0.29058177605219415 -0.29653992688862824 0.9097396897944154 4.41765474474659
+  position 0.6436839590665497 7.3982938965198874 5.291896732510354
 }
 RectangleArena {
   floorSize 14 5
@@ -51,13 +52,11 @@ RectangleArena {
   wallHeight 1
 }
 DEF shadow Shadow {
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  translation -3.6998616234649986 -0.2999984815541107 0.03250467817194789
-  rotation 0.0020024301562529584 -0.0019581101527945946 0.9999960780313586 -1.5707953071795862
+  translation -3.6999716873671633 -0.2999960358867303 0.01850537253722827
+  rotation -0.00037204392816047514 0.0002536329718756089 -0.9999998986268105 1.5707914342884213
 }
 Bump {
-  translation 0 -0.1 0.001
+  translation 0 1.1 0.001
   name "Customizable Bump(1)"
   type "25x2cm"
 }
@@ -198,8 +197,16 @@ DEF CROWD_CONTROL Group {
   ]
 }
 DEF flacon MedicineBottle {
-  translation -3.55232 -0.190023 0.834894
-  rotation -0.008184842242227873 0.9999665036056012 -4.925330828057793e-06 0.004103074014905703
+  translation -3.5445775569470737 -0.18990146429413624 0.8163800101632098
+  rotation -0.07086040399748739 0.997486239835577 6.696263532251766e-05 0.0014250832926884466
   physics Physics {
   }
+}
+Robot {
+  name "push_supervisor"
+  controller "push_supervisor"
+  controllerArgs [
+    "{\"mode\": \"off\"}"
+  ]
+  supervisor TRUE
 }
