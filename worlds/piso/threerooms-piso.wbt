@@ -864,13 +864,11 @@ Group {
       }
     }
     DEF DOOR_1 Door {
-      hidden translation_4 -0.3749964724189002 -0.5740169237508878 1.2800871473928055e-12
-      hidden rotation_4 0 0 1 1.5708319558620893
       translation -4.76901 9.3796 0
       rotation 0 0 1 -1.5857206
       name "Door(1)"
       size 0.1 1 2.1
-      position -4.273792783759944e-05
+      position 0
       frameHeight 2.1
       doorAppearance PBRAppearance {
         baseColor 0.532 0.747 0.481
