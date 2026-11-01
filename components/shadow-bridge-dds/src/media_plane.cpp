@@ -198,6 +198,11 @@ void LidarStream::set_geometry(const LidarScan& scan, const std::vector<char>& k
         m.fov_end_deg   = m.ring_elev_deg.back();
     }
     m.azimuth_step_deg = static_cast<float>(scan.fov / scan.columns * 180.0 / M_PI);
+    // Range/rate come from the Webots device; a [Lidar.<name>] key (already in cfg_.model) overrides.
+    // Advertising only: nothing here filters points by these values.
+    if (not m.range_max_m and scan.max_range_m > 0.0) m.range_max_m = static_cast<float>(scan.max_range_m);
+    if (not m.range_min_m and scan.min_range_m >= 0.0) m.range_min_m = static_cast<float>(scan.min_range_m);
+    if (not m.rate_hz and scan.rate_hz > 0.0)          m.rate_hz     = static_cast<float>(scan.rate_hz);
 
     auto d = descriptor_base(cfg_.pub, "LidarFrame", rc::media::LIDAR_FRAME_TYPE_TAG);
     d.streams["lidar"]      = cfg_.topic;
@@ -503,6 +508,13 @@ void MediaPlane::submit_lidar(const std::string& name, webots::Lidar* lidar, std
     scan.layers  = lidar->getNumberOfLayers();
     scan.fov     = lidar->getFov();
     scan.vfov    = lidar->getVerticalFov();
+    scan.min_range_m = lidar->getMinRange();
+    scan.max_range_m = lidar->getMaxRange();
+    // Effective delivery rate = min(1/sampling period, device frequency): Webots re-delivers the stale scan
+    // when the period is shorter than the device's own frequency, so the period alone over-states the rate.
+    const int period_ms = lidar->getSamplingPeriod();
+    const double dev_hz = lidar->getFrequency();
+    scan.rate_hz = period_ms > 0 ? std::min(1000.0 / period_ms, dev_hz) : dev_hz;
     scan.stamp_ms = stamp_ms;
     scan.range.assign(range, range + static_cast<std::size_t>(scan.columns) * scan.layers);
     s->submit(std::move(scan));

@@ -375,7 +375,10 @@ floor_z = -100000.0       # mm, effectively off (as configured in lidar3d_dds)
 top_z = 100000.0
 
 # Per-LiDAR stream + filter bands + the sensor model advertised in its descriptor. Rings, ring
-# elevations, vertical FoV and azimuth step are COMPUTED from the Webots device (media_plane.cpp).
+# elevations, vertical FoV, azimuth step, RangeMaxM, RangeMinM and RateHz are READ FROM THE WEBOTS
+# DEVICE (media_plane.cpp: getMaxRange/getMinRange/getSamplingPeriod), no longer hand-copied from the
+# proto. RateHz/RangeMaxM/RangeMinM keys here are optional OVERRIDES, absent on purpose.
+# Only RangeSigmaFloorM stays configured: noise comes from the manual, not from a Webots device property.
 [Lidar.helios]
 Topic = "rc/lidar3d/points"
 FootprintRadius = 0.0
@@ -384,8 +387,6 @@ SkirtZMin = 110.0         # mm
 SkirtZMax = 600.0
 Source = "simulated"
 Ref = "geometry: webots-shadow/protos/Shadow.proto Lidar 'helios' (worlds/piso/piso.wbt) | noise: RoboSense RS-Helios-5515 User Manual 3.0.1 (2022-06-29) sec 5.1.1"
-RateHz = 20.0
-RangeMaxM = 100.0
 RangeSigmaFloorM = 0.02
 
 [Lidar.bpearl]
@@ -396,8 +397,6 @@ SkirtZMin = 110.0
 SkirtZMax = 350.0
 Source = "simulated"
 Ref = "geometry: webots-shadow/protos/Shadow.proto Lidar 'bpearl' (worlds/piso/piso.wbt) | noise: RoboSense RS-Bpearl User Manual 2.0.1 (2020-02-18) sec 3 Table 1"
-RateHz = 20.0
-RangeMaxM = 100.0
 RangeSigmaFloorM = 0.03
 
 [Debug]

@@ -64,6 +64,9 @@ struct LidarScan
     std::vector<float> range;             // layers × columns, row 0 = TOP layer (Webots convention)
     int    columns = 0, layers = 0;
     double fov = 0.0, vfov = 0.0;         // rad
+    // Device intrinsics read off the Webots Lidar (the sim's own numbers, not hand-copied from the proto).
+    double min_range_m = 0.0, max_range_m = 0.0;   // getMinRange()/getMaxRange(); 0 = none/unknown
+    double rate_hz = 0.0;                 // min(1000 / getSamplingPeriod(), getFrequency()): what is delivered; 0 = unknown
     std::int64_t stamp_ms = 0;            // acquisition instant, wall epoch ms
 };
 
