@@ -92,11 +92,13 @@ ConfigFile = "/home/pbustos/robocomp/components/robocomp-robolab/components/hard
 #   "supervisor" - the historical robotNode->getVelocity() ground truth. Kept for A/B measurement.
 # MUST be quoted: ConfigLoader throws on a bare word and aborts startup rather than defaulting.
 VelocitySource = "wheels"
-# Publish period for the wheel-odometry channel, ms. 100 = 10 Hz, matching the real base
-# (SVD48VBase/etc/config_omnidirectional: Period.Compute = 100). The IMU stays at the step rate, and
-# that rate GAP is what a consumer's high-rate injection propagates across. The published velocity is
-# differenced over this whole interval, so it is the exact mean over it, not a sample of one step.
-PublishPeriod = 100
+# Publish period for the wheel-odometry channel, ms. The real base publishes at 100 Hz: SVD48VBase
+# hardcodes self.Period = 10 in specificworker.py and never reads its config's Period.Compute = 100.
+# The gate only runs once per step and a publish re-arms from the step it fired on, so a period is
+# rounded UP to whole steps: on the 8 ms step 10 would give 16 ms (62.5 Hz), and 8 is the closest to
+# 100 Hz, publishing every step (125 Hz in sim time). The published velocity is differenced over this
+# whole interval, so it is the exact mean over it, not a sample of one step.
+PublishPeriod = 8
 NominalVelVar = 1e-4
 NominalRotVar = 1e-4
 

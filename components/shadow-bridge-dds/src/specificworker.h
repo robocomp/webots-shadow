@@ -271,6 +271,12 @@ private:
     // Sensors straight onto the zero-copy DDS media plane, replacing the sim drivers. See media_plane.h.
     shadow_dds::MediaPlane media_plane_;
     void log_loop(std::chrono::steady_clock::time_point t_step0, double sim_now_ms);
+    // Where the time between two robot->step() calls goes, for Debug.LoopLog, in ms. Wait is the gap
+    // between one compute() ending and the next starting, i.e. the cyclic QTimer: it is idle time, and
+    // it is the part of work_ms_mean that is not work at all.
+    enum LoopPhase { PhaseWait, PhasePose, PhaseImu, PhaseLidar, PhaseCameras, PhaseOther, PhasePost, PhaseCount };
+    std::array<double, PhaseCount> loop_phase_ms_{};
+    std::chrono::steady_clock::time_point loop_end_tp_{};
 
 
 	/**

@@ -356,7 +356,8 @@ void SpecificWorker::log_loop(std::chrono::steady_clock::time_point t_step0, dou
         {
             out.open(path);
             out.imbue(std::locale::classic());
-            out << "wall_ms,passes,sim_advance_ms,work_ms_mean,step_ms_mean,step_ms_max\n" << std::flush;
+            out << "wall_ms,passes,sim_advance_ms,work_ms_mean,step_ms_mean,step_ms_max,"
+                   "wait_ms_mean,pose_ms_mean,imu_ms_mean,lidar_ms_mean,cameras_ms_mean,other_ms_mean,post_ms_mean\n" << std::flush;
         }
     }
     const auto now = clk::now();
@@ -373,13 +374,31 @@ void SpecificWorker::log_loop(std::chrono::steady_clock::time_point t_step0, dou
         if (out.is_open())
             out << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()
                 << ',' << passes << ',' << (sim_now_ms - sim0) << ',' << work_ms / passes << ','
-                << step_ms / passes << ',' << step_max << '\n' << std::flush;
+                << step_ms / passes << ',' << step_max;
+        if (out.is_open())
+        {
+            for (const double phase_ms : loop_phase_ms_)
+                out << ',' << phase_ms / passes;
+            out << '\n' << std::flush;
+        }
         win0 = now; sim0 = sim_now_ms; passes = 0; work_ms = step_ms = step_max = 0;
+        loop_phase_ms_.fill(0.0);
     }
 }
 
 void SpecificWorker::compute()
 {
+    // Charges the time since the previous mark to one phase of the loop log.
+    auto t_mark = std::chrono::steady_clock::now();
+    const auto mark_phase = [this, &t_mark](LoopPhase phase)
+    {
+        const auto t = std::chrono::steady_clock::now();
+        loop_phase_ms_[phase] += std::chrono::duration<double, std::milli>(t - t_mark).count();
+        t_mark = t;
+    };
+    if (loop_end_tp_ != std::chrono::steady_clock::time_point{})
+        loop_phase_ms_[PhaseWait] += std::chrono::duration<double, std::milli>(t_mark - loop_end_tp_).count();
+
     // Getting simulation timestamp
     //double now = robot->getTime() * 1000;
     const auto now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
@@ -406,12 +425,14 @@ void SpecificWorker::compute()
     // Getting the data from simulation. The robot pose/speed feeds the control loop,
     // so it is refreshed every step regardless of the sensor rate.
     if(robot) receiving_robotSpeed(robot, now);
+    mark_phase(PhasePose);
     // ★ BEFORE the heavy sensors, not after. The IMU sample is stamped with `now`, taken at the top
     // of this function, but it used to be read below the lidar/camera block — so on every cycle that
     // carries a heavy sample it was stored several ms after the time it claims, and the error landed
     // on exactly the cycles where it is hardest to notice. It reads its own Webots devices and shares
     // nothing with the block below, so the order is free.
     update_imu_data(now);
+    mark_phase(PhaseImu);
     // ★ The heavy sensors go STRAIGHT onto the DDS media plane (media_plane.h). The Ice paths that
     //   fed lidar3d_dds / zed_camera / ricoh_omni_dds are gone, and with them the 4-8 ms hop.
     //   Cameras convert into the DDS loan here (Webots buffers die at the next step); each LiDAR scan is
@@ -423,6 +444,7 @@ void SpecificWorker::compute()
         if(lidar_helios) media_plane_.submit_lidar("helios", lidar_helios, lidar_stamp);
         if(lidar_pearl)  media_plane_.submit_lidar("bpearl", lidar_pearl, lidar_stamp);
     }
+    mark_phase(PhaseLidar);
     if(new_sensor_sample)
     {
         const long cam_stamp = acquisition_wall_ms(now, sim_now_ms, sensor_period);
@@ -430,6 +452,7 @@ void SpecificWorker::compute()
         if(camera360_1 and camera360_2) media_plane_.publish_360(camera360_1, camera360_2, cam_stamp);
         if(drone_camera) receiving_droneCamera(drone_camera, now);
     }
+    mark_phase(PhaseCameras);
 
     // Refresh the snapshots served by the RPC servants, then drain any work they
     // queued. Everything that talks to Webots happens on this thread.
@@ -441,10 +464,12 @@ void SpecificWorker::compute()
 
     // Push any speed command received over RPC since the last step.
     apply_pending_speed_command();
+    mark_phase(PhaseOther);
 
     const auto t_step0 = std::chrono::steady_clock::now();
     robot->step(getPeriod("Compute"));
     log_loop(t_step0, sim_now_ms);
+    t_mark = std::chrono::steady_clock::now();
 
 //    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - now).count() << std::endl;
 
@@ -456,6 +481,8 @@ void SpecificWorker::compute()
 
     //humansMovement();
     fps.print("FPS:");
+    mark_phase(PhasePost);
+    loop_end_tp_ = t_mark;
 }
 
 void SpecificWorker::emergency()
