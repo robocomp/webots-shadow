@@ -796,8 +796,14 @@ bool SpecificWorker::update_wheel_odometry(double sim_seconds, bool publishing)
 
         // (0) = -side, (1) = forward: the shadow_velocity_local convention that pose_data.adv/side and
         // update_base_state's advVz/advVx already assume, so nothing downstream changes.
-        return std::tuple{Eigen::Vector2f{static_cast<float>(-advx), static_cast<float>(advz)}, rot,
-                          std::array{w[0], w[1], w[2], w[3]}};
+        // kDriveWheels entries, NOT four: this used to return {w[0], w[1], w[2], w[3]} from a 2-wheel
+        // array, and the step path below copies it into step_w[kDriveWheels] -- so the two extra
+        // doubles (out-of-bounds stack reads) overwrote the NEXT members, step_v_local and step_rot,
+        // right after they were set. FullPose never copies w and stayed right; the per-step
+        // rc/odom/data stream carried noise around ZERO (3% of the travel, measured 2026-11-08).
+        std::array<double, kDriveWheels> wa{};
+        std::copy(std::begin(w), std::end(w), wa.begin());
+        return std::tuple{Eigen::Vector2f{static_cast<float>(-advx), static_cast<float>(advz)}, rot, wa};
     };
 
     // First usable sample: anchor BOTH sets together and produce nothing. Seeding only the step anchor
@@ -1089,9 +1095,12 @@ void SpecificWorker::receiving_robotSpeed(webots::Supervisor* _robot, long times
     // know" — the same contract the pose and acceleration blocks below use.
     const auto safe_var_v = [](double v) -> double
     { return (v < 0.0) ? -1.0 : std::max(v, 1e-12); };
-    pose_data.velCov.m00 = static_cast<float>(safe_var_v(nominal_vel_var_ + vel_extra));   // vx
-    pose_data.velCov.m11 = static_cast<float>(safe_var_v(nominal_vel_var_ + vel_extra));   // vy
-    pose_data.velCov.m55 = static_cast<float>(safe_var_v(nominal_rot_var_ + rot_extra));   // vrz
+    // The nominal floor, scaled to THIS window: exactly the configured figure for a full PublishPeriod,
+    // larger for a short first window. See nominal_var_over().
+    const double t_nom = window.dt > 0.0 ? window.dt : fullpose_publish_period_ms * 1e-3;
+    pose_data.velCov.m00 = static_cast<float>(safe_var_v(nominal_var_over(nominal_vel_var_, t_nom) + vel_extra));   // vx
+    pose_data.velCov.m11 = static_cast<float>(safe_var_v(nominal_var_over(nominal_vel_var_, t_nom) + vel_extra));   // vy
+    pose_data.velCov.m55 = static_cast<float>(safe_var_v(nominal_var_over(nominal_rot_var_, t_nom) + rot_extra));   // vrz
     pose_data.poseCov.m00 = -1.f;
     pose_data.accCov.m00  = -1.f;
 
@@ -1168,9 +1177,11 @@ void SpecificWorker::publish_odom_step(double sim_s, long timestamp, double k_wa
     f.adv(v.y());
     f.side(-v.x());
     f.rot(static_cast<float>(rot));
-    f.adv_var(safe_var(nominal_vel_var_ + var_v_extra));
-    f.side_var(safe_var(nominal_vel_var_ + var_v_extra));
-    f.rot_var(safe_var(nominal_rot_var_ + var_rot_extra));
+    // The nominal floor at the STEP's length: PublishPeriod/dt (6x at 48/8) the per-FullPose figure, so
+    // both streams state the same density and a consumer integrating either one gets the same noise.
+    f.adv_var(safe_var(nominal_var_over(nominal_vel_var_, dt) + var_v_extra));
+    f.side_var(safe_var(nominal_var_over(nominal_vel_var_, dt) + var_v_extra));
+    f.rot_var(safe_var(nominal_var_over(nominal_rot_var_, dt) + var_rot_extra));
     media_plane_.publish_odom(f);
 }
 

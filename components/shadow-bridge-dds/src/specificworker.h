@@ -581,8 +581,19 @@ private:
     double gyro_bias_              = 0.0;   // rad/s       — constant gyro offset, the error a gyro DOES have
     double nominal_gyro_var_ = 1e-5;        // (rad/s)^2
     double nominal_acc_var_  = 1e-3;        // (m/s^2)^2
-    double nominal_vel_var_  = 1e-4;        // (m/s)^2
-    double nominal_rot_var_  = 1e-4;        // (rad/s)^2
+    double nominal_vel_var_  = 1e-4;        // (m/s)^2, per sample AT FullPose.PublishPeriod
+    double nominal_rot_var_  = 1e-4;        // (rad/s)^2, idem
+    /// A nominal per-sample variance restated for a sample averaged over `seconds`. The configured
+    /// figure is the variance of a FullPose sample, i.e. of a mean over PublishPeriod; held as a
+    /// density (var * T_pub) it scales as 1/T, so the 8 ms DDS step and the 48 ms FullPose mean
+    /// state the SAME noise. Without this an 8 ms step claimed the 48 ms figure, and a consumer
+    /// converting it back with sqrt(var * dt_sample) read a density sqrt(6) too small.
+    /// Negative (= "unknown") passes through unchanged.
+    [[nodiscard]] double nominal_var_over(double var, double seconds) const
+    {
+        if (var < 0.0 or seconds <= 0.0) return var;
+        return var * (fullpose_publish_period_ms * 1e-3) / seconds;
+    }
 
     // Acquisition instant of a device's current sample, on the sim clock. Webots refreshes a device on
     // steps that are multiples of its sampling period, so the sample in hand was taken at the last such

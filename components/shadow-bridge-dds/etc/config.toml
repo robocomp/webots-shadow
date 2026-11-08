@@ -103,6 +103,10 @@ VelocitySource = "wheels"
 # The published velocity is differenced over this whole interval, so it is the exact mean over it,
 # not a sample of one step.
 PublishPeriod = 48
+# Per-sample variances of ONE FullPose sample, i.e. of a mean over PublishPeriod. The rc/odom/data
+# stream (one sample per 8 ms step) states the same noise density, so its per-step figure is these
+# times PublishPeriod/step (6x at 48/8). Changing PublishPeriod keeps the per-FullPose figure, not the
+# density.
 NominalVelVar = 1e-4
 NominalRotVar = 1e-4
 
