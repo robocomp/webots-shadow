@@ -763,6 +763,7 @@ long SpecificWorker::acquisition_wall_ms(long loop_wall_ms, double sim_now_ms, i
 // integrate it across (see WheelOdometry in the header for why that matters).
 bool SpecificWorker::update_wheel_odometry(double sim_seconds, bool publishing)
 {
+    wheel_odo_.step_valid = false;   // FIRST: every early return below means "no sample this step"
     double angle[kDriveWheels] = {0, 0};
     for (int i = 0; i < kDriveWheels; ++i)
     {
@@ -825,6 +826,8 @@ bool SpecificWorker::update_wheel_odometry(double sim_seconds, bool publishing)
         auto [v, rot, w] = twist_from(wheel_odo_.step_angle, angle, step_dt);
         wheel_odo_.step_v_local = v;
         wheel_odo_.step_rot     = rot;
+        wheel_odo_.step_dt      = step_dt;
+        wheel_odo_.step_valid   = true;
         std::copy(w.begin(), w.end(), std::begin(wheel_odo_.step_w));
     }
     std::copy(std::begin(angle), std::end(angle), std::begin(wheel_odo_.step_angle));
@@ -988,6 +991,7 @@ void SpecificWorker::receiving_robotSpeed(webots::Supervisor* _robot, long times
     const double sim_now_ms = _robot->getTime() * 1000.0;
     const bool publishing = sim_now_ms >= next_fullpose_publish_ms;
     update_wheel_odometry(_robot->getTime(), publishing);
+    publish_odom_step(_robot->getTime(), timestamp, k_wall, shadow_velocity_local, shadow_rot_wall);
 
 #if BRIDGE_WHEEL_ODOM_DIAG
     log_wheel_odom_diag(sim_now_ms, timestamp, publishing,
@@ -1017,33 +1021,22 @@ void SpecificWorker::receiving_robotSpeed(webots::Supervisor* _robot, long times
     // stream — which is the whole difference between this and a per-consumer test hook. The scale is
     // constant for the run (a wheel radius does not change per sample); the noise is a density, so the
     // rate perturbation is sigma/sqrt(dt) and the accumulated increment has variance sigma^2*dt.
-    // dt is the PUBLISH period, because that is the interval a consumer integrates this sample across.
+    // ★ Since the DDS odometry stream (2026-11-06) the noise is DRAWN per step in publish_odom_step(),
+    // with dt = the step, and this sample carries the dt-weighted MEAN of those same draws -- so
+    // FullPose and rc/odom/data integrate to the same corrupted motion. The speed-dependent model is
+    // documented there.
+    const OdomWindow window = std::exchange(odom_window_, OdomWindow{});
     if (sensor_noise_enabled_)
     {
-        const double dt_pub = std::max(1e-3, fullpose_publish_period_ms * 1e-3);
-        const double inv_sqrt_dt = 1.0 / std::sqrt(dt_pub);
-        // ★ SPEED-DEPENDENT, ported from p3bot-bridge 2026-08-29 where it was measured.
-        // A flat density says a PARKED robot's wheels are as noisy as a moving one's. They are not:
-        // an encoder at rest emits no counts, so it reports zero speed with near-certainty — that is
-        // the absence of counts, not a noisy reading of zero. On P3Bot the flat model injected
-        // 0.118 m/s into a demonstrably stationary robot and the localiser, having no way to know
-        // better, random-walked 210 mm over 3963 cycles with ground truth motionless. Fixing it took
-        // the parked drift from 3.49 to 0.122 mm/cycle.
-        // What actually scales with speed is slip and timing: a timing error dt_e becomes a velocity
-        // error v*dt_e/dt, and slip is a fraction of distance travelled — both proportional to v.
-        // Quantisation leaves a small floor.
-        //     sigma(v) = sqrt(sigma_floor^2 + (k_slip * |v|)^2)
-        const auto sigma_at = [](double floor_, double k_slip, double v)
-        { return std::hypot(floor_, k_slip * v); };
-        wheel_sigma_v_eff_ = sigma_at(wheel_sigma_v_floor_, wheel_sigma_v_,
-                                      std::hypot(velocity_local.x(), velocity_local.y()));
-        wheel_sigma_w_eff_ = sigma_at(wheel_sigma_w_floor_, wheel_sigma_w_, std::abs(rot_velocity));
-        velocity_local.x() = static_cast<float>(velocity_local.x() * (1.0 + wheel_scale_v_)
-                                                + generate_noise(wheel_sigma_v_eff_ * inv_sqrt_dt));
-        velocity_local.y() = static_cast<float>(velocity_local.y() * (1.0 + wheel_scale_v_)
-                                                + generate_noise(wheel_sigma_v_eff_ * inv_sqrt_dt));
-        rot_velocity = rot_velocity * (1.0 + wheel_scale_w_)
-                     + generate_noise(wheel_sigma_w_eff_ * inv_sqrt_dt);
+        velocity_local.x() = static_cast<float>(velocity_local.x() * (1.0 + wheel_scale_v_));
+        velocity_local.y() = static_cast<float>(velocity_local.y() * (1.0 + wheel_scale_v_));
+        rot_velocity       = rot_velocity * (1.0 + wheel_scale_w_);
+        if (window.dt > 0.0)
+        {
+            velocity_local.x() += static_cast<float>(window.noise_v.x() / window.dt);
+            velocity_local.y() += static_cast<float>(window.noise_v.y() / window.dt);
+            rot_velocity       += window.noise_rot / window.dt;
+        }
     }
 
     RoboCompFullPoseEstimation::FullPoseEuler pose_data;
@@ -1086,12 +1079,11 @@ void SpecificWorker::receiving_robotSpeed(webots::Supervisor* _robot, long times
     // a density, and a constant has nothing to say. A consumer recovering sigma(v) as sqrt(var*dt)
     // now gets ~0 at rest (nothing to integrate) and the slip term at speed (the prior loosens where
     // it should). Ported from p3bot-bridge 2026-08-29.
-    // dt is the PUBLISH period: the interval a consumer integrates one sample across.
-    const double dt_cov = std::max(1e-3, fullpose_publish_period_ms * 1e-3);
-    const double vel_extra = sensor_noise_enabled_
-                           ? wheel_sigma_v_eff_ * wheel_sigma_v_eff_ / dt_cov : 0.0;
-    const double rot_extra = sensor_noise_enabled_
-                           ? wheel_sigma_w_eff_ * wheel_sigma_w_eff_ / dt_cov : 0.0;
+    // Variance of the window MEAN of independent step draws: sum(dt_i^2 * sigma_i^2/dt_i) / T^2
+    // = sum(dt_i * sigma_i^2) / T^2, which is sigma^2/T for a constant sigma -- the old sigma^2/dt_pub.
+    const double win_t2 = window.dt * window.dt;
+    const double vel_extra = (sensor_noise_enabled_ and window.dt > 0.0) ? window.var_v   / win_t2 : 0.0;
+    const double rot_extra = (sensor_noise_enabled_ and window.dt > 0.0) ? window.var_rot / win_t2 : 0.0;
     // A published variance is NEVER 0: zero reads downstream as infinite confidence and hands that
     // channel unlimited authority, silently. Strictly positive, or exactly -1 for "producer does not
     // know" — the same contract the pose and acceleration blocks below use.
@@ -1104,6 +1096,82 @@ void SpecificWorker::receiving_robotSpeed(webots::Supervisor* _robot, long times
     pose_data.accCov.m00  = -1.f;
 
     this->fullposeestimationpub_pubproxy->newFullPose(pose_data);
+}
+
+// ── Full-rate odometry: one OdomFrame per step onto rc/odom/data ──────────────────────────────────
+// Runs in the compute() thread every step, before the FullPose gate. Builds this step's body twist
+// (wheels: the per-step encoder difference; supervisor: the instantaneous getVelocity()), applies the
+// synthetic wheel error with dt = THIS step, publishes it, and folds the noise draw into odom_window_
+// so the next FullPose is the mean of exactly these samples. See OdomWindow in the header.
+void SpecificWorker::publish_odom_step(double sim_s, long timestamp, double k_wall,
+                                       const Eigen::Vector2f& supervisor_v_local, double supervisor_rot)
+{
+    const double prev = std::exchange(odom_prev_sim_s_, sim_s);
+    const double dt = sim_s - prev;
+    // No previous step, paused simulator (dt == 0), or a resumed pause / blocked step: no sample.
+    if (prev < 0.0 or dt <= 1e-4 or dt >= 1.0) return;
+
+    Eigen::Vector2f v = supervisor_v_local;
+    double rot = supervisor_rot;
+    if (fullpose_velocity_source_ == VelocitySource::Wheels)
+    {
+        if (not wheel_odo_.step_valid) return;
+        v   = static_cast<float>(k_wall) * wheel_odo_.step_v_local;
+        rot = k_wall * wheel_odo_.step_rot;
+    }
+
+    double var_v_extra = 0.0, var_rot_extra = 0.0;
+    if (sensor_noise_enabled_)
+    {
+        // ★ SPEED-DEPENDENT, ported from p3bot-bridge 2026-08-29 where it was measured.
+        // A flat density says a PARKED robot's wheels are as noisy as a moving one's. They are not:
+        // an encoder at rest emits no counts, so it reports zero speed with near-certainty — that is
+        // the absence of counts, not a noisy reading of zero. On P3Bot the flat model injected
+        // 0.118 m/s into a demonstrably stationary robot and the localiser, having no way to know
+        // better, random-walked 210 mm over 3963 cycles with ground truth motionless. Fixing it took
+        // the parked drift from 3.49 to 0.122 mm/cycle.
+        // What actually scales with speed is slip and timing: a timing error dt_e becomes a velocity
+        // error v*dt_e/dt, and slip is a fraction of distance travelled — both proportional to v.
+        // Quantisation leaves a small floor.
+        //     sigma(v) = sqrt(sigma_floor^2 + (k_slip * |v|)^2)
+        // sigma is a DENSITY, so the rate perturbation is sigma/sqrt(dt) and the increment over the
+        // step has variance sigma^2*dt.
+        const auto sigma_at = [](double floor_, double k_slip, double speed)
+        { return std::hypot(floor_, k_slip * speed); };
+        wheel_sigma_v_eff_ = sigma_at(wheel_sigma_v_floor_, wheel_sigma_v_, std::hypot(v.x(), v.y()));
+        wheel_sigma_w_eff_ = sigma_at(wheel_sigma_w_floor_, wheel_sigma_w_, std::abs(rot));
+        const double inv_sqrt_dt = 1.0 / std::sqrt(dt);
+        const double nx = generate_noise(wheel_sigma_v_eff_ * inv_sqrt_dt);
+        const double ny = generate_noise(wheel_sigma_v_eff_ * inv_sqrt_dt);
+        const double nr = generate_noise(wheel_sigma_w_eff_ * inv_sqrt_dt);
+        // The SCALE is constant for the run, so applying it per step or to the mean is the same.
+        v.x() = static_cast<float>(v.x() * (1.0 + wheel_scale_v_) + nx);
+        v.y() = static_cast<float>(v.y() * (1.0 + wheel_scale_v_) + ny);
+        rot   = rot * (1.0 + wheel_scale_w_) + nr;
+        var_v_extra   = wheel_sigma_v_eff_ * wheel_sigma_v_eff_ / dt;
+        var_rot_extra = wheel_sigma_w_eff_ * wheel_sigma_w_eff_ / dt;
+
+        odom_window_.noise_v   += dt * Eigen::Vector2d{nx, ny};
+        odom_window_.noise_rot += dt * nr;
+        odom_window_.var_v     += dt * wheel_sigma_v_eff_ * wheel_sigma_v_eff_;
+        odom_window_.var_rot   += dt * wheel_sigma_w_eff_ * wheel_sigma_w_eff_;
+    }
+    odom_window_.dt += dt;
+
+    // Same never-zero contract as FullPose's velCov.
+    const auto safe_var = [](double var) { return static_cast<float>(var < 0.0 ? -1.0 : std::max(var, 1e-12)); };
+    rc::media::OdomFrame f;
+    f.stamp_ms(static_cast<std::uint64_t>(timestamp));
+    f.sim_stamp_ms(static_cast<std::uint64_t>(sim_s * 1000.0));
+    f.period_ms(static_cast<float>(dt * 1000.0));
+    // (0) = -side, (1) = forward: the same mapping FullPose's adv/side use below.
+    f.adv(v.y());
+    f.side(-v.x());
+    f.rot(static_cast<float>(rot));
+    f.adv_var(safe_var(nominal_vel_var_ + var_v_extra));
+    f.side_var(safe_var(nominal_vel_var_ + var_v_extra));
+    f.rot_var(safe_var(nominal_rot_var_ + var_rot_extra));
+    media_plane_.publish_odom(f);
 }
 
 // Runs in the compute() thread only (from receiving_robotSpeed), so clock_pairs_ needs no lock.

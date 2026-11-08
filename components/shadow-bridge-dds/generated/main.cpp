@@ -398,12 +398,14 @@ int Webots2Robocomp::run(int argc, char* argv[])
 		                    "webots2robocomp", worker,  0);
 
 		// The five sensor drivers' MediaPlaneDDS endpoints, on THEIR ports, so robot_concept's
-		// Proxies.MediaPlaneDDS..4 find the descriptors unchanged. One adapter per node.
+		// Proxies.MediaPlaneDDS..4 find the descriptors unchanged, plus the wheel-odometry one
+		// (Proxies.MediaPlaneDDS5), which no driver ever had. One adapter per node.
 		for (const auto& [stream, key] : {std::pair{"zed", "Endpoints.MediaPlaneZed"},
 		                                  std::pair{"ricoh", "Endpoints.MediaPlaneRicoh"},
 		                                  std::pair{"helios", "Endpoints.MediaPlaneHelios"},
 		                                  std::pair{"bpearl", "Endpoints.MediaPlaneBpearl"},
-		                                  std::pair{"imu", "Endpoints.MediaPlaneImu"}})
+		                                  std::pair{"imu", "Endpoints.MediaPlaneImu"},
+		                                  std::pair{"odom", "Endpoints.MediaPlaneOdom"}})
 		{
 			const std::string endpoint = configLoader.get<std::string>(key);
 			auto adapter = communicator()->createObjectAdapterWithEndpoints(std::string("mediaplanedds_") + stream, endpoint);

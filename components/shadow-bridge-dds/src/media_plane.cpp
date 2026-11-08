@@ -316,18 +316,23 @@ void MediaPlane::init(const ConfigLoader& cfg)
     zed_depth_topic_ = get_or<std::string>(cfg, "MediaPlane.ZedDepthTopic", "rc/zed/depth");
     ricoh_topic_     = get_or<std::string>(cfg, "MediaPlane.RicohTopic",    "rc/ricoh/rgb");
     imu_topic_       = get_or<std::string>(cfg, "MediaPlane.ImuTopic",      "rc/imu/data");
+    odom_topic_      = get_or<std::string>(cfg, "MediaPlane.OdomTopic",     "rc/odom/data");
 
     image_pub_cfg_ = pub_config(cfg, zed_rgb_topic_, 2, true, "");
     auto depth_cfg = image_pub_cfg_;  depth_cfg.topic_name = zed_depth_topic_;
     auto ricoh_cfg = image_pub_cfg_;  ricoh_cfg.topic_name = ricoh_topic_;
     // imu_dds ran history 8, data-sharing OFF: a 100-byte sample gains nothing from zero-copy.
     imu_pub_cfg_   = pub_config(cfg, imu_topic_, 8, false, "Imu");
+    // Odometry: same reasoning as the IMU (a ~60-byte sample, consumers come and go).
+    odom_pub_cfg_  = pub_config(cfg, odom_topic_, 8, false, "Odom");
 
     zed_ok_   = zed_rgb_.init(image_pub_cfg_) and zed_depth_.init(depth_cfg);
     ricoh_ok_ = ricoh_.init(ricoh_cfg);
     imu_ok_   = imu_.init(imu_pub_cfg_);
-    std::print("[MediaPlane] zed {} | ricoh {} | imu {}  (domain {}, zero-copy zed={} ricoh={})\n",
+    odom_ok_  = odom_.init(odom_pub_cfg_);
+    std::print("[MediaPlane] zed {} | ricoh {} | imu {} | odom {}  (domain {}, zero-copy zed={} ricoh={})\n",
                zed_ok_ ? "ok" : "FAILED", ricoh_ok_ ? "ok" : "FAILED", imu_ok_ ? "ok" : "FAILED",
+               odom_ok_ ? "ok" : "FAILED",
                image_pub_cfg_.domain_id, zed_rgb_.data_sharing_active() and zed_depth_.data_sharing_active(),
                ricoh_.data_sharing_active());
 
@@ -497,6 +502,19 @@ bool MediaPlane::publish_imu(const rc::media::ImuFrame& sample)
     return ok;
 }
 
+bool MediaPlane::publish_odom(const rc::media::OdomFrame& sample)
+{
+    if (not odom_ok_) return false;
+    rc::media::OdomFrame* f = odom_.loan();
+    if (f == nullptr) return false;
+    *f = sample;
+    f->stream_id(rc::media::STREAM_ODOM);
+    f->frame_id(odom_id_++);
+    const bool ok = odom_.publish(f);
+    if (ok) odom_last_wall_ms_.store(wall_ms(), std::memory_order_relaxed);
+    return ok;
+}
+
 void MediaPlane::submit_lidar(const std::string& name, webots::Lidar* lidar, std::int64_t stamp_ms)
 {
     LidarStream* s = name == "helios" ? helios_.get() : name == "bpearl" ? bpearl_.get() : nullptr;
@@ -547,6 +565,17 @@ std::string MediaPlane::descriptor(const std::string& stream) const
         auto d = descriptor_base(imu_pub_cfg_, "ImuFrame", rc::media::IMU_FRAME_TYPE_TAG);
         d.streams["imu"]      = imu_topic_;
         d.stream_types["imu"] = "ImuFrame";
+        return d.to_json();
+    }
+    if (stream == "odom" and odom_ok_)
+    {
+        // Same contract as the IMU: no descriptor until samples are actually going out, so
+        // robot_concept never stops bridging odometry in favour of a silent producer.
+        const std::int64_t last = odom_last_wall_ms_.load(std::memory_order_relaxed);
+        if (last == 0 or wall_ms() - last > 2000) return {};
+        auto d = descriptor_base(odom_pub_cfg_, "OdomFrame", rc::media::ODOM_FRAME_TYPE_TAG);
+        d.streams["odom"]      = odom_topic_;
+        d.stream_types["odom"] = "OdomFrame";
         return d.to_json();
     }
     return {};

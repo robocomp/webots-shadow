@@ -508,6 +508,8 @@ private:
         double step_rot   = 0.0;
         double pub_dt     = 0.0;            // s, the interval v_local/rot were differenced over
         bool   valid      = false;          // v_local/rot hold a usable measurement
+        double step_dt    = 0.0;            // s (sim), the interval step_v_local/step_rot span
+        bool   step_valid = false;          // THIS step produced step_v_local/step_rot
     };
     WheelOdometry wheel_odo_;               // compute()-thread only; no lock, like clock_pairs_
     bool update_wheel_odometry(double sim_seconds, bool publishing);
@@ -517,6 +519,26 @@ private:
     // (SVD48VBase/etc/config_omnidirectional: Period.Compute = 100).
     int    fullpose_publish_period_ms = 100;
     double next_fullpose_publish_ms   = 0.0;
+
+    // ── Full-rate odometry on the DDS media plane (rc/odom/data, OdomFrame) ──────────────────────
+    // One sample per STEP, so ~100 Hz reaches the one consumer that integrates every sample
+    // (room_concept's preintegrator) without each one becoming a graph write. The Ice FullPose stays
+    // at PublishPeriod and is the MEAN of the step samples in its window: the encoder part telescopes
+    // to the publish-anchor difference, and the synthetic noise is the dt-weighted mean of the very
+    // draws the DDS stream carried. So both streams integrate to the same motion, and FullPose keeps
+    // its noise density (sigma/sqrt(dt) averaged over N steps is sigma/sqrt(N*dt)).
+    struct OdomWindow
+    {
+        double dt = 0.0;                    // s (sim) of step samples accumulated since the last FullPose
+        Eigen::Vector2d noise_v{0.0, 0.0};  // sum of dt_i * n_i, same (0)=-side,(1)=forward convention
+        double noise_rot = 0.0;
+        double var_v = 0.0;                 // sum of dt_i * sigma_v_eff_i^2  -> Var(mean) = var_v / dt^2
+        double var_rot = 0.0;
+    };
+    OdomWindow odom_window_;
+    double odom_prev_sim_s_ = -1.0;         // sim time of the previous step; < 0 = none yet
+    void publish_odom_step(double sim_s, long timestamp, double k_wall,
+                           const Eigen::Vector2f& supervisor_v_local, double supervisor_rot);
 
     // Nominal per-sample variances, SI units squared, from config. The simulated gyro and encoders are
     // EXACT and the accelerometer only quantises at 0.001, so a measured sim covariance would be ~0 --

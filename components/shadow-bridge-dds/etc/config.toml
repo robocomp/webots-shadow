@@ -40,6 +40,8 @@ MediaPlaneRicoh  = "tcp -p 10099"   # was ricoh_omni_dds
 MediaPlaneHelios = "tcp -p 11890"   # was lidar3d_dds (helios)
 MediaPlaneBpearl = "tcp -p 11889"   # was lidar3d_dds (bpearl)
 MediaPlaneImu    = "tcp -p 11891"   # was imu_dds
+# Wheel odometry (rc/odom/data). No driver ever had this port: robot_concept's Proxies.MediaPlaneDDS5.
+MediaPlaneOdom   = "tcp -p 11892"
 # Endpoints for subscriptions interfaces
 JoystickAdapterTopic = "tcp -p 11025"
 JoystickAdapterPrefix = ""
@@ -92,13 +94,15 @@ ConfigFile = "/home/pbustos/robocomp/components/robocomp-robolab/components/hard
 #   "supervisor" - the historical robotNode->getVelocity() ground truth. Kept for A/B measurement.
 # MUST be quoted: ConfigLoader throws on a bare word and aborts startup rather than defaulting.
 VelocitySource = "wheels"
-# Publish period for the wheel-odometry channel, ms. The real base publishes at 100 Hz: SVD48VBase
-# hardcodes self.Period = 10 in specificworker.py and never reads its config's Period.Compute = 100.
-# The gate only runs once per step and a publish re-arms from the step it fired on, so a period is
-# rounded UP to whole steps: on the 8 ms step 10 would give 16 ms (62.5 Hz), and 8 is the closest to
-# 100 Hz, publishing every step (125 Hz in sim time). The published velocity is differenced over this
-# whole interval, so it is the exact mean over it, not a sample of one step.
-PublishPeriod = 8
+# Publish period for the wheel-odometry channel, ms. ~20 Hz, deliberately NOT the real base's 100 Hz
+# (SVD48VBase hardcodes self.Period = 10 and never reads its config's Period.Compute = 100): every
+# sample becomes a graph write that every agent receives, and at ~100 Hz the controller saw
+# odometry-stale stalls of minutes (2026-11-05). The gate only runs once per step and a publish
+# re-arms from the step it fired on, so a period is rounded UP to whole steps: 48 is 6 steps exactly,
+# 20.7 Hz in sim time (~19.6 Hz at the usual 0.95 sim speed); 50 would round up to 56 ms (17.9 Hz).
+# The published velocity is differenced over this whole interval, so it is the exact mean over it,
+# not a sample of one step.
+PublishPeriod = 48
 NominalVelVar = 1e-4
 NominalRotVar = 1e-4
 
@@ -361,6 +365,11 @@ ZedRGBTopic   = "rc/zed/rgb"
 ZedDepthTopic = "rc/zed/depth"
 RicohTopic    = "rc/ricoh/rgb"
 ImuTopic      = "rc/imu/data"
+# Full-rate wheel odometry, one OdomFrame per step (~119 Hz wall at the usual sim speed). The Ice
+# FullPose ([FullPose].PublishPeriod) is the mean of these samples over its window.
+OdomTopic     = "rc/odom/data"
+OdomHistoryDepth = 8
+OdomDataSharing = false
 # body<-sensor mounts for the self-filter: the DSR model is the single source of geometry. No fallback
 # numbers on purpose: if this cannot be read the filter is DISABLED loudly, not run on a stale mount.
 MountFile = "/home/pbustos/robocomp/components/active_inference/robot_concept/shadow.json"

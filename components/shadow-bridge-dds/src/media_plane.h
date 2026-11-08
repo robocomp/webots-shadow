@@ -133,6 +133,8 @@ public:
     bool publish_zed(webots::Camera* cam, webots::RangeFinder* ranger, std::int64_t stamp_ms);
     bool publish_360(webots::Camera* cam1, webots::Camera* cam2, std::int64_t stamp_ms);
     bool publish_imu(const rc::media::ImuFrame& sample);
+    // Wheel odometry, one sample per step (see SpecificWorker::publish_odom_step).
+    bool publish_odom(const rc::media::OdomFrame& sample);
     void submit_lidar(const std::string& name, webots::Lidar* lidar, std::int64_t stamp_ms);
 
     // Any thread (Ice dispatch): the descriptor a MediaPlaneDDS endpoint returns. "" = not publishing.
@@ -141,16 +143,18 @@ public:
     void stop();
 
 private:
-    rc::media::PublisherConfig image_pub_cfg_, imu_pub_cfg_;
-    std::string zed_rgb_topic_, zed_depth_topic_, ricoh_topic_, imu_topic_;
+    rc::media::PublisherConfig image_pub_cfg_, imu_pub_cfg_, odom_pub_cfg_;
+    std::string zed_rgb_topic_, zed_depth_topic_, ricoh_topic_, imu_topic_, odom_topic_;
     rc::media::MediaPublisher   zed_rgb_, zed_depth_;
     rc::media::Image360Publisher ricoh_;
     rc::media::ImuPublisher     imu_;
-    bool zed_ok_ = false, ricoh_ok_ = false, imu_ok_ = false;
-    std::uint64_t zed_rgb_id_ = 0, zed_depth_id_ = 0, ricoh_id_ = 0, imu_id_ = 0;
+    rc::media::OdomPublisher    odom_;
+    bool zed_ok_ = false, ricoh_ok_ = false, imu_ok_ = false, odom_ok_ = false;
+    std::uint64_t zed_rgb_id_ = 0, zed_depth_id_ = 0, ricoh_id_ = 0, imu_id_ = 0, odom_id_ = 0;
     // IMU liveness for its descriptor: imu_dds advertised nothing until a sample had gone out
     // recently, so robot_concept never adopts a silent producer. Same contract here.
     std::atomic<std::int64_t> imu_last_wall_ms_{0};
+    std::atomic<std::int64_t> odom_last_wall_ms_{0};   // same liveness contract for odometry
     // Ice dispatch threads query descriptor() from the moment the adapters are up, which is BEFORE the
     // Qt thread runs initialize() and so init(). Release/acquire on this flag is what makes the
     // writers and the LiDAR streams visible to them; until then every descriptor is "".
