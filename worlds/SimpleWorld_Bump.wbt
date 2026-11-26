@@ -7,6 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "../protos/Bump.proto"
 EXTERNPROTO "../protos/Shadow.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/hospital/protos/MedicineBottle.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Roughcast.proto"
 
 WorldInfo {
   info [
@@ -39,23 +41,63 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.37339906082093255 -0.32090434328558154 -0.8703984971485733 4.630830339131953
-  position -1.1192644445092879 -11.24410189023558 10.836281517639643
+  orientation 0.15836065330164786 -0.9388120257757228 -0.3058657936820643 6.129617271466669
+  position -10.576004586591777 0.041383167944699706 0.681633731027369
 }
 RectangleArena {
-  floorSize 14 5
+  floorSize 22 5
   floorAppearance Parquetry {
     type "light strip"
   }
   wallThickness 0.08
   wallHeight 1
 }
+Wall {
+  translation 0.8 1.65 0
+  size 0.2 1.7 1
+  appearance Roughcast {
+    colorOverride 0.14902 0.635294 0.411765
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 3.5 0.06 0
+  name "wall(2)"
+  size 0.2 1.7 1
+  appearance Roughcast {
+    colorOverride 0.14902 0.635294 0.411765
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.8 -1.65 0
+  name "wall(1)"
+  size 0.2 1.7 1
+  appearance Roughcast {
+    colorOverride 0.14902 0.635294 0.411765
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
 DEF shadow Shadow {
-  translation -3.69986 -0.249998 0.0325026
+  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
+  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
+  translation -6.42986 -0.199998 0.0185
   rotation 0.0020024301562529584 -0.0019581101527945946 0.9999960780313586 -1.5707953071795862
 }
-Bump {
+DEF BUMP Bump {
+  translation -3.89 0.13 0.001
   name "Customizable Bump(1)"
+  type "25x3_5cm"
+}
+DEF BUMP_1 Bump {
+  translation 7.7 0.11 0.001
+  name "Customizable Bump(2)"
   type "25x3_5cm"
 }
 TexturedBackground {
@@ -75,7 +117,7 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_2 Robot {
-          translation 3.3013 -0.250015 0
+          translation -1.00839 -0.18622 0
           rotation 0 0 -1 0.026391386573661395
           children [
             Lidar {
@@ -195,7 +237,7 @@ DEF CROWD_CONTROL Group {
   ]
 }
 DEF flacon MedicineBottle {
-  translation -3.55232 -0.190023 0.834894
+  translation -6.27208 -0.285611 0.816046
   rotation -0.008184842242227873 0.9999665036056012 -4.925330828057793e-06 0.004103074014905703
   physics Physics {
   }
