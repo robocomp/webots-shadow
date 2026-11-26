@@ -41,19 +41,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-<<<<<<< Updated upstream
-  orientation 0.15836065330164786 -0.9388120257757228 -0.3058657936820643 6.129617271466669
-  position -10.576004586591777 0.041383167944699706 0.681633731027369
-}
-RectangleArena {
-  floorSize 22 5
-=======
   orientation 0.3307899404953717 -0.45219830926117555 -0.828308338946556 4.90182570794184
   position -9.809630436850094 -20.752437147575634 20.085880763784104
 }
 RectangleArena {
   floorSize 26 5
->>>>>>> Stashed changes
   floorAppearance Parquetry {
     type "light strip"
   }
@@ -61,11 +53,7 @@ RectangleArena {
   wallHeight 1
 }
 Wall {
-<<<<<<< Updated upstream
-  translation 0.8 1.65 0
-=======
   translation -0.19 1.65 0
->>>>>>> Stashed changes
   size 0.2 1.7 1
   appearance Roughcast {
     colorOverride 0.14902 0.635294 0.411765
@@ -75,11 +63,7 @@ Wall {
   }
 }
 Wall {
-<<<<<<< Updated upstream
-  translation 3.5 0.06 0
-=======
   translation 2.5 0.06 0
->>>>>>> Stashed changes
   name "wall(2)"
   size 0.2 1.7 1
   appearance Roughcast {
@@ -90,11 +74,7 @@ Wall {
   }
 }
 Wall {
-<<<<<<< Updated upstream
-  translation 0.8 -1.65 0
-=======
   translation -0.19 -1.65 0
->>>>>>> Stashed changes
   name "wall(1)"
   size 0.2 1.7 1
   appearance Roughcast {
@@ -105,21 +85,11 @@ Wall {
   }
 }
 DEF shadow Shadow {
-<<<<<<< Updated upstream
-  hidden linearVelocity_0 2.5768635962415814e-15 -4.075325935301325e-16 0
-  hidden angularVelocity_0 3.318708717389001e-16 -7.061550565025133e-16 3.5130543371496327e-15
-  translation -6.42986 -0.199998 0.0185
-  rotation 0.0020024301562529584 -0.0019581101527945946 0.9999960780313586 -1.5707953071795862
-}
-DEF BUMP Bump {
-  translation -3.89 0.13 0.001
-=======
   translation -9.96986 -0.199998 0.0325184
   rotation 0.0020024301562529584 -0.0019581101527945946 0.9999960780313586 -1.5707953071795862
 }
 DEF BUMP Bump {
   translation -5.45 0.13 0.001
->>>>>>> Stashed changes
   name "Customizable Bump(1)"
   type "25x3_5cm"
 }
@@ -138,11 +108,7 @@ DEF CROWD_CONTROL Group {
     DEF CROWD Group {
       children [
         DEF HUMAN_2 Robot {
-<<<<<<< Updated upstream
-          translation -1.00839 -0.18622 0
-=======
           translation -7.30971 -0.149929 0
->>>>>>> Stashed changes
           rotation 0 0 -1 0.026391386573661395
           children [
             Lidar {
@@ -733,11 +699,7 @@ DEF WAYPOINT_PATH Robot {
   synchronization FALSE
 }
 DEF flacon MedicineBottle {
-<<<<<<< Updated upstream
-  translation -6.27208 -0.285611 0.816046
-=======
   translation -9.83208 -0.285611 0.830642
->>>>>>> Stashed changes
   rotation -0.008184842242227873 0.9999665036056012 -4.925330828057793e-06 0.004103074014905703
   physics Physics {
   }
